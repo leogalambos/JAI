@@ -18,6 +18,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import sys
 
 from content_catalog_definitions import (ADDITIONAL_FAMILIES, SEMANTIC_FAMILIES,
     SEMANTIC_REFINEMENTS, TYPE_ACCEPTANCE_DETAILS, TYPE_REQUIREMENTS)
@@ -25,6 +26,9 @@ from generate_content_catalog import BINDINGS, FAMILIES
 from professional_output_refinements import delivery_form_for
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
+from artifacts import output_owners
+
 GUIDANCE = '.ai/runtime/content/role-output-guidance.json'
 GENERIC = 'Reviewed by a competent second party; complete, dated and attributable'
 ROW = re.compile(r'^\|\s*(\d+)\s*\|.*$')
@@ -55,6 +59,8 @@ def build_guidance(root):
     root = Path(root)
     roles = json.loads((root / '.ai/runtime/roles.json').read_text())['roles']
     contracts = json.loads((root / '.ai/runtime/artifacts/contracts/role-deliverables.v3.json').read_text())['contracts']
+    owners = output_owners(roles, contracts, root / '.ai/runtime')
+    roles = [role for role in roles if owners[role['slug']] == role['slug']]
     by_id = {entry['id']: entry for entry in contracts}
     outputs = []
     for role in roles:

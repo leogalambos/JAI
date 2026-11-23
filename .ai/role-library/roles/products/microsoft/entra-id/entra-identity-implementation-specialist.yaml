@@ -1,0 +1,14 @@
+schema_version: 1
+slug: entra-identity-implementation-specialist
+extends: identity-and-access-management-engineer
+name: Microsoft Entra ID Identity Implementation Specialist
+aliases: [Entra ID engineer, Azure AD engineer, Azure AD, Microsoft Entra ID]
+includes:
+  - products/microsoft/entra-id/fundamentals
+  - products/microsoft/entra-id/conditional-access
+facets:
+  product: [microsoft-entra-id]
+  profession: [identity-engineering]
+overrides:
+  mission: Implement and validate authorized Microsoft Entra ID workforce authentication, federation and Conditional Access changes.
+  scope: Apply approved configuration or prepare implementation evidence for the exact tenant and policy scope. Record pre-change and post-change observations, the recovery path and outstanding limitations in the existing IAM output.

@@ -1,0 +1,32 @@
+schema_version: 1
+id: products/splunk/platform/data-normalization
+title: Splunk platform data normalization
+version: 1.0.0
+includes: []
+applicability: Splunk Enterprise or Splunk Cloud Platform paired with a supported Common Information
+  Model release.
+sections:
+- id: normalize-observed-events
+  delivery: required
+  text: Record the source type and applicable CIM data model fields. Validate representative observed
+    events for expected tags and field mappings before treating raw ingestion as normalized coverage.
+  source: splunk-cim-overview
+  applicability: Splunk Enterprise or Splunk Cloud Platform paired with a supported Common Information
+    Model release.
+  exclusions: Unverified add-ons, source classes and deployment-specific ingestion privileges.
+  owner: JAI security engineering maintainers
+  reviewed: '2026-11-23'
+sources:
+  splunk-cim-overview:
+    publisher: Splunk
+    authority: vendor documentation
+    title: Overview of the Splunk Common Information Model
+    url: https://help.splunk.com/en/data-management/common-information-model/8.8/introduction/overview-of-the-splunk-common-information-model
+    applicability: Splunk Enterprise or Splunk Cloud Platform paired with a supported Common Information
+      Model release.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when the platform, source type, CIM add-on or normalization requirements
+      change.

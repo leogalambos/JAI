@@ -104,6 +104,71 @@ def load_all(root: Path):
     return p,taxonomy,schema,source,profiles,roles
 
 
+def output_owners(roles, contracts, runtime):
+    """Resolve selectable role slugs to their authoritative output owners.
+
+    Args:
+        roles: Exact selectable catalogue rows.
+        contracts: Authoritative versioned contract rows.
+        runtime: Runtime directory containing any composed ancestry manifest.
+    Returns:
+        Mapping of selectable slug to authoritative owner slug.
+    Raises:
+        ValueError: An inheritance declaration changes a professional boundary
+            or does not match the authoritative output sequence and versions.
+    """
+    by_slug = {role['slug']: role for role in roles}
+    by_id = None
+    owners = {}
+    provenance = None
+    for slug, role in by_slug.items():
+        if 'inherited_outputs' not in role:
+            owners[slug] = slug
+            continue
+        binding = role['inherited_outputs']
+        if (not isinstance(binding, dict) or set(binding) != {'schema_version', 'owner', 'contracts'}
+                or type(binding['schema_version']) is not int or binding['schema_version'] != 1
+                or not isinstance(binding['owner'], str)):
+            raise ValueError(f'{slug}: invalid inherited output declaration')
+        if provenance is None:
+            try:
+                manifest = json.loads((Path(runtime) / 'role-composition.json').read_bytes())
+                if (not isinstance(manifest, dict) or type(manifest.get('schema_version')) is not int
+                        or manifest['schema_version'] != 1 or not isinstance(manifest.get('roles'), dict)
+                        or set(manifest['roles']) != set(by_slug)):
+                    raise ValueError('composition does not cover this catalogue')
+                provenance = manifest['roles']
+                by_id = {contract['id']: contract for contract in contracts}
+            except (OSError, KeyError, TypeError, ValueError) as error:
+                raise ValueError('inherited outputs require matching composition provenance') from error
+        entry = provenance[slug]
+        if (not isinstance(entry, dict) or entry.get('source_kind') != 'composed'
+                or entry.get('legacy_anchor') != binding['owner']
+                or not isinstance(entry.get('ancestry'), list) or not entry['ancestry']
+                or entry['ancestry'][0] != binding['owner']
+                or entry.get('projection_path') != role['path']):
+            raise ValueError(f'{slug}: inherited output owner differs from composition ancestry')
+        owner = by_slug.get(binding['owner'])
+        if (owner is None or 'inherited_outputs' in owner
+                or entry.get('legacy_row_sha256') != _record_hash(owner) or any(
+                role.get(field) != owner.get(field) for field in (
+                    'primary_deliverables', 'category', 'skill', 'tool_tier',
+                    'allowed_tools', 'operator_agent', 'layer', 'jai', 'archetype',
+                    'sfia_responsibility_band', 'layer_name', 'layer_agent', 'layer_operator'))):
+            raise ValueError(f'{slug}: inherited output owner or professional boundary differs')
+        expected = []
+        for number in range(1, len(owner['primary_deliverables']) + 1):
+            cid = f"{owner['slug']}:{number}"
+            contract = by_id.get(cid)
+            if contract is None or contract.get('role_slug') != owner['slug'] or not contract.get('version'):
+                raise ValueError(f'{slug}: missing authoritative output {cid}')
+            expected.append({'id': cid, 'version': contract['version']})
+        if binding['contracts'] != expected:
+            raise ValueError(f'{slug}: inherited output identity or version differs')
+        owners[slug] = owner['slug']
+    return owners
+
+
 def live_deliverables(p, roles):
     out={}
     for role in roles:
@@ -306,7 +371,24 @@ def validate(root: Path):
     if taxonomy.get('policy',{}).get('production_inference_forbidden') is not True:
         problems.append('taxonomy policy must forbid production inference')
     types=taxonomy.get('artifact_types',{}); acc=profiles.get('acceptance_profiles',{}); evp=profiles.get('evidence_profiles',{})
-    live=live_deliverables(p,roles); rows=source.get('contracts',[]); actual={r.get('id'):flatten_v3(r) for r in rows if r.get('id')}
+    try:
+        owners = output_owners(roles, source['contracts'], p['runtime'])
+    except ValueError as error:
+        return [str(error)], (p, taxonomy, source, {})
+    live=live_deliverables(p,[role for role in roles if owners[role['slug']] == role['slug']]); rows=source.get('contracts',[]); actual={r.get('id'):flatten_v3(r) for r in rows if r.get('id')}
+    inherited = [role for role in roles if owners[role['slug']] != role['slug']]
+    projected = live_deliverables(p, inherited)
+    expected = {f"{role['slug']}:{number}" for role in inherited
+                for number in range(1, len(role['primary_deliverables']) + 1)}
+    if set(projected) != expected:
+        problems.append('inherited output identity coverage differs')
+    for record in projected.values():
+        slug = record['role']['slug']
+        number = record['deliverable']['number']
+        original = live.get(f'{owners[slug]}:{number}')
+        if original is None or any(record[field] != original[field]
+                                   for field in ('inputs', 'gates', 'deliverable')):
+            problems.append(f'{slug}:{number}: inherited output obligations differ')
     guidance = {}
     projection_policies = {}
     guidance_path = p['runtime'] / 'content/role-output-guidance.json'
@@ -446,8 +528,20 @@ def cmd_golden(args):
 
 
 def cmd_show(args):
+    """Print the requested selectable role's authoritative contracts.
+
+    Args:
+        args: Parsed command arguments with the exact role slug and runtime root.
+    Returns:
+        Zero when existing authoritative contracts were printed.
+    Raises:
+        SystemExit: No contracts exist for the requested role.
+        ValueError: The composed output binding is inconsistent.
+    """
     p=paths(Path(args.root)); src=json.loads(p['source'].read_text(encoding='utf-8'))
-    rows=[flatten_v3(x) for x in src['contracts'] if x['role_slug']==args.role]
+    roles = json.loads(p['roles'].read_text(encoding='utf-8'))['roles']
+    owner = output_owners(roles, src['contracts'], p['runtime']).get(args.role)
+    rows=[flatten_v3(x) for x in src['contracts'] if x['role_slug']==owner]
     if not rows: raise SystemExit(f'no contracts for {args.role}')
     print(json.dumps(rows,indent=2,ensure_ascii=False)); return 0
 

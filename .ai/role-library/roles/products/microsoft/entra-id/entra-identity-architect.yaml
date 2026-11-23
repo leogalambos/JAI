@@ -1,0 +1,14 @@
+schema_version: 1
+slug: entra-identity-architect
+extends: identity-and-access-management-architect
+name: Microsoft Entra ID Identity Architect
+aliases: [Entra identity architect, Azure AD architect, Azure AD, Microsoft Entra ID]
+includes:
+  - products/microsoft/entra-id/fundamentals
+  - products/microsoft/entra-id/conditional-access
+facets:
+  product: [microsoft-entra-id]
+  profession: [identity-architecture]
+overrides:
+  mission: Design workforce authentication, federation and Conditional Access architecture for Microsoft Entra ID.
+  scope: Map identity populations, hybrid sign-in dependencies, authentication assurance, policy boundaries and recovery to the existing authentication and federation architecture deliverable. Evaluate options from admitted configuration evidence and declared tenant capabilities.

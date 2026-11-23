@@ -80,6 +80,40 @@ def _profile(controller, work_item, request_ttl_ms, limits, deadline_ms, local_b
                 'max_escalation_rounds': 10}}
 
 
+def _packaged_references(runtime, skills, rows, instructions):
+    """Load named deferred sections from the versioned composition projection."""
+    manifest = runtime / 'role-composition.json'
+    if not manifest.exists():
+        return None
+    composition = lc.loads(manifest.read_bytes())
+    if composition.get('schema_version') != 1 or set(composition['roles']) != set(instructions):
+        raise ValueError('Packaged composition differs from the exact role catalogue')
+    result = {}
+    for row in rows:
+        slug = row['slug']
+        role = composition['roles'][slug]
+        if hashlib.sha256(instructions[slug]).hexdigest() != role['instruction_sha256']:
+            raise ValueError('Packaged role instructions differ from composition: ' + slug)
+        base = (skills / row['skill'] / 'references').resolve()
+        prefix = '.ai/skills/' + row['skill'] + '/references/'
+        for module in role['modules']:
+            for section in module['sections']:
+                if section['delivery'] != 'optional':
+                    continue
+                projection = section['projection_path']
+                if not projection.startswith(prefix + 'knowledge/'):
+                    raise ValueError('Deferred reference is outside its packaged skill: ' + projection)
+                name = projection.removeprefix(prefix)
+                path = (base / name).resolve()
+                if not path.is_relative_to(base) or b'(' + name.encode() + b')' not in instructions[slug]:
+                    raise ValueError('Deferred reference is outside its effective instructions: ' + projection)
+                raw = path.read_bytes()
+                if hashlib.sha256(raw).hexdigest() != section['reference_sha256']:
+                    raise ValueError('Deferred reference differs from packaged composition: ' + projection)
+                result.setdefault(slug, {})[name] = raw
+    return result
+
+
 def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
               deadline_ms, model_config=None, *, human_id='L0-operator',
               destinations=(), tools=(), packet_bytes=2097152, total_bytes=8388608, local_budget=None,
@@ -163,7 +197,8 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
     policy = {'owner': human, 'source_role': 'policy', 'origin': human,
         'material': routing.capture_policy('host-routing', catalogue, lc.canonical(models),
             instructions, {'provider': provider, 'workload_class': 'light',
-                           'model_selector': selector}, capabilities, store.put_blob),
+                           'model_selector': selector}, capabilities, store.put_blob,
+            references=_packaged_references(ROOT, skills, rows, instructions)),
         'criteria': [], 'inherited': []}
     request_ttl_ms = local_budget['iteration_ms']
     profile = _profile(controller, work_item, request_ttl_ms, limits, deadline_ms, local_budget)
@@ -472,9 +507,22 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
                 'Choose the model from the actual matching active-provider/workload availability entry. '
                 'Assess the mandate locally and state the reason for your class/model choice; no automatic difficulty score is supplied. '
                 'Profile preferences never waive professional independence requirements, including any domain-specific different-model obligation.')
+        workflow_selection = packet['execution'].get('workflow_selection')
+        if workflow_selection is not None:
+            workforce_body['workflow_role_eligibility'] = {
+                'choices': workflow_selection['eligible'],
+                'blocker': workflow_selection['binding'].get('blocker'),
+                'rule': 'Choose one exact eligible slug for this workflow assignment.',
+            }
     else:
         workforce_body.update(selected_specialties=packet['execution']['specialties'],
             selected_instructions=[{'slug': slug, **instructions[slug]} for slug in packet['execution']['specialties']])
+        if packet['execution'].get('deferred_references'):
+            workforce_body['deferred_reference_rule'] = (
+                'When the selected instructions call for a named section, request its exact handle with read(handle).')
+            workforce_body['deferred_references'] = [
+                {'handle': handle, 'path': handle.split(':', 2)[2]}
+                for handle in packet['execution']['deferred_references']]
     workforce = add('Exact staffing/model availability', workforce_body, ['catalogue'])
     selection_context = None
     if kind == 'selection' and getattr(session, 'single_member', False):

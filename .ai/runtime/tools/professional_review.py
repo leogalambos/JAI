@@ -183,12 +183,13 @@ def _canonical_rules():
     return tuple([copy.deepcopy(_RETAINED), *copy.deepcopy(declared)])
 
 
-def _rules(snapshot):
+def _rules(snapshot, replay_conflict=False):
     captured = snapshot['models'].get('professional_review_constraints', [])
     problems = constraints_problems(captured)
     if problems:
         raise lc.ERROR('P_PROOF', '; '.join(problems))
-    unique = {lc.canonical(rule): rule for rule in [*_canonical_rules(), *captured]}
+    retained = (_RETAINED,) if replay_conflict else _canonical_rules()
+    unique = {lc.canonical(rule): rule for rule in [*retained, *captured]}
     return list(unique.values())
 
 
@@ -301,24 +302,26 @@ def _subject_error():
         'invent an author model, reset the journal or manufacture acceptance.')
 
 
-def enforce(state, assignment, snapshot, choice, live=True, subject=None):
-    """Enforce live retained review prerequisites using immutable author provenance.
+def enforce(state, assignment, snapshot, choice, live=True, subject=None, *, replay_conflict=False):
+    """Enforce retained review prerequisites using immutable author provenance.
 
     Args:
         state: Existing trusted lifecycle State; no journal or acceptance is written.
         assignment: Actual reviewer/integration reviewer/receiver assignment record.
         snapshot: Captured reviewer routing snapshot already admitted by the State.
         choice: Actual reviewer select_execution payload being admitted or used.
-        live: False skips this new-action prerequisite during historical replay.
+        live: Whether to enforce the current installed prerequisites for a new action.
         subject: Optional exact candidate reference, otherwise assigned input subject.
+        replay_conflict: Recompute a recorded native selection rejection using
+            only the captured registry and the original retained rule.
     Returns:
-        Pair diagnostic for affected work; None for unaffected responsibilities or replay.
+        Pair diagnostic for affected work, otherwise None.
     Raises:
         ProtocolError: Affected work lacks exact provenance or distinct requested models.
     """
-    if not live or assignment.get('responsibility') not in _REVIEW_ROLES:
+    if not (live or replay_conflict) or assignment.get('responsibility') not in _REVIEW_ROLES:
         return None
-    rules = _rules(snapshot)
+    rules = _rules(snapshot, replay_conflict=replay_conflict)
     subject_slot = 'incoming_handoff' if assignment['responsibility'] == 'receiver' else 'assessed-subject'
     canonical_subjects = [reference for binding in assignment['inputs']
         if binding['slot_id'] == subject_slot for reference in binding['refs']]

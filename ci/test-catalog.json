@@ -157,6 +157,10 @@
       "category": "integration",
       "rationale": "DCS foundation contract and adversarial filesystem integration tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
     },
+    "tests/test_compose_role_library.py": {
+      "category": "integration",
+      "rationale": "Closed source decoding and deterministic role composition against staged regular files and exact legacy checkout projections."
+    },
     "tests/test_content_workflow.py": {
       "category": "integration",
       "rationale": "Exercise all explicit workflow handoffs and the existing host identity boundary. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
@@ -693,6 +697,10 @@
     "tests/test_workflow_diagrams.py": {
       "category": "integration",
       "rationale": "Protect complete workflow labels, figure ownership and readable SVG geometry. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_workflow_role_selection.py": {
+      "category": "unit",
+      "rationale": "Deterministic role eligibility with pinned handoff, policy, scope and authority fixtures."
     },
     "tests/test_workload_routing.py": {
       "category": "integration",

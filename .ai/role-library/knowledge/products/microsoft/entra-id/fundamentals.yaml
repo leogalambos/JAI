@@ -1,0 +1,41 @@
+schema_version: 1
+id: products/microsoft/entra-id/fundamentals
+title: Microsoft Entra ID workforce authentication
+version: 1.0.0
+includes:
+- domains/identity/hybrid-sign-in
+applicability: Microsoft Entra ID workforce authentication and federation as documented on 2026-11-23.
+sections:
+- id: federation-trust
+  delivery: required
+  text: For federated sign-in, identify the actual verification service and its dependencies. Carry
+    the trust owner, federation evidence and certificate lifecycle into the applicable IAM deliverable.
+  source: microsoft-hybrid-sign-in
+  applicability: Microsoft Entra ID workforce authentication and federation as documented on 2026-11-23.
+  exclusions: External ID customer tenants, disconnected identity providers and unverified tenant
+    settings.
+  owner: JAI IAM engineering maintainers
+  reviewed: '2026-11-23'
+- id: federation-reference
+  delivery: optional
+  reference: federation-evidence.md
+  read_when: Assessing the actual hybrid sign-in topology or a federation migration or recovery decision.
+  source: microsoft-hybrid-sign-in
+  applicability: Microsoft Entra ID workforce authentication and federation as documented on 2026-11-23.
+  exclusions: External ID customer tenants, disconnected identity providers and unverified tenant
+    settings.
+  owner: JAI IAM engineering maintainers
+  reviewed: '2026-11-23'
+sources:
+  microsoft-hybrid-sign-in:
+    publisher: Microsoft
+    authority: vendor documentation
+    title: Choose the right authentication method for Microsoft Entra hybrid identity
+    url: https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/choose-ad-authn
+    applicability: Microsoft Entra ID workforce authentication and federation as documented on 2026-11-23.
+    reviewed: '2026-11-23'
+    owner: JAI IAM engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck for federation or sign-in migration, source-directory changes or authentication
+      topology changes.

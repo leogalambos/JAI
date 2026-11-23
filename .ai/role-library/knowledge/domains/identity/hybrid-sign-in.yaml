@@ -1,0 +1,30 @@
+schema_version: 1
+id: domains/identity/hybrid-sign-in
+title: Hybrid sign-in dependencies
+version: 1.0.0
+includes: []
+applicability: Microsoft Entra ID workforce tenants integrating on-premises Active Directory.
+sections:
+- id: sign-in-dependency
+  delivery: required
+  text: Record the actual sign-in method and map the availability dependencies by population. Password
+    hash synchronization, pass-through authentication and federation place verification and failure
+    at different boundaries.
+  source: microsoft-hybrid-method-comparison
+  applicability: Microsoft Entra ID workforce tenants integrating on-premises Active Directory.
+  exclusions: Customer identity tenants and non-Entra identity platforms.
+  owner: JAI IAM architecture maintainers
+  reviewed: '2026-11-23'
+sources:
+  microsoft-hybrid-method-comparison:
+    publisher: Microsoft
+    authority: vendor documentation
+    title: Choose the right authentication method for Microsoft Entra hybrid identity
+    url: https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/choose-ad-authn
+    applicability: Microsoft Entra ID workforce tenants integrating on-premises Active Directory.
+    reviewed: '2026-11-23'
+    owner: JAI IAM architecture maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when the on-premises topology, tenant sign-in method or fallback design
+      changes.

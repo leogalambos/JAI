@@ -519,6 +519,7 @@ class State:
         self.validation_assets = {}
         self.validation_artifacts = []
         self.validation_replay_artifacts = None
+        self._replay_review_conflicts = frozenset()
         self._routing_snapshots = {}
         self.escalation_members = {}
         self.counters = {}
@@ -1827,6 +1828,8 @@ class State:
             raise ERROR('P_CONTEXT', 'All original mandate prerequisites must currently apply')
 
     def _assignment_mandate(self, message, origin, parent, record, live, logical_id, procedure=None):
+        if record.get('procedure_task') and record['routing'].get('workflow_scope') and procedure is None:
+            raise ERROR('P_SCOPE', 'Scoped author procedure must be derived by the host')
         paths = dict(_causal_reference_paths(record))
         selectors = record['input_uses']
         if len({item['at'] for item in selectors}) != len(selectors) or any(
@@ -2242,6 +2245,26 @@ class State:
         selected = governed_routing.validate_assignment(record, snapshot, profile['routing_policy_id'])
         selected['policy_use'] = point
         selected['snapshot'] = snapshot
+        workflow_scope = record['routing'].get('workflow_scope')
+        if (snapshot.get('procedure_scope_protocol') and record['responsibility'] == 'author'
+                and record['owner']['work_kind'] == 'question'):
+            identifier = governed_routing.procedure_scope_id(record['owner'])
+            required_scope = self.sources.get((record['use_scope'], identifier))
+            if required_scope is not None and (workflow_scope != required_scope or not record.get('procedure_task')):
+                raise ERROR('P_SCOPE', 'Layered question requires its exact scoped author procedure')
+        if workflow_scope is not None:
+            point = self._assignment_use(record, '/routing/workflow_scope', workflow_scope)
+            scope_source = self.resolve(workflow_scope, 'source')
+            if (self.sources.get((point['use_scope'], workflow_scope['logical_id'])) != workflow_scope
+                    or not self._governing_input(point, live)
+                    or scope_source['source_role'] != 'input'
+                    or scope_source['owner'].get('kind') != 'authority'
+                    or scope_source['origin'] != scope_source['owner']
+                    or len(scope_source['material']) != 1):
+                raise ERROR('P_SCOPE', 'Workflow role scope requires one current attributable input')
+            scope = loads(self._validation_bytes(scope_source['material'][0], live))
+            selected['workflow_selection'] = governed_routing.workflow_eligibility(
+                record, snapshot, scope, workflow_scope)
         return selected
 
     def context_execution(self, context, live=True):
@@ -2267,6 +2290,10 @@ class State:
         if not isinstance(execution, dict) or execution.get('phase') not in {'selection', 'work'}:
             raise ERROR('P_CONTEXT', 'An entity requires an explicit selection or work phase')
         if execution['phase'] == 'selection':
+            workflow = available.get('workflow_selection')
+            if workflow is not None and not workflow['eligible']:
+                raise ERROR('P_SCOPE', 'No eligible workflow specialty: ' +
+                            workflow['binding'].get('blocker', 'ROLE_UNAVAILABLE'))
             return {**available, 'phase': 'selection', 'instructions': [], 'allowed_operations': ['read']}
         reference = execution['selection']
         decision = self.resolve(reference)
@@ -2281,7 +2308,8 @@ class State:
                 or previous['execution'] != {'phase': 'selection'} or message['scope'] != assignment['use_scope']):
             raise ERROR('P_ORIGIN', 'Work choice is not from this exact local entity selection run')
         self._governing_grants(self._revision_grant(reference, assignment['use_scope']), live)
-        selected = governed_routing.select_execution(assignment, available['snapshot'], choice)
+        selected = governed_routing.select_execution(assignment, available['snapshot'], choice,
+            workflow_selection=available.get('workflow_selection'))
         import professional_review
         professional_review.enforce(self, assignment, available['snapshot'], choice, live=live)
         return {**selected, 'phase': 'work', 'selection': reference, 'policy_use': available['policy_use'],
@@ -3016,6 +3044,13 @@ class State:
         if catalogue != {'handle': 'catalogue', 'blob_id': descriptor['catalogue_blob_id'],
                          'instruction_prefix': 'instruction:'}:
             raise ERROR('P_SCOPE', 'Native catalogue must expose the complete intrinsic captured catalogue')
+        import governed_routing
+        deferred = governed_routing.deferred_reference_handles(execution)
+        if packet.get('execution', {}).get('deferred_references', {}) != deferred:
+            raise ERROR('P_SCOPE', 'Native deferred references differ from the selected work entitlement')
+        if deferred.keys() & handles.keys():
+            raise ERROR('P_CONFLICT', 'Deferred reference collides with a native input handle')
+        handles.update(deferred)
         handles['catalogue'] = descriptor['catalogue_blob_id']
         facts = {'handles': handles, 'allowed_blobs': sorted(allowed),
                  'instruction_blobs': descriptor['instruction_blobs']}
@@ -3497,8 +3532,28 @@ class State:
             effect['owner'] = copy.deepcopy(record['owner'])
             if effect['operation'] == 'read':
                 effect['targets'] = copy.deepcopy(read_targets)
+        author_scope = None
+        if plan['kind'] == 'question' and responsibility == 'author':
+            import governed_routing
+
+            identifier = governed_routing.procedure_scope_id(record['owner'])
+            points = {}
+            for path, reference in _reference_paths(parent):
+                if (path.startswith(('/inputs/', '/inherited/'))
+                        and reference['logical_id'] == identifier):
+                    point = self._assignment_use(parent, path, reference)
+                    points[canonical(point)] = point
+            if len(points) > 1:
+                raise ERROR('P_SCOPE', 'Layered question requires one exact specialist scope')
+            if not points and (parent['use_scope'], identifier) in self.sources:
+                raise ERROR('P_SCOPE', 'Layered specialist scope must be an entitled question input')
+            if points:
+                author_scope, = points.values()
+                record['routing']['workflow_scope'] = author_scope['ref']
         old_paths = {item['at']: item['use_scope'] for item in parent['input_uses']}
-        record['input_uses'] = [{'at': path, 'use_scope': old_paths.get(path, parent['use_scope'])}
+        record['input_uses'] = [{'at': path, 'use_scope': author_scope['use_scope']
+                                 if author_scope and path == '/routing/workflow_scope'
+                                 else old_paths.get(path, parent['use_scope'])}
                                 for path, ref in _causal_reference_paths(record) if path != '/issued_under']
         return {'logical_id': 'procedure:' + procedure_ref['version_id'] + ':' + task_path, 'record': record}
 
@@ -3848,9 +3903,11 @@ class State:
                     or context['execution'] != {'phase': 'selection'}):
                 raise ERROR('P_SCOPE', 'Only the actual local selection run may choose its own execution')
             available = self._assignment_routing(assignment, live)
-            governed_routing.select_execution(assignment, available['snapshot'], payload)
+            governed_routing.select_execution(assignment, available['snapshot'], payload,
+                workflow_selection=available.get('workflow_selection'))
             import professional_review
-            professional_review.enforce(self, assignment, available['snapshot'], payload, live=live)
+            professional_review.enforce(self, assignment, available['snapshot'], payload, live=live,
+                replay_conflict=context['run_id'] in self._replay_review_conflicts)
             if payload['previous'] != self.execution_plans.get((payload['assignment']['version_id'], scope)):
                 raise ERROR('P_CONFLICT', 'Execution plan must replace its exact current predecessor')
             effects.append({'op': 'execution-plan', 'assignment': payload['assignment'],
@@ -4891,11 +4948,27 @@ def _verify_transaction(state, transaction, live=False):
     state.return_artifact = transaction['return_artifact']
     state.validation_artifacts = []
     state.validation_replay_artifacts = transaction['validation_artifacts']
-    effects = state.derive(message, origin, transaction['timestamp'], authority, live=live)
+    recorded_effects = transaction['operations'][0]['data']['effects']
+    if not live and message['payload'].get('event') == 'invocation_finished':
+        # Historical successful selections retain their original admission.
+        # A rejection only selects which exact review check to reproduce. Its
+        # reason and all other effects still have to match the derivation.
+        state._replay_review_conflicts = frozenset(
+            effect['run_id'] for effect in recorded_effects
+            if isinstance(effect, dict) and effect.get('op') == 'quarantine'
+            and isinstance(effect.get('run_id'), str)
+            and isinstance(effect.get('reason'), str)
+            and effect['reason'].startswith('Member admission failed: SABSA independent review: ')
+            and 'Review is blocked: different effort on the same provider/model is insufficient;' in effect['reason']
+        )
+    try:
+        effects = state.derive(message, origin, transaction['timestamp'], authority, live=live)
+    finally:
+        state._replay_review_conflicts = frozenset()
     if canonical(state.validation_artifacts) != canonical(transaction['validation_artifacts']):
         raise ERROR('P_INTEGRITY', 'Validation journal contains unused or mismatched assets')
     state.validation_replay_artifacts = None
-    if canonical(effects) != canonical(transaction['operations'][0]['data']['effects']):
+    if canonical(effects) != canonical(recorded_effects):
         raise ERROR('P_INTEGRITY', 'Persisted effects differ from the exact derived transition')
     _append_transaction(state, transaction, message, effects, authority)
 

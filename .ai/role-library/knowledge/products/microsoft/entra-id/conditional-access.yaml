@@ -1,0 +1,72 @@
+schema_version: 1
+id: products/microsoft/entra-id/conditional-access
+title: Microsoft Entra Conditional Access
+version: 1.0.0
+includes:
+- domains/identity/hybrid-sign-in
+- products/microsoft/entra-id/fundamentals
+applicability: Microsoft Entra ID workforce Conditional Access in entitled tenants as documented
+  on 2026-11-23.
+sections:
+- id: policy-scope
+  delivery: required
+  text: Document target identities and resources, conditions, enforcement mode and interaction with
+    other policies. Verify current tenant licensing for selected capabilities. Keep report-only
+    policy observations distinct from enforced access results.
+  source: microsoft-conditional-access
+  applicability: Microsoft Entra ID workforce Conditional Access in entitled tenants as documented
+    on 2026-11-23.
+  exclusions: Unverified entitlements, unsupported sovereign cloud features and unverified tenant
+    state.
+  owner: JAI IAM engineering maintainers
+  reviewed: '2026-11-23'
+- id: recovery-independence
+  delivery: required
+  text: Check whether emergency access remains usable during loss of the normal sign-in or privilege
+    activation path. Document monitored exceptions, test ownership and evidence of the applicable
+    recovery exercise.
+  source: microsoft-emergency-access
+  applicability: Microsoft Entra ID workforce Conditional Access in entitled tenants as documented
+    on 2026-11-23.
+  exclusions: Unverified entitlements, unsupported sovereign cloud features and unverified tenant
+    state.
+  owner: JAI IAM engineering maintainers
+  reviewed: '2026-11-23'
+- id: conditional-access-reference
+  delivery: optional
+  reference: conditional-access-evidence.md
+  read_when: Evaluating rollout, a policy exception, licensing applicability or emergency recovery.
+  source: microsoft-conditional-access
+  applicability: Microsoft Entra ID workforce Conditional Access in entitled tenants as documented
+    on 2026-11-23.
+  exclusions: Unverified entitlements, unsupported sovereign cloud features and unverified tenant
+    state.
+  owner: JAI IAM engineering maintainers
+  reviewed: '2026-11-23'
+sources:
+  microsoft-conditional-access:
+    publisher: Microsoft
+    authority: vendor documentation
+    title: Plan a Conditional Access deployment
+    url: https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access
+    applicability: Microsoft Entra ID workforce Conditional Access in entitled tenants as documented
+      on 2026-11-23.
+    reviewed: '2026-11-23'
+    owner: JAI IAM engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when licence, signals, target assignments, launch state or tenant cloud
+      changes.
+  microsoft-emergency-access:
+    publisher: Microsoft
+    authority: vendor documentation
+    title: Manage emergency access accounts in Microsoft Entra ID
+    url: https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access
+    applicability: Microsoft Entra ID workforce Conditional Access in entitled tenants as documented
+      on 2026-11-23.
+    reviewed: '2026-11-23'
+    owner: JAI IAM engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when emergency authentication, policy exclusions or common identity
+      dependencies change.

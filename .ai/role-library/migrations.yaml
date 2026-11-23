@@ -1,0 +1,10 @@
+schema_version: 1
+migrations:
+  business-attribute-profiler:
+    source: roles/methods/sabsa/business-attribute-profiler.yaml
+    legacy_row_sha256: 9a34b8feda916fe134cf6baf7760e54481fb9330050bb90630fb1ebc830ccce6
+    legacy_instruction_sha256: 7127f9b08bac318ab344fed8b983534d506159eaec378d7d984813c5f8e575a3
+  conceptual-security-architect-sabsa-architect-s-view:
+    source: roles/methods/sabsa/conceptual-security-architect-sabsa-architect-s-view.yaml
+    legacy_row_sha256: c204ae6f350b0dad12f7723241f5d43260f056a857f2082d0058e079ecbf3e60
+    legacy_instruction_sha256: f2ab6c6f58a1dc15925d61dded226a8021c985b3491b67ffb20366dd3e02ae10

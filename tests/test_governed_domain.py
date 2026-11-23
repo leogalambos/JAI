@@ -160,8 +160,8 @@ def _manifest(host, context):
     return {'context': context, 'manifest_hash': state.run_details[body['run_id']]['native']['manifest_hash']}
 
 
-def _qualified(host, suffix='source', model_factory=None, review_factory=None, sidecar=False, question='how'):
-    actor = host.setup_author(suffix=suffix,question=question)
+def _qualified(host, suffix='source', model_factory=None, review_factory=None, sidecar=False, question='how', inputs=None, reviewer_actor='independent-domain-reviewer', select_basis=True):
+    actor = host.setup_author(suffix=suffix,question=question,inputs=inputs)
     token = {'context': actor['author_context'], 'logical_id': suffix}
     model = {'title': 'Controlled source', 'audience': ['internal'],
              'producer': {'attestation': token, 'context_manifest': _manifest(host, actor['author_context'])},
@@ -174,7 +174,7 @@ def _qualified(host, suffix='source', model_factory=None, review_factory=None, s
         material.append(host.material('# Supporting Markdown\nOpaque supporting material remains available.\n'))
     subject, body = host.product(suffix, actor, material=material)
     host.commit(host.submission(actor, subject, body))
-    prepared = host.prepare_review(actor, subject, suffix=suffix + '-review',actor_id='independent-domain-reviewer')
+    prepared = host.prepare_review(actor, subject, suffix=suffix + '-review',actor_id=reviewer_actor)
     review_token = {'context': prepared['context'], 'logical_id': suffix + '-review-detail'}
     review = {'attestation': review_token, 'context_manifest': _manifest(host, prepared['context']),
               'semantic_hash': domain._digest(model), 'unit_reviews': [
@@ -203,7 +203,8 @@ def _qualified(host, suffix='source', model_factory=None, review_factory=None, s
     proof, message = host.assessment_delivery(prepared, subject)
     host.commit(message)
     host.select_proof(subject, proof)
-    host.select_basis(actor, subject)
+    if select_basis:
+        host.select_basis(actor, subject)
     return subject, token, model, review_token, review
 
 
@@ -235,14 +236,16 @@ def _append_finding(host, subject, body_factory, logical_id):
     return body, principal, old_finding, finding
 
 
-def _receiving(host, subject, model, qa):
+def _receiving(host, subject, model, qa, *, catalog=None, handoff_id='semantic-to-enterprise-publication:1',
+               producer_selection=None):
     from test_content_workflow import _selected_handoff_fixture
-    catalog = content_workflow.load_bindings(ROOT)
-    row = next(item for item in catalog['bindings'] if item['handoff_id'] == 'semantic-to-enterprise-publication:1')
+    if catalog is None:
+        catalog = content_workflow.load_bindings(ROOT)
+    row = next(item for item in catalog['bindings'] if item['handoff_id'] == handoff_id)
     selected = _selected_handoff_fixture(row, model)
     context = next(item['payload'] for item in model['evidence'] if item['id'] == 'SYN-CONTEXT')
     def body(token,manifest):
-        return {'attestation': token, 'context_manifest': manifest,
+        result = {'attestation': token, 'context_manifest': manifest,
             'handoff_id': row['handoff_id'], 'semantic_hash': domain._digest(model),
             'report_hash': qa['report_hash'], 'catalog_hash': catalog['catalog_hash'],
             'criterion': selected['acceptance_criterion'], 'receiving_role': selected['receiving_role'],
@@ -253,6 +256,9 @@ def _receiving(host, subject, model, qa):
                 'evidence': 'Actual native-captured synthetic semantic source; no professional or human approval claimed.'}
                 for unit in selected['handoff_content_contract']['units']],
             'verdict': 'PASS', 'evidence': 'Controlled actual receiving body binds this exact source and prior QA report.'}
+        if producer_selection is not None:
+            result['producer_selection'] = producer_selection
+        return result
     acceptance, principal, old_finding, _ = _append_finding(host,subject,body,'actual-receiving-body')
     return acceptance, {principal: [selected['receiving_role']]}, old_finding
 
@@ -540,3 +546,165 @@ def test_internal_locator_arguments_open_existing_store_without_source_selected_
             '--governed-operation','accepted'])
     required = commercial_core.readiness(snapshot(), required_controls=('mount_isolation',))
     assert any('mount_isolation unverified' in reason for reason in required['blockers'])
+
+
+@pytest.mark.parametrize('product_index', [1, 0, None], ids=['qradar', 'splunk', 'exact'])
+def test_scoped_native_producer_attests_the_recorded_workflow_choice(tmp_path, monkeypatch, product_index):
+    from test_governed_routing import _enroll_fixture_scope
+
+    host = DomainHarness(tmp_path, monkeypatch)
+    prepare = host.bootstrap_message
+    register = host.record
+    message = host.message
+    scope_ref = None
+    exact = product_index is None
+    specialist = ('security-engineer' if exact else
+                  ('splunk-enterprise-security-specialist', 'qradar-siem-specialist')[product_index])
+
+    def bootstrap(**kwargs):
+        nonlocal scope_ref
+        request = prepare(**kwargs)
+        scope_ref, selected = _enroll_fixture_scope(
+            host, request, 'service-controls', 0 if exact else product_index, exact=exact)
+        assert selected == specialist
+        return request
+
+    def scoped_record(logical_id, record_type, body, **kwargs):
+        if record_type == 'assignment' and body['responsibility'] == 'author':
+            if logical_id == 'author-terminal':
+                body['assigned_actor'] = 'independent-domain-reviewer'
+            else:
+                body['routing']['workflow_scope'] = scope_ref
+        return register(logical_id, record_type, body, **kwargs)
+
+    def select_specialist(kind, payload, **kwargs):
+        if kind == 'decision' and payload.get('action') == 'select_execution':
+            assignment = host.store.read().resolve(payload['assignment'], 'assignment')
+            if 'workflow_scope' in assignment['routing']:
+                payload = {**payload, 'specialties': [specialist]}
+            elif not exact and assignment['responsibility'] in {'reviewer', 'author'}:
+                payload = {**payload, 'specialties': ['security-assurance-and-measurement-architect']}
+                if assignment['assigned_actor'] == 'terminal-quality-reviewer':
+                    payload['workload_class'] = 'light'
+        return message(kind, payload, **kwargs)
+
+    monkeypatch.setattr(host, 'bootstrap_message', bootstrap)
+    monkeypatch.setattr(host, 'record', scoped_record)
+    monkeypatch.setattr(host, 'message', select_specialist)
+    host.bootstrap()
+    host.native = native.NativeSession(host.store, {'protocol': 'jai.host-dispatch/1',
+        'workers': [], 'destinations': [], 'tools': [],
+        'limits': {'packet_bytes': 2097152, 'total_bytes': 8388608}})
+
+    if exact:
+        subject, token, model, reviewer, review = _qualified(host)
+    else:
+        import test_content_workflow as workflow_fixture
+        from content_eval import prepare_case
+
+        state = host.store.read()
+        policy = state.resolve(host.routing_policy, 'source')
+        catalogue = provider.routing.load_policy(policy, host.store._blob)['workflow_catalogue']
+        pilot = host.directory / 'staged-siem-workflow.json'
+        assert content_workflow.load_bindings(ROOT, pilot=pilot) == catalogue
+        row = next(item for item in catalogue['bindings'] if item['handoff_id'] == 'siem-log-source-integration:1')
+        engine = content_spec.ContentSpec(ROOT)
+        fixture = json.loads((ROOT / '.ai/runtime/evals/content_quality/enterprise/security-engineer-4-medium.json').read_bytes())
+        prepared, spec = prepare_case(fixture, engine)
+        prepared = workflow_fixture._current_workflow_fixture(prepared, spec)
+        prepared['semantic_units'].setdefault('workflow_context', {})
+        with monkeypatch.context() as scoped:
+            scoped.setattr(workflow_fixture, 'load_bindings', lambda root: catalogue)
+            model_source = workflow_fixture._handoff_content_fixture(row, prepared, 'bounded-validation')
+
+        def semantic(_, producer_token, manifest):
+            return {**model_source, 'producer': {'attestation': producer_token, 'context_manifest': manifest}}
+
+        subject, token, model, reviewer, review = _qualified(host, model_factory=semantic)
+    cold = lc.Store(host.store.path, host.store.engagement)
+    adapter = domain.GovernedDomain(cold, [{'ref': subject, 'use_scope': host.scope}])
+    context = cold.read().resolve(token['context'], 'context')
+    with adapter.action():
+        actual = adapter._state.context_execution
+        resolutions = []
+
+        def count(context_record, live=True):
+            if context_record == context:
+                resolutions.append(True)
+            return actual(context_record, live=live)
+
+        monkeypatch.setattr(adapter._state, 'context_execution', count)
+        verification = adapter.verify(token)
+        assert adapter.verify(token) == verification
+        assert resolutions == [True]
+    assert verification['reviewer'] is False
+    if exact:
+        assert 'workflow_producer' not in verification
+        return
+    attested = verification['workflow_producer']
+    assert attested['selection_ref'] == context['execution']['selection']
+    assert attested['scope_ref'] == scope_ref
+    assert attested['slug'] == specialist
+    assert attested['binding']['path'] == 'bounded-validation'
+    assert attested['binding']['contract'] == {'id': 'security-engineer:4', 'version': '3.0.0'}
+    assert 'workflow_producer' not in adapter.verify(reviewer)
+    qa = content_lint.evaluate(model, spec, reviewer=review, trusted_executions=adapter)
+    assert qa['gate_verdict'] == 'CONTENT_PASS', qa['findings']
+    selection = {key: attested[key] for key in ('scope_ref', 'selection_ref', 'slug')}
+    selection['mapping_hash'] = attested['binding']['mapping_hashes'][specialist]
+    receiving, assignments, _ = _receiving(host, subject, model, qa, catalog=catalogue,
+        handoff_id=row['handoff_id'], producer_selection=selection)
+    result = content_workflow.check(row['handoff_id'], model, qa, ROOT, acceptance=receiving,
+        receiving_assignments=assignments, governed=adapter, resolver=engine, pilot=pilot)
+    assert result['status'] == 'ACCEPTANCE_VERIFIED', result['findings']
+    assert result['producer_selection'] == selection
+    assert not result['production_release_authorized']
+
+    if product_index != 1:
+        return
+
+    terminal = catalogue['bindings'][-1]
+    fixture_path = ROOT / '.ai/runtime/evals/content_quality/enterprise/security-assurance-and-measurement-architect-2-medium.json'
+    terminal_model, terminal_spec = prepare_case(json.loads(fixture_path.read_bytes()), engine)
+    terminal_model = workflow_fixture._current_workflow_fixture(terminal_model, terminal_spec)
+    terminal_model['semantic_units'].setdefault('workflow_context', {})
+    with monkeypatch.context() as scoped:
+        scoped.setattr(workflow_fixture, 'load_bindings', lambda root: catalogue)
+        terminal_model = workflow_fixture._handoff_content_fixture(terminal, terminal_model, 'bounded-validation')
+    terminal_model['semantic_units']['independent_assessment'].update(
+        reviewed_artifact_ref=subject, receiving_principal=result['receiver_principal'])
+
+    def terminal_semantic(_, producer_token, manifest):
+        return {**terminal_model, 'producer': {'attestation': producer_token, 'context_manifest': manifest}}
+
+    terminal_subject, _, assessment, _, terminal_review = _qualified(
+        host, suffix='terminal', model_factory=terminal_semantic, select_basis=False,
+        reviewer_actor='terminal-quality-reviewer',
+        inputs=[{'slot_id': 'L1:service-controls:how-input', 'refs': [host.input_a]},
+                {'slot_id': 'accepted-integration', 'refs': [subject]}])
+    reopened = lc.Store(host.store.path, host.store.engagement)
+    terminal_host = domain.GovernedDomain(reopened, [
+        {'ref': ref, 'use_scope': host.scope} for ref in (subject, terminal_subject)])
+    terminal_qa = content_lint.evaluate(assessment, terminal_spec, reviewer=terminal_review,
+                                       trusted_executions=terminal_host)
+    assert terminal_qa['gate_verdict'] == 'CONTENT_PASS', terminal_qa['findings']
+    evidence = {'model': model, 'report': qa, 'acceptance': receiving}
+
+    def check_terminal(predecessor, authority=None):
+        return content_workflow.check(terminal['handoff_id'], assessment, terminal_qa, ROOT,
+            receiving_assignments=assignments, governed=terminal_host, resolver=engine,
+            pilot=pilot, predecessor=predecessor, authority=authority)
+
+    pending = check_terminal(evidence)
+    assert pending['findings'] == ['EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED'], pending
+    assert pending['predecessor'] == {'artifact_ref': subject, 'result_hash': result['result_hash']}
+    subject_keys = ('handoff_id', 'semantic_hash', 'report_hash', 'catalog_hash', 'criterion',
+                    'receiving_role', 'path_id', 'handoff_content_hash', 'predecessor')
+    authority, _ = workflow_fixture.signed_governed_acceptance(
+        {key: pending[key] for key in subject_keys}, tmp_path, monkeypatch)
+    accepted = check_terminal(evidence, authority)
+    assert accepted['status'] == 'ACCEPTANCE_VERIFIED', accepted['findings']
+    assert not accepted['production_release_authorized']
+    rejected = check_terminal({**evidence, 'acceptance': {**receiving, 'verdict': 'FAIL'}}, authority)
+    assert rejected['status'] == 'ACCEPTANCE_PENDING'
+    assert 'WORKFLOW_TERMINAL_PREDECESSOR_UNVERIFIED' in rejected['findings']

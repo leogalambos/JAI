@@ -1,0 +1,59 @@
+schema_version: 1
+id: products/splunk/enterprise-security/log-source-integration
+title: Splunk Enterprise Security log-source integration
+version: 1.0.0
+includes:
+- products/splunk/platform/data-normalization
+applicability: Splunk Enterprise Security 8.8 paired with an applicable platform, release, region
+  and add-ons.
+sections:
+- id: platform-pairing
+  delivery: required
+  text: Pin the ES version and exact platform release or cloud service deployment before relying
+    on compatibility. Record the ingestion route, relevant CIM models and validation evidence for
+    the ES content in scope.
+  source: splunk-es-compatibility
+  applicability: Splunk Enterprise Security 8.8 paired with an applicable platform, release, region
+    and add-ons.
+  exclusions: Standalone platform administration without ES and unverified cloud or on-premises
+    combinations.
+  owner: JAI security engineering maintainers
+  reviewed: '2026-11-23'
+- id: enterprise-security-reference
+  delivery: optional
+  reference: enterprise-security-evidence.md
+  read_when: Onboarding log sources, evaluating CIM coverage or assessing data model performance.
+  source: splunk-es-models
+  applicability: Splunk Enterprise Security 8.8 paired with an applicable platform, release, region
+    and add-ons.
+  exclusions: Standalone platform administration without ES and unverified cloud or on-premises
+    combinations.
+  owner: JAI security engineering maintainers
+  reviewed: '2026-11-23'
+sources:
+  splunk-es-compatibility:
+    publisher: Splunk
+    authority: vendor documentation
+    title: Splunk Enterprise Security 8.8 compatibility and regional availability
+    url: https://help.splunk.com/en/splunk-enterprise-security-8/release-notes-and-resources/8.8/splunk-enterprise-security-release-notes/compatibility-and-regional-availability
+    applicability: Splunk Enterprise Security 8.8 paired with an applicable platform, release, region
+      and add-ons.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when the ES version, platform version, deployment, region or add-ons
+      change.
+  splunk-es-models:
+    publisher: Splunk
+    authority: vendor documentation
+    title: Configure data models for Splunk Enterprise Security
+    url: https://help.splunk.com/en/splunk-enterprise-security-8/install/8.8/installation/configure-data-models-for-splunk-enterprise-security
+    applicability: Splunk Enterprise Security 8.8 paired with an applicable platform, release, region
+      and add-ons.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Confirm equivalent guidance for the target release when relying on deployment
+      details or data model acceleration.

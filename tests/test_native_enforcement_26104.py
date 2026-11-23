@@ -58,6 +58,35 @@ class NativeEnforcementTests(unittest.TestCase):
     def test_current_catalogue_passes(self):
         self.assertEqual(self.validate(), [])
 
+    def test_composed_specialists_share_versioned_outputs_without_duplicates(self):
+        from tools.compose_role_library import compose
+
+        candidate = compose(gate.P)
+        self.roles = candidate.registry
+        with tempfile.TemporaryDirectory() as directory:
+            runtime = Path(directory)
+            schema = Path('schema/contracts/artifact-v3.schema.json')
+            (runtime / schema).parent.mkdir(parents=True)
+            (runtime / schema).write_bytes((gate.R / schema).read_bytes())
+            self.assertIn('inherited outputs require matching composition provenance',
+                          gate.catalogue_problems(self.roles, self.new, self.layers, runtime))
+            (runtime / 'role-composition.json').write_bytes(candidate.files['.ai/runtime/role-composition.json'])
+            self._assert_inherited_outputs(runtime)
+
+    def _assert_inherited_outputs(self, runtime):
+        specialist = next(row for row in self.roles['roles'] if row['slug'] == 'qradar-siem-specialist')
+        self.assertEqual(gate.catalogue_problems(self.roles, self.new, self.layers, runtime), [])
+        self.assertEqual(specialist['inherited_outputs']['contracts'][3],
+                         {'id': 'security-engineer:4', 'version': '3.0.0'})
+        for field, value in (('contracts', [{'id': 'security-engineer:4', 'version': '2.0.0'}]),
+                             ('owner', specialist['slug'])):
+            with self.subTest(field=field):
+                original = specialist['inherited_outputs'][field]
+                specialist['inherited_outputs'][field] = value
+                self.assertTrue(any('inherited output' in problem for problem in gate.catalogue_problems(
+                    self.roles, self.new, self.layers, runtime)))
+                specialist['inherited_outputs'][field] = original
+
     def test_missing_extra_duplicate_and_empty_contracts_fail_cleanly(self):
         for kind in ('missing', 'extra', 'duplicate', 'empty'):
             with self.subTest(kind=kind):

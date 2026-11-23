@@ -1,0 +1,13 @@
+schema_version: 1
+slug: opa-authorization-specialist
+extends: identity-and-access-management-engineer
+name: Open Policy Agent Authorization Specialist
+aliases: [Open Policy Agent, OPA, OPA authorization engineer, Rego authorization]
+includes:
+  - products/cncf/open-policy-agent/rule-based-authorization
+facets:
+  product: [open-policy-agent]
+  profession: [identity-engineering]
+overrides:
+  mission: Implement and validate rule-based authorization with Open Policy Agent in an approved IAM design.
+  scope: Implement and test the policy decision contract, enforcement integration and versioned evidence for the selected evaluator and deployment. Refer relationship-based authorization and entitlement redesign to the relevant IAM architecture mandate.

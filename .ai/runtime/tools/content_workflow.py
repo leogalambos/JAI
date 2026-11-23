@@ -85,11 +85,12 @@ HANDOFF_CONTENT_CONTRACTS = {
 
 
 
-def load_bindings(root=None):
+def load_bindings(root=None, *, pilot=None):
     """Return the hash-checked registered workflow acceptance catalogue.
 
     Args:
         root: Repository or installed runtime root accepted by ContentSpec.
+        pilot: Optional path to an explicitly staged, versioned SIEM registration.
     Returns:
         Catalogue with unique handoff identities and exact role contracts.
     Raises:
@@ -154,6 +155,22 @@ def load_bindings(root=None):
                 or any(cid not in known for selected in row['variant_bindings'].values()
                        for cid in selected['contract_ids'])):
             raise ValueError('WORKFLOW_VARIANT_BINDING_SCOPE_MISMATCH')
+    if pilot is not None:
+        from workflow_role_selection import stage_siem_workflow
+
+        registration = content_spec.load_json(pilot)
+        contracts = content_spec.load_json(runtime/'artifacts/contracts/role-deliverables.v3.json')['contracts']
+        try:
+            expected = stage_siem_workflow(registration['source'], registration['deployments'], catalog,
+                                           {item['id']: item for item in contracts})
+        except (KeyError, TypeError) as error:
+            raise ValueError('WORKFLOW_PILOT_REGISTRATION') from error
+        if registration != expected:
+            raise ValueError('WORKFLOW_PILOT_REGISTRATION')
+        for row in expected['catalogue']['bindings'][len(rows):]:
+            if any(cid not in known for cid in row['contract_ids']):
+                raise ValueError('WORKFLOW_UNKNOWN_CONTRACT')
+        return expected['catalogue']
     return catalog
 
 
@@ -178,7 +195,7 @@ def _human_accepted(authority, bound):
 
 
 def check(handoff_id, model, report, root=None, acceptance=None, trusted_executions=None,
-          receiving_assignments=None, authority=None, resolver=None, governed=None):
+          receiving_assignments=None, authority=None, resolver=None, governed=None, *, pilot=None, predecessor=None):
     """Check existing workflow acceptance with optional exact Gen2 provenance.
 
     Args:
@@ -195,23 +212,30 @@ def check(handoff_id, model, report, root=None, acceptance=None, trusted_executi
             source/profile version requires a new host-opened resolver/batch.
         governed: Host-pinned Gen2 adapter; actual captured identity does not
             replace the host's existing functional receiving designation.
+        pilot: Explicit staged SIEM registration for a governed offline action.
+        predecessor: Prior SIEM model, QA report and receiving subject for terminal replay.
     Returns:
         Existing receiving status; never production acceptance or release.
     Raises:
         ValueError: Registry, exact source or current justification is invalid.
     """
     import contextlib
+    if pilot is not None:
+        if governed is None:
+            raise ValueError('WORKFLOW_PILOT_REQUIRES_GOVERNED_HOST')
+        if handoff_id not in {'siem-log-source-integration:1', 'siem-log-source-integration:2'}:
+            raise ValueError('WORKFLOW_PILOT_HANDOFF_SCOPE')
     with governed.action() if governed is not None else contextlib.nullcontext():
         if governed is not None:
             if not governed.publication_status(model,model.get('audience'))['eligible']:
                 raise ValueError('Current Gen2 workflow source justification is unavailable')
             trusted_executions=governed
         return _check(handoff_id,model,report,root,acceptance,trusted_executions,
-                      receiving_assignments,authority,resolver)
+                      receiving_assignments,authority,resolver,pilot,predecessor)
 
 
 def _check(handoff_id, model, report, root=None, acceptance=None, trusted_executions=None,
-           receiving_assignments=None, authority=None, resolver=None):
+           receiving_assignments=None, authority=None, resolver=None, pilot=None, predecessor=None):
     """Return a hash-bound receiving acceptance result without granting release.
 
     Args:
@@ -225,6 +249,8 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
         receiving_assignments: Host-owned principal-to-role-list mapping; never
             read from model, report or acceptance. Callers keep this host-trusted.
         authority: Existing signed JAI L0 activation adapter for QA replay.
+        pilot: Explicit staged SIEM registration path, if one was requested.
+        predecessor: Host-provided first-stage artefact, report and receiving evidence.
         resolver: Optional host-opened ContentSpec for a batch against one pinned
             registry/workflow snapshot; never constructed from model-controlled
             policy. New input versions use a new resolver, without rewriting
@@ -241,8 +267,13 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
     if resolver is not None and (not isinstance(resolver, content_spec.ContentSpec)
                                  or resolver.base.parent.resolve() != runtime):
         raise ValueError('WORKFLOW_RESOLVER_ROOT_MISMATCH')
+    pilot_path = Path(pilot).resolve() if pilot is not None else None
     if not hasattr(engine, '_workflow_catalog'):
-        engine._workflow_catalog=load_bindings(root)
+        engine._workflow_catalog = (load_bindings(root) if pilot_path is None
+                                    else load_bindings(root, pilot=pilot_path))
+        engine._workflow_pilot = pilot_path
+    elif getattr(engine, '_workflow_pilot', None) != pilot_path:
+        raise ValueError('WORKFLOW_PILOT_RESOLVER_MISMATCH')
     catalog=engine._workflow_catalog
     row=next((r for r in catalog['bindings'] if r['handoff_id']==handoff_id),None)
     if row is None:
@@ -339,6 +370,61 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
            'criterion':effective['acceptance_criterion'],'receiving_role':effective['receiving_role'],
            'path_id': selected_path['id'] if selected_path else None,
            'handoff_content_hash': content_spec.canonical_hash(effective['handoff_content_contract'])}
+    producer_proof = (producer or {}).get('workflow_producer')
+    requirement = effective.get('workflow_role_requirement')
+    if requirement is not None or producer_proof is not None:
+        binding = (producer_proof or {}).get('binding', {})
+        slug = (producer_proof or {}).get('slug')
+        mapping = binding.get('mapping_hashes', {}).get(slug)
+        if (not isinstance(requirement, dict)
+                or requirement.get('mode') != 'compatible-specialization'
+                or binding.get('mode') != 'compatible-specialization'
+                or binding.get('endpoint') != 'producer'
+                or binding.get('workflow_catalogue') != bound['catalog_hash']
+                or binding.get('handoff') != bound['handoff_id']
+                or binding.get('path') != bound['path_id']
+                or binding.get('handoff_contract_hash') != bound['handoff_content_hash']
+                or binding.get('bound_role') != effective['producer_role']
+                or binding.get('contract') != requirement.get('contract')
+                or (binding.get('contract') or {}).get('id') != model['contract_id']
+                or binding.get('requirement_hash') != requirement.get('requirement_hash')
+                or not mapping or not producer_proof.get('selection_ref') or not producer_proof.get('scope_ref')):
+            failures.append('WORKFLOW_PRODUCER_SELECTION_MISMATCH')
+        else:
+            bound['producer_selection'] = {
+                'slug': slug, 'mapping_hash': mapping, 'selection_ref': producer_proof['selection_ref'],
+                'scope_ref': producer_proof['scope_ref'],
+            }
+    if pilot_path is not None and handoff_id == 'siem-log-source-integration:2':
+        specialties = getattr(trusted_executions, 'receiving_specialties', None)
+        producer_token = model.get('producer', {}).get('attestation')
+        if not producer or not callable(specialties) or specialties(
+                producer_token, reviewer=False) != [effective['producer_role']]:
+            failures.append('WORKFLOW_TERMINAL_PRODUCER_ROLE_MISMATCH')
+        lookup = getattr(trusted_executions, 'predecessor_input', None)
+        prior = None
+        if (callable(lookup) and isinstance(predecessor, dict)
+                and set(predecessor) == {'model', 'report', 'acceptance'}
+                and all(isinstance(value, dict) for value in predecessor.values())):
+            previous_model = predecessor['model']
+            previous_producer = previous_model.get('producer')
+            if isinstance(previous_producer, dict):
+                previous_token = previous_producer.get('attestation')
+                reference = lookup(producer_token, previous_token)
+                assessment = model.get('semantic_units', {}).get('independent_assessment', {})
+                if reference and isinstance(assessment, dict) and assessment.get('reviewed_artifact_ref') == reference:
+                    previous = _check('siem-log-source-integration:1', previous_model, predecessor['report'],
+                        root, predecessor['acceptance'], trusted_executions, receiving_assignments,
+                        resolver=engine, pilot=pilot_path)
+                    if (previous['status'] == 'ACCEPTANCE_VERIFIED' and previous['next_step'] == 2
+                            and previous['path_id'] == bound['path_id']
+                            and previous['receiver_principal'] == (producer or {}).get('principal')
+                            and assessment.get('receiving_principal') == previous['receiver_principal']):
+                        prior = {'artifact_ref': reference, 'result_hash': previous['result_hash']}
+        if prior is None:
+            failures.append('WORKFLOW_TERMINAL_PREDECESSOR_UNVERIFIED')
+        else:
+            bound['predecessor'] = prior
     if human_step:
         if not _human_accepted(authority,bound):
             failures.append('EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED')
@@ -356,6 +442,10 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
         roles=(receiving_assignments or {}).get(principal,[])
         if effective['receiving_role'] not in roles:
             failures.append('RECEIVER_ROLE_UNASSIGNED')
+        if 'producer_selection' in bound and payload:
+            specialties = getattr(trusted_executions, 'receiving_specialties', None)
+            if not callable(specialties) or specialties(token) != [effective['receiving_role']]:
+                failures.append('WORKFLOW_RECEIVER_SELECTION_MISMATCH')
         evidence=subject.get('evidence')
         if subject.get('verdict')!='PASS' or not isinstance(evidence,str) or not evidence.strip():
             failures.append('RECEIVING_GATE_EVIDENCE_REQUIRED')
@@ -380,23 +470,26 @@ def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root')
     sub=parser.add_subparsers(dest='command',required=True)
-    sub.add_parser('list')
+    sub.add_parser('list').add_argument('--staged-siem', type=Path)
     command=sub.add_parser('check')
     command.add_argument('handoff_id');command.add_argument('model');command.add_argument('report')
     command.add_argument('--acceptance')
+    command.add_argument('--staged-siem', type=Path)
+    command.add_argument('--predecessor')
     command.add_argument('--receiving-assignments',help='Existing host principal-to-functional-role mapping')
     import governed_domain
     governed_domain.add_arguments(command,operations=('draft',))
     args=parser.parse_args(argv)
     try:
         if args.command=='list':
-            result=load_bindings(args.root)
+            result=load_bindings(args.root, pilot=args.staged_siem)
         else:
             adapter,authority=governed_domain.from_arguments(args)
             result=check(args.handoff_id,content_spec.load_json(args.model),content_spec.load_json(args.report),
                 root=args.root,acceptance=content_spec.load_json(args.acceptance) if args.acceptance else None,
                 receiving_assignments=content_spec.load_json(args.receiving_assignments) if args.receiving_assignments else None,
-                governed=adapter,authority=authority)
+                governed=adapter,authority=authority,pilot=args.staged_siem,
+                predecessor=content_spec.load_json(args.predecessor) if args.predecessor else None)
         print(json.dumps(result,indent=2))
         return 0 if args.command=='list' or result.get('status')=='ACCEPTANCE_VERIFIED' else 2
     except (ValueError,TypeError,KeyError,OSError) as exc:

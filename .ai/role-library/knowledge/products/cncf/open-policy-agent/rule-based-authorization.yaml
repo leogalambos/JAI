@@ -1,0 +1,105 @@
+schema_version: 1
+id: products/cncf/open-policy-agent/rule-based-authorization
+title: Open Policy Agent rule-based authorization
+version: 1.0.0
+includes: []
+applicability: Open Policy Agent 1.x authorization integration, reviewed against upstream v1.22.4
+  and documentation.
+sections:
+- id: decision-contract
+  delivery: required
+  text: Pin the caller, decision path and input/result schema. The enforcement caller consumes the
+    OPA decision. Test enforcement for allowed, denied and undefined results, evaluator errors and
+    timeouts against the approved fail behavior.
+  source: opa-integration
+  applicability: Open Policy Agent 1.x authorization integration, reviewed against upstream v1.22.4
+    and documentation.
+  exclusions: Relation-tuple authorization, unverified legacy Rego behavior and deployment-specific
+    commercial support.
+  owner: JAI IAM engineering maintainers
+  reviewed: '2026-11-23'
+- id: decision-evidence
+  delivery: required
+  text: Link observed decisions to the active policy revision and the decision identifier when available.
+    Verify that sensitive decision input and result fields are excluded or masked in authorized
+    telemetry.
+  source: opa-decision-logs
+  applicability: Open Policy Agent 1.x authorization integration, reviewed against upstream v1.22.4
+    and documentation.
+  exclusions: Relation-tuple authorization, unverified legacy Rego behavior and deployment-specific
+    commercial support.
+  owner: JAI IAM engineering maintainers
+  reviewed: '2026-11-23'
+- id: policy-operations-reference
+  delivery: optional
+  reference: policy-operations-evidence.md
+  read_when: Evaluating evaluator integration, bundle rollout, version compatibility or decision telemetry.
+  source: opa-bundles
+  applicability: Open Policy Agent 1.x authorization integration, reviewed against upstream v1.22.4
+    and documentation.
+  exclusions: Relation-tuple authorization, unverified legacy Rego behavior and deployment-specific
+    commercial support.
+  owner: JAI IAM engineering maintainers
+  reviewed: '2026-11-23'
+sources:
+  opa-integration:
+    publisher: Open Policy Agent maintainers
+    authority: upstream documentation
+    title: Integration
+    url: https://www.openpolicyagent.org/docs/integration
+    applicability: Open Policy Agent 1.x authorization integration, reviewed against upstream v1.22.4
+      and documentation.
+    reviewed: '2026-11-23'
+    owner: JAI IAM engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when the evaluator version, API, decision path or policy enforcement
+      integration changes.
+  opa-bundles:
+    publisher: Open Policy Agent maintainers
+    authority: upstream documentation
+    title: Bundles
+    url: https://www.openpolicyagent.org/docs/management-bundles
+    applicability: Open Policy Agent 1.x authorization integration, reviewed against upstream v1.22.4
+      and documentation.
+    reviewed: '2026-11-23'
+    owner: JAI IAM engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when deployment topology, bundle distribution, revision or signing behavior
+      changes.
+  opa-decision-logs:
+    publisher: Open Policy Agent maintainers
+    authority: upstream documentation
+    title: Decision Logs
+    url: https://www.openpolicyagent.org/docs/management-decision-logs
+    applicability: Open Policy Agent 1.x authorization integration, reviewed against upstream v1.22.4
+      and documentation.
+    reviewed: '2026-11-23'
+    owner: JAI IAM engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when the policy input includes a new data class, or log sink, masking
+      or retention changes.
+  opa-policy-testing:
+    publisher: Open Policy Agent maintainers
+    authority: upstream documentation
+    title: Policy Testing
+    url: https://www.openpolicyagent.org/docs/policy-testing
+    applicability: Open Policy Agent 1.x policy tests.
+    reviewed: '2026-11-23'
+    owner: JAI IAM engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when evaluator capabilities, Rego behavior or the policy test interface changes.
+  opa-upstream-releases:
+    publisher: Open Policy Agent maintainers
+    authority: upstream release listing
+    title: Open Policy Agent Releases
+    url: https://github.com/open-policy-agent/opa/releases
+    applicability: Upstream v1.22.4 observed during the audit.
+    reviewed: '2026-11-23'
+    owner: JAI IAM engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when selecting or upgrading an evaluator or verifying a compatibility claim.

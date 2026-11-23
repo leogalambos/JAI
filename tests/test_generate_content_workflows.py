@@ -190,3 +190,34 @@ def test_canonical_workflow_drift_is_rejected(tmp_path, mutation):
     (runtime / 'workflows.json').write_text(json.dumps(source))
     with pytest.raises(ValueError, match='WORKFLOW_'):
         generator.build(tmp_path)
+
+
+def test_staged_siem_registration_loads_without_changing_ordinary_bindings(tmp_path, capsys):
+    from content_spec import canonical_hash
+    from content_workflow import load_bindings, main
+
+    scopes = tmp_path / 'scopes.json'
+    fact = {'edition': 'synthetic', 'version': 'fixture', 'deployment': 'offline'}
+    scopes.write_text(json.dumps({product: [fact] for product in
+        ('splunk-enterprise-security', 'ibm-qradar-siem')}))
+    artifact = tmp_path / 'siem-registration.json'
+    generator.main(['--stage-siem-pilot', str(artifact), '--product-scopes', str(scopes)])
+    baseline = load_bindings(ROOT)
+    assert main(['--root', str(ROOT), 'list', '--staged-siem', str(artifact)]) == 0
+    candidate = json.loads(capsys.readouterr().out)
+    assert candidate['bindings'][:-2] == baseline['bindings']
+    assert all(candidate['profiles'][key] == value for key, value in baseline['profiles'].items())
+    producer, terminal = candidate['bindings'][-2:]
+    assert producer['contract_ids'] == ['security-engineer:4']
+    assert terminal['producer_role'] == producer['receiving_role']
+    assert terminal['receiving_role'] == 'engagement:named-acceptance-authority'
+    assert terminal['variant_bindings']['bounded-validation']['next_step'] is None
+    assert load_bindings(ROOT) == baseline
+    registration = json.loads(artifact.read_text())
+    registration['catalogue']['bindings'][-1]['receiving_role'] = 'security-engineer'
+    changed = registration['catalogue']
+    changed.pop('catalog_hash')
+    changed['catalog_hash'] = canonical_hash(changed)
+    artifact.write_text(json.dumps(registration))
+    with pytest.raises(ValueError, match='WORKFLOW_PILOT_REGISTRATION'):
+        load_bindings(ROOT, pilot=artifact)

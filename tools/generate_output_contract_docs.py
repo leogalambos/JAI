@@ -20,6 +20,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.ai/runtime/tools'))
 from content_spec import ContentSpec
+from artifacts import output_owners
 
 START = '<!-- JAI:OUTPUT-CONTRACTS:START -->'
 END = '<!-- JAI:OUTPUT-CONTRACTS:END -->'
@@ -84,6 +85,7 @@ class Projection:
         self.roles = json.loads((self.root / '.ai/runtime/roles.json').read_text())['roles']
         self.workflows = json.loads((self.root / '.ai/runtime/workflows.json').read_text())['workflows']
         self.contracts = {item['id']: item for item in json.loads((self.root / '.ai/runtime/artifacts/contracts/role-deliverables.v3.json').read_text())['contracts']}
+        self.output_owners = output_owners(self.roles, self.contracts.values(), self.root / '.ai/runtime')
         self.handoffs = {(item['workflow_id'], item['step']): item for item in json.loads((self.root / '.ai/runtime/content/workflow-acceptance.json').read_text())['bindings']}
         self.compiled = {}
         self.spec_paths = {}
@@ -282,21 +284,25 @@ class Projection:
             for role in self.roles:
                 if role['category'] != category:
                     continue
-                contracts = sorted(grouped[role['slug']], key=lambda pair: pair[1]['deliverable_number'])
+                owner = self.output_owners[role['slug']]
+                contracts = sorted(grouped[owner], key=lambda pair: pair[1]['deliverable_number'])
                 if len(contracts) != len(role['primary_deliverables']):
                     raise ValueError('Role output count differs from bound contracts: ' + role['slug'])
                 page = ['# ' + role['name'] + ': output contracts', '', role['mission'], '', '[Full catalogue](index.md)', '']
                 links = []
                 for label, (cid, contract) in zip(role['primary_deliverables'], contracts):
                     anchor = self.anchor(cid)
-                    links.append(f'[{_cell(label)}](output-contracts/role-{role["slug"]}.md#{anchor})')
+                    links.append(f'[{_cell(label)}](output-contracts/role-{owner}.md#{anchor})')
+                    if owner != role['slug']:
+                        continue
                     binding = self.catalogue.bindings[cid]
                     ref = binding['content_spec_ref']
                     page += [f'<a id="{anchor}"></a>', '', '## ' + label, '', self.reader_summary(ref, binding.get('overlays', [])), f'**Contract ID:** `{cid}`.', '', '**Required inputs:**', '']
                     page += ['- ' + item for item in contract['jai']['semantics']['required_inputs']]
                     page += ['', self.spec_body(ref, binding.get('overlays', [])), '']
-                result[f'{DIRECTORY}/role-{role["slug"]}.md'] = '\n'.join(page)
-                index.append(f'| [{_cell(role["name"])}](role-{role["slug"]}.md) | {len(contracts)} |')
+                if owner == role['slug']:
+                    result[f'{DIRECTORY}/role-{role["slug"]}.md'] = '\n'.join(page)
+                index.append(f'| [{_cell(role["name"])}](role-{owner}.md) | {len(contracts)} |')
                 role_rows.append('| ' + ' | '.join([_cell(role['name']), _cell(role['mission']), '; '.join(links), MODES[role['tool_tier']]]) + ' |')
             role_rows.append('')
         index += ['', '## Shared foundations and specialisations', '', 'The links below specify shared requirements. Role pages select the effective foundations and overlays explicitly; a similarly named output is not sufficient to establish applicability.', '']
@@ -390,7 +396,7 @@ class Projection:
         nav = ['          - Overview: reference/output-contracts/index.md']
         for category in sorted({role['category'] for role in self.roles}):
             nav.append('          - ' + json.dumps(category) + ':')
-            nav.extend('              - ' + json.dumps(role['name']) + ': reference/output-contracts/role-' + role['slug'] + '.md' for role in self.roles if role['category'] == category)
+            nav.extend('              - ' + json.dumps(role['name']) + ': reference/output-contracts/role-' + role['slug'] + '.md' for role in self.roles if self.output_owners[role['slug']] == role['slug'] and role['category'] == category)
         nav.append('          - Shared foundations and specialisations:')
         nav.extend('              - ' + json.dumps(ref) + ': reference/output-contracts/' + path for ref, path in sorted(self.spec_paths.items()) if not path.startswith('role-'))
         nav.append('          - Source-owned workflow handoffs:')

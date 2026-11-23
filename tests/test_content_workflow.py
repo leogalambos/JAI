@@ -487,8 +487,11 @@ def _variant_case(handoff_id, path_id):
     return row, model, spec, engine
 
 
-def _reviewed_variant_result(row, model, spec, engine, authority_factory=None):
+def _reviewed_variant_result(row, model, spec, engine, authority_factory=None, *,
+                             producer_proof=None, receiver_selection=None, receiver_role=None):
     model, review, dispatcher, registry = _host_reviewed_workflow(model, spec)
+    if producer_proof is not None:
+        registry['producer-token']['workflow_producer'] = producer_proof
     report = evaluate(model, spec, reviewer=review, trusted_executions=dispatcher)
     selected = _selected_handoff_fixture(row, model)
     payload = next(item['payload'] for item in model['evidence'] if item['id'] == 'SYN-CONTEXT')
@@ -496,6 +499,9 @@ def _reviewed_variant_result(row, model, spec, engine, authority_factory=None):
         'report_hash': report['report_hash'], 'catalog_hash': load_bindings(ROOT)['catalog_hash'],
         'criterion': selected['acceptance_criterion'], 'receiving_role': selected['receiving_role'],
         'path_id': payload['selected_path'], 'handoff_content_hash': canonical_hash(selected['handoff_content_contract'])}
+    if receiver_selection is not None:
+        bound['producer_selection'] = receiver_selection
+        dispatcher.receiving_specialties = lambda token: [receiver_role or selected['receiving_role']]
     subject = {**bound,
         'verdict': 'PASS', 'evidence': 'Exact synthetic mechanism, invariant, input and scope evidence reviewed.',
         'unit_reviews': [{'unit_id': unit['id'], 'verdict': 'PASS',
@@ -514,6 +520,62 @@ def _reviewed_variant_result(row, model, spec, engine, authority_factory=None):
                    trusted_executions=dispatcher, receiving_assignments={principal: [selected['receiving_role']]}, resolver=engine,
                    authority=authority_factory(bound) if authority_factory else None)
     return result, report
+
+
+@pytest.mark.parametrize('change,expected', [
+    ('matching', None),
+    ('missing', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
+    ('path', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
+    ('version', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
+    ('receiver', 'RECEIVER_SUBJECT_MISMATCH'),
+    ('receiver-role', 'WORKFLOW_RECEIVER_SELECTION_MISMATCH'),
+])
+def test_compatible_handoff_requires_exact_producer_choice_and_receiver_subject(change, expected, monkeypatch):
+    path = 'saas-cots'
+    row, model, spec, engine = _variant_case('new-service-onboarding:1', path)
+    catalog = load_bindings(ROOT)
+    staged_row = next(item for item in catalog['bindings'] if item['handoff_id'] == row['handoff_id'])
+    effective = staged_row['variant_bindings'][path]
+    contract = {'id': model['contract_id'], 'version': '3.0.0'}
+    effective['workflow_role_requirement'] = {
+        'mode': 'compatible-specialization', 'contract': contract,
+        'requirement_hash': canonical_hash({'fixture': 'reviewed-exact-output'}),
+    }
+    catalog['catalog_hash'] = canonical_hash({key: value for key, value in catalog.items() if key != 'catalog_hash'})
+    engine._workflow_catalog = catalog
+    monkeypatch.setattr(sys.modules[__name__], 'load_bindings', lambda root: catalog)
+    slug = 'fixture-specialist'
+    mapping = canonical_hash({'fixture': 'reviewed-product-mapping'})
+    producer = {
+        'slug': slug, 'selection_ref': {'fixture': 'exact-choice'}, 'scope_ref': {'fixture': 'product-scope'},
+        'binding': {
+            'mode': 'compatible-specialization', 'endpoint': 'producer',
+            'workflow_catalogue': catalog['catalog_hash'], 'handoff': row['handoff_id'],
+            'path': path, 'bound_role': effective['producer_role'],
+            'handoff_contract_hash': canonical_hash(effective['handoff_content_contract']),
+            'contract': dict(contract), 'requirement_hash': effective['workflow_role_requirement']['requirement_hash'],
+            'mapping_hashes': {slug: mapping},
+        },
+    }
+    receiver = {key: producer[key] for key in ('slug', 'selection_ref', 'scope_ref')}
+    receiver['mapping_hash'] = mapping
+    if change == 'missing':
+        producer = None
+    elif change == 'path':
+        producer['binding']['path'] = 'other-path'
+    elif change == 'version':
+        producer['binding']['contract']['version'] = '2.0.0'
+    elif change == 'receiver':
+        receiver['selection_ref'] = {'fixture': 'previous-choice'}
+    result, _ = _reviewed_variant_result(staged_row, model, spec, engine,
+                                         producer_proof=producer, receiver_selection=receiver,
+                                         receiver_role='different-reviewer' if change == 'receiver-role' else None)
+    if expected is None:
+        assert result['status'] == 'ACCEPTANCE_VERIFIED', result['findings']
+        assert result['producer_selection'] == receiver
+    else:
+        assert result['status'] == 'ACCEPTANCE_PENDING'
+        assert expected in result['findings']
 
 
 @pytest.mark.parametrize('stage', [1, 2, 3, 4, 5, 6, 7])
@@ -749,3 +811,64 @@ def test_rehashed_catalog_cannot_bypass_registered_contract_scope(tmp_path,mutat
     (runtime/'workflow-acceptance.json').write_text(json.dumps(data))
     with pytest.raises(ValueError,match='HANDOFF_CONTENT_SCOPE' if mutation == 'handoff-content' else 'CONTRACT_SCOPE'):
         load_bindings(tmp_path)
+
+
+@pytest.mark.parametrize('specialty, predecessor_case', [
+    ('security-assurance-and-measurement-architect', 'missing'),
+    ('software-engineer', 'missing'),
+    ('security-assurance-and-measurement-architect', 'matching'),
+    ('security-assurance-and-measurement-architect', 'foreign'),
+    ('security-assurance-and-measurement-architect', 'pending'),
+])
+def test_staged_siem_terminal_keeps_recorded_role_and_signed_authority(
+        tmp_path, monkeypatch, specialty, predecessor_case):
+    import content_workflow
+    from generate_content_workflows import stage_siem_pilot
+
+    scopes = tmp_path / 'scopes.json'
+    facts = [{'edition': 'synthetic', 'version': 'fixture', 'deployment': 'offline'}]
+    scopes.write_text(json.dumps({product: facts for product in
+        ('splunk-enterprise-security', 'ibm-qradar-siem')}))
+    pilot = tmp_path / 'registration.json'
+    pilot.write_text(json.dumps(stage_siem_pilot(ROOT, scopes)))
+    catalogue = content_workflow.load_bindings(ROOT, pilot=pilot)
+    terminal = catalogue['bindings'][-1]
+    engine = ContentSpec(ROOT)
+    fixture = ROOT / '.ai/runtime/evals/content_quality/enterprise/security-assurance-and-measurement-architect-2-medium.json'
+    model, spec = prepare_case(json.loads(fixture.read_bytes()), engine)
+    model['semantic_units'].setdefault('workflow_context', {})
+    with monkeypatch.context() as scoped:
+        scoped.setattr(sys.modules[__name__], 'load_bindings', lambda root: catalogue)
+        model = _handoff_content_fixture(terminal, model, 'bounded-validation')
+    model['producer'] = {'attestation': 'synthetic-terminal-producer'}
+
+    def verifier(token):
+        return {'reviewer': False, 'principal': 'assessor'} if token == 'synthetic-terminal-producer' else None
+
+    verifier.receiving_specialties = lambda token, *, reviewer: [specialty] if not reviewer else []
+    predecessor = None
+    if predecessor_case != 'missing':
+        reference = {'logical_id': 'integration', 'version_id': 'admitted-version'}
+        model['semantic_units']['independent_assessment'].update(
+            reviewed_artifact_ref=reference, receiving_principal='assessor')
+        verifier.predecessor_input = lambda terminal_token, previous_token: (
+            reference if predecessor_case != 'foreign' else {**reference, 'version_id': 'foreign'})
+        predecessor = {'model': {'producer': {'attestation': 'integration-producer'}},
+                       'report': {}, 'acceptance': {}}
+
+    def replay_prior(handoff, *args, **kwargs):
+        assert handoff == 'siem-log-source-integration:1'
+        status = 'ACCEPTANCE_PENDING' if predecessor_case == 'pending' else 'ACCEPTANCE_VERIFIED'
+        return {'status': status, 'next_step': 2, 'path_id': 'bounded-validation',
+                'receiver_principal': 'assessor', 'result_hash': 'fixture-bound-result'}
+
+    check_terminal = content_workflow._check
+    monkeypatch.setattr(content_workflow, '_check', replay_prior)
+    result = check_terminal(terminal['handoff_id'], model, evaluate(model, spec), ROOT,
+                            trusted_executions=verifier, resolver=engine, pilot=pilot, predecessor=predecessor)
+    assert ('WORKFLOW_TERMINAL_PREDECESSOR_UNVERIFIED' in result['findings']) == (predecessor_case != 'matching')
+    if predecessor_case == 'matching':
+        assert result['predecessor'] == {'artifact_ref': reference, 'result_hash': 'fixture-bound-result'}
+    assert result['status'] == 'ACCEPTANCE_PENDING'
+    assert 'EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED' in result['findings']
+    assert ('WORKFLOW_TERMINAL_PRODUCER_ROLE_MISMATCH' in result['findings']) == (specialty == 'software-engineer')

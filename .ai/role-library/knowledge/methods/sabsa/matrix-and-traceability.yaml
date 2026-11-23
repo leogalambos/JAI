@@ -1,0 +1,39 @@
+schema_version: 1
+id: methods/sabsa/matrix-and-traceability
+title: SABSA matrix and traceability
+version: 1.0.0
+includes: []
+applicability: JAI SABSA contextual and conceptual architecture practice as reviewed 2026-11-23.
+sections:
+- id: driver-objective-trace
+  delivery: required
+  text: Connect each claim to applicable upstream business drivers through the named, measurable
+    business attributes. Identify missing or conflicting references explicitly. Preserve the role’s
+    own output and gate for the layer in scope.
+  source: sabsa-executive-summary
+  applicability: JAI SABSA contextual and conceptual architecture practice as reviewed 2026-11-23.
+  exclusions: Layer-specific deliverable ownership, methodology certification and reserved acceptance.
+  owner: JAI SABSA practice maintainers
+  reviewed: '2026-11-23'
+- id: traceability-reference
+  delivery: optional
+  reference: matrix-traceability-notes.md
+  read_when: Linking contextual and conceptual artefacts or investigating missing traceability.
+  source: sabsa-executive-summary
+  applicability: JAI SABSA contextual and conceptual architecture practice as reviewed 2026-11-23.
+  exclusions: Layer-specific deliverable ownership, methodology certification and reserved acceptance.
+  owner: JAI SABSA practice maintainers
+  reviewed: '2026-11-23'
+sources:
+  sabsa-executive-summary:
+    publisher: The SABSA Institute
+    authority: method owner publication
+    title: SABSA Executive Summary
+    url: https://sabsa.org/sabsa-executive-summary/
+    applicability: JAI SABSA contextual and conceptual architecture practice as reviewed 2026-11-23.
+    reviewed: '2026-11-23'
+    owner: JAI SABSA practice maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when the applicable SABSA method guidance or JAI traceability convention
+      changes.

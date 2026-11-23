@@ -1,0 +1,6 @@
+schema_version: 1
+slug: conceptual-security-architect-sabsa-architect-s-view
+includes:
+  - methods/sabsa/matrix-and-traceability
+facets:
+  method: [sabsa]

@@ -7,6 +7,9 @@ import time
 import pytest
 
 from test_governed_dispatch import _ElapsedHarness, _worker_config, _execution
+from test_governed_native_batches import _layer_session
+from governed_dispatch import DispatchError
+import governed_layered as layered
 import governed_workflow
 import lifecycle as lc
 
@@ -28,6 +31,34 @@ def gateway(tmp_path, monkeypatch):
         {'owner': host.owner(work_kind='integration')}, mode='information')
     workflow = governed_workflow.Workflow(host.store, config)
     return host, workflow
+
+
+def test_change_blocked_row_order_requires_an_instruction_and_current_conflict(tmp_path):
+    """A serial order conflict needs one attributable, applicable intervention."""
+    session = _layer_session(tmp_path, sabsa_row_mode='left-to-right',
+                             operator_dependencies={'1': {'what': ['where']}})
+    workflow = session.workflow
+    state = session.store.read()
+    procedure, = state.procedures.values()
+    assert state.procedure_next(procedure) == {
+        'waiting': 'question_order_conflict', 'questions': ['what'], 'procedure': procedure}
+    waiting = session.next()
+    assert waiting['status'] == 'waiting'
+    assert waiting['procedure_waits'][0]['questions'] == ['what']
+    with pytest.raises(DispatchError) as missing:
+        workflow.change_blocked_row_order(procedure, session.store.put_blob(b' '))
+    assert missing.value.code == 'P_PROOF'
+    instruction = session.store.put_blob(b'Use dependency order for this blocked row.')
+    assert workflow.change_blocked_row_order(procedure, instruction)['status'] == 'committed'
+    with pytest.raises(DispatchError) as resolved:
+        workflow.change_blocked_row_order(procedure, session.store.put_blob(b'Confirm dependency order.'))
+    assert resolved.value.code == 'P_STATE'
+    reopened = layered.LayeredSession.open(session.locator)
+    offered = reopened.next()
+    state = reopened.store.read()
+    assert {state.resolve(member['assignment'])['owner']['question'] for member in offered['members']} == {'who', 'where'}
+    with pytest.raises(lc.ERROR, match='Cyclic'):
+        lc._row_policy('deterministic', {'1': {'what': ['how']}})
 
 
 def test_layer_gateway_one_step_runs_actual_selection_then_local_work(gateway):

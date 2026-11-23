@@ -433,6 +433,30 @@ def applicability_projections(root=ROOT):
     return result
 
 
+def stage_siem_pilot(root, deployment_path):
+    """Build an isolated SIEM registration with explicit candidate deployment facts.
+
+    Args:
+        root: Checkout with the canonical workflow and artifact contracts.
+        deployment_path: JSON mapping of candidate product deployment tuples.
+    Returns:
+        Complete staged registration suitable for explicit host loading.
+    Raises:
+        OSError, ValueError: Missing source or invalid workflow/deployment facts.
+    """
+    from compose_role_library import _ClosedLoader
+    from workflow_role_selection import stage_siem_workflow
+    import yaml
+    from content_spec import load_json
+
+    root = Path(root)
+    source = root / '.ai/role-library/workflows/siem-log-source-integration.yaml'
+    draft = yaml.load(source.read_bytes(), Loader=_ClosedLoader)
+    contracts = load_json(root / '.ai/runtime/artifacts/contracts/role-deliverables.v3.json')['contracts']
+    return stage_siem_workflow(draft, load_json(deployment_path), build(root),
+                               {row['id']: row for row in contracts})
+
+
 def main(argv=None):
     """Write/check the generated catalogue; return one on drift or invalid source.
 
@@ -443,7 +467,18 @@ def main(argv=None):
     """
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check',action='store_true')
+    parser.add_argument('--stage-siem-pilot', type=Path)
+    parser.add_argument('--product-scopes', type=Path)
     args=parser.parse_args(argv)
+    if args.stage_siem_pilot is not None:
+        if args.check or args.product_scopes is None:
+            parser.error('--stage-siem-pilot requires --product-scopes and a new output path')
+        encoded = json.dumps(stage_siem_pilot(ROOT, args.product_scopes), indent=2, ensure_ascii=False) + '\n'
+        with args.stage_siem_pilot.open('x', encoding='utf-8') as output:
+            output.write(encoded)
+        return 0
+    if args.product_scopes is not None:
+        parser.error('--product-scopes requires --stage-siem-pilot')
     payloads = {**professional_projection(), '.ai/runtime/content/workflow-acceptance.json': json.dumps(build(),indent=2,ensure_ascii=False)+'\n',
                 **summary_projections(), **applicability_projections()}
     if args.check:

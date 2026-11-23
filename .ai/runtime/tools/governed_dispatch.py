@@ -39,6 +39,7 @@ import time
 import uuid
 
 import governed_delivery as wire
+import governed_routing as routing
 import lifecycle as lc
 import operator_actions as operator
 
@@ -335,6 +336,8 @@ class Dispatcher:
                                'specialties': execution.get('specialties', []),
                                'instructions': execution['instructions']}
         if execution['phase'] == 'selection':
+            if 'workflow_selection' in execution:
+                packet['execution']['workflow_selection'] = copy.deepcopy(execution['workflow_selection'])
             packet['execution']['previous'] = copy.deepcopy(state.execution_plans.get((context['assignment']['version_id'], assignment['use_scope'])))
             import execution_profiles
             preference = snapshot['models'].get('execution_profile')
@@ -349,6 +352,12 @@ class Dispatcher:
                 for workload, model in details['classes'].items()]
         else:
             packet['execution']['selection'] = execution['selection']
+        deferred = routing.deferred_reference_handles(execution)
+        if deferred:
+            if deferred.keys() & handles.keys():
+                raise DispatchError('P_CONFLICT', 'Deferred reference collides with an assignment input handle')
+            self.intrinsic_handles.update(deferred)
+            packet['execution']['deferred_references'] = deferred
         feedback = state.assignment_feedback(assignment, live=True)
         if feedback:
             packet['historical_feedback'] = feedback

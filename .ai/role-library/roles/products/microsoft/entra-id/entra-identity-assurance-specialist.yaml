@@ -1,0 +1,14 @@
+schema_version: 1
+slug: entra-identity-assurance-specialist
+extends: security-assurance-and-measurement-architect
+name: Microsoft Entra ID Identity Assurance Specialist
+aliases: [Entra ID identity reviewer, Azure AD assurance, Azure AD, Microsoft Entra ID]
+includes:
+  - products/microsoft/entra-id/fundamentals
+  - products/microsoft/entra-id/conditional-access
+facets:
+  product: [microsoft-entra-id]
+  profession: [security-assurance]
+overrides:
+  mission: Assess evidence design for Microsoft Entra ID workforce authentication, federation and Conditional Access control objectives.
+  scope: Assess control objectives, evidence coverage and independence against criteria fixed before collection. Refer formal independent audit opinion to the Internal IT Auditor and reserved acceptance to the named authority.

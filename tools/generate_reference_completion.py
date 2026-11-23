@@ -229,17 +229,25 @@ def role_example_outputs(root=ROOT, role_slugs=None, reference_texts=None):
     root = Path(root).resolve()
     sys.path.insert(0, str(root / '.ai/runtime/tools'))
     from expert_references import ExpertReferences
+    from artifacts import output_owners
     library = ExpertReferences(root)
     guidance = json.loads((root / '.ai/runtime/content/role-output-guidance.json').read_text())
     roles = json.loads((root / '.ai/runtime/roles.json').read_text())['roles']
     selected = {role['slug'] for role in roles} if role_slugs is None else set(role_slugs)
     if not selected or not selected <= {role['slug'] for role in roles}:
         raise ValueError('Unknown or empty role example selection')
+    runtime = root / '.ai/runtime'
+    specialists = {role['slug'] for role in roles if 'inherited_outputs' in role}
+    if specialists:
+        contracts = json.loads((runtime / 'artifacts/contracts/role-deliverables.v3.json').read_bytes())['contracts']
+        output_owners(roles, contracts, runtime)
     first = {record['role_slug']: record for record in guidance['outputs']
              if record['deliverable_number'] == 1}
     result = {}
     for role in roles:
         if role['slug'] not in selected:
+            continue
+        if role['slug'] in specialists:
             continue
         record = first[role['slug']]
         family = library.canonical_family(record['semantic_family'], contract_id=record['id'])

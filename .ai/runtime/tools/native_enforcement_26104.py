@@ -5,6 +5,7 @@
 from __future__ import annotations
 import hashlib, importlib.util, json, re, tempfile
 from pathlib import Path
+from artifacts import output_owners
 try:
     import jsonschema
 except Exception:
@@ -51,13 +52,18 @@ def catalogue_problems(roles_catalog, v3, layers, runtime):
             problems.append(f"{role.get('slug')}: invalid role layer binding")
     if not rows or len(new) != len(rows) or None in new:
         problems.append('duplicate, empty or missing authoritative contract identities')
-    if v3.get('deliverable_count') != len(rows) or v3.get('role_count') != len(by_role):
+    try:
+        owners = output_owners(roles, rows, runtime)
+    except (ValueError, KeyError) as error:
+        return problems + [str(error)]
+    authoritative = [role for role in roles if owners[role['slug']] == role['slug']]
+    if v3.get('deliverable_count') != len(rows) or v3.get('role_count') != len(authoritative):
         problems.append('active catalogue declared counts mismatch')
-    expected_ids = {f"{role.get('slug')}:{number}" for role in roles
+    expected_ids = {f"{role.get('slug')}:{number}" for role in authoritative
                     for number in range(1, len(role.get('primary_deliverables', [])) + 1)}
     if set(new) != expected_ids:
         problems.append('canonical role deliverable identity coverage mismatch')
-    if {row.get('role_slug') for row in rows} != set(by_role):
+    if {row.get('role_slug') for row in rows} != {role['slug'] for role in authoritative}:
         problems.append('active contract role coverage mismatch')
     if not jsonschema:
         return problems + ['jsonschema required for native release qualification']

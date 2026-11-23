@@ -444,7 +444,9 @@ def build():
     role_module=importlib.util.spec_from_file_location('catalog_role_sources',RUNTIME/'tools/artifacts.py')
     role_sources=importlib.util.module_from_spec(role_module);role_module.loader.exec_module(role_sources)
     roles=json.loads((RUNTIME/'roles.json').read_text())['roles']
-    live=role_sources.live_deliverables({'skills':ROOT/'.ai/skills'},roles)
+    owners = role_sources.output_owners(roles, contracts, RUNTIME)
+    live=role_sources.live_deliverables({'skills':ROOT/'.ai/skills'},
+        [role for role in roles if owners[role['slug']] == role['slug']])
     for family, obligations in FAMILIES.items():
         legacy=sorted({c['jai']['semantics']['artifact_type'] for c in contracts if BINDINGS.get(c['id'])==family})
         value=spec('kind/'+family,'document_kind',DECISIONS[family],'complete',[])

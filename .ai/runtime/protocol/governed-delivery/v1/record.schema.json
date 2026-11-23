@@ -340,6 +340,9 @@
           "properties": {
             "policy": {
               "$ref": "common.schema.json#/$defs/reference"
+            },
+            "workflow_scope": {
+              "$ref": "common.schema.json#/$defs/reference"
             }
           },
           "required": [

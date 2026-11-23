@@ -1,0 +1,80 @@
+schema_version: 1
+id: products/ibm/qradar-siem/log-source-integration
+title: IBM QRadar SIEM log-source integration
+version: 1.0.0
+includes: []
+applicability: IBM QRadar SIEM on-premises 7.6.0 release stream with verified fix level, support
+  and source compatibility.
+sections:
+- id: supported-fix-level
+  delivery: required
+  text: Pin the 7.6.0 release and fix level, appliance or virtual software support, and source integration
+    compatibility. Evaluate these independently when recording applicability.
+  source: ibm-qradar-lifecycle
+  applicability: IBM QRadar SIEM on-premises 7.6.0 release stream with verified fix level, support
+    and source compatibility.
+  exclusions: Acquired legacy QRadar SaaS offerings and unverified appliance, connector or product
+    versions.
+  owner: JAI security engineering maintainers
+  reviewed: '2026-11-23'
+- id: log-source-identification
+  delivery: required
+  text: Document the log source identifier, collection protocol and applicable device support module.
+    Compare representative received events with the expected parsed fields and event classification
+    before asserting normalized coverage.
+  source: ibm-qradar-dsm-editor
+  applicability: IBM QRadar SIEM on-premises 7.6.0 release stream with verified fix level, support
+    and source compatibility.
+  exclusions: Acquired legacy QRadar SaaS offerings and unverified appliance, connector or product
+    versions.
+  owner: JAI security engineering maintainers
+  reviewed: '2026-11-23'
+- id: qradar-reference
+  delivery: optional
+  reference: qradar-source-evidence.md
+  read_when: Onboarding sources, reviewing parsing or assessing source compatibility and support.
+  source: ibm-qradar-dsm-editor
+  applicability: IBM QRadar SIEM on-premises 7.6.0 release stream with verified fix level, support
+    and source compatibility.
+  exclusions: Acquired legacy QRadar SaaS offerings and unverified appliance, connector or product
+    versions.
+  owner: JAI security engineering maintainers
+  reviewed: '2026-11-23'
+sources:
+  ibm-qradar-lifecycle:
+    publisher: IBM
+    authority: vendor lifecycle policy
+    title: IBM QRadar Support Lifecycle
+    url: https://www.ibm.com/support/pages/ibm-qradar-support-lifecycle
+    applicability: IBM QRadar SIEM on-premises 7.6.0 release stream with verified fix level, support
+      and source compatibility.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when fix level, installed appliance support, deployment, upgrade path
+      or agreement changes.
+  ibm-qradar-dsm-editor:
+    publisher: IBM
+    authority: vendor documentation
+    title: How do I create custom log sources with the DSM Editor in IBM QRadar SIEM?
+    url: https://www.ibm.com/support/pages/how-do-i-create-custom-log-sources-dsm-editor-ibm-qradar-siem
+    applicability: IBM QRadar SIEM on-premises 7.6.0 release stream with verified fix level, support
+      and source compatibility.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck the supported device, supported version, collection protocol and DSM
+      for the selected environment.
+  ibm-qradar-log-source-management:
+    publisher: IBM
+    authority: vendor support documentation
+    title: "QRadar: The Log Source Management application"
+    url: https://www.ibm.com/support/pages/node/6326067
+    applicability: Appropriate QRadar Log Source Management application and collection protocol versions.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use this public locator and original paraphrases. Check rights and entitlement
+      before admitting an excerpt.
+    review_trigger: Recheck when log source management and collection protocol versions change.

@@ -1,0 +1,57 @@
+schema_version: 1
+status: proposed
+workflow: siem-log-source-integration
+path: bounded-validation
+scope: Integrate one authorised telemetry source into a supported enterprise SIEM.
+inputs:
+  - Name the source and its accountable owner and establish the intended monitored controls.
+  - Pin the applicable product, deployment, support evidence and configuration scope.
+  - Establish destination, data classification, permitted collection and retention constraints.
+steps:
+  - step: 1
+    endpoint: producer
+    role_requirement:
+      mode: compatible-specialization
+      base: security-engineer
+      responsibility: author
+      contract:
+        id: security-engineer:4
+        version: 3.0.0
+    artifact: Security tooling integration for the selected log source.
+    mandatory_units:
+      - id: source-and-collection
+        semantic_field: source_and_collection
+        required_fields: [source_id, data_classes, intended_control_ids, collection_path, accountable_owner]
+        acceptance_criterion: Record the exact source, authorised data classes and intended controls, collection path and owner.
+      - id: normalization
+        semantic_field: normalization
+        required_fields: [field_mapping, validation_observations, validation_limits]
+        acceptance_criterion: Map required fields and record actual controlled observations and declared validation limits.
+      - id: deployment-verification
+        semantic_field: deployment_verification
+        required_fields: [implementation_ref, requirements_ref, test_results, telemetry, deployment_prerequisites, recovery]
+        acceptance_criterion: Record the exact changed implementation, versioned requirements and tests, telemetry, deployment prerequisites, and failure and recovery evidence.
+    proposed_mappings:
+      - slug: splunk-enterprise-security-specialist
+        product: splunk-enterprise-security
+        applicability: Verified Enterprise Security 8.8 with an exact supported Splunk platform and source add-on release.
+      - slug: qradar-siem-specialist
+        product: ibm-qradar-siem
+        applicability: IBM QRadar SIEM on premises, exact supported 7.6.0 fix level and applicable DSM.
+    receiving_role: security-assurance-and-measurement-architect
+  - step: 2
+    endpoint: producer
+    role_requirement:
+      mode: exact
+      slug: security-assurance-and-measurement-architect
+      contract:
+        id: security-assurance-and-measurement-architect:2
+        version: 3.0.0
+    artifact: Independent assessment of the exact integration artifact against its contract and handoff criteria.
+    gate: Pin the assessment to the exact producer and reviewed artifact version under a distinct assigned principal.
+    mandatory_units:
+      - id: independent-assessment
+        semantic_field: independent_assessment
+        required_fields: [assessment_ref, reviewed_artifact_ref, receiving_principal, conclusion]
+        acceptance_criterion: Present the versioned independent assessment and identify the exact reviewed artifact.
+    receiving_role: engagement:named-acceptance-authority

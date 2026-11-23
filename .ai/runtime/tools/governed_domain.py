@@ -47,6 +47,7 @@ class GovernedDomain:
         self._state = None
         self._facts = {}
         self._basis = {}
+        self._workflow_producers = {}
         self._indexed = False
 
     @contextlib.contextmanager
@@ -63,13 +64,13 @@ class GovernedDomain:
             yield self
             return
         self._state = self.store.read()
-        self._facts, self._basis = {}, {}
+        self._facts, self._basis, self._workflow_producers = {}, {}, {}
         self._indexed = False
         try:
             yield self
         finally:
             self._state = None
-            self._facts, self._basis = {}, {}
+            self._facts, self._basis, self._workflow_producers = {}, {}, {}
             self._indexed = False
 
     def _evaluate(self, point):
@@ -225,13 +226,82 @@ class GovernedDomain:
                 context = self._state.resolve(actual_token['context'], 'context')
                 details = self._state.run_details[context['run_id']]
                 physical = {'provider': details['native']['provider'], 'handle': details['native']['handle']}
-                return {'invocation': details['invocation_id'], 'physical_context': physical,
+                verified = {'invocation': details['invocation_id'], 'physical_context': physical,
                         'raw_capture': details['semantic_capture']['raw_return_blob_id'],
                         'principal': self.store.engagement + ':' + assignment['assigned_actor'],
                         'reviewer': reviewer, 'subject_digest': _digest(payload),
                         'snapshot_digest': snapshot, 'context_digest': _digest(manifest)}
+                if not reviewer and 'workflow_scope' in assignment['routing']:
+                    key = actual_token['context']['version_id']
+                    if key not in self._workflow_producers:
+                        execution = self._state.context_execution(context, live=False)
+                        selection = execution['workflow_selection']
+                        slug, = execution['specialties']
+                        binding = selection['binding']
+                        self._workflow_producers[key] = None
+                        if binding['mode'] == 'compatible-specialization':
+                            self._workflow_producers[key] = {
+                                'binding': binding, 'scope_ref': selection['scope_ref'],
+                                'selection_ref': execution['selection'], 'slug': slug,
+                            }
+                    if self._workflow_producers[key] is not None:
+                        verified['workflow_producer'] = copy.deepcopy(self._workflow_producers[key])
+                return verified
         except (ValueError, OSError, KeyError, TypeError):
             return None
+
+    def receiving_specialties(self, token, *, reviewer=True):
+        """Return the exact selected roles for an admitted native work token.
+
+        Args:
+            token: The exact native work token checked by the handoff gate.
+            reviewer: Require an independent review token when true, or producer token otherwise.
+        Returns:
+            Selected role slugs, or an empty list if the token does not identify
+            a recorded actor of the required kind with usable work context.
+        """
+        try:
+            with self.action():
+                found = self._records().get(lc.canonical(token))
+                if found is None or found[1] is not reviewer:
+                    return []
+                context = self._state.resolve(token['context'], 'context')
+                return self._state.context_execution(context, live=False)['specialties']
+        except (ValueError, OSError, KeyError, TypeError):
+            return []
+
+    def predecessor_input(self, terminal_token, predecessor_token):
+        """Resolve the currently applicable native predecessor supplied to terminal work.
+
+        Args:
+            terminal_token: Exact admitted terminal producer token.
+            predecessor_token: Exact admitted first-stage producer token.
+        Returns:
+            The predecessor product reference if present as an exact work input,
+            or None if verification, input binding or current use fails.
+        """
+        try:
+            with self.action():
+                records = self._records()
+                terminal = records.get(lc.canonical(terminal_token))
+                predecessor = records.get(lc.canonical(predecessor_token))
+                if not terminal or not predecessor or terminal[1] or predecessor[1]:
+                    return None
+                point = predecessor[0]
+                context = self._state.resolve(terminal_token['context'], 'context')
+                assignment = terminal[2][3]
+                if not any(point['ref'] in slot['refs'] for slot in context['inputs']):
+                    return None
+                for index, slot in enumerate(assignment['inputs']):
+                    for offset, reference in enumerate(slot['refs']):
+                        if (reference == point['ref']
+                                and self._state._assignment_use(assignment, f'/inputs/{index}/refs/{offset}',
+                                                                 reference) == point
+                                and self._state._governing_input(point, live=True)):
+                            return copy.deepcopy(reference)
+        except (ValueError, OSError, KeyError, TypeError):
+            return None
+        return None
 
     def publication_status(self, model, audience=None, operation='draft'):
         """Assess exact publication source against current Gen2 justification.

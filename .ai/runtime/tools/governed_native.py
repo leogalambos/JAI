@@ -21,6 +21,7 @@ import execution_stats
 import governed_dispatch as dispatch
 import governed_delivery as wire
 import governed_workflow
+import governed_routing as routing
 import lifecycle as lc
 import operator_actions as operator
 
@@ -165,6 +166,7 @@ class NativeSession:
             snapshot = peer.execution['snapshot']['descriptor']
             peer.intrinsic_handles = {'catalogue': snapshot['catalogue_blob_id'],
                 **{'instruction:' + slug: blob for slug, blob in snapshot['instruction_blobs'].items()}}
+            peer.intrinsic_handles.update(routing.deferred_reference_handles(peer.execution))
             peer.allowed_blobs = {item['blob_id'] for item in packet['attachments']}
             peer.allowed_blobs.update(material['blob_id'] for returned in packet.get('owned_returns', [])
                                       for item in returned['records'] for material in item['material'])

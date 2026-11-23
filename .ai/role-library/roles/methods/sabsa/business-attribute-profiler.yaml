@@ -1,0 +1,6 @@
+schema_version: 1
+slug: business-attribute-profiler
+includes:
+  - methods/sabsa/matrix-and-traceability
+facets:
+  method: [sabsa]

@@ -1,0 +1,13 @@
+schema_version: 1
+slug: splunk-enterprise-security-specialist
+extends: security-engineer
+name: Splunk Enterprise Security Integration Specialist
+aliases: [Splunk Enterprise Security, Splunk ES, Splunk SIEM]
+includes:
+  - products/splunk/enterprise-security/log-source-integration
+facets:
+  product: [splunk-enterprise-security]
+  profession: [security-engineering]
+overrides:
+  mission: Design and validate authorized security log-source integration for Splunk Enterprise Security.
+  scope: Cover source collection, field normalization and monitoring of enabled integration in an applicable Enterprise Security deployment. Use the inherited security tooling integration deliverable with the agreed evidence and gate criteria.

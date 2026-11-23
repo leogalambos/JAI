@@ -1,0 +1,13 @@
+schema_version: 1
+slug: qradar-siem-specialist
+extends: security-engineer
+name: IBM QRadar SIEM Integration Specialist
+aliases: [IBM QRadar SIEM, QRadar, QRadar SIEM]
+includes:
+  - products/ibm/qradar-siem/log-source-integration
+facets:
+  product: [ibm-qradar-siem]
+  profession: [security-engineering]
+overrides:
+  mission: Design and validate authorized security log-source integration for on-premises IBM QRadar SIEM.
+  scope: Cover source collection, device support module parsing, event normalization and monitoring of enabled integration on an applicable QRadar SIEM deployment. Use the inherited security tooling integration deliverable with the agreed evidence and gate criteria.

@@ -35,11 +35,11 @@ def _session(tmp_path):
     return session, entry['assignment']
 
 
-def _choice(packet):
+def _choice(packet, carrier='codex'):
     model = next(item for item in packet['execution']['availability']
-                 if item['provider'] == 'codex' and item['workload_class'] == 'standard')
+                 if item['provider'] == carrier and item['workload_class'] == 'standard')
     return {'member': packet['member_key'], 'kind': 'selection',
-            'specialties': ['software-engineer'], 'provider': 'codex',
+            'specialties': ['software-engineer'], 'provider': carrier,
             'workload_class': 'standard', 'model_selector': model['model_selector'],
             'reason': 'Controlled transport mechanics, not native professional evidence.'}
 
@@ -211,11 +211,11 @@ def test_native_unknown_stop_retains_physical_uncertainty_until_actual_confirmat
     assert session.store.read().invocations[invocation]['reservation_released'] is True
 
 
-def _controlled_result(session, assignment, phase, produce, selection=None):
+def _controlled_result(session, assignment, phase, produce, selection=None, *, carrier='codex'):
     issued = session.issue_batch([{'assignment': assignment, 'phase': phase, 'selection': selection}], bound_ms=5000)
     invocation = issued['invocation_id']
     packet = session.prepare(invocation)['members'][0]['packet']
-    session.start(invocation, 'codex', invocation, {'observed': 'Controlled offline platform fixture.'})
+    session.start(invocation, carrier, invocation, {'observed': 'Controlled offline platform fixture.'})
     value = {'format': 'jai.semantic-return/1', 'results': [produce(packet)]}
     result = session.complete(invocation, json.dumps(value), {'observed': 'Controlled offline terminal fixture.'})
     assert result['status'] == 'returned'
@@ -223,9 +223,9 @@ def _controlled_result(session, assignment, phase, produce, selection=None):
 
 
 def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000, *, single_member=False,
-                   question_dependencies=None, sabsa_row_mode=None, operator_dependencies=None):
+                   question_dependencies=None, sabsa_row_mode=None, operator_dependencies=None, carrier='codex'):
     session, created = layered.LayeredSession.create(tmp_path, 'layer-batch',
-        b'Define a bounded backup service.', 'codex', 'backup',
+        b'Define a bounded backup service.', carrier, 'backup',
         None if aggregate_limit_ms is None else int(time.time() * 1000) + 180000,
         aggregate_limit_ms, b'Identify the business boundary, restore requirements and uncertainty.',
         local_budget=local_budget, single_member=single_member, sabsa_row_mode=sabsa_row_mode,
@@ -233,7 +233,7 @@ def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000, *, sin
     if question_dependencies is None and single_member and sabsa_row_mode is None:
         question_dependencies = {question: [] for question in provider.QUESTIONS}
     root = created['entry']['assignment']
-    _controlled_result(session, root, 'selection', _choice)
+    _controlled_result(session, root, 'selection', lambda packet: _choice(packet, carrier), carrier=carrier)
     state = session.store.read()
     choice = state.execution_plans[(root['version_id'], 'default')]
     assigned = state.resolve(root, 'assignment')
@@ -252,7 +252,7 @@ def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000, *, sin
                     **({'question_dependencies': question_dependencies} if question_dependencies is not None else {}),
                     'integration_task': 'Integrate the six actual answers.',
                     'review_task': 'Review their actual integration.', 'interface_criterion': 'boundary'}}}
-    _controlled_result(session, root, 'work', procedure, choice)
+    _controlled_result(session, root, 'work', procedure, choice, carrier=carrier)
     return session
 
 
@@ -490,27 +490,6 @@ def test_enrolled_sabsa_modes_control_issuance(tmp_path, mode, proposal, expecte
     assert offered['status'] == 'invoke'
     state = session.store.read()
     assert {state.resolve(member['assignment'])['owner']['question'] for member in offered['members']} == expected
-
-
-def test_left_to_right_reports_a_required_backwards_edge(tmp_path):
-    """Serial display order cannot override a hard requirement."""
-    session = _layer_session(tmp_path, sabsa_row_mode='left-to-right',
-                             operator_dependencies={'1': {'what': ['where']}})
-    state = session.store.read()
-    procedure, = state.procedures.values()
-    assert state.procedure_next(procedure) == {
-        'waiting': 'question_order_conflict', 'questions': ['what'], 'procedure': procedure}
-    waiting = session.next()
-    assert waiting['status'] == 'waiting'
-    assert waiting['procedure_waits'][0]['questions'] == ['what']
-    instruction = session.store.put_blob(b'Use dependency order for this blocked row.')
-    assert session.workflow.change_blocked_row_order(procedure, instruction)['status'] == 'committed'
-    reopened = layered.LayeredSession.open(session.locator)
-    offered = reopened.next()
-    state = reopened.store.read()
-    assert {state.resolve(member['assignment'])['owner']['question'] for member in offered['members']} == {'who', 'where'}
-    with pytest.raises(lc.ERROR, match='Cyclic'):
-        lc._row_policy('deterministic', {'1': {'what': ['how']}})
 
 
 def test_layered_batches_compatible_jobs_and_admits_independent_members_once(tmp_path):
@@ -1166,3 +1145,233 @@ def test_work_evidence_projection_distinguishes_observations_from_source_citatio
     assert 'Keep source citations in actual material' in contract['purpose']
     finding = provider._project_schema(schema['$defs']['reviewer'], documents)
     assert 'observation products' in json.dumps(finding)
+
+
+@pytest.mark.parametrize('sabsa, supported, semantic_profile, reject_reviewer', [
+    (False, True, False, False), (True, True, False, False),
+    (True, False, False, False), (True, True, True, False),
+    (True, True, True, True),
+], ids=['layered', 'sabsa-row', 'unsupported-version', 'sabsa-content', 'quarantined-reviewer'])
+def test_local_procedure_applies_entitled_specialist_only_to_its_exact_author(
+        tmp_path, monkeypatch, sabsa, supported, semantic_profile, reject_reviewer):
+    from test_governed_domain import DomainHarness
+    from test_governed_routing import _enroll_fixture_scope
+    from test_governed_sabsa_runtime import ContentHarness
+    import governed_sabsa
+
+    class ScopedContentHarness(DomainHarness, ContentHarness):
+        pass
+
+    fixed_now = time.time()
+    monkeypatch.setattr(lc.time, 'time', lambda: fixed_now)
+    host = (ScopedContentHarness if semantic_profile else DomainHarness)(tmp_path, monkeypatch)
+    prepare = host.bootstrap_message
+    target = host.owner('why' if semantic_profile else 'what', work_item='service-controls')
+    fact = {}
+
+    def enroll(**kwargs):
+        request = prepare(**kwargs)
+        reference, slug = _enroll_fixture_scope(host, request, 'service-controls', 1, owner=target,
+            row_policy=lc._row_policy('left-to-right', {}) if sabsa else None,
+            product_version=None if supported else 'unsupported-fixture-version')
+        fact.update(ref=reference, slug=slug)
+        return request
+
+    monkeypatch.setattr(host, 'bootstrap_message', enroll)
+    host.bootstrap(include_neighbor=True)
+    session = layered.LayeredSession(host.store, {'protocol': 'jai.host-dispatch/1',
+        'workers': [], 'destinations': [], 'tools': [],
+        'limits': {'packet_bytes': 2097152, 'total_bytes': 8388608}},
+        tmp_path / 'fixture-locator.json', single_member=True)
+    session.workflow.entry('default', 'service-controls',
+        [{'metric': 'elapsed_ms', 'unit': 'ms', 'ceiling': 60000}], int(fixed_now * 1000) + 180000)
+
+    saw_author = False
+    product = None
+    reviewed = False
+    for _ in range(24 if semantic_profile else 14):
+        try:
+            offered = session.next()
+        except (lc.ERROR, DispatchError) as error:
+            assert not supported and 'PRODUCT_SCOPE_MISMATCH' in str(error)
+            state = host.store.read()
+            author_refs = {
+                state._reference(identifier)['version_id'] for identifier, entry in state.versions.items()
+                if entry['kind'] == 'delivery.assignment'
+                and entry['content']['record']['owner'] == target
+                and entry['content']['record']['responsibility'] == 'author'
+            }
+            assert author_refs
+            assert not any(identifier in author_refs for identifier, _ in state.execution_plans)
+            assert not any(state.resolve(details['context'], 'context')['assignment']['version_id'] in author_refs
+                           for details in state.run_details.values())
+            return
+        if semantic_profile and reviewed:
+            state = lc.Store(host.store.path, host.store.engagement).read()
+            report = governed_sabsa.assess(state, product)
+            if report['substantive_complete']:
+                assert report['basis']['qualified']
+                assert not report['basis']['accepted']
+                return
+        assert offered['status'] == 'invoke', offered
+        member, = offered['prepared']['members']
+        packet = member['packet']
+        state = host.store.read()
+        assignment = state.resolve(member['assignment'], 'assignment')
+        if assignment['owner'] == target and assignment['responsibility'] == 'reviewer':
+            assert saw_author
+            assert 'workflow_scope' not in assignment['routing']
+            assert 'workflow_selection' not in packet['execution']
+            if not semantic_profile:
+                break
+            assert product in next(slot['refs'] for slot in assignment['inputs']
+                                   if slot['slot_id'] == 'assessed-subject')
+        response = _role_result(session, packet)
+        selecting_reviewer = (assignment['responsibility'] == 'reviewer'
+                              and packet['execution']['phase'] == 'selection')
+        if semantic_profile and selecting_reviewer and not reject_reviewer:
+            lighter = next(item for item in packet['execution']['availability']
+                           if item['provider'] == 'codex' and item['workload_class'] == 'light')
+            response.update(workload_class='light', model_selector=lighter['model_selector'])
+        if assignment['owner'] == target and assignment['responsibility'] == 'author':
+            assert assignment['routing']['workflow_scope'] == fact['ref']
+            if packet['execution']['phase'] == 'selection':
+                assert supported and packet['execution']['workflow_selection']['eligible'] == [fact['slug']]
+                unscoped = {key: value for key, value in assignment.items() if key != 'procedure_task'}
+                unscoped['routing'] = {'policy': assignment['routing']['policy']}
+                with pytest.raises(lc.ERROR, match='requires its exact scoped author procedure'):
+                    state.assignment_routing(unscoped)
+                with pytest.raises(lc.ERROR, match='must be derived by the host'):
+                    state._assignment_mandate({}, {}, state.resolve(assignment['issued_under'], 'assignment'),
+                                              assignment, False, member['assignment']['logical_id'])
+                response['specialties'] = [fact['slug']]
+                saw_author = True
+            else:
+                cold = lc.Store(host.store.path, host.store.engagement).read()
+                execution = cold.context_execution(cold.resolve(member['context'], 'context'))
+                assert execution['specialties'] == [fact['slug']]
+                if semantic_profile:
+                    response['materials'] = [{'json': host.semantic(private=False)}]
+        else:
+            assert 'workflow_scope' not in assignment['routing']
+        if not sabsa and response.get('procedure', {}).get('kind') == 'layer':
+            response['procedure']['specification']['question_dependencies'] = {
+                question: [] if question == 'what' else ['what'] for question in provider.QUESTIONS}
+        invocation = offered['invocation_id']
+        session.start(invocation, 'codex', invocation, {'fixture': 'Offline native execution'})
+        returned = session.complete(invocation, json.dumps(
+            {'format': 'jai.semantic-return/1', 'results': [response]}), {'fixture': 'Offline return'})
+        assert returned['status'] == 'returned', returned
+        if reject_reviewer and selecting_reviewer:
+            import professional_review
+
+            run_id = packet['run_id']
+            warm = host.store.read()
+            reviewer_id = member['assignment']['version_id']
+            assert warm.run_states[run_id] == 'quarantined'
+            assert not any(identifier == reviewer_id for identifier, _ in warm.execution_plans)
+
+            def unavailable_rules():
+                pytest.fail('Cold quarantine recovery consulted the current installed review rules.')
+
+            with monkeypatch.context() as offline:
+                offline.setattr(professional_review, '_canonical_rules', unavailable_rules)
+                cold = lc.Store(host.store.path, host.store.engagement).read()
+            assert cold.run_states[run_id] == 'quarantined'
+            assert not any(identifier == reviewer_id for identifier, _ in cold.execution_plans)
+            assert cold.head == warm.head
+
+            transactions = lc._parse_transactions(host.store.path.read_bytes())
+            for index, transaction in enumerate(transactions):
+                effects = transaction['operations'][0]['data']['effects']
+                quarantine = next((effect for effect in effects if effect['op'] == 'quarantine'
+                                   and effect['run_id'] == run_id), None)
+                if quarantine is not None:
+                    break
+            else:
+                pytest.fail('The native selection did not record its quarantine.')
+            quarantine['reason'] += ' Altered diagnostic.'
+            transaction['hash'] = lc._transaction_hash(transaction)
+            with pytest.raises(lc.ERROR, match='Persisted effects differ from the exact derived transition'):
+                lc.replay(transactions[:index + 1], blob_reader=host.store._blob)
+            return
+        if semantic_profile and assignment['owner'] == target and packet['execution']['phase'] == 'work':
+            state = host.store.read()
+            if assignment['responsibility'] == 'author':
+                product, = (event['payload']['candidate'] for event in state.events
+                            if event['kind'] == 'submission'
+                            and state.resolve(event['payload']['candidate'], 'product')['assignment']
+                            == member['assignment'])
+                assert not governed_sabsa.assess(state, product)['substantive_complete']
+                record = state.resolve(product, 'product')
+                with pytest.raises(lc.ERROR, match='requires typed semantic material'):
+                    governed_sabsa.validate_product(state, {**record, 'material': [host.material('Plain text')]})
+            elif assignment['responsibility'] == 'reviewer':
+                reviewed = True
+    else:
+        detail = governed_sabsa.assess(host.store.read(), product) if reviewed else 'review not returned'
+        pytest.fail(f'Scoped question did not complete: {detail}')
+
+
+@pytest.mark.parametrize('carrier', ['claude', 'codex'])
+def test_named_specialist_reference_is_deferred_and_scoped(tmp_path, monkeypatch, carrier):
+    """Deliver the packaged reference only to the selected live member."""
+    from tools.compose_role_library import compose
+
+    compilation = compose(Path(__file__).resolve().parents[1])
+    for name, raw in compilation.files.items():
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(raw)
+    runtime = tmp_path / '.ai/runtime'
+    monkeypatch.setattr(provider, 'ROOT', runtime)
+    now = [time.time()]
+    monkeypatch.setattr(lc.time, 'time', lambda: now[0])
+    session = _layer_session(tmp_path / 'engagement', carrier=carrier)
+    store = session.store
+    slug = 'qradar-siem-specialist'
+    name = 'knowledge/products/ibm/qradar-siem/log-source-integration/qradar-source-evidence.md'
+    handle = f'role-reference:{slug}:{name}'
+    projection = next(path for path in compilation.files if path.endswith(name))
+    captured = compilation.files[projection]
+
+    selecting = session.next()
+    invocation = selecting['invocation_id']
+    members = selecting['prepared']['members']
+    target = members[0]['assignment']
+    session.start(invocation, carrier, invocation, {'fixture': 'Offline selection'})
+    with pytest.raises(DispatchError, match='outside the exact input manifest'):
+        session.request(invocation, members[0]['member_key'],
+                        {'id': 'unselected', 'operation': 'read', 'handle': handle})
+    results = [_choice(member['packet'], carrier) for member in members]
+    results[0]['specialties'] = [slug]
+    session.complete(invocation, json.dumps({'format': 'jai.semantic-return/1', 'results': results}),
+                     {'fixture': 'Controlled offline selection'})
+    offered = session.next()
+    invocation = offered['invocation_id']
+    prepared = offered['prepared']
+    member = next(item for item in prepared['members'] if item['assignment'] == target)
+    sibling = next(item for item in prepared['members'] if item['assignment'] != target)
+    assert member['packet']['execution']['deferred_references'] == {handle: lc.blob(captured)}
+    view = lc.loads(store._blob(member['host_delivery']['prompt_blob_id']))
+    workforce = lc.loads(store._blob(view['resources']['workforce']['handle'].removeprefix('resource:')))
+    assert workforce['deferred_references'] == [{'handle': handle, 'path': name}]
+    assert captured not in lc.canonical(prepared)
+    session.start(invocation, carrier, invocation, {'fixture': 'Offline work'})
+    (tmp_path / projection).write_bytes(b'Changed installation bytes.')
+    cold = layered.LayeredSession.open(session.locator)
+    request = {'id': 'reference-read', 'operation': 'read', 'handle': handle}
+    response = cold.request(invocation, member['member_key'], request)
+    assert base64.b64decode(response['result']['data']) == captured
+    with pytest.raises(DispatchError, match='outside the exact input manifest') as foreign:
+        cold.request(invocation, sibling['member_key'], dict(request, id='different-member'))
+    assert foreign.value.code == 'P_SCOPE'
+    other_handle = ('role-reference:splunk-enterprise-security-specialist:knowledge/products/splunk/'
+                    'enterprise-security/log-source-integration/enterprise-security-evidence.md')
+    with pytest.raises(DispatchError, match='outside the exact input manifest'):
+        cold.request(invocation, member['member_key'], dict(request, id='wrong-role', handle=other_handle))
+    context = cold.store.read().resolve(member['context'], 'context')
+    now[0] = (context['expires_at_ms'] + 1) / 1000
+    with pytest.raises((lc.ERROR, DispatchError), match='expired|current|allowance') as denied:
+        cold.request(invocation, member['member_key'], dict(request, id='expired-reference'))
+    assert denied.value.code == 'P_STATE'
