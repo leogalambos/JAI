@@ -153,3 +153,82 @@ def test_serialization_admitted_metadata_expiry_and_head_boundaries(tmp_path, mo
     response = store.submit(lc.canonical(message))
     assert response['status'] == 'rejected' and response['error']['code'] == 'P_HEAD', response
     assert host.path.read_bytes() == advanced
+
+
+def test_warm_commit_reads_no_prefix_and_recovers_a_partial_owned_append(tmp_path, monkeypatch):
+    """Preserve the verified prefix across a short write and a fresh Store."""
+    host = GovernedHarness(tmp_path, monkeypatch, engagement='append-recovery')
+    host.bootstrap()
+    assignment, record = host.assignment('append-root', 'setter')
+    store = host.store
+    message = _selection_request(host, assignment, record, 'recoverable-context')
+    original = host.path.read_bytes()
+    inode = host.path.stat().st_ino
+    warm = store.read()
+    read_span = lc.Store._read_span
+    operations = []
+
+    def observe(fd, offset, length):
+        operations.append((offset, length))
+        return read_span(fd, offset, length)
+
+    monkeypatch.setattr(lc.Store, '_read_span', staticmethod(observe))
+    real_write = lc.os.write
+
+    def fail_after_partial(fd, payload):
+        if lc.os.fstat(fd).st_ino == inode:
+            real_write(fd, payload[:27])
+            raise OSError('Injected short append')
+        return real_write(fd, payload)
+
+    with monkeypatch.context() as fault:
+        fault.setattr(lc.os, 'write', fail_after_partial)
+        assert store.submit(lc.canonical(message))['status'] == 'rejected'
+    assert operations == [(len(original) - 1, 1)]
+    assert len(host.path.read_bytes()) == len(original) + 27
+    assert host.path.stat().st_ino == inode
+
+    cold = lc.Store(host.path, host.engagement)
+    assert cold.read().head == warm.head
+    committed = cold.submit(lc.canonical(message))
+    assert committed['status'] == 'committed', committed
+    raw = host.path.read_bytes()
+    assert raw.startswith(original)
+    assert len(lc._parse_transactions(raw[len(original):])) == 1
+    assert not cold._pending_path.exists()
+    assert host.path.stat().st_ino == inode
+    operations.clear()
+    assert cold.read().head == committed['receipt']['after_head']
+    assert cold.submit(lc.canonical(message))['status'] == 'already_committed'
+    assert operations == []
+
+
+def test_complete_but_unsynced_append_is_invisible_until_exclusive_recovery(tmp_path, monkeypatch):
+    """Recover a fully written row before returning its original commit receipt."""
+    host = GovernedHarness(tmp_path, monkeypatch, engagement='append-sync-recovery')
+    host.bootstrap()
+    assignment, record = host.assignment('sync-root', 'setter')
+    store = host.store
+    message = _selection_request(host, assignment, record, 'sync-context')
+    original = host.path.read_bytes()
+    before = store.read().head
+    inode = host.path.stat().st_ino
+    fsync = lc.os.fsync
+
+    def fail_journal_sync(fd):
+        if lc.os.fstat(fd).st_ino == inode:
+            raise OSError('Injected journal sync failure')
+        fsync(fd)
+
+    with monkeypatch.context() as fault:
+        fault.setattr(lc.os, 'fsync', fail_journal_sync)
+        assert store.submit(lc.canonical(message))['status'] == 'rejected'
+    raw = host.path.read_bytes()
+    assert raw.startswith(original) and raw.endswith(b'\n') and len(raw) > len(original)
+    fresh = lc.Store(host.path, host.engagement)
+    assert fresh.read().head == before
+    response = fresh.submit(lc.canonical(message))
+    assert response['status'] == 'already_committed', response
+    assert fresh.read().head == response['receipt']['after_head']
+    assert host.path.read_bytes() == raw
+    assert not fresh._pending_path.exists()

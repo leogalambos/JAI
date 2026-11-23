@@ -9,6 +9,7 @@ Signing is an explicit host operator action with a key outside agent mounts.
 from __future__ import annotations
 import argparse, base64, hashlib, json, os, re, shlex, stat, subprocess, sys, tempfile, time, uuid
 from pathlib import Path
+from contextlib import contextmanager
 
 from runtime_dependencies import jsonschema_status
 from operator_keys import default_private_key, openssl_executable
@@ -62,28 +63,42 @@ def journal_snapshot(path):
     """
     return _regular_bytes(path,None)
 
-def _regular_bytes(path,maximum):
-    """Share secure descriptor opening with a resource-specific aggregate bound."""
-    p=Path(path).absolute()
-    if '..' in p.parts:raise ValueError('path traversal denied')
-    if not hasattr(os,'O_NOFOLLOW') or os.open not in os.supports_dir_fd:raise ValueError('secure local file adapter unavailable on this OS')
-    directory=os.open(p.anchor,os.O_RDONLY|os.O_DIRECTORY)
+@contextmanager
+def regular_descriptor(path, flags=os.O_RDONLY):
+    """Open one regular single-link file without following any path component."""
+    p = Path(path).absolute()
+    if '..' in p.parts or not hasattr(os, 'O_NOFOLLOW') or os.open not in os.supports_dir_fd:
+        raise ValueError('secure local file adapter unavailable or path traversal denied')
+    directory = os.open(p.anchor, os.O_RDONLY | os.O_DIRECTORY)
     try:
         for part in p.parts[1:-1]:
-            child=os.open(part,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW,dir_fd=directory)
-            os.close(directory);directory=child
-        fd=os.open(p.name,os.O_RDONLY|os.O_NOFOLLOW,dir_fd=directory)
-    finally:os.close(directory)
+            child = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=directory)
+            os.close(directory)
+            directory = child
+        fd = os.open(p.name, flags | os.O_NOFOLLOW, 0o600, dir_fd=directory)
+    finally:
+        os.close(directory)
     try:
-        info=os.fstat(fd)
-        if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1 or (maximum is not None and info.st_size>maximum):raise ValueError('bounded single-link regular file required')
-        with os.fdopen(fd,'rb',closefd=False) as stream:
-            raw=stream.read(info.st_size)
-        after=os.fstat(fd)
-        if len(raw)!=info.st_size or (after.st_size,after.st_mtime_ns)!=(info.st_size,info.st_mtime_ns):
+        info = os.fstat(fd)
+        if not stat.S_ISREG(info.st_mode) or info.st_nlink != 1:
+            raise ValueError('single-link regular file required')
+        yield fd
+    finally:
+        os.close(fd)
+
+
+def _regular_bytes(path, maximum):
+    """Share secure descriptor opening with a resource-specific aggregate bound."""
+    with regular_descriptor(path) as fd:
+        info = os.fstat(fd)
+        if maximum is not None and info.st_size > maximum:
+            raise ValueError('bounded single-link regular file required')
+        with os.fdopen(fd, 'rb', closefd=False) as stream:
+            raw = stream.read(info.st_size)
+        after = os.fstat(fd)
+        if len(raw) != info.st_size or (after.st_size, after.st_mtime_ns) != (info.st_size, info.st_mtime_ns):
             raise ValueError('regular file changed while reading')
         return raw
-    finally:os.close(fd)
 
 
 def request(kind,purpose,source,target,parameters,permissions='normal user',risk='local output only',ttl=1800):

@@ -2,11 +2,13 @@
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Physical invocation contracts through the real Store and semantic codec."""
 import base64
+from concurrent.futures import ThreadPoolExecutor
 import json
 import io
 import re
 from pathlib import Path
 import sys
+from threading import Barrier, Event
 import time
 
 import pytest
@@ -649,6 +651,68 @@ def test_singleton_parallel_readiness_requires_each_actual_active_handle(tmp_pat
     assert followup['status'] == 'invoke'
     assert followup['members'][0]['assignment']['version_id'] == ref
     assert followup['prepared']['model_view']['members'][0]['phase'] == 'work'
+
+
+def test_concurrent_native_completions_commit_both_exact_returns(tmp_path, monkeypatch):
+    """Overlapping returns wait for the writer and independently advance the journal."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, single_member=True)
+    first = session.next()
+    first_id = first['invocation_id']
+    session.start(first_id, 'codex', 'parallel-first', {'observed': 'First dispatch'})
+    second = session.next(observed_running={first_id: 'parallel-first'}, max_parallel=2)
+    second_id = second['invocation_id']
+    session.start(second_id, 'codex', 'parallel-second', {'observed': 'Second dispatch'})
+    resumed = layered.LayeredSession.open(session.locator)
+    before = session.store.read()
+    begin = Barrier(3)
+    release = Event()
+    submit = lc.Store.submit_invocation_completion
+
+    def synchronized_submit(store, build_message):
+        begin.wait(timeout=10)
+        assert release.wait(timeout=10)
+        return submit(store, build_message)
+
+    monkeypatch.setattr(lc.Store, 'submit_invocation_completion', synchronized_submit)
+    first_raw, second_raw = (
+        json.dumps({'format': 'jai.semantic-return/1',
+                    'results': [_choice(offer['prepared']['members'][0]['packet'])]})
+        for offer in (first, second))
+    first_capture = {'observed': 'First return'}
+    second_capture = {'observed': 'Second return'}
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        first_return = pool.submit(session.complete, first_id, first_raw, first_capture)
+        second_return = pool.submit(resumed.complete, second_id, second_raw, second_capture)
+        begin.wait(timeout=10)
+        with lc.store_lock(session.store.path):
+            release.set()
+            assert not first_return.done() and not second_return.done()
+        for completion in (first_return.result(timeout=15), second_return.result(timeout=15)):
+            assert completion['status'] == 'returned'
+            assert completion['completion']['status'] == 'committed'
+
+    state = lc.Store(session.store.path, session.store.engagement).read()
+    assert len(state.transactions) == len(before.transactions) + 2
+    for offered, raw in ((first, first_raw), (second, second_raw)):
+        invocation = offered['invocation_id']
+        assert state.invocations[invocation]['raw_return_blob_id'] == lc.blob(raw.encode())
+        assert state.invocations[invocation]['state'] == 'returned'
+        assignment = offered['members'][0]['assignment']
+        assert (assignment['version_id'], 'default') in state.execution_plans
+    duplicate = session.complete(first_id, first_raw, first_capture)
+    assert duplicate['completion']['status'] == 'already_committed'
+    # A publisher that already captured the same return before learning it
+    # committed may have a different observation time.
+    monkeypatch.setattr(lc.Store, 'submit_invocation_completion', submit)
+    committed = next(message for message in state.messages.values()
+                     if message['request_id'] == f'invocation_finished:{first_id}')
+    payload = dict(committed['payload'])
+    payload.pop('event')
+    payload.pop('invocation_id')
+    payload['observed_at_ms'] += 1
+    retried = session.workflow.invocation_event(first_id, 'invocation_finished', **payload)
+    assert retried == duplicate['completion']
+    assert session.store.read().head == state.head
 
 
 def test_single_member_carrier_rejects_unresolved_legacy_batch(tmp_path):

@@ -17,8 +17,9 @@ import os
 import re
 from pathlib import Path
 from functools import wraps
-from contextlib import contextmanager
+from contextlib import ExitStack, contextmanager
 import tempfile
+import threading
 import time
 import unicodedata
 import uuid
@@ -205,13 +206,18 @@ RECORD_KINDS = {'source', 'profile', 'assignment', 'context', 'product', 'assess
 ERROR = wire.ProtocolError
 
 
+_journal_locks = threading.local()
+
+
 @contextmanager
-def store_lock(path):
-    """Hold the journal's nonblocking process-lifetime writer lock.
+def store_lock(path, *, wait=False, shared=False):
+    """Hold the journal lock for a bounded store operation.
 
     Args:
         path: Exact journal path; its persistent regular ``.lock`` inode is shared
             by recording and short physical-effect critical sections.
+        wait: Wait for a current owner to release its lock.
+        shared: Allow concurrent readers or borrow this thread's existing lock.
     Yields:
         None while this process owns the lock. Never hold it across native waits.
     Raises:
@@ -224,20 +230,40 @@ def store_lock(path):
     except ImportError as error:
         raise ERROR('P_BACKEND', 'Native journal locking is unavailable on this platform') from error
     import stat
-    lock_path = str(path) + '.lock'
-    descriptor = os.open(lock_path, os.O_CREAT | os.O_RDWR | os.O_NOFOLLOW, 0o600)
+    held = getattr(_journal_locks, 'paths', None)
+    if held is None:
+        held = _journal_locks.paths = set()
+    lock_path = str(Path(path).absolute()) + '.lock'
+    if shared and lock_path in held:
+        yield
+        return
+    flags = (os.O_RDONLY if shared else os.O_CREAT | os.O_RDWR) | os.O_NOFOLLOW
+    try:
+        descriptor = os.open(lock_path, flags, 0o600)
+    except FileNotFoundError:
+        if not shared:
+            raise
+        # A copied archive can have no writer sentinel. The descriptor reader
+        # still checks its captured size and identity before accepting bytes.
+        yield
+        return
     try:
         actual = os.fstat(descriptor)
         if not stat.S_ISREG(actual.st_mode):
             raise ERROR('P_INTEGRITY', 'Journal lock must be a regular file')
         try:
-            fcntl.flock(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            mode = fcntl.LOCK_SH if shared else fcntl.LOCK_EX
+            fcntl.flock(descriptor, mode | (0 if wait else fcntl.LOCK_NB))
         except BlockingIOError as error:
             raise ERROR('P_HEAD', 'Concurrent governed operation; retry against current state') from error
         current = os.stat(lock_path, follow_symlinks=False)
         if (actual.st_dev, actual.st_ino) != (current.st_dev, current.st_ino):
             raise ERROR('P_INTEGRITY', 'Journal lock identity changed during acquisition')
-        yield
+        held.add(lock_path)
+        try:
+            yield
+        finally:
+            held.remove(lock_path)
     finally:
         # Closing releases the OS lock even after process failure. Unlinking would
         # let another writer lock a different inode while this one is still held.
@@ -4967,22 +4993,117 @@ class Store:
     def _clone(self, state):
         return state._fork()
 
-    def _verified(self, raw):
-        """Advance an exact verified prefix; ordinary reads need no keyring."""
-        if self._checkpoint is not None:
-            accepted, state = self._checkpoint
-            if raw.startswith(accepted) and (raw == accepted or not accepted or accepted.endswith(b'\n')):
-                suffix = raw[len(accepted):]
-                if suffix:
-                    state = self._clone(state)
-                    for transaction in _parse_transactions(suffix):
-                        _verify_transaction(state, transaction, live=False)
-                self._checkpoint = (raw, state)
-                return state
-            self._checkpoint = None
-        state = replay(_parse_transactions(raw), self.engagement, blob_reader=self._blob)
-        self._checkpoint = (raw, state)
+    @staticmethod
+    def _stamp(info):
+        return (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
+
+    @staticmethod
+    def _read_span(fd, offset, length):
+        with os.fdopen(fd, 'rb', closefd=False) as stream:
+            stream.seek(offset)
+            raw = stream.read(length)
+        if len(raw) != length:
+            raise ERROR('P_INTEGRITY', 'Journal changed during descriptor read')
+        return raw
+
+    @property
+    def _pending_path(self):
+        return self.path.with_name(self.path.name + '.append-pending')
+
+    def _sync_directory(self):
+        directory = os.open(self.path.parent, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
+
+    def _pending_span(self, fd, stamp):
+        """Recognize only the exact suffix authorized by a durable append intent."""
+        try:
+            raw = operator.journal_snapshot(self._pending_path)
+        except FileNotFoundError:
+            return stamp[2], None
+        header, separator, encoded = raw.partition(b'\n')
+        intent = loads(header)
+        if (not separator or not isinstance(intent, dict)
+                or set(intent) != {'identity', 'offset', 'digest'}
+                or intent['identity'] != list(stamp[:2])
+                or type(intent['offset']) is not int or not 0 <= intent['offset'] <= stamp[2]
+                or not encoded.endswith(b'\n') or encoded.count(b'\n') != 1
+                or hashlib.sha256(encoded).hexdigest() != intent['digest']):
+            raise ERROR('P_INTEGRITY', 'Invalid durable append intent')
+        offset = intent['offset']
+        length = stamp[2] - offset
+        if length > len(encoded) or self._read_span(fd, offset, length) != encoded[:length]:
+            raise ERROR('P_INTEGRITY', 'Journal suffix differs from its durable append intent')
+        return (stamp[2] if length == len(encoded) else offset), offset
+
+    def _verified_file(self, fd, *, recover=False):
+        """Verify cold or externally changed bytes once and reuse owned checkpoints."""
+        stamp = self._stamp(os.fstat(fd))
+        end, pending_offset = self._pending_span(fd, stamp)
+        pending = pending_offset is not None
+        if pending and not recover:
+            # Publication requires a durable row and removal of its intent.
+            end = pending_offset
+        checkpoint = self._checkpoint
+        if not pending and checkpoint is not None and checkpoint[0] == stamp:
+            return checkpoint[1]
+        raw = self._read_span(fd, 0, end)
+        if self._stamp(os.fstat(fd)) != stamp:
+            raise ERROR('P_INTEGRITY', 'Journal changed while its verified snapshot was read')
+        digest = hashlib.sha256(raw)
+        if checkpoint and end >= checkpoint[0][2] and hashlib.sha256(raw[:checkpoint[0][2]]).digest() == checkpoint[2].digest():
+            state = self._clone(checkpoint[1])
+            for transaction in _parse_transactions(raw[checkpoint[0][2]:]):
+                _verify_transaction(state, transaction, live=False)
+        else:
+            state = replay(_parse_transactions(raw), self.engagement, blob_reader=self._blob)
+        if pending and recover:
+            if end != stamp[2]:
+                os.ftruncate(fd, end)
+            os.fsync(fd)
+            self._pending_path.unlink()
+            self._sync_directory()
+            stamp = self._stamp(os.fstat(fd))
+        if not pending or recover:
+            self._checkpoint = (stamp, state, digest)
         return state
+
+    def _append(self, fd, encoded, expected_stamp):
+        """Persist one row with a recoverable exact intent before writing data."""
+        stamp = self._stamp(os.fstat(fd))
+        if stamp != expected_stamp or self._stamp(os.stat(self.path, follow_symlinks=False)) != stamp:
+            raise ERROR('P_HEAD', 'Journal changed after verifying its predecessor')
+        offset = stamp[2]
+        if offset and self._read_span(fd, offset - 1, 1) != b'\n':
+            raise ERROR('P_INTEGRITY', 'A governed append requires an exact transaction boundary')
+        header = operator.canonical({'identity': list(stamp[:2]), 'offset': offset,
+                                     'digest': hashlib.sha256(encoded).hexdigest()})
+        temporary = None
+        try:
+            with tempfile.NamedTemporaryFile(dir=self.path.parent, prefix='.append-', delete=False) as stream:
+                temporary = Path(stream.name)
+                stream.write(header + b'\n' + encoded)
+                stream.flush()
+                os.fsync(stream.fileno())
+            os.replace(temporary, self._pending_path)
+            temporary = None
+            self._sync_directory()
+            if self._stamp(os.fstat(fd)) != stamp:
+                raise ERROR('P_INTEGRITY', 'Journal changed before append')
+            remaining = memoryview(encoded)
+            while remaining:
+                written = os.write(fd, remaining)
+                if written <= 0:
+                    raise OSError('Short governed journal write')
+                remaining = remaining[written:]
+            os.fsync(fd)
+            self._pending_path.unlink()
+            self._sync_directory()
+        finally:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
 
     def put_blob(self, raw):
         """Register immutable bytes without selecting content or granting access.
@@ -5034,30 +5155,62 @@ class Store:
         Raises:
             ProtocolError: History or its externally enrolled proofs fail verification.
         """
-        raw = operator.journal_snapshot(self.path) if self.path.exists() else b''
-        return self._clone(self._verified(raw))
+        if not self.path.parent.exists():
+            return State(self.engagement, self._blob)
+        with store_lock(self.path, wait=True, shared=True):
+            try:
+                with operator.regular_descriptor(self.path) as fd:
+                    return self._clone(self._verified_file(fd))
+            except FileNotFoundError:
+                if self.path.exists():
+                    raise
+                if self._pending_path.exists():
+                    raise ERROR('P_INTEGRITY', 'Append intent has no governed journal')
+                self._checkpoint = None
+                return State(self.engagement, self._blob)
 
-    def submit(self, raw_message, authority_proof=None):
+    def submit_invocation_completion(self, build_message):
+        """Build an observed host completion under exclusive current-state ownership."""
+        return self.submit(None, _completion=build_message)
+
+    def submit(self, raw_message, authority_proof=None, *, _completion=None):
         """Record one local-runtime transition atomically, deriving it once.
 
         Args:
             raw_message: Closed host message; direct assignment senders are refused.
             authority_proof: Actual external L0 wrapper bytes or object for a reserved act.
+            _completion: Internal factory for an observed native completion only.
         Returns:
             Closed response; exact retries return the original receipt without a new event.
             Rejection never changes the accepted journal or private checkpoint.
         """
         message = None
         try:
-            message = _parse_message(raw_message)
-            if message['sender']['kind'] == 'assignment':
-                raise ERROR('P_ORIGIN', 'Direct entity ingestion is unsupported; use its captured issued RunReturn')
+            if _completion is None:
+                message = _parse_message(raw_message)
+                if message['sender']['kind'] == 'assignment':
+                    raise ERROR('P_ORIGIN', 'Direct entity ingestion is unsupported; use its captured issued RunReturn')
             self.path.parent.mkdir(parents=True, exist_ok=True)
-            temporary = None
-            with store_lock(self.path):
-                try:
-                    raw_before = operator.journal_snapshot(self.path) if self.path.exists() else b''
-                    accepted = self._verified(raw_before)
+            with store_lock(self.path, wait=_completion is not None):
+                with ExitStack() as opened:
+                    try:
+                        fd = opened.enter_context(operator.regular_descriptor(self.path, os.O_RDWR | os.O_APPEND))
+                    except FileNotFoundError:
+                        if self._pending_path.exists():
+                            raise ERROR('P_INTEGRITY', 'Append intent has no governed journal')
+                        fd = None
+                        self._checkpoint = None
+                        accepted = State(self.engagement, self._blob)
+                    else:
+                        accepted = self._verified_file(fd, recover=True)
+                    if _completion is not None:
+                        prepared = _completion(accepted)
+                        if prepared.get('status') == 'already_committed':
+                            return prepared
+                        message = _parse_message(prepared)
+                        if (message['sender']['kind'] != 'controller' or message['message_type'] != 'control_event'
+                                or message['payload'].get('event') != 'invocation_finished'):
+                            raise ERROR('P_SCOPE', 'Current-state submission requires an observed host completion')
                     key = (message['scope'], _owner_key(message['sender']), message['request_id'])
                     committed = accepted.requests.get(key)
                     if committed is not None:
@@ -5089,26 +5242,18 @@ class Store:
                     if canonical(serialized) != canonical(transaction):
                         raise ERROR('P_INTEGRITY', 'Serialized transition differs from its exact validated representation')
                     _append_transaction(state, serialized, message, effects, human)
-                    candidate_bytes = raw_before + encoded
-                    with tempfile.NamedTemporaryFile(dir=self.path.parent, prefix='.governed-', delete=False) as stream:
-                        temporary = Path(stream.name)
-                        stream.write(candidate_bytes)
-                        stream.flush()
-                        os.fsync(stream.fileno())
-                    if (operator.journal_snapshot(self.path) if self.path.exists() else b'') != raw_before:
-                        raise ERROR('P_HEAD', 'Ledger changed during transition preparation')
-                    os.replace(temporary, self.path)
-                    temporary = None
-                    directory = os.open(self.path.parent, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
-                    try:
-                        os.fsync(directory)
-                    finally:
-                        os.close(directory)
-                    self._checkpoint = (candidate_bytes, state)
+                    if fd is None:
+                        fd = opened.enter_context(operator.regular_descriptor(
+                            self.path, os.O_CREAT | os.O_EXCL | os.O_RDWR | os.O_APPEND))
+                        predecessor_stamp = self._stamp(os.fstat(fd))
+                        digest = hashlib.sha256()
+                    else:
+                        predecessor_stamp, _, prior_digest = self._checkpoint
+                        digest = prior_digest.copy()
+                    digest.update(encoded)
+                    self._append(fd, encoded, predecessor_stamp)
+                    self._checkpoint = (self._stamp(os.fstat(fd)), state, digest)
                     return {'status': 'committed', 'receipt': _receipt(serialized), 'error': None}
-                finally:
-                    if temporary is not None:
-                        temporary.unlink(missing_ok=True)
         except ERROR as error:
             return {'status': 'rejected', 'receipt': None, 'error': {'code': error.code, 'message': str(error),
                 'message_id': message.get('message_id') if message else None,

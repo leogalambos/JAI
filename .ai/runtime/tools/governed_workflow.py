@@ -299,6 +299,9 @@ class Workflow:
     def invocation_event(self, invocation_id, event, **payload):
         """Record an exact physical event, returning an identical retry receipt.
 
+        Completion publication waits for the journal writer. The Store validates
+        the same captured result against the state current when ownership is acquired.
+
         Args:
             invocation_id: Existing physical call, allocated before member hashes.
             event: Closed invocation event name from the maintained wire schema.
@@ -308,7 +311,20 @@ class Workflow:
         Raises:
             ProtocolError: Current controller, event, bound or replay conflict fails.
         """
-        state = self.store.read()
+        if event == 'invocation_finished':
+            response = self.store.submit_invocation_completion(
+                lambda state: self._invocation_event_message(state, invocation_id, event, payload))
+            if response['status'] not in {'committed', 'already_committed'}:
+                error = response['error']
+                raise governed_dispatch.DispatchError(error['code'], 'Host operation was rejected: ' + error['message'])
+            return response
+        message = self._invocation_event_message(self.store.read(), invocation_id, event, payload)
+        if message.get('status') == 'already_committed':
+            return message
+        return self.dispatcher._submit(message)
+
+    def _invocation_event_message(self, state, invocation_id, event, payload):
+        """Bind captured facts to current state or return the original exact receipt."""
         invocation = state.invocations[invocation_id]
         scope = invocation['scope']
         controller, context = self.dispatcher._controller(state, scope)
@@ -320,7 +336,9 @@ class Workflow:
         committed = state.requests.get((scope, lc._owner_key(controller), request_id))
         if committed is not None:
             previous = state.messages[committed['message_id']]
-            if event == 'invocation_cancelled':
+            if event in {'invocation_cancelled', 'invocation_finished'}:
+                # An identical capture can be delivered again after another
+                # publisher committed it. Retain the first observation time.
                 body['observed_at_ms'] = previous['payload']['observed_at_ms']
             if previous['payload'] != body:
                 raise lc.ERROR('P_IDEMPOTENCY', 'Physical event retry changes its exact committed facts')
@@ -334,7 +352,7 @@ class Workflow:
             'issued_at_ms': now, 'expires_at_ms': now + profile['max_request_duration_ms'],
             'causes': [], 'attachments': [], 'payload': body}
         message['message_id'] = wire.message_id(message)
-        return self.dispatcher._submit(message)
+        return message
 
     def issue_batch(self, jobs, bound_ms=None, invocation_id=None):
         """Issue one finite compatible native call and its exact logical members.
