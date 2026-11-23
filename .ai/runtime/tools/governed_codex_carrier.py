@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 """Carry singleton layered invocations over the local Codex App Server protocol."""
 from __future__ import annotations
 
@@ -137,12 +139,25 @@ class Stdio:
         return value
 
     def deny(self, frame, deadline):
-        """Reject host requests for unregistered tools and elevated privileges."""
+        """Reject host requests for unregistered tools and elevated privileges.
+
+        Args:
+            frame: Incoming RPC frame. Only requests receive an error response.
+            deadline: Absolute monotonic deadline for writing the response.
+        """
         if 'id' in frame and 'method' in frame:
             self.send({'id': frame['id'], 'error': {'code': -32601, 'message': 'Request denied by JAI'}}, deadline)
 
     def call(self, method, params, deadline, observe=None):
-        """Send one RPC and route interleaved notifications without trusting unrelated responses."""
+        """Send one RPC and return the result matching its request identifier.
+
+        Args:
+            method: App Server RPC method to invoke.
+            params: Parameters sent with the request.
+            deadline: Absolute monotonic deadline shared by the write and reads.
+            observe: Optional handler for interleaved frames. By default,
+                unsolicited requests are denied.
+        """
         self.sequence += 1
         identifier = self.sequence
         self.send({'id': identifier, 'method': method, 'params': params}, deadline)
@@ -204,7 +219,21 @@ def _tool(role_choices):
 
 
 def worker_thread(rpc, deadline, model=None, *, role_choices, observe=None):
-    """Open a worker and require actual host acknowledgments before sending task text."""
+    """Open a worker and require host acknowledgments before sending task text.
+
+    Args:
+        rpc: App Server peer bound to the worker directory.
+        deadline: Shared absolute monotonic deadline for both requests.
+        model: Optional explicit model identifier.
+        role_choices: Exact role slugs exposed to the worker.
+        observe: Optional observer forwarded to the peer.
+
+    Returns:
+        The acknowledged thread-start response after checking the MCP inventory.
+
+    Raises:
+        InvocationError: Worker isolation or absence of ambient MCP is unconfirmed.
+    """
     params = {'cwd': str(rpc.directory), 'approvalPolicy': 'never', 'sandbox': 'read-only',
               'environments': [], 'dynamicTools': [_tool(tuple(role_choices))], 'baseInstructions': (
                   'Follow the exact JAI task. Request resources only via jai_member_broker. '
@@ -444,6 +473,14 @@ def carry(session, invocation, rpc, directory, *, route=None):
 
     The caller owns the engagement carrier lock. A sending receipt is never
     retried by dispatch. Recovery uses only the original thread and exact bytes.
+
+    Args:
+        session: Active governed singleton session.
+        invocation: Exact identifier of the prepared or recorded invocation.
+        rpc: App Server peer used for dispatch or reconciliation.
+        directory: Private directory holding carrier correlation receipts.
+        route: Optional callback that returns true for frames it handles on
+            behalf of other active turns.
     """
     status = session.status(invocation)
     if not session.single_member or status['provider'] != 'codex' or len(status['members']) != 1:
@@ -623,7 +660,12 @@ def drive_parallel(session, rpc, directory, limit, publish):
 
 
 def main(argv=None):
-    """Start or resume an ordinary JAI engagement using the singleton Codex transport."""
+    """Start or resume an ordinary JAI engagement using the singleton Codex transport.
+
+    Args:
+        argv: Command arguments without the program name. Defaults to the
+            current process arguments.
+    """
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--codex', required=True, type=Path)
     parser.add_argument('--parallel', type=int, choices=range(1, 7), default=1)

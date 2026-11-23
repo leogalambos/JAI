@@ -1,13 +1,66 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 """Controlled App Server frames against the real singleton Store and broker."""
 import base64
 import json
 import time
+from textwrap import dedent
+from unittest.mock import Mock
 
 import pytest
 
 from test_governed_native_batches import _choice, _layer_session, lc, layered
 
 import governed_codex_carrier as carrier
+
+
+@pytest.fixture
+def worker_peer(tmp_path):
+    """Supply an isolated worker acknowledgment and an empty MCP inventory."""
+    peer = Mock(directory=tmp_path)
+    started = {'thread': {'id': 'acknowledged-thread', 'environments': []},
+               'approvalPolicy': 'never', 'sandbox': {'type': 'readOnly', 'networkAccess': False}}
+    inventory = {'data': [], 'nextCursor': None}
+    peer.call.side_effect = [started, inventory]
+    return peer, started, inventory
+
+
+def test_worker_thread_opens_isolated_worker_with_explicit_model(worker_peer):
+    """Return the acknowledged thread after checking its exact inventory."""
+    peer, started, _ = worker_peer
+    observe = Mock()
+    result = carrier.worker_thread(peer, 12, 'selected-model', role_choices=['software-engineer'], observe=observe)
+    assert result == started
+    start, inventory = [request.args for request in peer.call.call_args_list]
+    method, params, deadline, callback = start
+    assert (method, deadline, callback) == ('thread/start', 12, observe)
+    assert params['cwd'] == str(peer.directory)
+    assert (params['model'], params['approvalPolicy'], params['sandbox'], params['environments']) == (
+        'selected-model', 'never', 'read-only', [])
+    tool, = params['dynamicTools']
+    assert tool['name'] == carrier.TOOL
+    role_shape = tool['inputSchema']['properties']['request']['anyOf'][-1]
+    assert role_shape['properties']['role']['enum'] == ['software-engineer']
+    assert inventory == ('mcpServerStatus/list', {'threadId': 'acknowledged-thread'}, 12, observe)
+
+
+def test_worker_thread_rejects_empty_but_paginated_inventory(worker_peer):
+    """An empty first page does not establish an empty MCP inventory."""
+    peer, _, inventory = worker_peer
+    inventory['nextCursor'] = 'another-page'
+    with pytest.raises(carrier.InvocationError, match='ambient MCP'):
+        carrier.worker_thread(peer, 12, role_choices=['software-engineer'])
+    assert 'model' not in peer.call.call_args_list[0].args[1]
+    assert peer.call.call_count == 2
+
+
+def test_worker_thread_rejects_unconfirmed_network_denial(worker_peer):
+    """Stop after thread creation if the host omits network denial."""
+    peer, started, _ = worker_peer
+    del started['sandbox']['networkAccess']
+    with pytest.raises(carrier.InvocationError, match='network-denied'):
+        carrier.worker_thread(peer, 12, role_choices=['software-engineer'])
+    peer.call.assert_called_once()
 
 
 class AppServer:
@@ -172,31 +225,33 @@ def test_carrier_retains_malformed_terminal_without_semantic_admission(ready):
 def test_stdio_roundtrips_utf8_and_rejects_unsolicited_tools(tmp_path):
     """Exercise actual local wire bytes against a disposable stdio executable."""
     executable = tmp_path / 'fake-codex'
-    executable.write_text("""#!/usr/bin/env python3
-import json
-import sys
-assert sys.argv[1:3] == ['app-server', '--stdio']
-assert 'mcp_servers={}' in sys.argv and 'shell_tool' in sys.argv
-def read():
-    return json.loads(sys.stdin.buffer.readline())
-def send(value):
-    print(json.dumps(value, ensure_ascii=False), flush=True)
-init = read()
-assert init['method'] == 'initialize' and init['params']['capabilities']['experimentalApi']
-send({'id': init['id'], 'result': {}})
-assert read() == {'method': 'initialized'}
-request = read()
-assert request['method'] == 'turn/start'
-send({'id': 991, 'method': 'unknown/tool', 'params': {}})
-denied = read()
-assert denied['id'] == 991 and 'error' in denied
-send({'id': request['id'], 'result': {'exact': request['params']['text']}})
-read()
-""", encoding='utf-8')
+    executable.write_text(dedent("""\
+        #!/usr/bin/env python3
+        import json
+        import sys
+        assert sys.argv[1:3] == ['app-server', '--stdio']
+        assert 'mcp_servers={}' in sys.argv and 'shell_tool' in sys.argv
+        def read():
+            return json.loads(sys.stdin.buffer.readline())
+        def send(value):
+            print(json.dumps(value, ensure_ascii=False), flush=True)
+        init = read()
+        assert init['method'] == 'initialize' and init['params']['capabilities']['experimentalApi']
+        send({'id': init['id'], 'result': {}})
+        assert read() == {'method': 'initialized'}
+        request = read()
+        assert request['method'] == 'turn/start'
+        send({'id': 991, 'method': 'unknown/tool', 'params': {}})
+        denied = read()
+        assert denied['id'] == 991 and 'error' in denied
+        send({'id': request['id'], 'result': {'exact': request['params']['text']}})
+        read()
+    """), encoding='utf-8')
     executable.chmod(0o700)
     phrase = 'Exact cafe\u0301 🛠\nSecond line Ω'
     with carrier.Stdio(executable, tmp_path).open() as rpc:
-        assert rpc.call('turn/start', {'text': phrase}, time.monotonic() + 5)['exact'] == phrase
+        response = rpc.call('turn/start', {'text': phrase}, time.monotonic() + 5)
+    assert response == {'exact': phrase}
 
 def test_carrier_stops_an_exact_failed_turn_without_retry(ready):
     """Record a real terminal disposition, while declining semantic admission."""
@@ -211,19 +266,20 @@ def test_carrier_stops_an_exact_failed_turn_without_retry(ready):
 def test_stdio_write_is_bounded_when_peer_stops_reading(tmp_path):
     """An unread pipe cannot strand the launcher before dispatch acknowledgment."""
     executable = tmp_path / 'stalled-codex'
-    executable.write_text("""#!/usr/bin/env python3
-import json
-import sys
-import time
-request = json.loads(sys.stdin.buffer.readline())
-print(json.dumps({'id': request['id'], 'result': {}}), flush=True)
-time.sleep(30)
-""", encoding='utf-8')
+    executable.write_text(dedent("""\
+        #!/usr/bin/env python3
+        import json
+        import sys
+        from threading import Event
+        request = json.loads(sys.stdin.buffer.readline())
+        print(json.dumps({'id': request['id'], 'result': {}}), flush=True)
+        Event().wait()
+    """), encoding='utf-8')
     executable.chmod(0o700)
     with carrier.Stdio(executable, tmp_path).open() as rpc:
         with pytest.raises(carrier.CarrierError, match='write deadline elapsed after partial frame') as error:
             rpc.call('turn/start', {'text': 'a' * 1048576}, time.monotonic() + 0.3)
-        assert not isinstance(error.value, carrier.CarrierDeadline)
+    assert not isinstance(error.value, carrier.CarrierDeadline)
 
 
 @pytest.mark.parametrize('gap', ['environment', 'mcp'])
