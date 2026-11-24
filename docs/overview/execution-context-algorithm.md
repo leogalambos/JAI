@@ -76,12 +76,13 @@ delegates through the provider's native facilities and captures the returned
 result. The runtime binds the actual capture to the issued assignment and
 context before admitting its semantic effects. See [native execution](../architecture/gen2-native-execution-bridge.md).
 
-Each task receives the relevant input sections and immutable attachment
-references. An author and reviewer have separate professional contexts. The
-whole journal and the complete role catalogue are not copied into every prompt;
-the catalogue remains available for local staffing. Missing neighbour-owned
-material is requested explicitly. General reference access and catalogue access
-must not become a restrictive role whitelist.
+Native selection uses catalogue navigation to discover roles and uses reviewed
+eligibility when the assignment has an exact workflow scope. The work context
+provides instructions for the admitted roles. An author and reviewer have
+separate professional contexts. Use the existing broker for applicable named
+references and exact archived source material when the assignment needs them.
+The prepared prompt and its resource bindings remain available for replay.
+See [model-facing context](../operations/normal-layered-workflow.md#model-facing-context).
 
 A professional selection plan remains reusable while its governing assignment
 and inputs remain unchanged. Mechanical continuation does not require another

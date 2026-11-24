@@ -131,6 +131,51 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/aws`.
+
+**Producer:** `devops-engineer`; **receiver:** `ci-cd-platform-engineer`.
+
+**Receiving condition:** Identify the exact repository and source revision used by CodePipeline and CodeBuild. Record applicable auxiliary management tools.
+
+**Next:** Step 2.
+
+**Role output contracts:** `devops-engineer:1`.
+
+- **`handoff_delivery_source`**: Identify the exact repository and source revision used by CodePipeline and CodeBuild. Record applicable auxiliary management tools.
+  Required fields: `provider`, `target_id`, `environment`, `repository`, `integration`, `source_revision`, `region`, `applicability_ref`, `backlog_and_test_management`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/azure`.
+
+**Producer:** `devops-engineer`; **receiver:** `ci-cd-platform-engineer`.
+
+**Receiving condition:** Identify the exact repository and source revision used by Azure DevOps Services and Azure Pipelines. Record applicable auxiliary management tools.
+
+**Next:** Step 2.
+
+**Role output contracts:** `devops-engineer:1`.
+
+- **`handoff_delivery_source`**: Identify the exact repository and source revision used by Azure DevOps Services and Azure Pipelines. Record applicable auxiliary management tools.
+  Required fields: `provider`, `target_id`, `environment`, `repository`, `integration`, `source_revision`, `region`, `applicability_ref`, `backlog_and_test_management`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/google-cloud`.
+
+**Producer:** `devops-engineer`; **receiver:** `ci-cd-platform-engineer`.
+
+**Receiving condition:** Identify the exact repository and source revision used by Cloud Build and Cloud Deploy. Record applicable auxiliary management tools.
+
+**Next:** Step 2.
+
+**Role output contracts:** `devops-engineer:1`.
+
+- **`handoff_delivery_source`**: Identify the exact repository and source revision used by Cloud Build and Cloud Deploy. Record applicable auxiliary management tools.
+  Required fields: `provider`, `target_id`, `environment`, `repository`, `integration`, `source_revision`, `region`, `applicability_ref`, `backlog_and_test_management`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `software-engineer`; **receiver:** `engagement:change-impact-owner`.
@@ -301,6 +346,51 @@ Alternative bindings replace the base obligations for the selected path. Select 
 
 - **`handoff_application_infrastructure_impact`**: Assess the application change against infrastructure dependencies; evidence supports any unchanged-infrastructure conclusion rather than claiming an IaC apply that did not occur.
   Required fields: `change_revision`, `affected_assets`, `infrastructure_delta`, `retained_baseline`, `compatibility_evidence`, `owner`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/aws`.
+
+**Producer:** `ci-cd-platform-engineer`; **receiver:** `test-analyst`.
+
+**Receiving condition:** Build and test the exact source, attest immutable output and scope short-lived build credentials.
+
+**Next:** Step 3.
+
+**Role output contracts:** `ci-cd-platform-engineer:4`.
+
+- **`handoff_delivery_build`**: Build and test the exact source, attest immutable output and scope short-lived build credentials.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `source_ref`, `source_revision`, `build_run`, `pipeline_digest`, `artifact_store`, `provenance`, `test_results`, `credential_scope`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/azure`.
+
+**Producer:** `ci-cd-platform-engineer`; **receiver:** `test-analyst`.
+
+**Receiving condition:** Build and test the exact source, attest immutable output and scope short-lived build credentials.
+
+**Next:** Step 3.
+
+**Role output contracts:** `ci-cd-platform-engineer:4`.
+
+- **`handoff_delivery_build`**: Build and test the exact source, attest immutable output and scope short-lived build credentials.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `source_ref`, `source_revision`, `build_run`, `pipeline_digest`, `artifact_store`, `provenance`, `test_results`, `credential_scope`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/google-cloud`.
+
+**Producer:** `ci-cd-platform-engineer`; **receiver:** `test-analyst`.
+
+**Receiving condition:** Build and test the exact source, attest immutable output and scope short-lived build credentials.
+
+**Next:** Step 3.
+
+**Role output contracts:** `ci-cd-platform-engineer:4`.
+
+- **`handoff_delivery_build`**: Build and test the exact source, attest immutable output and scope short-lived build credentials.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `source_ref`, `source_revision`, `build_run`, `pipeline_digest`, `artifact_store`, `provenance`, `test_results`, `credential_scope`.
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
@@ -477,6 +567,51 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/aws`.
+
+**Producer:** `test-analyst`; **receiver:** `release-engineer`.
+
+**Receiving condition:** Independently assess the exact artifact, tests and unresolved findings.
+
+**Next:** Step 4.
+
+**Role output contracts:** `test-analyst:4`.
+
+- **`handoff_delivery_test`**: Independently assess the exact artifact, tests and unresolved findings.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `build_ref`, `independent_verdict`, `quality_evidence`, `limitations`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/azure`.
+
+**Producer:** `test-analyst`; **receiver:** `release-engineer`.
+
+**Receiving condition:** Independently assess the exact artifact, tests and unresolved findings.
+
+**Next:** Step 4.
+
+**Role output contracts:** `test-analyst:4`.
+
+- **`handoff_delivery_test`**: Independently assess the exact artifact, tests and unresolved findings.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `build_ref`, `independent_verdict`, `quality_evidence`, `limitations`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/google-cloud`.
+
+**Producer:** `test-analyst`; **receiver:** `release-engineer`.
+
+**Receiving condition:** Independently assess the exact artifact, tests and unresolved findings.
+
+**Next:** Step 4.
+
+**Role output contracts:** `test-analyst:4`.
+
+- **`handoff_delivery_test`**: Independently assess the exact artifact, tests and unresolved findings.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `build_ref`, `independent_verdict`, `quality_evidence`, `limitations`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `test-analyst`; **receiver:** `release-engineer`.
@@ -647,6 +782,51 @@ Alternative bindings replace the base obligations for the selected path. Select 
 
 - **`handoff_abap_cloud_release_provenance`**: The release manifest pins the exact ABAP Cloud candidate, tenant, product release and transport scope with the existing source and signature provenance.
   Required fields: `manifest_revision`, `artifacts`, `source_commits`, `signatures`, `target_scope`, `candidate_ref`, `tenant_ref`, `product_release`, `transport_scope`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/aws`.
+
+**Producer:** `release-engineer`; **receiver:** `change-manager`.
+
+**Receiving condition:** Prepare a promotion of the immutable artifact to Amazon ECS rolling deployment with bounded deployment identity and recovery target.
+
+**Next:** Step 5.
+
+**Role output contracts:** `release-engineer:2`.
+
+- **`handoff_delivery_promotion`**: Prepare a promotion of the immutable artifact to Amazon ECS rolling deployment with bounded deployment identity and recovery target.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `test_ref`, `release_id`, `deployment_action`, `region`, `applicability_ref`, `deployment_identity`, `rollback_target`, `monitoring_criteria`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/azure`.
+
+**Producer:** `release-engineer`; **receiver:** `change-manager`.
+
+**Receiving condition:** Prepare a promotion of the immutable artifact to Azure Container Apps revisions with bounded deployment identity and recovery target.
+
+**Next:** Step 5.
+
+**Role output contracts:** `release-engineer:2`.
+
+- **`handoff_delivery_promotion`**: Prepare a promotion of the immutable artifact to Azure Container Apps revisions with bounded deployment identity and recovery target.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `test_ref`, `release_id`, `deployment_action`, `region`, `applicability_ref`, `deployment_identity`, `rollback_target`, `monitoring_criteria`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/google-cloud`.
+
+**Producer:** `release-engineer`; **receiver:** `change-manager`.
+
+**Receiving condition:** Prepare a promotion of the immutable artifact to Cloud Run revision rollout with bounded deployment identity and recovery target.
+
+**Next:** Step 5.
+
+**Role output contracts:** `release-engineer:2`.
+
+- **`handoff_delivery_promotion`**: Prepare a promotion of the immutable artifact to Cloud Run revision rollout with bounded deployment identity and recovery target.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `test_ref`, `release_id`, `deployment_action`, `region`, `applicability_ref`, `deployment_identity`, `rollback_target`, `monitoring_criteria`.
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
@@ -823,6 +1003,51 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/aws`.
+
+**Producer:** `change-manager`; **receiver:** `gitops-and-continuous-delivery-engineer`.
+
+**Receiving condition:** Require the exact existing human authority for this artifact, environment and reviewed promotion before effect.
+
+**Next:** Step 6.
+
+**Role output contracts:** `change-manager:1`.
+
+- **`handoff_delivery_authority`**: Require the exact existing human authority for this artifact, environment and reviewed promotion before effect.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `promotion_ref`, `release_id`, `rollback_target`, `change_record`, `approval_scope`, `change_window`, `expiry`, `stop_conditions`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/azure`.
+
+**Producer:** `change-manager`; **receiver:** `gitops-and-continuous-delivery-engineer`.
+
+**Receiving condition:** Require the exact existing human authority for this artifact, environment and reviewed promotion before effect.
+
+**Next:** Step 6.
+
+**Role output contracts:** `change-manager:1`.
+
+- **`handoff_delivery_authority`**: Require the exact existing human authority for this artifact, environment and reviewed promotion before effect.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `promotion_ref`, `release_id`, `rollback_target`, `change_record`, `approval_scope`, `change_window`, `expiry`, `stop_conditions`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/google-cloud`.
+
+**Producer:** `change-manager`; **receiver:** `gitops-and-continuous-delivery-engineer`.
+
+**Receiving condition:** Require the exact existing human authority for this artifact, environment and reviewed promotion before effect.
+
+**Next:** Step 6.
+
+**Role output contracts:** `change-manager:1`.
+
+- **`handoff_delivery_authority`**: Require the exact existing human authority for this artifact, environment and reviewed promotion before effect.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `promotion_ref`, `release_id`, `rollback_target`, `change_record`, `approval_scope`, `change_window`, `expiry`, `stop_conditions`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `change-manager`; **receiver:** `gitops-and-continuous-delivery-engineer`.
@@ -993,6 +1218,51 @@ Alternative bindings replace the base obligations for the selected path. Select 
 
 - **`handoff_rollout_readiness`**: For rollout with automatic reversal armed, supply the actual versioned rollout readiness record, including artifact_revision, rollout_steps, reversal_triggers, rehearsal_evidence, permitted_scope. Independently assess the evidence against this exact criterion: Rollback exercised, not merely documented. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
   Required fields: `artifact_revision`, `rollout_steps`, `reversal_triggers`, `rehearsal_evidence`, `permitted_scope`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/aws`.
+
+**Producer:** `gitops-and-continuous-delivery-engineer`; **receiver:** `site-reliability-engineer`.
+
+**Receiving condition:** Capture Amazon ECS rolling deployment rollout and actual reversal disposition against the authorized promotion.
+
+**Next:** Step 7.
+
+**Role output contracts:** `gitops-and-continuous-delivery-engineer:4`.
+
+- **`handoff_delivery_rollout`**: Capture Amazon ECS rolling deployment rollout and actual reversal disposition against the authorized promotion.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `approval_ref`, `release_id`, `rollback_target`, `deployment_run`, `deployment_identity`, `rollout_observations`, `rollback_record`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/azure`.
+
+**Producer:** `gitops-and-continuous-delivery-engineer`; **receiver:** `site-reliability-engineer`.
+
+**Receiving condition:** Capture Azure Container Apps revisions rollout and actual reversal disposition against the authorized promotion.
+
+**Next:** Step 7.
+
+**Role output contracts:** `gitops-and-continuous-delivery-engineer:4`.
+
+- **`handoff_delivery_rollout`**: Capture Azure Container Apps revisions rollout and actual reversal disposition against the authorized promotion.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `approval_ref`, `release_id`, `rollback_target`, `deployment_run`, `deployment_identity`, `rollout_observations`, `rollback_record`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/google-cloud`.
+
+**Producer:** `gitops-and-continuous-delivery-engineer`; **receiver:** `site-reliability-engineer`.
+
+**Receiving condition:** Capture Cloud Run revision rollout rollout and actual reversal disposition against the authorized promotion.
+
+**Next:** Step 7.
+
+**Role output contracts:** `gitops-and-continuous-delivery-engineer:4`.
+
+- **`handoff_delivery_rollout`**: Capture Cloud Run revision rollout rollout and actual reversal disposition against the authorized promotion.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `approval_ref`, `release_id`, `rollback_target`, `deployment_run`, `deployment_identity`, `rollout_observations`, `rollback_record`.
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
@@ -1169,6 +1439,51 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/aws`.
+
+**Producer:** `site-reliability-engineer`; **receiver:** `configuration-manager`.
+
+**Receiving condition:** Independently assess the exact rollout, service objectives, recovery and any evidence gaps.
+
+**Next:** Step 8.
+
+**Role output contracts:** `site-reliability-engineer:1`.
+
+- **`handoff_delivery_health`**: Independently assess the exact rollout, service objectives, recovery and any evidence gaps.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `rollout_ref`, `release_id`, `rollback_target`, `independent_verdict`, `monitoring_observations`, `recovery_observations`, `limitations`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/azure`.
+
+**Producer:** `site-reliability-engineer`; **receiver:** `configuration-manager`.
+
+**Receiving condition:** Independently assess the exact rollout, service objectives, recovery and any evidence gaps.
+
+**Next:** Step 8.
+
+**Role output contracts:** `site-reliability-engineer:1`.
+
+- **`handoff_delivery_health`**: Independently assess the exact rollout, service objectives, recovery and any evidence gaps.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `rollout_ref`, `release_id`, `rollback_target`, `independent_verdict`, `monitoring_observations`, `recovery_observations`, `limitations`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/google-cloud`.
+
+**Producer:** `site-reliability-engineer`; **receiver:** `configuration-manager`.
+
+**Receiving condition:** Independently assess the exact rollout, service objectives, recovery and any evidence gaps.
+
+**Next:** Step 8.
+
+**Role output contracts:** `site-reliability-engineer:1`.
+
+- **`handoff_delivery_health`**: Independently assess the exact rollout, service objectives, recovery and any evidence gaps.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `rollout_ref`, `release_id`, `rollback_target`, `independent_verdict`, `monitoring_observations`, `recovery_observations`, `limitations`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `site-reliability-engineer`; **receiver:** `configuration-manager`.
@@ -1339,6 +1654,51 @@ Alternative bindings replace the base obligations for the selected path. Select 
 
 - **`handoff_configuration_reconciliation`**: For updated configuration items, supply the actual versioned configuration reconciliation record, including changed_assets, actual_revision, record_revision, effective_date, reconciliation_gaps. Independently assess the evidence against this exact criterion: Record updated the same day the change lands. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
   Required fields: `changed_assets`, `actual_revision`, `record_revision`, `effective_date`, `reconciliation_gaps`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/aws`.
+
+**Producer:** `configuration-manager`; **receiver:** `engagement:named-authority`.
+
+**Receiving condition:** Reconcile observed configuration to the effective revision and hand over ownership.
+
+**Next:** Terminal disposition; no downstream step.
+
+**Role output contracts:** `configuration-manager:3`.
+
+- **`handoff_delivery_reconciliation`**: Reconcile observed configuration to the effective revision and hand over ownership.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `health_ref`, `release_id`, `observed_revision`, `updated_baseline`, `exceptions`, `operational_owner`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/azure`.
+
+**Producer:** `configuration-manager`; **receiver:** `engagement:named-authority`.
+
+**Receiving condition:** Reconcile observed configuration to the effective revision and hand over ownership.
+
+**Next:** Terminal disposition; no downstream step.
+
+**Role output contracts:** `configuration-manager:3`.
+
+- **`handoff_delivery_reconciliation`**: Reconcile observed configuration to the effective revision and hand over ownership.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `health_ref`, `release_id`, `observed_revision`, `updated_baseline`, `exceptions`, `operational_owner`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/google-cloud`.
+
+**Producer:** `configuration-manager`; **receiver:** `engagement:named-authority`.
+
+**Receiving condition:** Reconcile observed configuration to the effective revision and hand over ownership.
+
+**Next:** Terminal disposition; no downstream step.
+
+**Role output contracts:** `configuration-manager:3`.
+
+- **`handoff_delivery_reconciliation`**: Reconcile observed configuration to the effective revision and hand over ownership.
+  Required fields: `provider`, `target_id`, `environment`, `artifact_digest`, `health_ref`, `release_id`, `observed_revision`, `updated_baseline`, `exceptions`, `operational_owner`.
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 

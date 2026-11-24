@@ -17,6 +17,9 @@ detailed page with role hand-offs, gates and an operating prompt.
 | --- | --- |
 | Deliver a new product, data product or AI system | [Commented task walkthroughs](../examples/index.md), then the matching delivery chain in the workflow reference. |
 | Assess or improve an inherited system | [Inherited codebase](../examples/inherited-codebase.md) or the relevant assessment case. |
+| Migrate an existing network to Zero Trust, design a new one or assess an existing estate | [Zero Trust readiness paths](../workflow-library/design-to-operational-readiness.md#zero-trust-and-cloud-readiness). Choose migration, greenfield or independent assessment according to the starting evidence. |
+| Prepare Terraform or assess or migrate AWS, Azure or Google Cloud infrastructure | [Terraform and cloud readiness paths](../workflow-library/design-to-operational-readiness.md#zero-trust-and-cloud-readiness). Provide the exact target and intended use. |
+| Promote an artifact through AWS, Azure or Google Cloud CI/CD | [Cloud delivery paths](../workflow-library/production-change.md#cloud-delivery-paths). Supply the reviewed artifact digest, deployment target and approval evidence. |
 | Restore service, remove a vulnerability or validate recovery | Select incident, vulnerability or resilience work from [commented task walkthroughs](../examples/index.md); retain its evidence and emergency boundaries. |
 | Prepare a supplier proposal or select a supplier | [Proposal](../examples/proposal.md) for supplier-side work; the workflow reference's sourcing and supplier chains for buyer-side work. |
 | Govern architecture, access, change or release | Choose the corresponding chain in the [workflow reference](../reference/workflows.md). |
@@ -48,6 +51,12 @@ Ask explicitly for the workflow you want, or describe the situation so the syste
 ### Example
 
 > Use the `migration-and-cutover` workflow for our programme. Show the next gate, the accountable role, mandatory inputs, missing evidence and the artefacts required before cutover approval.
+
+For an existing network, ask for the `zero-trust-migration` path in
+`design-to-operational-readiness`. Provide the versioned estate inventory,
+observed dependencies and continuity requirements. Ask for the next receiving
+role, required flow evidence and the rehearsal reversal limit before
+preparing the production change.
 
 ## Why workflows are better than ad-hoc prompts
 

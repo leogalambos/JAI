@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "package_kind": "optional-extended-synthetic-evaluation",
-  "release": "26.11.1",
+  "release": "26.11.2",
   "files": {
     "evals/content_quality/enterprise/accessibility-specialist-1-medium.json": "fae4e3bab52ae8c748fde449e218579e38b3908f70492b7797e840dccff312a7",
     "evals/content_quality/enterprise/accessibility-specialist-2-medium.json": "1788a5e8ec5d7f217beb384d732d83311e12a231cffc35eb952b0431545446e0",

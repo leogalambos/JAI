@@ -23,6 +23,13 @@ selected instructions carry the routinely needed knowledge. Load its named
 references for detailed checks and verify changing product facts against the
 manufacturer when a decision depends on them.
 
+**Terraform Engineer** resolves to the Infrastructure as Code Engineer. Use
+its Terraform reference for plan, state and promotion obligations. The network,
+security, cloud and delivery roles also carry applicability cues for their
+Zero Trust and provider references. In a native layered invocation, request
+an applicable named reference through the broker when the selected role
+needs its details. See [model-facing context](../operations/normal-layered-workflow.md#model-facing-context).
+
 A workflow defines the roles, sequence and handoffs for its goal. A reviewed
 compatibility profile can permit a specialist to fill an exact producer step
 for a declared product scope. The existing selection phase checks the step,

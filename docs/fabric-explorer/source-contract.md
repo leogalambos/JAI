@@ -18,7 +18,7 @@ not an admitted journal or proof that a runtime transition occurred.
 | Immutable manifests | `lifecycle.manifest`, `record_manifest`, `version_id` | Schema `jai.lifecycle.manifest/2`; kinds `delivery.source`, `delivery.profile`, `delivery.assignment`, `delivery.context`, `delivery.product`, `delivery.assessment`, plus derived `delivery.decision`. |
 | Fabric material | `Store._blob`, `lifecycle.blob` | Companion directory `<engagement>.jsonl.blobs`; each blob is addressed by its domain-separated digest. The viewer reports bounded admitted-path readability without verifying this content digest. |
 | Findings journal | [findings.py](https://github.com/leogalambos/JAI/blob/main/.ai/runtime/tools/findings.py): `_parse_events`, `state` | Required input family. Parse the unversioned envelope and reduce recorded events without chain verification; do not invent a schema version or treat it as format-9 fabric. |
-| Audit projection | [governed_audit.py](https://github.com/leogalambos/JAI/blob/main/.ai/runtime/tools/governed_audit.py): `report` | Optional explicit input, format `jai.gen2-audit/1`. It covers selected products and their assessed closures; it is not a complete graph export. |
+| Audit projection | [governed_audit.py](https://github.com/leogalambos/JAI/blob/main/.ai/runtime/tools/governed_audit.py): `report` | Optional saved `jai.gen2-audit/1` JSON with `read_only: true` and `authority_granted: false`. Inspect the exact captured pages as diagnostic evidence for the recorded journal head. The report adds no graph records or authority. |
 
 [fabric.py](https://github.com/leogalambos/JAI/blob/main/.ai/runtime/fabric/fabric.py) uses `FABRIC_HOME`, defaulting to
 `~/.ai/fabric`, and `<engagement>.jsonl`. Findings use `FINDINGS_HOME`, defaulting to

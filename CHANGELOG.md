@@ -1,5 +1,16 @@
 # Changelog
 
+## 26.11.2
+
+- Add governed Zero Trust migration, greenfield design and independent
+  assessment paths, plus Terraform and infrastructure and CI/CD paths for
+  AWS, Microsoft Azure and Google Cloud.
+- Prepare scoped native model contexts for Claude Code and Codex. Keep
+  detailed role guidance available through on-demand references.
+- Import saved read-only audit reports in Fabric Explorer and identify
+  enrollment controls selected as Fabric. Update the mobile workflow fixture
+  and prepare the installer helper for the tests that consume it.
+
 ## 26.11.1
 
 - Add project execution profiles, native profile/statistics commands, Claude effort
