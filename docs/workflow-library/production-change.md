@@ -92,7 +92,7 @@ A path with a separate mechanism requires that explicit mechanism selection in t
 | 6 | GitOps and Continuous Delivery Engineer | deploys progressively behind a health gate | rollout with automatic reversal armed | Rollback exercised, not merely documented |
 | 7 | Site Reliability Engineer | watches the agreed signals for the agreed window | post-release confirmation or a reversal decision | Reversal executed on trigger, not on debate |
 | 8 | Configuration Manager | updates the record of what now exists | updated configuration items | Record updated the same day the change lands |
-| 9 | ERP and CRM Consultant Developer | binds the reviewed ABAP Cloud extension and its transport evidence to the release candidate (normal/abap-cloud only) | reviewed ABAP Cloud extension and release evidence for the named change authority | The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence |
+| 9 | ERP and CRM Consultant Developer | binds the reviewed ABAP Cloud extension and its transport evidence to the release candidate | reviewed ABAP Cloud extension and release evidence for the named change authority | The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence |
 
 ## Running this workflow: operator and implementer boundary
 

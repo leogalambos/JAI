@@ -95,7 +95,7 @@ A path with a separate mechanism requires that explicit mechanism selection in t
 | 11 | GitOps and Continuous Delivery Engineer | promotes the artefact and runs the progressive rollout | deployed change with health gate | Health gate and automatic rollback defined and exercised |
 | 12 | Site Reliability Engineer | observes against the service objective and owns the run | service operating within SLO, or an error-budget decision | Error budget policy actually enforced |
 | 13 | Product Analyst | measures whether the stated benefit arrived | benefit measurement against the success measure | Result reported with effect size, not just direction |
-| 14 | Test Automation Engineer | executes automated tests against the exact reviewed mobile build (mobile-delivery only) | versioned automated mobile test observations and uncovered scope | Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps |
+| 14 | Test Automation Engineer | executes automated tests against the exact reviewed mobile build | versioned automated mobile test observations and uncovered scope | Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps |
 
 ## Running this workflow: operator and implementer boundary
 
