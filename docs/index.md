@@ -51,7 +51,7 @@ title: AI IT House Universal
 
     <section class="ai-home-coverage" aria-label="JAI scope and principles">
       <div><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="11" r="6"/><path d="M8 32v-4c0-12 24-12 24 0v4M4 15a5 5 0 0 1 5-5M36 15a5 5 0 0 0-5-5"/></svg><strong>{{ JAI_ROLE_COVERAGE }}</strong></div>
-      <div><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="4" y="14" width="10" height="12" rx="2"/><rect x="26" y="14" width="10" height="12" rx="2"/><path d="M14 20h12m-5-5 5 5-5 5"/></svg><strong>{{ JAI_WORKFLOW_COVERAGE }}</strong></div>
+      <div><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="4" y="14" width="10" height="12" rx="2"/><rect x="26" y="14" width="10" height="12" rx="2"/><path d="M14 20h12m-5-5 5 5-5 5"/></svg><strong>{{ JAI_WORKFLOW_COVERAGE }}<span>{{ JAI_WORKFLOW_HANDOFF_COVERAGE }}</span></strong></div>
       <div><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M5 5h10v10H5zM25 5h10v10H25zM5 25h10v10H5zM25 25h10v10H25z"/></svg><strong>6 × 6 SABSA matrix<span>Six layers. Six questions.</span></strong></div>
       <div><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="m20 3 13 5v10c0 9-6 15-13 19C13 33 7 27 7 18V8zM13 20l5 5 10-12"/></svg><strong>Human-governed<span>AI prepares. Humans decide.</span></strong></div>
     </section>

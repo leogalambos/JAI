@@ -138,6 +138,10 @@
         }
       }
     },
+    "variant_only": {
+      "type": "boolean",
+      "description": "Include this handoff only in explicitly enumerated workflow paths."
+    },
     "variant_bindings": {
       "type": "object",
       "minProperties": 1,

@@ -3,28 +3,32 @@
 The current working catalogue contains **{{ JAI_ROLE_COVERAGE }}**.
 
 The table below summarises the disciplines. The [complete role catalogue by
-category](../reference/roles.md) lists every available specialist and its purpose;
+category](../reference/roles.md) lists professional roles, specializations and their purposes;
 it is the maintained appendix for direct role work and workflow staffing.
 
-| Discipline | Roles | Representative roles |
-| --- | ---: | --- |
-| Analysis | 11 | Business Analyst, Systems Analyst, Requirements Engineer, Process Analyst |
-| Architecture | 18 | Enterprise Architect, Business Architect, Solution Architect, Application Architect |
-| Commercial, Sourcing and Enablement | 20 | Bid / Proposal Manager, Commercial Pricing / Deal Finance Specialist, Estimation / Cost Engineering Specialist, Independent Commercial Assurance Reviewer |
-| Data, Analytics and AI | 21 | Data Engineer, Analytics Engineer, Database Administrator, Database Reliability Engineer |
-| Design and User Experience | 11 | UX Designer, UI Designer, Product Designer, UX Researcher |
-| Executive and Leadership | 11 | Chief Information Officer, Chief Technology Officer, Chief Information Security Officer, Chief Data Officer |
-| Governance, Risk, Compliance, Audit and Privacy | 18 | IT Governance Manager, GRC Analyst, IT Risk Manager, Information Security Officer (Local) |
-| Infrastructure, Cloud and Operations | 21 | Linux Systems Administrator, Windows Systems Administrator, Cloud Engineer, Cloud Operations Engineer |
-| Network and Telecommunications | 9 | Network Engineer, Network Administrator, Network Operations Centre Analyst, Wireless and RF Engineer |
-| Offensive Security and Adversarial Testing | 21 | Penetration Tester (Network and Infrastructure), Penetration Tester (Web Application), Penetration Tester (Mobile), Penetration Tester (API) |
-| Product, Delivery and Agile | 22 | Product Manager, Product Owner, Technical Product Manager, Scrum Master |
-| Quality and Testing | 11 | Test Analyst, Test Automation Engineer, Performance Test Engineer, Test Manager |
-| Research, Innovation and Specialist Engineering | 9 | Research Engineer, Innovation Lead, Technology Scout, Standards Body Representative |
-| SABSA Security Architecture | 12 | Chief Security Architect (SABSA Practice Lead), Business Security Architect (SABSA Contextual Layer), Business Attribute Profiler, Conceptual Security Architect (SABSA Architect's View) |
-| Security Operations and Defensive Security | 24 | Security Analyst Tier 1, Security Analyst Tier 2, Security Analyst Tier 3, SOC Manager |
-| Service Management and Support | 20 | Service Desk Analyst, Desktop Support Engineer, Application Support Analyst, Incident Manager |
-| Software Development and Engineering | 27 | Software Engineer, Senior Software Engineer, Staff Engineer, Backend Engineer |
+{{ JAI_DISCIPLINE_COVERAGE }}
+
+## Professional bases and specializations
+
+A professional base defines accountability, work mode, expected outputs and
+standing checks. A specialization extends one professional base with product
+or method knowledge while retaining the base controls. Shared knowledge modules
+can serve several roles and do not add another role to the catalogue. For
+example, existing SABSA roles can share method guidance while keeping their own
+responsibilities and outputs.
+
+Use the [specialization index](../reference/roles.md#product-specializations)
+to find a specialist by name, exact slug or professional base. Each role's
+selected instructions carry the routinely needed knowledge. Load its named
+references for detailed checks and verify changing product facts against the
+manufacturer when a decision depends on them.
+
+A workflow defines the roles, sequence and handoffs for its goal. A reviewed
+compatibility profile can permit a specialist to fill an exact producer step
+for a declared product scope. The existing selection phase checks the step,
+variant, side of the handoff and versioned output requirements. The specialist
+receives the same assignment and controls, and the independent receiver keeps
+its responsibility. Exact-slug steps retain their original role.
 
 ## Using roles in a provider session
 

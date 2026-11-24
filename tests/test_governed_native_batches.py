@@ -1379,7 +1379,18 @@ def test_named_specialist_reference_is_deferred_and_scoped(tmp_path, monkeypatch
 
 
 @pytest.mark.parametrize('carrier', ['claude', 'codex'])
-def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(tmp_path, monkeypatch, carrier):
+@pytest.mark.parametrize(('handoff', 'path', 'work_item', 'product', 'specialist'), [
+    ('service-retirement-and-decommission:5', 'authorised-retirement', 'retirement', 'keycloak',
+     'keycloak-workforce-identity-specialist'),
+    ('vulnerability-to-remediation:6', 'planned/application-dependency', 'dependency-fix', 'java-se',
+     'java-software-engineering-specialist'),
+    ('production-change:1', 'normal/application', 'application-change', 'java-se',
+     'java-software-engineering-specialist'),
+    ('source-to-contract-to-service:5', 'competitive', 'erp-sourcing', 'sap-cloud-erp',
+     'sap-cloud-erp-application-architect'),
+], ids=['keycloak', 'java', 'java-conjunction', 'sap-conjunction'])
+def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(
+        tmp_path, monkeypatch, carrier, handoff, path, work_item, product, specialist):
     """Use ordinary entry, exact policy and scope inputs, then exercise the existing chooser."""
     import shutil
 
@@ -1393,20 +1404,19 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(tmp_pat
     composition = compose(root)
     roles = {row['slug']: row for row in composition.registry['roles']}
     catalog = content_workflow.load_bindings(root)
-    row = next(item for item in catalog['bindings'] if item['handoff_id'] == 'service-retirement-and-decommission:5')
-    path = 'authorised-retirement'
+    row = next(item for item in catalog['bindings'] if item['handoff_id'] == handoff)
     binding = row['variant_bindings'][path]
-    contract_id, = binding['contract_ids']
-    contract = next(item for item in lc.loads((root / '.ai/runtime/artifacts/contracts/role-deliverables.v3.json')
-        .read_bytes())['contracts'] if item['id'] == contract_id)
-    specialist = 'keycloak-workforce-identity-specialist'
-    profile = {'id': 'identity-retirement', 'version': '1',
+    contracts = {item['id']: item for item in lc.loads(
+        (root / '.ai/runtime/artifacts/contracts/role-deliverables.v3.json').read_bytes())['contracts']}
+    required = [contracts[identity] for identity in binding['contract_ids']]
+    contract = required[0] if len(required) == 1 else required
+    profile = {'id': work_item, 'version': '1',
                'definition': profile_for(row, binding, roles[binding['producer_role']], contract)}
     _, units = effective_obligations(row, binding)
     deployment = {'edition': 'fixture', 'version': 'fixture-1', 'deployment': 'offline'}
     mapping = {'profile': profile['id'], 'version': profile['version'], 'profile_digest': lc._hash(profile),
                'slug': specialist, 'role_revision': role_revision(roles[specialist], lc.blob(composition.instructions[specialist])),
-               'author': 'fixture-author', 'product': 'keycloak', 'deployments': [deployment],
+               'author': 'fixture-author', 'product': product, 'deployments': [deployment],
                'covered_units': list(units.values())}
     review = {'reviewer': 'fixture-independent-reviewer', 'decision': 'approved', 'mapping_digest': lc._hash(mapping)}
     source = {'protocol': PROFILE_PROTOCOL, 'profiles': [profile], 'receipts': [review],
@@ -1429,19 +1439,20 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(tmp_pat
     monkeypatch.setattr(provider, 'ROOT', runtime)
     now = time.time()
     monkeypatch.setattr(lc.time, 'time', lambda: now)
-    owner = {'layer': 1, 'work_kind': 'question', 'question': 'what', 'work_item': 'retirement'}
-    scope = {'workflow_catalogue': policy['catalogue']['catalog_hash'], 'work_item': 'retirement',
+    owner = {'layer': 1, 'work_kind': 'question', 'question': 'what', 'work_item': work_item}
+    scope = {'workflow_catalogue': policy['catalogue']['catalog_hash'], 'work_item': work_item,
              'handoff': row['handoff_id'], 'path': path, 'endpoint': 'producer',
-             'mode': 'compatible-specialization', 'product_scope': {'product': 'keycloak', **deployment},
+             'mode': 'compatible-specialization', 'product_scope': {'product': product, **deployment},
              'procedure_owner': owner}
 
     def follow(scoped):
         profile_options = {'workflow_policy': lc.canonical(policy),
                            'workflow_scopes': (lc.canonical(scope),)} if scoped else {}
         session, _ = layered.LayeredSession.create(tmp_path / ('profile' if scoped else 'exact'),
-            'run', b'Prepare retirement evidence.', carrier, 'retirement', single_member=True,
+            'run', b'Prepare the assigned evidence.', carrier, work_item, single_member=True,
             sabsa_row_mode='left-to-right', **profile_options)
         measurements = []
+        author_assignment = None
         for _ in range(24):
             offered = session.next()
             invocation = offered['invocation_id']
@@ -1453,10 +1464,18 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(tmp_pat
             phase = packet['execution']['phase']
             measurements.append(len(lc.canonical(descriptor['invocation'])))
             if assignment['owner'] == owner and assignment['responsibility'] == 'author' and phase == 'work':
+                assert member['assignment'] == author_assignment
                 assert packet['execution']['specialties'] == [specialist if scoped else binding['producer_role']]
+                prompt_bytes = session.store._blob(member['host_delivery']['prompt_blob_id'])
+                view = lc.loads(prompt_bytes)
+                workforce_bytes = session.store._blob(
+                    view['resources']['workforce']['handle'].removeprefix('resource:'))
                 if scoped:
                     session.start(invocation, carrier, invocation, {'fixture': 'Offline profiled work'})
-                    handle, = packet['execution']['deferred_references']
+                    references = packet['execution']['deferred_references']
+                    if product == 'keycloak':
+                        assert len(references) == 1
+                    handle = next(iter(references))
                     reopened = layered.LayeredSession.open(session.locator)
                     data = reopened.request(invocation, member['member_key'],
                         {'id': 'approved-reference', 'operation': 'read', 'handle': handle})
@@ -1465,11 +1484,42 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(tmp_pat
                     execution = cold.context_execution(cold.resolve(member['context'], 'context'), live=False)
                     assert execution['specialties'] == [specialist]
                     assert execution['workflow_selection']['binding']['profile']['profile_digest'] == lc._hash(profile)
+                    if len(required) > 1:
+                        import governed_domain
+
+                        pins = execution['workflow_selection']['binding']['contract']['contracts']
+                        assert [pin['id'] for pin in pins] == binding['contract_ids']
+                        assert [pin['digest'] for pin in pins] == [lc._hash(item) for item in required]
+                        response = _role_result(session, packet)
+                        native = cold.run_details[cold.resolve(member['context'], 'context')['run_id']]['native']
+                        manifest = {'context': member['context'], 'manifest_hash': native['manifest_hash']}
+                        workforce = lc.loads(workforce_bytes)
+                        assert workforce['required_workflow_outputs']['context_manifest'] == manifest
+                        assert workforce['required_workflow_outputs']['contract_set']['contracts'] == pins
+                        output_tokens = [{'context': member['context'], 'logical_id': response['logical_id'],
+                                          'contract_id': pin['id']} for pin in pins]
+                        response['materials'] = [{'json': {'contract_id': token['contract_id'],
+                            'producer': {'attestation': token, 'context_manifest': manifest}}}
+                            for token in output_tokens]
+                        completed = session.complete(invocation, json.dumps({'format': 'jai.semantic-return/1',
+                            'results': [response]}), {'fixture': 'Both scoped outputs in one native return'})
+                        assert completed['status'] == 'returned'
+                        versions = completed['completion']['receipt']['created_versions']
+                        artifact = next(ref for ref in versions if ref['logical_id'] == response['logical_id'])
+                        adapter = governed_domain.GovernedDomain(lc.Store(session.store.path, session.store.engagement),
+                            [{'ref': artifact, 'use_scope': assignment['use_scope']}])
+                        with adapter.action():
+                            captured = adapter._materials(adapter.producers[0])
+                        assert [token for _, token, _, _ in captured] == output_tokens
                     assert len(execution['snapshot']['catalogue']['roles']) == composition.registry['count']
-                    assert execution['allowed_operations'] == ['materialize', 'measure', 'propose', 'read']
-                return measurements
+                    operations = execution['allowed_operations']
+                else:
+                    operations = state.context_execution(state.resolve(member['context'], 'context'))['allowed_operations']
+                return measurements, operations, (len(prompt_bytes), len(workforce_bytes))
             if phase == 'selection':
                 response = _choice(packet, carrier)
+                if assignment['owner'] == owner and assignment['responsibility'] == 'author':
+                    author_assignment = member['assignment']
                 if packet['execution'].get('workflow_selection'):
                     assert assignment['owner'] == owner
                     assert assignment['responsibility'] == 'author'
@@ -1485,6 +1535,12 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(tmp_pat
             assert completed['status'] == 'returned'
         pytest.fail('The normal author work was not issued.')
 
-    baseline, candidate = follow(False), follow(True)
+    baseline, baseline_operations, baseline_context = follow(False)
+    candidate, candidate_operations, candidate_context = follow(True)
+    assert candidate_operations == baseline_operations
+    if product != 'sap-cloud-erp':
+        assert candidate_operations == ['materialize', 'measure', 'propose', 'read']
     assert len(baseline) == len(candidate)
     print(f'{carrier}: {len(candidate)} prepared intents; baseline bytes {baseline}; profile bytes {candidate}')
+    print(f'{carrier}: author prompt and workforce resource bytes {baseline_context} baseline, '
+          f'{candidate_context} specialized')

@@ -91,8 +91,12 @@ def render_workflow(workflow):
             position = col if (row_start // 3) % 2 == 0 else 2 - col
             nodes.append((step, 30 + position * 324, y, height))
         y += height + 58
-    result = _start(workflow['title'], workflow['outcome'] + ' Arrows follow the numbered stages. The table below supplies handoffs and acceptance gates.', y + 10, ident)
-    for previous, current in zip(nodes, nodes[1:]):
+    variant_only = any(step.get('variant_only') for step in steps)
+    direction = (' Arrows show the ordinary numbered stages. Follow the applicable path table for variant-only stages.'
+                 if variant_only else ' Arrows follow the numbered stages. The table below supplies handoffs and acceptance gates.')
+    result = _start(workflow['title'], workflow['outcome'] + direction, y + 10, ident)
+    ordinary = [node for node in nodes if not node[0].get('variant_only')]
+    for previous, current in zip(ordinary, ordinary[1:]):
         _, px, py, ph = previous
         _, cx, cy, ch = current
         if py == cy:
@@ -215,8 +219,10 @@ def generate(root, check=False):
         content = (f'<div class="ai-workflow-overview">\n'
                    f'<ol class="ai-workflow-steps" role="list" aria-label="{escape(workflow["title"], quote=True)} workflow steps">\n'
                    f'{items}\n</ol>\n</div>\n\n'
-                   f'[Open the full-size workflow diagram](../assets/diagrams/{name}). '
-                   'Follow the numbered order. The table below specifies the outputs and receiving conditions for each handoff.')
+                   f'[Open the full-size workflow diagram](../assets/diagrams/{name}). ')
+        content += ('Use the applicable path table for the sequence, including variant-only stages.'
+                    if any(step.get('variant_only') for step in workflow['steps']) else
+                    'Follow the numbered order. The table below specifies the outputs and receiving conditions for each handoff.')
         path = root / 'docs/workflow-library' / (workflow['key'] + '.md')
         outputs[path] = replace_figure(path.read_text(), content)
     outputs.update({root / 'docs/assets/diagrams' / name: svg for name, svg in concept_diagrams().items()})

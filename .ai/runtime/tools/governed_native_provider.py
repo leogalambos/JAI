@@ -550,6 +550,17 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
     else:
         workforce_body.update(selected_specialties=packet['execution']['specialties'],
             selected_instructions=[{'slug': slug, **instructions[slug]} for slug in packet['execution']['specialties']])
+        workflow = run.execution.get('workflow_selection', {}).get('binding', {})
+        required = workflow.get('contract', {})
+        if 'contracts' in required:
+            workforce_body['required_workflow_outputs'] = {
+                'contract_set': required,
+                'context_manifest': {'context': packet['context'], 'manifest_hash': packet['manifest_hash']},
+                'rule': 'Return every pinned contract as a separate JSON material in the same author result. '
+                        'For each material copy this context manifest into producer.context_manifest. '
+                        'Set producer.attestation to an object with this context, the author result logical_id, '
+                        'and the exact contract_id of the material. Preserve authoritative contract order.',
+            }
         if packet['execution'].get('deferred_references'):
             workforce_body['deferred_reference_rule'] = (
                 'When the selected instructions call for a named section, request its exact handle with read(handle).')

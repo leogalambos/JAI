@@ -17,8 +17,41 @@ SPEC.loader.exec_module(generator)
 def test_current_complete_catalogue_covers_all_explicit_stages():
     catalog = generator.build(ROOT)
     assert catalog['workflow_count'] == 24
-    assert catalog['handoff_count'] == 215
-    assert len({row['handoff_id'] for row in catalog['bindings']}) == 215
+    assert catalog['handoff_count'] == 217
+    assert len({row['handoff_id'] for row in catalog['bindings']}) == 217
+
+
+def test_mobile_delivery_inserts_automation_before_independent_verdict():
+    catalog = generator.build(ROOT)
+    workflow = 'idea-to-production'
+    paths = {path['id']: path['steps'] for path in catalog['profiles'][workflow]['paths']}
+    assert paths['new-product'] == paths['existing-service-change'] == list(range(1, 14))
+    assert paths['mobile-delivery'] == [1, 2, 3, 4, 5, 6, 7, 14, 8, 9, 10, 11, 12, 13]
+    rows = {row['step']: row for row in catalog['bindings'] if row['workflow_id'] == workflow}
+    build, automation, verdict = (rows[step]['variant_bindings']['mobile-delivery'] for step in (7, 14, 8))
+    assert (build['producer_role'], build['receiving_role'], build['contract_ids'], build['next_step']) == (
+        'mobile-engineer', 'test-automation-engineer', ['mobile-engineer:1'], 14)
+    assert (automation['producer_role'], automation['receiving_role'], automation['contract_ids'],
+            automation['next_step']) == ('test-automation-engineer', 'test-analyst', ['test-automation-engineer:1'], 8)
+    assert verdict['producer_role'] == 'test-analyst' and verdict['next_step'] == 9
+    assert rows[13]['receiving_role'] == 'engagement:named-authority'
+    assert set(rows[14]['variant_bindings']) == {'mobile-delivery'}
+
+
+def test_abap_cloud_evidence_precedes_existing_change_authority():
+    catalog = generator.build(ROOT)
+    workflow = 'production-change'
+    paths = {path['id']: path['steps'] for path in catalog['profiles'][workflow]['paths']}
+    assert paths['normal/application'] == list(range(1, 9))
+    assert paths['normal/abap-cloud'] == [1, 2, 3, 4, 9, 5, 6, 7, 8]
+    rows = {row['step']: row for row in catalog['bindings'] if row['workflow_id'] == workflow}
+    release, evidence, approval = (rows[step]['variant_bindings']['normal/abap-cloud'] for step in (4, 9, 5))
+    assert release['next_step'] == 9
+    assert evidence['contract_ids'] == ['erp-and-crm-consultant-developer:2']
+    assert evidence['receiving_role'] == approval['producer_role'] == 'change-manager'
+    assert evidence['next_step'] == 5 and approval['next_step'] == 6
+    assert approval['contract_ids'] == rows[5]['variant_bindings']['normal/application']['contract_ids']
+    assert set(rows[9]['variant_bindings']) == {'normal/abap-cloud'}
 
 
 def test_every_boundary_has_source_specific_content_and_current_route_obligations():
@@ -39,7 +72,7 @@ def test_every_boundary_has_source_specific_content_and_current_route_obligation
 def test_professional_workflows_selects_exact_intake_and_handoff_definitions():
     document = generator.professional_workflows(ROOT)
     assert len(document['workflows']) == 24
-    assert sum(len(workflow['steps']) for workflow in document['workflows']) == 215
+    assert sum(len(workflow['steps']) for workflow in document['workflows']) == 217
     assert set(generator.professional_projection(ROOT)) == {'.ai/runtime/workflows.json'}
     assert json.loads(generator.professional_projection(ROOT)['.ai/runtime/workflows.json']) == document
 
@@ -221,3 +254,30 @@ def test_staged_siem_registration_loads_without_changing_ordinary_bindings(tmp_p
     artifact.write_text(json.dumps(registration))
     with pytest.raises(ValueError, match='WORKFLOW_PILOT_REGISTRATION'):
         load_bindings(ROOT, pilot=artifact)
+
+
+def test_stage_siem_workflow_preserves_exact_authority_and_contract():
+    import yaml
+    from compose_role_library import _ClosedLoader
+    from workflow_role_selection import stage_siem_workflow
+
+    source = ROOT / '.ai/role-library/workflows/siem-log-source-integration.yaml'
+    draft = yaml.load(source.read_bytes(), Loader=_ClosedLoader)
+    rows = json.loads((ROOT / '.ai/runtime/artifacts/contracts/role-deliverables.v3.json').read_bytes())['contracts']
+    contracts = {row['id']: row for row in rows}
+    deployments = {product: [{'edition': 'synthetic', 'version': '1', 'deployment': 'offline'}]
+                   for product in ('splunk-enterprise-security', 'ibm-qradar-siem')}
+    baseline = generator.build(ROOT)
+    result = stage_siem_workflow(draft, deployments, baseline, contracts)
+    assert result['catalogue']['bindings'][:-2] == baseline['bindings']
+    assert result['catalogue']['bindings'][-1]['receiving_role'] == 'engagement:named-acceptance-authority'
+
+    wrong_receiver = copy.deepcopy(draft)
+    wrong_receiver['steps'][1]['receiving_role'] = 'security-engineer'
+    with pytest.raises(ValueError, match='WORKFLOW_PILOT_BOUNDARY'):
+        stage_siem_workflow(wrong_receiver, deployments, baseline, contracts)
+
+    wrong_contract = copy.deepcopy(draft)
+    wrong_contract['steps'][0]['role_requirement']['contract']['version'] = '0.0.0'
+    with pytest.raises(ValueError, match='WORKFLOW_PILOT_CONTRACT'):
+        stage_siem_workflow(wrong_contract, deployments, baseline, contracts)

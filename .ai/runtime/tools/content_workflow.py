@@ -30,12 +30,12 @@ SELECTIONS = {
 'demand-to-portfolio-to-funding': ['1','2','1','1,2','1','2','1','1,4','1,2','2'],
 'design-to-operational-readiness': ['1,4','1,4','1,2,4','1','1,3','1','1'],
 'enterprise-release-orchestration': ['1','3,4','3','2,3','4','2,4','3','1,2','3','3,4','1,3','1'],
-'idea-to-production': ['2','1,3','1','1,4','2,4','4','1,2,4','2,4','2,4','1','3,4','1','1,2'],
+'idea-to-production': ['2','1,3','1','1,4','2,4','4','1,2,4','2,4','2,4','1','3,4','1','1,2','1'],
 'incident-to-problem': ['1','1,2,4','3','1,2,3','1,2','1,4','1,2,4','1','1,4','1,2','1,2','2'],
 'migration-and-cutover': ['1,3','1,2,4','1,3','2,3','3','2,4','1','1,3','2,4','2,3','1,4'],
 'new-service-onboarding': ['1','1,3','1,4','1,3,4','2,3','1,2,3','1','2,3','1','2','3','1'],
 'organisational-change-and-adoption': ['1,3','1,2','2,4','4','4','4'],
-'production-change': ['1,4','1,3','2,4','2','1,2','3,4','1,3','1,3'],
+'production-change': ['1,4','1,3','2,4','2','1,2','3,4','1,3','1,3','2'],
 'regulatory-change-to-assurance': ['1','2','1,3','1','1,3','1','1,2','2','3','2'],
 'resilience-validation': ['1,4','2','2,3','1,3','1','1,2','3','4','2','1'],
 'semantic-to-enterprise-publication': ['source','source','source','source','source'],
@@ -129,7 +129,11 @@ def load_bindings(root=None, *, pilot=None, specialist_policy=None):
         source=workflows[row['workflow_id']]
         index=row['step']-1
         step=source['steps'][index]
-        receiver=role(source['steps'][index+1]) if index+1<len(source['steps']) else 'engagement:named-authority'
+        if step.get('variant_only'):
+            receiver = next(iter(step['variant_bindings'].values()))['receiving_role']
+        else:
+            receiver = next((role(item) for item in source['steps'][index + 1:]
+                             if not item.get('variant_only')), 'engagement:named-authority')
         if (row['source_hash']!=content_spec.canonical_hash(source) or row['acceptance_criterion']!=step['gate']
                 or row['handover']!=step['hands_over'] or row['producer_role']!=role(step) or row['receiving_role']!=receiver):
             raise ValueError('WORKFLOW_SOURCE_PROVENANCE_MISMATCH')
@@ -213,7 +217,7 @@ def _human_accepted(authority, bound):
 
 
 def check(handoff_id, model, report, root=None, acceptance=None, trusted_executions=None,
-          receiving_assignments=None, authority=None, resolver=None, governed=None, *, pilot=None, predecessor=None, specialist_policy=None):
+          receiving_assignments=None, authority=None, resolver=None, governed=None, *, pilot=None, predecessor=None, specialist_policy=None, additional_outputs=None):
     """Check existing workflow acceptance with optional exact Gen2 provenance.
 
     Args:
@@ -232,7 +236,9 @@ def check(handoff_id, model, report, root=None, acceptance=None, trusted_executi
             replace the host's existing functional receiving designation.
         pilot: Explicit staged SIEM registration for a governed offline action.
         specialist_policy: Explicit compiled policy supplied by the governed host.
-        predecessor: Prior SIEM model, QA report and receiving subject for terminal replay.
+        additional_outputs: Other exact model and QA report pairs in a required set.
+        predecessor: Exact prior model, QA report and receiving subject for a
+            linked handoff. A nested predecessor supplies the preceding link.
     Returns:
         Existing receiving status; never production acceptance or release.
     Raises:
@@ -251,12 +257,184 @@ def check(handoff_id, model, report, root=None, acceptance=None, trusted_executi
             if not governed.publication_status(model,model.get('audience'))['eligible']:
                 raise ValueError('Current Gen2 workflow source justification is unavailable')
             trusted_executions=governed
+        if additional_outputs is not None:
+            if governed is None or specialist_policy is None or pilot is not None:
+                raise ValueError('WORKFLOW_CONJUNCTION_REQUIRES_GOVERNED_POLICY')
+            if not isinstance(additional_outputs, list) or any(
+                    not isinstance(item, dict) or set(item) != {'model', 'report'}
+                    or any(not isinstance(value, dict) for value in item.values()) for item in additional_outputs):
+                raise ValueError('WORKFLOW_CONJUNCTION_OUTPUT_SCHEMA')
+            engine = resolver if resolver is not None else content_spec.ContentSpec(root)
+            reviews = (acceptance or {}).get('output_reviews', {})
+            evaluated = []
+            for index, item in enumerate([{'model': model, 'report': report}, *additional_outputs]):
+                output = item['model']
+                if index and not governed.publication_status(output, output.get('audience'))['eligible']:
+                    raise ValueError('Current Gen2 workflow source justification is unavailable')
+                unit_reviews = reviews.get(output.get('contract_id'), []) if isinstance(reviews, dict) else []
+                evaluated.append(_check(handoff_id, output, item['report'], root, {'unit_reviews': unit_reviews},
+                    trusted_executions=governed, authority=authority, resolver=engine,
+                    predecessor=predecessor, specialist_policy=specialist_policy, conjunction_member=True))
+            return _accept_output_set(evaluated, acceptance, governed, receiving_assignments)
         return _check(handoff_id,model,report,root,acceptance,trusted_executions,
                       receiving_assignments,authority,resolver,pilot,predecessor, specialist_policy)
 
 
+_MOBILE_IDENTITY = ('candidate_build_ref', 'sdk_scope', 'device_scope')
+_ABAP_IDENTITY = ('candidate_ref', 'tenant_ref', 'product_release', 'transport_scope')
+_EVIDENCE_PREDECESSORS = {
+    ('idea-to-production', 'mobile-delivery', 14): (
+        7, 'handoff_mobile_automation_evidence', 'handoff_mobile_build', 'build_evidence_ref', _MOBILE_IDENTITY),
+    ('idea-to-production', 'mobile-delivery', 8): (
+        14, 'handoff_mobile_test_verdict', 'handoff_mobile_automation_evidence', 'automation_evidence_ref', _MOBILE_IDENTITY),
+    ('production-change', 'normal/abap-cloud', 5): (
+        9, 'handoff_abap_cloud_change_record', 'handoff_abap_cloud_extension_evidence', 'extension_evidence_ref',
+        _ABAP_IDENTITY),
+    ('production-change', 'normal/abap-cloud', 9): (
+        4, 'handoff_abap_cloud_extension_evidence', 'handoff_abap_cloud_release_provenance', 'release_manifest_ref',
+        _ABAP_IDENTITY),
+}
+
+
+def _evidence_predecessor(model, predecessor, link, lookup):
+    """Resolve a workflow evidence link against the host's exact assigned input.
+
+    Args:
+        model: Current semantic artifact.
+        predecessor: Exact preceding model with its QA and receiving evidence.
+        link: Declared predecessor step, semantic units and reference field.
+        lookup: Host-provided lookup of the current assigned predecessor.
+
+    Returns:
+        Exact predecessor reference when the declared identity fields match.
+    """
+    if (not callable(lookup) or not isinstance(predecessor, dict)
+            or set(predecessor) - {'model', 'report', 'acceptance', 'predecessor'}
+            or any(not isinstance(predecessor.get(key), dict) for key in ('model', 'report', 'acceptance'))):
+        return None
+    _, current_unit, prior_unit, reference_field, identity_fields = link
+    previous = predecessor['model']
+    current_facts = model.get('semantic_units', {}).get(current_unit)
+    prior_facts = previous.get('semantic_units', {}).get(prior_unit)
+    if not isinstance(current_facts, dict) or not isinstance(prior_facts, dict):
+        return None
+    for field in identity_fields:
+        value = current_facts.get(field)
+        if not content_lint._substantive(value) or value != prior_facts.get(field):
+            return None
+    current_token = model.get('producer', {}).get('attestation')
+    prior_token = previous.get('producer', {}).get('attestation')
+    if current_token is None or prior_token is None:
+        return None
+    reference = lookup(current_token, prior_token)
+    return reference if reference and current_facts.get(reference_field) == reference else None
+
+
+def _abap_released_apis(facts, evidence):
+    """Verify the release status recorded for each exact ABAP dependency.
+
+    Args:
+        facts: Extension evidence with the declared tenant and product release.
+        evidence: Versioned evidence records indexed by their semantic IDs.
+
+    Returns:
+        Whether every declared dependency has an applicable released API record.
+    """
+    if not isinstance(facts, dict):
+        return False
+    apis = facts.get('released_apis')
+    if not isinstance(apis, list) or not apis or any(not isinstance(ref, str) for ref in apis):
+        return False
+    if len(set(apis)) != len(apis):
+        return False
+    for ref in apis:
+        record = evidence.get(ref, {})
+        payload = record.get('payload')
+        if (not record.get('version') or not isinstance(payload, dict)
+                or payload.get('release_status') != 'released'
+                or not content_lint._substantive(payload.get('api_id'))
+                or any(payload.get(field) != facts.get(field) for field in ('tenant_ref', 'product_release'))):
+            return False
+    return True
+
+
+def _accept_output_set(members, acceptance, verifier, receiving_assignments):
+    """Bind independently checked outputs to one exact receiving attestation.
+
+    Args:
+        members: Producer-only checks in authoritative contract order.
+        acceptance: Receiving subject and host attestation of the entire set.
+        verifier: Governed verifier that resolves native proof tokens.
+        receiving_assignments: Host-owned functional receiver assignments.
+
+    Returns:
+        One hash-bound acceptance result for the complete contract set.
+    """
+    from workflow_specialist_profiles import ALL_REQUIRED_PROTOCOL
+
+    first = members[0]
+    contract_set = first['contract_set']
+    references = contract_set.get('contracts', [])
+    shared = ('handoff_id', 'catalog_hash', 'criterion', 'receiving_role', 'path_id',
+              'handoff_content_hash', 'producer_selection', 'predecessor')
+    bound = {key: first[key] for key in shared if key in first}
+    findings = list(dict.fromkeys(code for member in members for code in member['findings']))
+    producers = [member.get('producer') or {} for member in members]
+    origins = [producer.get('workflow_output') or {} for producer in producers]
+    artifacts = [origin.get('artifact') or {} for origin in origins]
+    artifact_refs = [point.get('ref') for point in artifacts]
+    material_digests = [origin.get('material_digest') for origin in origins]
+    if (contract_set.get('protocol') != ALL_REQUIRED_PROTOCOL or len(references) < 2
+            or [ref['id'] for ref in references] != [member['contract_id'] for member in members]
+            or any(member['human_step'] or member['contract_set'] != contract_set
+                   or member['governing_subject'] != first['governing_subject']
+                   or any(member.get(key) != first.get(key) for key in shared) for member in members)
+            or not origins[0].get('assignment')
+            or any(origin.get('assignment') != origins[0]['assignment'] for origin in origins)
+            or not producers[0].get('invocation')
+            or any(producer.get('invocation') != producers[0]['invocation'] for producer in producers)
+            or not artifacts[0].get('use_scope')
+            or any(point.get('use_scope') != artifacts[0]['use_scope'] for point in artifacts)
+            or any(not ref for ref in artifact_refs)
+            or any(digest != member['semantic_hash'] for digest, member in zip(material_digests, members, strict=True))
+            or len(set(material_digests)) != len(members)):
+        findings.append('WORKFLOW_OUTPUT_SET_MISMATCH')
+    outputs = [{'contract_id': member['contract_id'], 'artifact_ref': artifact,
+                'semantic_hash': member['semantic_hash'], 'report_hash': member['report_hash']}
+               for member, artifact in zip(members, artifact_refs, strict=True)]
+    bound.update(contract_set=contract_set, outputs=outputs,
+                 semantic_hash=content_spec.canonical_hash(outputs), assignment=origins[0].get('assignment'),
+                 producer_invocation=producers[0].get('invocation'), use_scope=artifacts[0].get('use_scope'),
+                 governing_subject_hash=content_spec.canonical_hash(first['governing_subject']))
+    subject = copy.deepcopy(acceptance) if isinstance(acceptance, dict) else {}
+    token = subject.pop('attestation', None)
+    proof = content_lint._host_verify(verifier, token) or {}
+    principal = proof.get('principal')
+    if any(subject.get(key) != value for key, value in bound.items()):
+        findings.append('RECEIVER_SUBJECT_MISMATCH')
+    if (proof.get('reviewer') is not True or not principal
+            or any(principal == producer.get('principal') for producer in producers)
+            or proof.get('subject_digest') != content_spec.canonical_hash(subject)
+            or proof.get('snapshot_digest') != bound['semantic_hash']
+            or proof.get('context_digest') != content_spec.canonical_hash(subject.get('context_manifest'))):
+        findings.append('RECEIVER_IDENTITY_UNVERIFIED')
+    receiving_role = bound['receiving_role']
+    if (receiving_role not in (receiving_assignments or {}).get(principal, [])
+            or (not receiving_role.startswith('engagement:')
+                and verifier.receiving_specialties(token) != [receiving_role])):
+        findings.append('WORKFLOW_RECEIVER_SELECTION_MISMATCH')
+    if subject.get('verdict') != 'PASS' or not content_lint._substantive(subject.get('evidence')):
+        findings.append('RECEIVING_GATE_EVIDENCE_REQUIRED')
+    result = {'schema_version': '2.0.0', **bound, 'findings': findings, 'receiver_principal': principal,
+              'status': 'ACCEPTANCE_PENDING' if findings else 'ACCEPTANCE_VERIFIED',
+              'next_step': first['next_step'], 'production_release_authorized': False}
+    result['result_hash'] = content_spec.canonical_hash(result)
+    return result
+
+
 def _check(handoff_id, model, report, root=None, acceptance=None, trusted_executions=None,
-           receiving_assignments=None, authority=None, resolver=None, pilot=None, predecessor=None, specialist_policy=None):
+           receiving_assignments=None, authority=None, resolver=None, pilot=None, predecessor=None, specialist_policy=None,
+           conjunction_member=False):
     """Return a hash-bound receiving acceptance result without granting release.
 
     Args:
@@ -272,7 +450,8 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
         authority: Existing signed JAI L0 activation adapter for QA replay.
         pilot: Explicit staged SIEM registration path, if one was requested.
         specialist_policy: Explicit reviewed specialist profile policy for this batch.
-        predecessor: Host-provided first-stage artefact, report and receiving evidence.
+        conjunction_member: Internal validation of one producer output of a set.
+        predecessor: Host-provided preceding artifact, report and receiving evidence.
         resolver: Optional host-opened ContentSpec for a batch against one pinned
             registry/workflow snapshot; never constructed from model-controlled
             policy. New input versions use a new resolver, without rewriting
@@ -339,6 +518,7 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
     units = effective.get('handoff_content_contract', {}).get('units', []) if selected is not None or selected_path is None else []
     unit_reviews = subject.get('unit_reviews', [])
     unit_reviews = unit_reviews if isinstance(unit_reviews, list) else []
+    governing_evidence = {}
     for unit in units:
         value = model.get('semantic_units', {}).get(unit['semantic_field'])
         valid = (isinstance(value, dict)
@@ -350,6 +530,8 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
                        or not evidence[ref].get('version') or 'payload' not in evidence[ref] for ref in refs)):
             if 'HANDOFF_CONTENT_MISSING_OR_INVALID' not in failures:
                 failures.append('HANDOFF_CONTENT_MISSING_OR_INVALID')
+        elif conjunction_member:
+            governing_evidence.update((ref, evidence[ref]) for ref in refs)
         reviews = [review for review in unit_reviews if isinstance(review, dict) and review.get('unit_id') == unit['id']]
         if not human_step and (len(reviews) != 1 or reviews[0].get('verdict') != 'PASS'
                 or not content_lint._substantive(reviews[0].get('rationale'))
@@ -399,6 +581,8 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
            'handoff_content_hash': content_spec.canonical_hash(effective['handoff_content_contract'])}
     producer_proof = (producer or {}).get('workflow_producer')
     requirement = effective.get('workflow_role_requirement')
+    contract = (requirement or {}).get('contract', {})
+    contract_refs = contract.get('contracts', []) if conjunction_member else [contract]
     if requirement is not None or producer_proof is not None:
         binding = (producer_proof or {}).get('binding', {})
         slug = (producer_proof or {}).get('slug')
@@ -413,7 +597,7 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
                 or binding.get('handoff_contract_hash') != bound['handoff_content_hash']
                 or binding.get('bound_role') != effective['producer_role']
                 or binding.get('contract') != requirement.get('contract')
-                or (binding.get('contract') or {}).get('id') != model['contract_id']
+                or model['contract_id'] not in {ref.get('id') for ref in contract_refs}
                 or binding.get('requirement_hash') != requirement.get('requirement_hash')
                 or binding.get('profile') != requirement.get('profile')
                 or not mapping or not producer_proof.get('selection_ref') or not producer_proof.get('scope_ref')):
@@ -453,6 +637,40 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
             failures.append('WORKFLOW_TERMINAL_PREDECESSOR_UNVERIFIED')
         else:
             bound['predecessor'] = prior
+    link = _EVIDENCE_PREDECESSORS.get((row['workflow_id'], bound['path_id'], row['step']))
+    if (row['workflow_id'], bound['path_id'], row['step']) == ('production-change', 'normal/abap-cloud', 9):
+        if not _abap_released_apis(model.get('semantic_units', {}).get('handoff_abap_cloud_extension_evidence'), evidence):
+            failures.append('WORKFLOW_ABAP_RELEASED_API_EVIDENCE_REQUIRED')
+    if link:
+        reference = _evidence_predecessor(model, predecessor, link,
+                                          getattr(trusted_executions, 'predecessor_input', None))
+        prior = None
+        if reference is not None:
+            previous = _check(f"{row['workflow_id']}:{link[0]}", predecessor['model'],
+                              predecessor['report'], root, predecessor['acceptance'],
+                              trusted_executions, receiving_assignments, authority,
+                              resolver=engine, predecessor=predecessor.get('predecessor'),
+                              specialist_policy=specialist_path)
+            if (previous['status'] == 'ACCEPTANCE_VERIFIED'
+                    and previous['path_id'] == bound['path_id']
+                    and previous['next_step'] == row['step']):
+                prior = {'artifact_ref': reference, 'result_hash': previous['result_hash']}
+        if prior is None:
+            failures.append('WORKFLOW_EVIDENCE_PREDECESSOR_UNVERIFIED')
+        else:
+            bound['predecessor'] = prior
+    if conjunction_member:
+        facts = model.get('semantic_units', {})
+        governing_subject = {
+            'context': context_record,
+            'units': {unit['semantic_field']: facts.get(unit['semantic_field']) for unit in units},
+            'evidence': governing_evidence,
+            'inputs': {ref: evidence.get(ref) for ref in input_refs if isinstance(ref, str)}
+                      if isinstance(input_refs, list) else {},
+        }
+        return {**bound, 'contract_id': model['contract_id'], 'contract_set': contract,
+                'producer': producer, 'governing_subject': governing_subject, 'findings': failures,
+                'human_step': human_step, 'next_step': selected.get('next_step') if selected else None}
     if human_step:
         if not _human_accepted(authority,bound):
             failures.append('EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED')
@@ -507,6 +725,7 @@ def main(argv=None):
     command.add_argument('--staged-siem', type=Path)
     command.add_argument('--specialist-policy', type=Path)
     command.add_argument('--predecessor')
+    command.add_argument('--additional-outputs', help='JSON list of other exact model and QA report pairs')
     command.add_argument('--receiving-assignments',help='Existing host principal-to-functional-role mapping')
     import governed_domain
     governed_domain.add_arguments(command,operations=('draft',))
@@ -520,6 +739,7 @@ def main(argv=None):
                 root=args.root,acceptance=content_spec.load_json(args.acceptance) if args.acceptance else None,
                 receiving_assignments=content_spec.load_json(args.receiving_assignments) if args.receiving_assignments else None,
                 governed=adapter,authority=authority,pilot=args.staged_siem, specialist_policy=args.specialist_policy,
+                additional_outputs=content_spec.load_json(args.additional_outputs) if args.additional_outputs else None,
                 predecessor=content_spec.load_json(args.predecessor) if args.predecessor else None)
         print(json.dumps(result,indent=2))
         return 0 if args.command=='list' or result.get('status')=='ACCEPTANCE_VERIFIED' else 2

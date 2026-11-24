@@ -103,3 +103,13 @@ current evidence still blocks the affected result.
 Use the independent audit workflow to inspect current justification. Keep the
 newest journal, referenced material and session/enrollment files together for
 [recovery](../operations/gen2-deployment-recovery.md).
+
+## Staffing a scoped workflow assignment
+
+A layered question can carry an admitted workflow scope. When an enrolled
+profile permits a substitution there, JAI evaluates the applicable specialist
+options in the existing selection phase. The selected specialist receives the
+same inputs, mandate and permitted operations. The independent reviewer and
+the receiving entity retain their separate duties. Completing a selection
+requires no additional approval for the role transfer. Existing controls
+still apply when work reaches the effect they govern.

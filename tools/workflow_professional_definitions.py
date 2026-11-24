@@ -22,7 +22,8 @@ HANDOFF_REQUIREMENTS = {
         ('change_authorisation', 'change_id exact_scope risk_class authority decision window emergency_record'),
         ('deployment_observations', 'approved_change_ref deployed_revision health_thresholds actual_results reversal_observations'),
         ('service_objective_status', 'service_id measurement_window indicators objectives budget_consumption policy_action'),
-        ('benefit_observations', 'success_measure baseline observation_period effect_size method uncertainty')],
+        ('benefit_observations', 'success_measure baseline observation_period effect_size method uncertainty'),
+        ('mobile_automation_evidence', 'candidate_build_ref build_evidence_ref sdk_scope device_scope observed_results untested_scope automation_revision')],
     'new-service-onboarding': [
         ('platform_design', 'service_boundary target_platform resilience_targets residency failure_scenario_evidence'),
         ('infrastructure_baseline', 'module_revisions reviewed_plan state_locking guardrails clean_apply_evidence'),
@@ -44,7 +45,8 @@ HANDOFF_REQUIREMENTS = {
         ('change_record', 'change_id risk_class authorisation_ref schedule preauthorisation_basis measurement'),
         ('rollout_readiness', 'artifact_revision rollout_steps reversal_triggers rehearsal_evidence permitted_scope'),
         ('release_health_decision', 'observation_window signals thresholds decision actual_reversal_evidence'),
-        ('configuration_reconciliation', 'changed_assets actual_revision record_revision effective_date reconciliation_gaps')],
+        ('configuration_reconciliation', 'changed_assets actual_revision record_revision effective_date reconciliation_gaps'),
+        ('abap_cloud_extension_evidence', 'candidate_ref release_manifest_ref tenant_ref product_release released_apis transport_scope regression_evidence upgrade_evidence reversal_prerequisites')],
     'incident-to-problem': [
         ('incident_report', 'incident_id observed_symptoms business_impact affected_service urgency observed_at'),
         ('incident_coordination', 'priority impact_basis working_hypothesis incident_owner communications_cadence'),
@@ -256,7 +258,8 @@ HANDOFF_REQUIREMENTS = {
 WORKFLOW_PROFILES = {
     'idea-to-production': (
         ['Business outcome and accountable sponsor', 'Problem evidence and intended users', 'Existing service and change constraints'],
-        [('new-product', 'Discover and test the product hypothesis before committing build scope', 'Problem evidence, options and success baseline'), ('existing-service-change', 'Reuse current service controls and assess only changed dependencies', 'Current baseline, change impact and receiving acceptance')],
+        [('new-product', 'Discover and test the product hypothesis before committing build scope', 'Problem evidence, options and success baseline'), ('existing-service-change', 'Reuse current service controls and assess only changed dependencies', 'Current baseline, change impact and receiving acceptance'),
+         ('mobile-delivery', 'Produce a reviewed mobile build and hand automated results to the independent test analyst', 'Immutable build identity, SDK and device scope, observed tests and remaining coverage')],
         'Return unmet requirements or failed verification to the accountable requirement/design/change owner; retain accepted unchanged work.',
         'Stop production effects without current scoped change authority or on failed rollout health criteria.',
         'Reject/defer the demand with rationale, or close delivery after observed outcome and receiving service acceptance.'),
@@ -416,9 +419,15 @@ WORKFLOW_MECHANISMS = {
     'production-change': ['application', 'infrastructure-as-code', 'configuration'],
     'vulnerability-to-remediation': ['container', 'host', 'application-dependency'],
 }
+WORKFLOW_PATH_MECHANISMS = {
+    ('production-change', 'normal'): ['application', 'infrastructure-as-code', 'configuration', 'abap-cloud'],
+}
+WORKFLOW_MECHANISM_BASES = {('production-change', 'abap-cloud'): 'application'}
 ONBOARDING_OVERLAYS = {'data-ai', 'critical-regulated'}
 ONBOARDING_MECHANISMS = ['cloud-native', 'saas-cots', 'existing-platform']
 WORKFLOW_PATH_STEPS = {
+    ('production-change', 'normal/abap-cloud'): [1, 2, 3, 4, 9, 5, 6, 7, 8],
+    ('idea-to-production', 'mobile-delivery'): [1, 2, 3, 4, 5, 6, 7, 14, 8, 9, 10, 11, 12, 13],
     ('regulatory-change-to-assurance', 'not-applicable'): [1, 2],
     ('ai-system-approval', 'candidate-only'): [1, 2, 3, 4, 5],
     ('demand-to-portfolio-to-funding', 'discovery'): [1, 2],
@@ -434,6 +443,14 @@ WORKFLOW_PATH_STEPS = {
 # functional producing duty. A duty is a host-assigned responsibility, not a
 # restriction on which professional a layer/entity may choose to perform it.
 VARIANT_HANDOFF_REQUIREMENTS = {
+    ('idea-to-production', 7, 'mobile-delivery'): (
+        'mobile_build', 'candidate_build_ref source_revision sdk_scope device_scope peer_review test_results telemetry rollback_path',
+        'The immutable mobile build matches the reviewed source, SDK and device scope, with observed verification, telemetry and rollback evidence.',
+        ['mobile-engineer:1'], 'mobile-engineer'),
+    ('idea-to-production', 8, 'mobile-delivery'): (
+        'mobile_test_verdict', 'candidate_build_ref automation_evidence_ref tested_revision sdk_scope device_scope predeclared_exit_criteria actual_results exclusions residual_risk_disposition',
+        'The independent test verdict assesses the exact mobile automation evidence for the same immutable build and applicable device and SDK scope.',
+        ['test-analyst:2', 'test-analyst:4'], 'test-analyst'),
     ('supplier-onboarding', 2, 'ordinary'): (
         'ordinary_supplier_risk', 'supplier_id criticality classification_evidence assessed_risks continuity_exit_disposition residual_owner review_trigger',
         'Evidence supports supplier criticality and proportionate continuity/exit treatment; a noncritical classification does not fabricate an exercised exit or waive an applicable obligation.',
@@ -514,6 +531,14 @@ VARIANT_HANDOFF_REQUIREMENTS = {
         'application_infrastructure_impact', 'change_revision affected_assets infrastructure_delta retained_baseline compatibility_evidence owner',
         'Assess the application change against infrastructure dependencies; evidence supports any unchanged-infrastructure conclusion rather than claiming an IaC apply that did not occur.',
         ['configuration-manager:3'], 'engagement:change-impact-owner'),
+    ('production-change', 5, 'abap-cloud'): (
+        'abap_cloud_change_record', 'change_id risk_class authorisation_ref schedule preauthorisation_basis measurement extension_evidence_ref candidate_ref tenant_ref product_release transport_scope',
+        'The existing change authority decides on the exact SAP Cloud ERP Public Edition candidate, tenant and transport using its reviewed ABAP Cloud evidence.',
+        ['change-manager:1', 'change-manager:2'], 'change-manager'),
+    ('production-change', 4, 'abap-cloud'): (
+        'abap_cloud_release_provenance', 'manifest_revision artifacts source_commits signatures target_scope candidate_ref tenant_ref product_release transport_scope',
+        'The release manifest pins the exact ABAP Cloud candidate, tenant, product release and transport scope with the existing source and signature provenance.',
+        ['release-engineer:2'], 'release-engineer'),
     ('production-change', 4, 'configuration'): (
         'configuration_release_manifest', 'manifest_revision configuration_versions source_baseline change_identity verification_provenance',
         'Every applied setting/version is traceable to the exact reviewed configuration baseline and change, with attributable verification provenance.',

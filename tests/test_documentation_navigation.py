@@ -411,4 +411,21 @@ def test_homepage_offers_contextual_catalogues_and_beginner_routes_without_link_
         rendered = links.on_page_markdown(source, page=page('Home', ''), config=None, files=None)
     assert '{{ JAI_WORKFLOW_COVERAGE }}' not in rendered
     assert links.render_workflow_coverage(ROOT) in rendered
+    assert links.render_workflow_coverage(ROOT, handoffs=True) in rendered
+    assert links.render_role_coverage(ROOT) in rendered
     assert 'href="https://github.com/team/JAI"' in rendered
+
+
+def test_specialization_index_uses_composed_parent_roles(tmp_path):
+    result = links.render_specializations(ROOT)
+    assert '`java-software-engineering-specialist`' in result
+    assert '[Software Engineer](output-contracts/role-software-engineer.md)' in result
+    assert '`android-test-automation-specialist`' in result
+    assert '`sap-abap-cloud-extension-specialist`' in result
+    runtime = tmp_path / '.ai/runtime'
+    runtime.mkdir(parents=True)
+    (runtime / 'roles.json').write_text('{"count": 0, "roles": []}')
+    assert len(links.render_specializations(tmp_path).splitlines()) == 2
+    (runtime / 'roles.json').write_text('invalid JSON')
+    with unittest.TestCase().assertRaises(ValueError):
+        links.render_specializations(tmp_path)

@@ -1,6 +1,6 @@
 # Idea to production
 
-`workflow: idea-to-production`  ·  `steps: 13`  ·  `tool-tier: route`
+`workflow: idea-to-production`  ·  `steps: 14`  ·  `tool-tier: route`
 
 **Trigger.** A business need, opportunity or customer problem arrives with no agreed solution.
 
@@ -25,6 +25,9 @@ The most common enterprise value stream, and the one where handoffs are usually 
 | 11 | [GitOps and Continuous Delivery Engineer](../../it-roles-software-development-and-engineering/references/gitops-and-continuous-delivery-engineer.md) | promotes the artefact and runs the progressive rollout | deployed change with health gate | Health gate and automatic rollback defined and exercised |
 | 12 | [Site Reliability Engineer](../../it-roles-infrastructure-cloud-and-operations/references/site-reliability-engineer.md) | observes against the service objective and owns the run | service operating within SLO, or an error-budget decision | Error budget policy actually enforced |
 | 13 | [Product Analyst](../../it-roles-analysis/references/product-analyst.md) | measures whether the stated benefit arrived | benefit measurement against the success measure | Result reported with effect size, not just direction |
+| 14 | [Test Automation Engineer](../../it-roles-quality-and-testing/references/test-automation-engineer.md) | executes automated tests against the exact reviewed mobile build (mobile-delivery only) | versioned automated mobile test observations and uncovered scope | Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps |
+
+Step 14 is exclusive to the mobile-delivery path. The Test Automation Engineer hands versioned SDK and device test observations for the reviewed build to the independent Test Analyst at step 8.
 
 ## Operating this chain
 
@@ -48,6 +51,7 @@ Use the actual bounded request, current environment and decision rights to selec
 | --- | --- | --- |
 | new-product | Discover and test the product hypothesis before committing build scope | Problem evidence, options and success baseline |
 | existing-service-change | Reuse current service controls and assess only changed dependencies | Current baseline, change impact and receiving acceptance |
+| mobile-delivery | Produce a reviewed mobile build and hand automated results to the independent test analyst | Immutable build identity, SDK and device scope, observed tests and remaining coverage |
 
 Return unmet requirements or failed verification to the accountable requirement/design/change owner; retain accepted unchanged work. Stop production effects without current scoped change authority or on failed rollout health criteria. Reject/defer the demand with rationale, or close delivery after observed outcome and receiving service acceptance. Mechanism selection is not a waiver of security, legal or acceptance obligations.
 
@@ -74,6 +78,7 @@ New and changed products share requirement/design/execution/outcome evidence; cu
 | --- | --- | ---: |
 | new-product | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 | 13 |
 | existing-service-change | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 | 13 |
+| mobile-delivery | 1, 2, 3, 4, 5, 6, 7, 14, 8, 9, 10, 11, 12, 13 | 13 |
 
 A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
 <!-- END workflow-applicability -->

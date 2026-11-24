@@ -53,3 +53,23 @@ guarantee arbitrary professional truth or replace human accountability.
 Only explicit reserved L0 decisions use the external human signing procedure.
 Ordinary work records are unsigned. Follow the [operating guide](../using/layered-engagement.md)
 and [human authority instructions](../operations/human-authority.md).
+
+## What the runtime evaluates
+
+The scheduler issues work whose hard prerequisites have exact current answers.
+It can run independent questions concurrently within the configured carrier
+capacity. Trace links support navigation and impact analysis. Hard
+prerequisites determine eligibility. Replacing a governing answer triggers
+rebinding of its dependent work while unrelated current evidence remains usable.
+
+The workflow records local professional review, layer integration review and
+receiving acceptance as distinct decisions. It evaluates current justification
+for an exact output and use. A recorded result can be replayed from its captured
+inputs and policies. Current permissions are checked when a new consequential
+action uses them. The journal appends governed transactions under the Store
+lock and reuses its verified prefix in steady-state processing.
+
+Where the host enrolls an applicable specialist profile and attributable
+workflow scope, the existing selection phase can choose a compatible
+specialist for its exact assignment. See [professional bases and
+specializations](../using/roles.md#professional-bases-and-specializations).

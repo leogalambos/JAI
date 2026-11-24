@@ -55,9 +55,9 @@ Equal content with different installed permissions is a mode-only delta. Normal
 installation backs up the previous file and corrects its mode without rewriting
 its content; dry-run reports the delta without changing it.
 
-Verify every desired installed hash/mode against the reviewed plan, the complete
-286-role population, 17 commands and selected provider routes, compatible Python
-and unchanged unrelated settings/public trust. A successful copy or help response
+Verify every desired installed hash and mode against the reviewed plan.
+Check the composed role inventory, expected commands and selected provider
+routes, the runtime Python, and unrelated settings and public trust. A successful copy or help response
 does not establish that a model executed work. The checkout GUIDE is a symlink;
 installation materializes its canonical bytes without depending on checkout paths.
 

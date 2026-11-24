@@ -125,6 +125,17 @@ class GovernedDomain:
             except (json.JSONDecodeError,UnicodeDecodeError):
                 continue
             if isinstance(value, dict):
+                producer_body = value.get('producer')
+                presented = producer_body.get('attestation') if isinstance(producer_body, dict) else None
+                contract_id = value.get('contract_id')
+                output_token = {**token, 'contract_id': contract_id}
+                if isinstance(contract_id, str) and presented == output_token:
+                    context = self._state.resolve(token['context'], 'context')
+                    selection = self._state.context_execution(context, live=False).get('workflow_selection')
+                    contract = (selection or {}).get('binding', {}).get('contract', {})
+                    if contract_id in {item['id'] for item in contract.get('contracts', [])}:
+                        result.append((value, output_token, manifest, assignment))
+                        continue
                 result.append((value, token, manifest, assignment))
         return result
 
@@ -246,6 +257,11 @@ class GovernedDomain:
                             }
                     if self._workflow_producers[key] is not None:
                         verified['workflow_producer'] = copy.deepcopy(self._workflow_producers[key])
+                        if 'contracts' in verified['workflow_producer']['binding'].get('contract', {}):
+                            verified['workflow_output'] = {
+                                'assignment': context['assignment'], 'artifact': producer,
+                                'material_digest': _digest(material),
+                            }
                 return verified
         except (ValueError, OSError, KeyError, TypeError):
             return None

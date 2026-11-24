@@ -10,6 +10,7 @@ from content_spec import canonical_hash
 from workflow_role_selection import PROTOCOL, _binding, _fields
 
 PROFILE_PROTOCOL = 'jai.workflow-specialist-profiles/1'
+ALL_REQUIRED_PROTOCOL = 'jai.workflow-all-required/1'
 CONTROL_FIELDS = ('operator_agent', 'tool_tier', 'allowed_tools')
 MODES = {'preferred-specialist', 'required-specialist'}
 
@@ -66,14 +67,33 @@ def effective_obligations(row, binding):
 
 
 def profile_for(row, binding, base, contract):
-    """Return the exact comparable profile obligations for an effective author endpoint."""
+    """Return exact profile obligations for an effective author endpoint.
+
+    Args:
+        row: Canonical workflow handoff.
+        binding: Effective variant endpoint.
+        base: Canonical producing role and its controls.
+        contract: A single authoritative contract or an ordered list of all required contracts.
+
+    Returns:
+        Canonical definition with individually pinned contract evidence.
+
+    Raises:
+        ValueError: Contract identity or endpoint ownership differs.
+    """
     obligations, _ = effective_obligations(row, binding)
-    if (binding['contract_ids'] != [contract['id']]
+    conjunction = isinstance(contract, list)
+    contracts = contract if conjunction else [contract]
+    identities = [item['id'] for item in contracts]
+    if ((conjunction and len(identities) < 2) or len(set(identities)) != len(identities)
+            or binding['contract_ids'] != identities
             or row['contract_selection'] != 'registered-contracts'
-            or not contract['id'].startswith(binding['producer_role'] + ':')):
+            or any(not identity.startswith(binding['producer_role'] + ':') for identity in identities)):
         raise ValueError('WORKFLOW_PROFILE_CONTRACT')
+    pins = [{'id': item['id'], 'version': item['version'], 'digest': canonical_hash(item)} for item in contracts]
+    required = {'protocol': ALL_REQUIRED_PROTOCOL, 'contracts': pins} if conjunction else pins[0]
     return {'base': binding['producer_role'], 'responsibility': 'author', 'endpoint': 'producer',
-            'contract': {'id': contract['id'], 'version': contract['version'], 'digest': canonical_hash(contract)},
+            'contract': required,
             'controls': {field: base[field] for field in CONTROL_FIELDS}, 'obligations': obligations}
 
 
@@ -119,12 +139,25 @@ def compile_profiles(catalogue, document, roles, instruction_blobs, contracts):
         if not isinstance(definition, dict) or set(definition) != {
                 'base', 'responsibility', 'endpoint', 'contract', 'controls', 'obligations'}:
             raise ValueError('WORKFLOW_PROFILE_SCHEMA')
-        _fields(definition['contract'], 'id version digest')
-        contract_id = _text(definition['contract']['id'])
+        requested = definition['contract']
+        if not isinstance(requested, dict):
+            raise ValueError('WORKFLOW_PROFILE_SCHEMA')
+        conjunction = requested.get('protocol') == ALL_REQUIRED_PROTOCOL
+        if conjunction:
+            _fields(requested, 'protocol contracts')
+            if not isinstance(requested['contracts'], list):
+                raise ValueError('WORKFLOW_PROFILE_SCHEMA')
+            refs = requested['contracts']
+        else:
+            refs = [requested]
+        for ref in refs:
+            _fields(ref, 'id version digest')
+        contract_ids = [_text(ref['id']) for ref in refs]
         base = binding['producer_role']
-        if base not in roles or contract_id not in contracts:
+        if base not in roles or any(identity not in contracts for identity in contract_ids):
             raise ValueError('WORKFLOW_PROFILE_CONTRACT')
-        if profile_for(row, binding, roles[base], contracts[contract_id]) != definition:
+        authoritative = [contracts[identity] for identity in contract_ids]
+        if profile_for(row, binding, roles[base], authoritative if conjunction else authoritative[0]) != definition:
             raise ValueError('WORKFLOW_PROFILE_OBLIGATIONS')
         _, units = effective_obligations(row, binding)
         ids = list(units.values())
@@ -138,7 +171,7 @@ def compile_profiles(catalogue, document, roles, instruction_blobs, contracts):
             mapping_pins[slug] = {field: mapping[field] for field in ('role_revision', 'review_receipt')}
         requirement = {'handoff': key[0], 'path': key[1], 'endpoint': key[2], 'base': base,
                        'responsibility': 'author',
-                       'contract': {field: definition['contract'][field] for field in ('id', 'version')},
+                       'contract': requested if conjunction else {field: requested[field] for field in ('id', 'version')},
                        'mappings': exact_mappings}
         requirements.append(requirement)
         pins.append({'handoff': key[0], 'path': key[1], 'endpoint': key[2], 'mode': endpoint['mode'],
@@ -164,8 +197,8 @@ def _stage_policy(catalogue, document, roles, instructions, contracts, ancestry)
     target.pop('catalog_hash')
     target['catalog_hash'] = canonical_hash(target)
     reviewed['workflow_catalogue'] = target['catalog_hash']
-    versions = {requirement['contract']['id']: requirement['contract']['version']
-                for requirement in reviewed['requirements']}
+    versions = {ref['id']: ref['version'] for requirement in reviewed['requirements']
+                for ref in requirement['contract'].get('contracts', [requirement['contract']])}
     used_ancestry = {mapping['slug']: ancestry[mapping['slug']] for mapping in document['mappings']}
     compiled = compile_requirements(target, reviewed, roles, used_ancestry, versions)
     policy = {'catalogue': target, 'reviewed': reviewed, 'ancestry': used_ancestry, 'contract_versions': versions,

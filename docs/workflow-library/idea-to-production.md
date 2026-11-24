@@ -23,6 +23,7 @@ Use the actual bounded request, current environment and decision rights to selec
 | --- | --- | --- |
 | new-product | Discover and test the product hypothesis before committing build scope | Problem evidence, options and success baseline |
 | existing-service-change | Reuse current service controls and assess only changed dependencies | Current baseline, change impact and receiving acceptance |
+| mobile-delivery | Produce a reviewed mobile build and hand automated results to the independent test analyst | Immutable build identity, SDK and device scope, observed tests and remaining coverage |
 
 Return unmet requirements or failed verification to the accountable requirement/design/change owner; retain accepted unchanged work. Stop production effects without current scoped change authority or on failed rollout health criteria. Reject/defer the demand with rationale, or close delivery after observed outcome and receiving service acceptance. Mechanism selection is not a waiver of security, legal or acceptance obligations.
 
@@ -49,6 +50,7 @@ New and changed products share requirement/design/execution/outcome evidence; cu
 | --- | --- | ---: |
 | new-product | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 | 13 |
 | existing-service-change | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 | 13 |
+| mobile-delivery | 1, 2, 3, 4, 5, 6, 7, 14, 8, 9, 10, 11, 12, 13 | 13 |
 
 A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
 <!-- END workflow-applicability -->
@@ -69,10 +71,11 @@ A path with a separate mechanism requires that explicit mechanism selection in t
 <li data-step="11"><span class="ai-workflow-step-number" aria-hidden="true">11</span><div><strong>GitOps and Continuous Delivery Engineer</strong><p>promotes the artefact and runs the progressive rollout</p></div></li>
 <li data-step="12"><span class="ai-workflow-step-number" aria-hidden="true">12</span><div><strong>Site Reliability Engineer</strong><p>observes against the service objective and owns the run</p></div></li>
 <li data-step="13"><span class="ai-workflow-step-number" aria-hidden="true">13</span><div><strong>Product Analyst</strong><p>measures whether the stated benefit arrived</p></div></li>
+<li data-step="14"><span class="ai-workflow-step-number" aria-hidden="true">14</span><div><strong>Test Automation Engineer</strong><p>executes automated tests against the exact reviewed mobile build</p></div></li>
 </ol>
 </div>
 
-[Open the full-size workflow diagram](../assets/diagrams/workflow-idea-to-production.svg). Follow the numbered order. The table below specifies the outputs and receiving conditions for each handoff.
+[Open the full-size workflow diagram](../assets/diagrams/workflow-idea-to-production.svg). Use the applicable path table for the sequence, including variant-only stages.
 <!-- JAI:WORKFLOW-DIAGRAM:END -->
 
 ## Workflow steps and gates
@@ -92,6 +95,7 @@ A path with a separate mechanism requires that explicit mechanism selection in t
 | 11 | GitOps and Continuous Delivery Engineer | promotes the artefact and runs the progressive rollout | deployed change with health gate | Health gate and automatic rollback defined and exercised |
 | 12 | Site Reliability Engineer | observes against the service objective and owns the run | service operating within SLO, or an error-budget decision | Error budget policy actually enforced |
 | 13 | Product Analyst | measures whether the stated benefit arrived | benefit measurement against the success measure | Result reported with effect size, not just direction |
+| 14 | Test Automation Engineer | executes automated tests against the exact reviewed mobile build (mobile-delivery only) | versioned automated mobile test observations and uncovered scope | Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps |
 
 ## Running this workflow: operator and implementer boundary
 

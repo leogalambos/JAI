@@ -48,7 +48,7 @@
               }
             ],
             "subject": "demand record with outcome and owner",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -88,7 +88,7 @@
                   }
                 ],
                 "subject": "demand record with outcome and owner",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 2
             },
@@ -129,7 +129,48 @@
                   }
                 ],
                 "subject": "demand record with outcome and owner",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 2
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "business-relationship-manager:2"
+              ],
+              "producer_role": "business-relationship-manager",
+              "receiving_role": "product-manager",
+              "acceptance_criterion": "Demand with no named business outcome does not enter the pipeline",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:1",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:1.demand_outcome",
+                    "semantic_field": "handoff_demand_outcome",
+                    "required_fields": [
+                      "demand_id",
+                      "outcome",
+                      "owner",
+                      "source",
+                      "urgency"
+                    ],
+                    "acceptance_criterion": "For demand record with outcome and owner, supply the actual versioned demand outcome record, including demand_id, outcome, owner, source, urgency. Independently assess the evidence against this exact criterion: Demand with no named business outcome does not enter the pipeline. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:1.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "demand record with outcome and owner",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 2
             }
@@ -175,7 +216,7 @@
               }
             ],
             "subject": "roadmap item with problem statement and success measure",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -216,7 +257,7 @@
                   }
                 ],
                 "subject": "roadmap item with problem statement and success measure",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 3
             },
@@ -258,7 +299,49 @@
                   }
                 ],
                 "subject": "roadmap item with problem statement and success measure",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 3
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "product-manager:1",
+                "product-manager:3"
+              ],
+              "producer_role": "product-manager",
+              "receiving_role": "business-analyst",
+              "acceptance_criterion": "The customer problem and its evidence are stated",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:2",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:2.product_opportunity",
+                    "semantic_field": "handoff_product_opportunity",
+                    "required_fields": [
+                      "problem",
+                      "evidence",
+                      "target_users",
+                      "success_measure",
+                      "roadmap_scope"
+                    ],
+                    "acceptance_criterion": "For roadmap item with problem statement and success measure, supply the actual versioned product opportunity record, including problem, evidence, target_users, success_measure, roadmap_scope. Independently assess the evidence against this exact criterion: The customer problem and its evidence are stated. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:2.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "roadmap item with problem statement and success measure",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 3
             }
@@ -304,7 +387,7 @@
               }
             ],
             "subject": "requirements baseline with traceability",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -344,7 +427,7 @@
                   }
                 ],
                 "subject": "requirements baseline with traceability",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 4
             },
@@ -385,7 +468,48 @@
                   }
                 ],
                 "subject": "requirements baseline with traceability",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 4
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "business-analyst:1"
+              ],
+              "producer_role": "business-analyst",
+              "receiving_role": "solution-architect",
+              "acceptance_criterion": "Every requirement is atomic, testable and traced to a source",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:3",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:3.requirements_baseline",
+                    "semantic_field": "handoff_requirements_baseline",
+                    "required_fields": [
+                      "baseline_id",
+                      "requirements",
+                      "source_links",
+                      "priorities",
+                      "verification_criteria"
+                    ],
+                    "acceptance_criterion": "For requirements baseline with traceability, supply the actual versioned requirements baseline record, including baseline_id, requirements, source_links, priorities, verification_criteria. Independently assess the evidence against this exact criterion: Every requirement is atomic, testable and traced to a source. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:3.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "requirements baseline with traceability",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 4
             }
@@ -432,7 +556,7 @@
               }
             ],
             "subject": "solution architecture and ADRs",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -474,7 +598,7 @@
                   }
                 ],
                 "subject": "solution architecture and ADRs",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 5
             },
@@ -517,7 +641,50 @@
                   }
                 ],
                 "subject": "solution architecture and ADRs",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 5
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "solution-architect:1",
+                "solution-architect:4"
+              ],
+              "producer_role": "solution-architect",
+              "receiving_role": "security-architect",
+              "acceptance_criterion": "Reviewed by someone who will operate it; failure modes documented",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:4",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:4.solution_architecture",
+                    "semantic_field": "handoff_solution_architecture",
+                    "required_fields": [
+                      "baseline",
+                      "boundaries",
+                      "decisions",
+                      "quality_targets",
+                      "failure_modes",
+                      "operational_review"
+                    ],
+                    "acceptance_criterion": "For solution architecture and ADRs, supply the actual versioned solution architecture record, including baseline, boundaries, decisions, quality_targets, failure_modes, operational_review. Independently assess the evidence against this exact criterion: Reviewed by someone who will operate it; failure modes documented. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:4.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "solution architecture and ADRs",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 5
             }
@@ -563,7 +730,7 @@
               }
             ],
             "subject": "security requirements and threat model",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -604,7 +771,7 @@
                   }
                 ],
                 "subject": "security requirements and threat model",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 6
             },
@@ -646,7 +813,49 @@
                   }
                 ],
                 "subject": "security requirements and threat model",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 6
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "security-architect:2",
+                "security-architect:4"
+              ],
+              "producer_role": "security-architect",
+              "receiving_role": "technical-lead",
+              "acceptance_criterion": "Every control traces to a threat and a business risk",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:5",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:5.security_design",
+                    "semantic_field": "handoff_security_design",
+                    "required_fields": [
+                      "threat_scenarios",
+                      "business_risks",
+                      "controls",
+                      "requirement_links",
+                      "residual_exposure"
+                    ],
+                    "acceptance_criterion": "For security requirements and threat model, supply the actual versioned security design record, including threat_scenarios, business_risks, controls, requirement_links, residual_exposure. Independently assess the evidence against this exact criterion: Every control traces to a threat and a business risk. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:5.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "security requirements and threat model",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 6
             }
@@ -692,7 +901,7 @@
               }
             ],
             "subject": "technical breakdown and readiness-checked items",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -732,7 +941,7 @@
                   }
                 ],
                 "subject": "technical breakdown and readiness-checked items",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 7
             },
@@ -773,7 +982,48 @@
                   }
                 ],
                 "subject": "technical breakdown and readiness-checked items",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 7
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "technical-lead:4"
+              ],
+              "producer_role": "technical-lead",
+              "receiving_role": "mobile-engineer",
+              "acceptance_criterion": "Acceptance criteria and dependencies exist before start",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:6",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:6.delivery_readiness",
+                    "semantic_field": "handoff_delivery_readiness",
+                    "required_fields": [
+                      "work_items",
+                      "acceptance_criteria",
+                      "dependency_refs",
+                      "technical_owners",
+                      "readiness_gaps"
+                    ],
+                    "acceptance_criterion": "For technical breakdown and readiness-checked items, supply the actual versioned delivery readiness record, including work_items, acceptance_criteria, dependency_refs, technical_owners, readiness_gaps. Independently assess the evidence against this exact criterion: Acceptance criteria and dependencies exist before start. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:6.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "technical breakdown and readiness-checked items",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 7
             }
@@ -820,7 +1070,7 @@
               }
             ],
             "subject": "reviewed, merged change with rollback path",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -863,7 +1113,7 @@
                   }
                 ],
                 "subject": "reviewed, merged change with rollback path",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 8
             },
@@ -907,9 +1157,53 @@
                   }
                 ],
                 "subject": "reviewed, merged change with rollback path",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 8
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "mobile-engineer:1"
+              ],
+              "producer_role": "mobile-engineer",
+              "receiving_role": "test-automation-engineer",
+              "acceptance_criterion": "The immutable mobile build matches the reviewed source, SDK and device scope, with observed verification, telemetry and rollback evidence.",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:7",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:7.mobile_build",
+                    "semantic_field": "handoff_mobile_build",
+                    "required_fields": [
+                      "candidate_build_ref",
+                      "source_revision",
+                      "sdk_scope",
+                      "device_scope",
+                      "peer_review",
+                      "test_results",
+                      "telemetry",
+                      "rollback_path"
+                    ],
+                    "acceptance_criterion": "The immutable mobile build matches the reviewed source, SDK and device scope, with observed verification, telemetry and rollback evidence."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:7.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "reviewed, merged change with rollback path",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 14
             }
           }
         },
@@ -953,7 +1247,7 @@
               }
             ],
             "subject": "test evidence and residual risk statement",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -994,7 +1288,7 @@
                   }
                 ],
                 "subject": "test evidence and residual risk statement",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 9
             },
@@ -1036,7 +1330,53 @@
                   }
                 ],
                 "subject": "test evidence and residual risk statement",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 9
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "test-analyst:2",
+                "test-analyst:4"
+              ],
+              "producer_role": "test-analyst",
+              "receiving_role": "release-engineer",
+              "acceptance_criterion": "The independent test verdict assesses the exact mobile automation evidence for the same immutable build and applicable device and SDK scope.",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:8",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:8.mobile_test_verdict",
+                    "semantic_field": "handoff_mobile_test_verdict",
+                    "required_fields": [
+                      "candidate_build_ref",
+                      "automation_evidence_ref",
+                      "tested_revision",
+                      "sdk_scope",
+                      "device_scope",
+                      "predeclared_exit_criteria",
+                      "actual_results",
+                      "exclusions",
+                      "residual_risk_disposition"
+                    ],
+                    "acceptance_criterion": "The independent test verdict assesses the exact mobile automation evidence for the same immutable build and applicable device and SDK scope."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:8.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "test evidence and residual risk statement",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 9
             }
@@ -1082,7 +1422,7 @@
               }
             ],
             "subject": "release manifest and tested rollback",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -1123,7 +1463,7 @@
                   }
                 ],
                 "subject": "release manifest and tested rollback",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 10
             },
@@ -1165,7 +1505,49 @@
                   }
                 ],
                 "subject": "release manifest and tested rollback",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 10
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "release-engineer:2",
+                "release-engineer:4"
+              ],
+              "producer_role": "release-engineer",
+              "receiving_role": "change-manager",
+              "acceptance_criterion": "Manifest states exactly which artefact versions ship where",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:9",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:9.release_manifest",
+                    "semantic_field": "handoff_release_manifest",
+                    "required_fields": [
+                      "release_id",
+                      "artifact_versions",
+                      "target_environments",
+                      "provenance",
+                      "rollback_rehearsal"
+                    ],
+                    "acceptance_criterion": "For release manifest and tested rollback, supply the actual versioned release manifest record, including release_id, artifact_versions, target_environments, provenance, rollback_rehearsal. Independently assess the evidence against this exact criterion: Manifest states exactly which artefact versions ship where. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:9.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "release manifest and tested rollback",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 10
             }
@@ -1213,7 +1595,7 @@
               }
             ],
             "subject": "change authorisation",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -1255,7 +1637,7 @@
                   }
                 ],
                 "subject": "change authorisation",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 11
             },
@@ -1298,7 +1680,50 @@
                   }
                 ],
                 "subject": "change authorisation",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 11
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "change-manager:1"
+              ],
+              "producer_role": "change-manager",
+              "receiving_role": "gitops-and-continuous-delivery-engineer",
+              "acceptance_criterion": "Risk class matched to approval path; emergency changes logged within the window",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:10",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:10.change_authorisation",
+                    "semantic_field": "handoff_change_authorisation",
+                    "required_fields": [
+                      "change_id",
+                      "exact_scope",
+                      "risk_class",
+                      "authority",
+                      "decision",
+                      "window",
+                      "emergency_record"
+                    ],
+                    "acceptance_criterion": "For change authorisation, supply the actual versioned change authorisation record, including change_id, exact_scope, risk_class, authority, decision, window, emergency_record. Independently assess the evidence against this exact criterion: Risk class matched to approval path; emergency changes logged within the window. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:10.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "change authorisation",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 11
             }
@@ -1344,7 +1769,7 @@
               }
             ],
             "subject": "deployed change with health gate",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -1385,7 +1810,7 @@
                   }
                 ],
                 "subject": "deployed change with health gate",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 12
             },
@@ -1427,7 +1852,49 @@
                   }
                 ],
                 "subject": "deployed change with health gate",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 12
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "gitops-and-continuous-delivery-engineer:3",
+                "gitops-and-continuous-delivery-engineer:4"
+              ],
+              "producer_role": "gitops-and-continuous-delivery-engineer",
+              "receiving_role": "site-reliability-engineer",
+              "acceptance_criterion": "Health gate and automatic rollback defined and exercised",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:11",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:11.deployment_observations",
+                    "semantic_field": "handoff_deployment_observations",
+                    "required_fields": [
+                      "approved_change_ref",
+                      "deployed_revision",
+                      "health_thresholds",
+                      "actual_results",
+                      "reversal_observations"
+                    ],
+                    "acceptance_criterion": "For deployed change with health gate, supply the actual versioned deployment observations record, including approved_change_ref, deployed_revision, health_thresholds, actual_results, reversal_observations. Independently assess the evidence against this exact criterion: Health gate and automatic rollback defined and exercised. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:11.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "deployed change with health gate",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 12
             }
@@ -1474,7 +1941,7 @@
               }
             ],
             "subject": "service operating within SLO, or an error-budget decision",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -1515,7 +1982,7 @@
                   }
                 ],
                 "subject": "service operating within SLO, or an error-budget decision",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 13
             },
@@ -1557,7 +2024,49 @@
                   }
                 ],
                 "subject": "service operating within SLO, or an error-budget decision",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 13
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "site-reliability-engineer:1"
+              ],
+              "producer_role": "site-reliability-engineer",
+              "receiving_role": "product-analyst",
+              "acceptance_criterion": "Error budget policy actually enforced",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:12",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:12.service_objective_status",
+                    "semantic_field": "handoff_service_objective_status",
+                    "required_fields": [
+                      "service_id",
+                      "measurement_window",
+                      "indicators",
+                      "objectives",
+                      "budget_consumption",
+                      "policy_action"
+                    ],
+                    "acceptance_criterion": "For service operating within SLO, or an error-budget decision, supply the actual versioned service objective status record, including service_id, measurement_window, indicators, objectives, budget_consumption, policy_action. Independently assess the evidence against this exact criterion: Error budget policy actually enforced. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:12.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "service operating within SLO, or an error-budget decision",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": 13
             }
@@ -1604,7 +2113,7 @@
               }
             ],
             "subject": "benefit measurement against the success measure",
-            "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
           },
           "variant_bindings": {
             "new-product": {
@@ -1646,7 +2155,7 @@
                   }
                 ],
                 "subject": "benefit measurement against the success measure",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": null
             },
@@ -1689,9 +2198,143 @@
                   }
                 ],
                 "subject": "benefit measurement against the success measure",
-                "workflow_profile_hash": "78703309ace977c6123daffea303ebbf6b8a5236d80878807fed6916547bf174"
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
               },
               "next_step": null
+            },
+            "mobile-delivery": {
+              "contract_ids": [
+                "product-analyst:1",
+                "product-analyst:2"
+              ],
+              "producer_role": "product-analyst",
+              "receiving_role": "engagement:named-authority",
+              "acceptance_criterion": "Result reported with effect size, not just direction",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:13",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:13.benefit_observations",
+                    "semantic_field": "handoff_benefit_observations",
+                    "required_fields": [
+                      "success_measure",
+                      "baseline",
+                      "observation_period",
+                      "effect_size",
+                      "method",
+                      "uncertainty"
+                    ],
+                    "acceptance_criterion": "For benefit measurement against the success measure, supply the actual versioned benefit observations record, including success_measure, baseline, observation_period, effect_size, method, uncertainty. Independently assess the evidence against this exact criterion: Result reported with effect size, not just direction. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:13.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "benefit measurement against the success measure",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": null
+            }
+          }
+        },
+        {
+          "step": 14,
+          "role": "Test Automation Engineer",
+          "slug": "test-automation-engineer",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "executes automated tests against the exact reviewed mobile build",
+          "hands_over": "versioned automated mobile test observations and uncovered scope",
+          "gate": "Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps",
+          "variant_only": true,
+          "handoff_content_contract": {
+            "id": "handoff/idea-to-production:14",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/idea-to-production:14.mobile_automation_evidence",
+                "semantic_field": "handoff_mobile_automation_evidence",
+                "required_fields": [
+                  "candidate_build_ref",
+                  "build_evidence_ref",
+                  "sdk_scope",
+                  "device_scope",
+                  "observed_results",
+                  "untested_scope",
+                  "automation_revision"
+                ],
+                "acceptance_criterion": "For versioned automated mobile test observations and uncovered scope, supply the actual versioned mobile automation evidence record, including candidate_build_ref, build_evidence_ref, sdk_scope, device_scope, observed_results, untested_scope, automation_revision. Independently assess the evidence against this exact criterion: Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+              },
+              {
+                "id": "handoff/idea-to-production:14.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "versioned automated mobile test observations and uncovered scope",
+            "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+          },
+          "variant_bindings": {
+            "mobile-delivery": {
+              "contract_ids": [
+                "test-automation-engineer:1"
+              ],
+              "producer_role": "test-automation-engineer",
+              "receiving_role": "test-analyst",
+              "acceptance_criterion": "Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps",
+              "handoff_content_contract": {
+                "id": "handoff/idea-to-production:14",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/idea-to-production:14.mobile_automation_evidence",
+                    "semantic_field": "handoff_mobile_automation_evidence",
+                    "required_fields": [
+                      "candidate_build_ref",
+                      "build_evidence_ref",
+                      "sdk_scope",
+                      "device_scope",
+                      "observed_results",
+                      "untested_scope",
+                      "automation_revision"
+                    ],
+                    "acceptance_criterion": "For versioned automated mobile test observations and uncovered scope, supply the actual versioned mobile automation evidence record, including candidate_build_ref, build_evidence_ref, sdk_scope, device_scope, observed_results, untested_scope, automation_revision. Independently assess the evidence against this exact criterion: Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/idea-to-production:14.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "versioned automated mobile test observations and uncovered scope",
+                "workflow_profile_hash": "70e2c00c99319baf0db46257125886142b3227e3e91ffa20fa5778dbf94c24fd"
+              },
+              "next_step": 8
             }
           }
         }
@@ -1716,6 +2359,11 @@
             "id": "existing-service-change",
             "mechanisms": "Reuse current service controls and assess only changed dependencies",
             "evidence": "Current baseline, change impact and receiving acceptance"
+          },
+          {
+            "id": "mobile-delivery",
+            "mechanisms": "Produce a reviewed mobile build and hand automated results to the independent test analyst",
+            "evidence": "Immutable build identity, SDK and device scope, observed tests and remaining coverage"
           }
         ],
         "routes": [
@@ -1784,6 +2432,28 @@
               13
             ],
             "terminal_step": 13
+          },
+          {
+            "id": "mobile-delivery",
+            "variant": "mobile-delivery",
+            "mechanism": "mobile-delivery",
+            "steps": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              14,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "terminal_step": 13
           }
         ]
       },
@@ -1803,6 +2473,11 @@
             "context": "existing-service-change",
             "mechanisms": "Reuse current service controls and assess only changed dependencies",
             "evidence": "Current baseline, change impact and receiving acceptance"
+          },
+          {
+            "context": "mobile-delivery",
+            "mechanisms": "Produce a reviewed mobile build and hand automated results to the independent test analyst",
+            "evidence": "Immutable build identity, SDK and device scope, observed tests and remaining coverage"
           }
         ],
         "disposition_rule": "Return unmet requirements or failed verification to the accountable requirement/design/change owner; retain accepted unchanged work. Stop production effects without current scoped change authority or on failed rollout health criteria. Reject/defer the demand with rationale, or close delivery after observed outcome and receiving service acceptance. Mechanism selection is not a waiver of security, legal or acceptance obligations."
@@ -7490,7 +8165,7 @@
               }
             ],
             "subject": "reviewed change and rollback plan",
-            "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
           },
           "variant_bindings": {
             "standard/application": {
@@ -7531,7 +8206,7 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             },
@@ -7573,7 +8248,7 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             },
@@ -7615,7 +8290,7 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             },
@@ -7657,7 +8332,7 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             },
@@ -7699,7 +8374,7 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             },
@@ -7741,7 +8416,49 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": 2
+            },
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "software-engineer:1",
+                "software-engineer:4"
+              ],
+              "producer_role": "software-engineer",
+              "receiving_role": "engagement:change-impact-owner",
+              "acceptance_criterion": "Small enough to review in one pass",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:1",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:1.reviewed_change",
+                    "semantic_field": "handoff_reviewed_change",
+                    "required_fields": [
+                      "source_revision",
+                      "change_scope",
+                      "review_result",
+                      "review_size",
+                      "recovery_plan"
+                    ],
+                    "acceptance_criterion": "For reviewed change and rollback plan, supply the actual versioned reviewed change record, including source_revision, change_scope, review_result, review_size, recovery_plan. Independently assess the evidence against this exact criterion: Small enough to review in one pass. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/production-change:1.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "reviewed change and rollback plan",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             },
@@ -7783,7 +8500,7 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             },
@@ -7825,7 +8542,7 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             },
@@ -7867,7 +8584,7 @@
                   }
                 ],
                 "subject": "reviewed change and rollback plan",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 2
             }
@@ -7913,7 +8630,7 @@
               }
             ],
             "subject": "reviewed plan; destructive operations flagged",
-            "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
           },
           "variant_bindings": {
             "standard/application": {
@@ -7954,7 +8671,7 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             },
@@ -7996,7 +8713,7 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             },
@@ -8038,7 +8755,7 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             },
@@ -8080,7 +8797,7 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             },
@@ -8122,7 +8839,7 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             },
@@ -8164,7 +8881,49 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": 3
+            },
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "configuration-manager:3"
+              ],
+              "producer_role": "engagement:change-impact-owner",
+              "receiving_role": "test-analyst",
+              "acceptance_criterion": "Assess the application change against infrastructure dependencies; evidence supports any unchanged-infrastructure conclusion rather than claiming an IaC apply that did not occur.",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:2",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:2.application_infrastructure_impact",
+                    "semantic_field": "handoff_application_infrastructure_impact",
+                    "required_fields": [
+                      "change_revision",
+                      "affected_assets",
+                      "infrastructure_delta",
+                      "retained_baseline",
+                      "compatibility_evidence",
+                      "owner"
+                    ],
+                    "acceptance_criterion": "Assess the application change against infrastructure dependencies; evidence supports any unchanged-infrastructure conclusion rather than claiming an IaC apply that did not occur."
+                  },
+                  {
+                    "id": "handoff/production-change:2.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "reviewed plan; destructive operations flagged",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             },
@@ -8206,7 +8965,7 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             },
@@ -8248,7 +9007,7 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             },
@@ -8290,7 +9049,7 @@
                   }
                 ],
                 "subject": "reviewed plan; destructive operations flagged",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 3
             }
@@ -8336,7 +9095,7 @@
               }
             ],
             "subject": "test evidence with coverage and residual risk",
-            "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
           },
           "variant_bindings": {
             "standard/application": {
@@ -8377,7 +9136,7 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             },
@@ -8419,7 +9178,7 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             },
@@ -8461,7 +9220,7 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             },
@@ -8503,7 +9262,7 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             },
@@ -8545,7 +9304,7 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             },
@@ -8587,7 +9346,49 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": 4
+            },
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "test-analyst:2",
+                "test-analyst:4"
+              ],
+              "producer_role": "test-analyst",
+              "receiving_role": "release-engineer",
+              "acceptance_criterion": "Residual risk accepted by a named person",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:3",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:3.change_test_evidence",
+                    "semantic_field": "handoff_change_test_evidence",
+                    "required_fields": [
+                      "tested_revision",
+                      "coverage",
+                      "actual_results",
+                      "residual_risks",
+                      "named_risk_disposition"
+                    ],
+                    "acceptance_criterion": "For test evidence with coverage and residual risk, supply the actual versioned change test evidence record, including tested_revision, coverage, actual_results, residual_risks, named_risk_disposition. Independently assess the evidence against this exact criterion: Residual risk accepted by a named person. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/production-change:3.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "test evidence with coverage and residual risk",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             },
@@ -8629,7 +9430,7 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             },
@@ -8671,7 +9472,7 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             },
@@ -8713,7 +9514,7 @@
                   }
                 ],
                 "subject": "test evidence with coverage and residual risk",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 4
             }
@@ -8759,7 +9560,7 @@
               }
             ],
             "subject": "release manifest with signed provenance",
-            "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
           },
           "variant_bindings": {
             "standard/application": {
@@ -8799,7 +9600,7 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
             },
@@ -8840,7 +9641,7 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
             },
@@ -8881,7 +9682,7 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
             },
@@ -8922,7 +9723,7 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
             },
@@ -8963,7 +9764,7 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
             },
@@ -9004,9 +9805,54 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
+            },
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "release-engineer:2"
+              ],
+              "producer_role": "release-engineer",
+              "receiving_role": "erp-and-crm-consultant-developer",
+              "acceptance_criterion": "The release manifest pins the exact ABAP Cloud candidate, tenant, product release and transport scope with the existing source and signature provenance.",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:4",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:4.abap_cloud_release_provenance",
+                    "semantic_field": "handoff_abap_cloud_release_provenance",
+                    "required_fields": [
+                      "manifest_revision",
+                      "artifacts",
+                      "source_commits",
+                      "signatures",
+                      "target_scope",
+                      "candidate_ref",
+                      "tenant_ref",
+                      "product_release",
+                      "transport_scope"
+                    ],
+                    "acceptance_criterion": "The release manifest pins the exact ABAP Cloud candidate, tenant, product release and transport scope with the existing source and signature provenance."
+                  },
+                  {
+                    "id": "handoff/production-change:4.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "release manifest with signed provenance",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": 9
             },
             "emergency/application": {
               "contract_ids": [
@@ -9045,7 +9891,7 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
             },
@@ -9086,7 +9932,7 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
             },
@@ -9127,7 +9973,7 @@
                   }
                 ],
                 "subject": "release manifest with signed provenance",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 5
             }
@@ -9174,7 +10020,7 @@
               }
             ],
             "subject": "change record and schedule slot",
-            "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
           },
           "variant_bindings": {
             "standard/application": {
@@ -9216,7 +10062,7 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             },
@@ -9259,7 +10105,7 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             },
@@ -9302,7 +10148,7 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             },
@@ -9345,7 +10191,7 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             },
@@ -9388,7 +10234,7 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             },
@@ -9431,7 +10277,55 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": 6
+            },
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "change-manager:1",
+                "change-manager:2"
+              ],
+              "producer_role": "change-manager",
+              "receiving_role": "gitops-and-continuous-delivery-engineer",
+              "acceptance_criterion": "The existing change authority decides on the exact SAP Cloud ERP Public Edition candidate, tenant and transport using its reviewed ABAP Cloud evidence.",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:5",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:5.abap_cloud_change_record",
+                    "semantic_field": "handoff_abap_cloud_change_record",
+                    "required_fields": [
+                      "change_id",
+                      "risk_class",
+                      "authorisation_ref",
+                      "schedule",
+                      "preauthorisation_basis",
+                      "measurement",
+                      "extension_evidence_ref",
+                      "candidate_ref",
+                      "tenant_ref",
+                      "product_release",
+                      "transport_scope"
+                    ],
+                    "acceptance_criterion": "The existing change authority decides on the exact SAP Cloud ERP Public Edition candidate, tenant and transport using its reviewed ABAP Cloud evidence."
+                  },
+                  {
+                    "id": "handoff/production-change:5.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "change record and schedule slot",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             },
@@ -9474,7 +10368,7 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             },
@@ -9517,7 +10411,7 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             },
@@ -9560,7 +10454,7 @@
                   }
                 ],
                 "subject": "change record and schedule slot",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 6
             }
@@ -9606,7 +10500,7 @@
               }
             ],
             "subject": "rollout with automatic reversal armed",
-            "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
           },
           "variant_bindings": {
             "standard/application": {
@@ -9647,7 +10541,7 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             },
@@ -9689,7 +10583,7 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             },
@@ -9731,7 +10625,7 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             },
@@ -9773,7 +10667,7 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             },
@@ -9815,7 +10709,7 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             },
@@ -9857,7 +10751,49 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": 7
+            },
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "gitops-and-continuous-delivery-engineer:3",
+                "gitops-and-continuous-delivery-engineer:4"
+              ],
+              "producer_role": "gitops-and-continuous-delivery-engineer",
+              "receiving_role": "site-reliability-engineer",
+              "acceptance_criterion": "Rollback exercised, not merely documented",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:6",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:6.rollout_readiness",
+                    "semantic_field": "handoff_rollout_readiness",
+                    "required_fields": [
+                      "artifact_revision",
+                      "rollout_steps",
+                      "reversal_triggers",
+                      "rehearsal_evidence",
+                      "permitted_scope"
+                    ],
+                    "acceptance_criterion": "For rollout with automatic reversal armed, supply the actual versioned rollout readiness record, including artifact_revision, rollout_steps, reversal_triggers, rehearsal_evidence, permitted_scope. Independently assess the evidence against this exact criterion: Rollback exercised, not merely documented. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/production-change:6.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "rollout with automatic reversal armed",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             },
@@ -9899,7 +10835,7 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             },
@@ -9941,7 +10877,7 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             },
@@ -9983,7 +10919,7 @@
                   }
                 ],
                 "subject": "rollout with automatic reversal armed",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 7
             }
@@ -10029,7 +10965,7 @@
               }
             ],
             "subject": "post-release confirmation or a reversal decision",
-            "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
           },
           "variant_bindings": {
             "standard/application": {
@@ -10070,7 +11006,7 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             },
@@ -10112,7 +11048,7 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             },
@@ -10154,7 +11090,7 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             },
@@ -10196,7 +11132,7 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             },
@@ -10238,7 +11174,7 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             },
@@ -10280,7 +11216,49 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": 8
+            },
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "site-reliability-engineer:1",
+                "site-reliability-engineer:3"
+              ],
+              "producer_role": "site-reliability-engineer",
+              "receiving_role": "configuration-manager",
+              "acceptance_criterion": "Reversal executed on trigger, not on debate",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:7",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:7.release_health_decision",
+                    "semantic_field": "handoff_release_health_decision",
+                    "required_fields": [
+                      "observation_window",
+                      "signals",
+                      "thresholds",
+                      "decision",
+                      "actual_reversal_evidence"
+                    ],
+                    "acceptance_criterion": "For post-release confirmation or a reversal decision, supply the actual versioned release health decision record, including observation_window, signals, thresholds, decision, actual_reversal_evidence. Independently assess the evidence against this exact criterion: Reversal executed on trigger, not on debate. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/production-change:7.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "post-release confirmation or a reversal decision",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             },
@@ -10322,7 +11300,7 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             },
@@ -10364,7 +11342,7 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             },
@@ -10406,7 +11384,7 @@
                   }
                 ],
                 "subject": "post-release confirmation or a reversal decision",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": 8
             }
@@ -10452,7 +11430,7 @@
               }
             ],
             "subject": "updated configuration items",
-            "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
           },
           "variant_bindings": {
             "standard/application": {
@@ -10493,7 +11471,7 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
             },
@@ -10535,7 +11513,7 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
             },
@@ -10577,7 +11555,7 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
             },
@@ -10619,7 +11597,7 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
             },
@@ -10661,7 +11639,7 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
             },
@@ -10703,7 +11681,49 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": null
+            },
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "configuration-manager:1",
+                "configuration-manager:3"
+              ],
+              "producer_role": "configuration-manager",
+              "receiving_role": "engagement:named-authority",
+              "acceptance_criterion": "Record updated the same day the change lands",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:8",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:8.configuration_reconciliation",
+                    "semantic_field": "handoff_configuration_reconciliation",
+                    "required_fields": [
+                      "changed_assets",
+                      "actual_revision",
+                      "record_revision",
+                      "effective_date",
+                      "reconciliation_gaps"
+                    ],
+                    "acceptance_criterion": "For updated configuration items, supply the actual versioned configuration reconciliation record, including changed_assets, actual_revision, record_revision, effective_date, reconciliation_gaps. Independently assess the evidence against this exact criterion: Record updated the same day the change lands. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/production-change:8.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "updated configuration items",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
             },
@@ -10745,7 +11765,7 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
             },
@@ -10787,7 +11807,7 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
             },
@@ -10829,9 +11849,104 @@
                   }
                 ],
                 "subject": "updated configuration items",
-                "workflow_profile_hash": "b9b2bbff0a72c4514fbfd3243e74e4d4dca6558a50636f9e02792e300ec82942"
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
               },
               "next_step": null
+            }
+          }
+        },
+        {
+          "step": 9,
+          "role": "ERP and CRM Consultant Developer",
+          "slug": "erp-and-crm-consultant-developer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "binds the reviewed ABAP Cloud extension and its transport evidence to the release candidate",
+          "hands_over": "reviewed ABAP Cloud extension and release evidence for the named change authority",
+          "gate": "The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence",
+          "variant_only": true,
+          "handoff_content_contract": {
+            "id": "handoff/production-change:9",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/production-change:9.abap_cloud_extension_evidence",
+                "semantic_field": "handoff_abap_cloud_extension_evidence",
+                "required_fields": [
+                  "candidate_ref",
+                  "release_manifest_ref",
+                  "tenant_ref",
+                  "product_release",
+                  "released_apis",
+                  "transport_scope",
+                  "regression_evidence",
+                  "upgrade_evidence",
+                  "reversal_prerequisites"
+                ],
+                "acceptance_criterion": "For reviewed ABAP Cloud extension and release evidence for the named change authority, supply the actual versioned abap cloud extension evidence record, including candidate_ref, release_manifest_ref, tenant_ref, product_release, released_apis, transport_scope, regression_evidence, upgrade_evidence, reversal_prerequisites. Independently assess the evidence against this exact criterion: The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+              },
+              {
+                "id": "handoff/production-change:9.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "reviewed ABAP Cloud extension and release evidence for the named change authority",
+            "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+          },
+          "variant_bindings": {
+            "normal/abap-cloud": {
+              "contract_ids": [
+                "erp-and-crm-consultant-developer:2"
+              ],
+              "producer_role": "erp-and-crm-consultant-developer",
+              "receiving_role": "change-manager",
+              "acceptance_criterion": "The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence",
+              "handoff_content_contract": {
+                "id": "handoff/production-change:9",
+                "version": "1.0.0",
+                "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+                "units": [
+                  {
+                    "id": "handoff/production-change:9.abap_cloud_extension_evidence",
+                    "semantic_field": "handoff_abap_cloud_extension_evidence",
+                    "required_fields": [
+                      "candidate_ref",
+                      "release_manifest_ref",
+                      "tenant_ref",
+                      "product_release",
+                      "released_apis",
+                      "transport_scope",
+                      "regression_evidence",
+                      "upgrade_evidence",
+                      "reversal_prerequisites"
+                    ],
+                    "acceptance_criterion": "For reviewed ABAP Cloud extension and release evidence for the named change authority, supply the actual versioned abap cloud extension evidence record, including candidate_ref, release_manifest_ref, tenant_ref, product_release, released_apis, transport_scope, regression_evidence, upgrade_evidence, reversal_prerequisites. Independently assess the evidence against this exact criterion: The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+                  },
+                  {
+                    "id": "handoff/production-change:9.workflow_context",
+                    "semantic_field": "workflow_context",
+                    "required_fields": [
+                      "context_ref",
+                      "route",
+                      "input_refs",
+                      "route_evidence"
+                    ],
+                    "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+                  }
+                ],
+                "subject": "reviewed ABAP Cloud extension and release evidence for the named change authority",
+                "workflow_profile_hash": "b465c141358f5236096e20c02180368988c023d2abe2838089ced3ca21bc6a50"
+              },
+              "next_step": 5
             }
           }
         }
@@ -10977,6 +12092,23 @@
               2,
               3,
               4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "terminal_step": 8
+          },
+          {
+            "id": "normal/abap-cloud",
+            "variant": "normal",
+            "mechanism": "abap-cloud",
+            "steps": [
+              1,
+              2,
+              3,
+              4,
+              9,
               5,
               6,
               7,

@@ -51,9 +51,9 @@ evidence. Installed activation and live-provider qualification are separate fact
 
 | Workflow | Steps | Trigger |
 | --- | --- | --- |
-| [Idea to production](references/idea-to-production.md) | 13 | A business need, opportunity or customer problem arrives with no agreed solution. |
+| [Idea to production](references/idea-to-production.md) | 14 | A business need, opportunity or customer problem arrives with no agreed solution. |
 | [New service onboarding](references/new-service-onboarding.md) | 12 | A new service or component needs to exist, be deployable and be operable. |
-| [Production change](references/production-change.md) | 8 | A change must reach production: a feature, a fix, an infrastructure change or a configuration change. |
+| [Production change](references/production-change.md) | 9 | A change must reach production: a feature, a fix, an infrastructure change or a configuration change. |
 | [Incident to permanent fix](references/incident-to-problem.md) | 12 | A service degrades or fails. |
 | [Vulnerability to remediation](references/vulnerability-to-remediation.md) | 8 | A vulnerability is reported, discovered by scanning, or published by a vendor. |
 | [Inherited codebase takeover](references/codebase-takeover.md) | 8 | The organisation acquires, inherits or repatriates a system nobody present built. |

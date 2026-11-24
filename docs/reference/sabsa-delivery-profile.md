@@ -72,6 +72,16 @@ Before substantive work, the entitled setter records a versioned engagement prof
 
 A general JAI engagement may select a proportionate subset. An engagement requesting SABSA deliverables must satisfy its selected method requirements and agreed scope; it cannot silently use a lighter generic profile. All six questions remain accounted for, even where a justified exclusion is permitted. The word "complete" always names the profile, source scope, and output versions against which it was assessed.
 
+### Professional roles and shared method guidance
+
+Existing SABSA roles can share the maintained method module while retaining
+their own remit, outputs and standing controls. A question still has its own
+setter, author and independent reviewer. A product-specific scope can select
+a compatible specialist through an enrolled workflow profile. The selection
+preserves the owner, output requirements and permissions of that assignment.
+The role catalogue describes expertise and the engagement profile governs
+what evidence the SABSA assessment requires.
+
 ### Row scheduling
 
 JAI evaluates hard prerequisites within each row before issuing dependent

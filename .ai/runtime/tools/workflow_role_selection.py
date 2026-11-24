@@ -69,15 +69,34 @@ def compile_requirements(catalogue, reviewed, roles, ancestry, contract_versions
 
 
 def _compile_requirement(catalogue, key, requirement, roles, ancestry, contract_versions):
+    from workflow_specialist_profiles import ALL_REQUIRED_PROTOCOL
+
     row, effective = _binding(catalogue, *key)
     base_slug = requirement["base"]
     contract = requirement["contract"]
-    _fields(contract, "id version")
+    conjunction = isinstance(contract, dict) and contract.get("protocol") == ALL_REQUIRED_PROTOCOL
+    if conjunction:
+        _fields(contract, "protocol contracts")
+        if not isinstance(contract["contracts"], list):
+            raise ValueError("WORKFLOW_ROLE_CONTRACT")
+        refs = contract["contracts"]
+        for ref in refs:
+            _fields(ref, "id version digest")
+            if not isinstance(ref["digest"], str) or len(ref["digest"]) != 64:
+                raise ValueError("WORKFLOW_ROLE_CONTRACT")
+        if (len(refs) < 2 or [ref["id"] for ref in refs] != effective["contract_ids"]
+                or len({ref["id"] for ref in refs}) != len(refs)
+                or "profile" not in effective.get("workflow_role_requirement", {})):
+            raise ValueError("WORKFLOW_ROLE_CONTRACT")
+    else:
+        _fields(contract, "id version")
+        refs = [contract]
     if (key[2] != "producer" or base_slug in _AUTHORITY_ROLES or base_slug not in roles
             or effective[_ENDPOINTS[key[2]]] != base_slug or requirement["responsibility"] != "author"):
         raise ValueError("WORKFLOW_ROLE_BOUNDARY")
-    if (row["contract_selection"] != "registered-contracts" or contract["id"] not in effective["contract_ids"]
-            or contract_versions.get(contract["id"]) != contract["version"]):
+    if (row["contract_selection"] != "registered-contracts"
+            or any(ref["id"] not in effective["contract_ids"]
+                   or contract_versions.get(ref["id"]) != ref["version"] for ref in refs)):
         raise ValueError("WORKFLOW_ROLE_CONTRACT")
     required_units = {unit["id"] for unit in effective["handoff_content_contract"]["units"]}
     if not isinstance(requirement["mappings"], list) or not requirement["mappings"]:

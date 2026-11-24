@@ -198,18 +198,18 @@ def render_release_inventory(root: Path) -> str:
     return "\n".join(rows)
 
 
-def render_role_coverage(root: Path) -> str:
-    """Return homepage role/domain coverage derived from canonical registry rows.
-
-    Args:
-        root: Checkout containing .ai/runtime/roles.json.
-    Returns:
-        Plain English role and domain count; no hardcoded inventory values.
-    Raises:
-        ValueError: Count, role identity or skill-domain metadata is invalid.
-        OSError: Canonical registry cannot be read.
-    """
-    registry = json.loads((root / ".ai/runtime/roles.json").read_text(encoding="utf-8"))
+def _role_inventory(root):
+    manifest = {}
+    if (root / '.ai/role-library').is_dir():
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        try:
+            from tools.compose_role_library import compose
+            composition = compose(root)
+        finally:
+            sys.path.pop(0)
+        registry, manifest = composition.registry, composition.manifest['roles']
+    else:
+        registry = json.loads((root / '.ai/runtime/roles.json').read_text(encoding='utf-8'))
     roles = registry.get("roles")
     if (not isinstance(roles, list) or registry.get("count") != len(roles)
             or any(not isinstance(role, dict) or not isinstance(role.get("slug"), str)
@@ -217,14 +217,55 @@ def render_role_coverage(root: Path) -> str:
                    or not role["skill"].startswith("it-roles-") for role in roles)
             or len({role["slug"] for role in roles}) != len(roles)):
         raise ValueError("Invalid canonical role coverage")
+    return registry, manifest
+
+
+def render_role_coverage(root: Path) -> str:
+    """Return homepage role and domain coverage from the composed catalogue.
+
+    Args:
+        root: Checkout containing the maintained role library or runtime registry.
+    Returns:
+        Plain English role and domain counts.
+    Raises:
+        ValueError: Count, role identity or skill-domain metadata is invalid.
+        OSError: Canonical source cannot be read.
+    """
+    registry, _ = _role_inventory(root)
+    roles = registry['roles']
     return f"{len(roles)} IS/IT roles across {len({role['skill'] for role in roles})} domains"
 
 
-def render_workflow_coverage(root: Path) -> str:
+def render_specializations(root: Path) -> str:
+    """List composed specializations and their professional ancestry.
+
+    Args:
+        root: Checkout containing the role library and canonical registry.
+    Returns:
+        Markdown inventory of specialist slugs, base roles and product facets.
+    """
+    registry, manifest = _role_inventory(root)
+    roles = {row['slug']: row for row in registry['roles']}
+    rows = ['| Specialization | Exact slug | Professional base | Product facet |',
+            '| --- | --- | --- | --- |']
+    for slug, entry in sorted(manifest.items(), key=lambda item: roles[item[0]]['name'].casefold()):
+        parent = entry.get('professional_parent')
+        if not parent:
+            continue
+        base = roles[parent]
+        facets = ', '.join(entry.get('facets', {}).get('product', []))
+        label = escape(roles[slug]['name']).replace('|', '&#124;')
+        base_label = escape(base['name']).replace('|', '&#124;')
+        rows.append(f"| {label} | `{slug}` | [{base_label}](output-contracts/role-{parent}.md) | {facets} |")
+    return '\n'.join(rows)
+
+
+def render_workflow_coverage(root: Path, *, handoffs=False) -> str:
     """Render homepage workflow coverage from the canonical catalogue.
 
     Args:
         root: Checkout containing .ai/runtime/workflows.json.
+        handoffs: Render the number of registered handoffs instead of chains.
     Returns:
         The actual number of distinct enterprise workflow chains.
     Raises:
@@ -241,6 +282,12 @@ def render_workflow_coverage(root: Path) -> str:
                    or not row['key'].strip() for row in workflows)
             or len({row['key'] for row in workflows}) != len(workflows)):
         raise ValueError('Invalid canonical workflow coverage')
+    if handoffs:
+        steps = [row.get('steps') for row in workflows]
+        if any(not isinstance(items, list) for items in steps):
+            raise ValueError('Invalid canonical workflow handoff coverage')
+        count = sum(map(len, steps))
+        return f"{count} registered {'handoff' if count == 1 else 'handoffs'}"
     return f"{len(workflows)} enterprise workflow {'chain' if len(workflows) == 1 else 'chains'}"
 
 
@@ -255,8 +302,8 @@ def render_discipline_coverage(root: Path) -> str:
         ValueError: Registry identity, domain labels or role names are invalid.
         OSError: The registry cannot be read.
     """
-    render_role_coverage(root)
-    roles = json.loads((root / '.ai/runtime/roles.json').read_text(encoding='utf-8'))['roles']
+    registry, _ = _role_inventory(root)
+    roles = registry['roles']
     domains = {}
     for role in roles:
         label, name = role.get('category'), role.get('name')
@@ -317,8 +364,12 @@ def on_page_markdown(markdown, *, page, config, files):
         markdown = markdown.replace("{{ JAI_ROLE_COVERAGE }}", render_role_coverage(root))
     if "{{ JAI_WORKFLOW_COVERAGE }}" in markdown:
         markdown = markdown.replace("{{ JAI_WORKFLOW_COVERAGE }}", render_workflow_coverage(root))
+    if "{{ JAI_WORKFLOW_HANDOFF_COVERAGE }}" in markdown:
+        markdown = markdown.replace("{{ JAI_WORKFLOW_HANDOFF_COVERAGE }}", render_workflow_coverage(root, handoffs=True))
     if "{{ JAI_DISCIPLINE_COVERAGE }}" in markdown:
         markdown = markdown.replace("{{ JAI_DISCIPLINE_COVERAGE }}", render_discipline_coverage(root))
+    if "{{ JAI_SPECIALIZATIONS }}" in markdown:
+        markdown = markdown.replace("{{ JAI_SPECIALIZATIONS }}", render_specializations(root))
     if "{{ JAI_SCHEMA_COUNT }}" in markdown:
         markdown = markdown.replace("{{ JAI_SCHEMA_COUNT }}", render_schema_count(root))
     if '{{ JAI_SCOPE }}' in markdown:

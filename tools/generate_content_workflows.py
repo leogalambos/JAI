@@ -16,7 +16,8 @@ from content_spec import canonical_hash
 
 from content_workflow import HANDOFF_CONTENT_CONTRACTS, SELECTIONS
 from workflow_professional_definitions import (HANDOFF_REQUIREMENTS, WORKFLOW_PROFILES,
-    WORKFLOW_VARIANT_CONDITIONS, WORKFLOW_MECHANISMS, WORKFLOW_PATH_STEPS,
+    WORKFLOW_VARIANT_CONDITIONS, WORKFLOW_MECHANISMS, WORKFLOW_MECHANISM_BASES,
+    WORKFLOW_PATH_MECHANISMS, WORKFLOW_PATH_STEPS,
     VARIANT_HANDOFF_REQUIREMENTS, ONBOARDING_MECHANISMS, ONBOARDING_OVERLAYS,
     VARIANT_SCOPE_ASSESSMENTS, ONBOARDING_OVERLAY_REQUIREMENTS)
 
@@ -125,11 +126,14 @@ def professional_workflows(root=ROOT):
             name = variant['id']
             mechanisms = (ONBOARDING_MECHANISMS if key == 'new-service-onboarding' and name in ONBOARDING_OVERLAYS
                           else WORKFLOW_MECHANISMS.get(key, [None]))
+            mechanisms = WORKFLOW_PATH_MECHANISMS.get((key, name), mechanisms)
             if key == 'vulnerability-to-remediation' and name == 'risk-acceptance':
                 mechanisms = [None]
             for mechanism in mechanisms:
-                path_steps = WORKFLOW_PATH_STEPS.get((key, name), list(range(1, len(workflow['steps']) + 1)))
-                profile['paths'].append({'id': name + '/' + mechanism if mechanism else name,
+                path_id = name + '/' + mechanism if mechanism else name
+                default_steps = [step['step'] for step in workflow['steps'] if not step.get('variant_only')]
+                path_steps = WORKFLOW_PATH_STEPS.get((key, path_id), WORKFLOW_PATH_STEPS.get((key, name), default_steps))
+                profile['paths'].append({'id': path_id,
                     'variant': name, 'mechanism': mechanism or name,
                     'steps': path_steps, 'terminal_step': path_steps[-1]})
         workflow['operating_profile'] = profile
@@ -174,7 +178,9 @@ def professional_workflows(root=ROOT):
                 mechanism = path['mechanism']
                 selector = (mechanism if key in WORKFLOW_MECHANISMS or key == 'new-service-onboarding'
                             else path['variant'])
-                override = VARIANT_HANDOFF_REQUIREMENTS.get((key, step['step'], selector))
+                base_selector = WORKFLOW_MECHANISM_BASES.get((key, selector), selector)
+                override = VARIANT_HANDOFF_REQUIREMENTS.get((key, step['step'], selector),
+                    VARIANT_HANDOFF_REQUIREMENTS.get((key, step['step'], base_selector)))
                 chosen = copy.deepcopy(step['handoff_content_contract'])
                 criterion = step['gate']
                 contract_role = {'architecture-repository-engineer': 'architecture-repository-and-modelling-lead',
@@ -201,10 +207,12 @@ def professional_workflows(root=ROOT):
                     chosen['units'].insert(-1, {'id': chosen['id'] + '.' + record,
                         'semantic_field': 'handoff_' + record, 'required_fields': fields.split(),
                         'acceptance_criterion': acceptance})
-                next_steps = [number for number in path['steps'] if number > step['step']]
+                position = path['steps'].index(step['step'])
+                next_steps = path['steps'][position + 1:]
                 if next_steps:
                     next_step = workflow['steps'][next_steps[0] - 1]
-                    next_override = VARIANT_HANDOFF_REQUIREMENTS.get((key, next_step['step'], selector))
+                    next_override = VARIANT_HANDOFF_REQUIREMENTS.get((key, next_step['step'], selector),
+                        VARIANT_HANDOFF_REQUIREMENTS.get((key, next_step['step'], base_selector)))
                     receiver = next_override[4] if next_override else ('agent:' if next_step['skill'] == 'agent' else 'engagement:' if next_step['skill'] in ('dynamic', 'external') else '') + next_step['slug']
                 else:
                     receiver = 'engagement:named-authority'
@@ -254,8 +262,15 @@ def build(root=ROOT):
             ids=[] if choice=='source' else [f'{contract_role}:{n}' for n in choice.split(',')]
             if any(c not in contracts for c in ids):
                 raise ValueError(f'UNKNOWN_CONTRACT: {workflow}:{index+1}')
+            step = source['steps'][index]
+            if step.get('variant_only'):
+                receiving_role = next(iter(step['variant_bindings'].values()))['receiving_role']
+            else:
+                receiving_role = next(
+                    (chain[item['step'] - 1][1] for item in source['steps'][index + 1:]
+                     if not item.get('variant_only')), 'engagement:named-authority')
             rows.append({'handoff_id':f'{workflow}:{index+1}','workflow_id':workflow,'step':index+1,
-                'producer_role':role,'receiving_role':chain[index+1][1] if index+1<len(chain) else 'engagement:named-authority',
+                'producer_role':role,'receiving_role':receiving_role,
                 'handover':cells[3],'acceptance_criterion':cells[4], 'contract_ids':ids,
                 'contract_selection':'explicit-source-contract' if choice=='source' else 'registered-contracts',
                 'artifact_types':sorted({contracts[c]['jai']['semantics']['artifact_type'] for c in ids}),
@@ -458,7 +473,15 @@ def stage_siem_pilot(root, deployment_path):
 
 
 def stage_specialist_profiles(root, source_path):
-    """Compile a reviewed profile source against canonical workflows and composed roles."""
+    """Compile a reviewed profile source against canonical workflows and composed roles.
+
+    Args:
+        root: Repository root containing canonical workflow and role definitions.
+        source_path: Path to the reviewed specialist profile declarations.
+
+    Returns:
+        Staged workflow policy bound to the compiled role and output contracts.
+    """
     from compose_role_library import compose
     from content_spec import load_json
     from lifecycle import blob

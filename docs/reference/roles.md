@@ -12,6 +12,15 @@ See [Roles and disciplines](../using/roles.md#why-the-role-model-matters) for ho
 to apply them and [external research safeguards](../using/roles.md#external-research-and-confidentiality)
 for protecting public lookup queries without anonymising the deliverable itself.
 
+## Product specializations
+
+The tables below this index document the professional bases and their output
+contracts. The index lists the composed specializations available through the
+same discipline skills. Follow a base role link for its inherited outputs and
+use the exact specialist slug for lookup.
+
+{{ JAI_SPECIALIZATIONS }}
+
 <!-- JAI:OUTPUT-CONTRACTS:START -->
 ## Analysis
 

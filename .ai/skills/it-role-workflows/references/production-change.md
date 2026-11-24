@@ -1,6 +1,6 @@
 # Production change
 
-`workflow: production-change`  ·  `steps: 8`  ·  `tool-tier: route`
+`workflow: production-change`  ·  `steps: 9`  ·  `tool-tier: route`
 
 **Trigger.** A change must reach production: a feature, a fix, an infrastructure change or a configuration change.
 
@@ -20,6 +20,9 @@ The point of this chain is that nobody both authorises and implements. Where hea
 | 6 | [GitOps and Continuous Delivery Engineer](../../it-roles-software-development-and-engineering/references/gitops-and-continuous-delivery-engineer.md) | deploys progressively behind a health gate | rollout with automatic reversal armed | Rollback exercised, not merely documented |
 | 7 | [Site Reliability Engineer](../../it-roles-infrastructure-cloud-and-operations/references/site-reliability-engineer.md) | watches the agreed signals for the agreed window | post-release confirmation or a reversal decision | Reversal executed on trigger, not on debate |
 | 8 | [Configuration Manager](../../it-roles-service-management-and-support/references/configuration-manager.md) | updates the record of what now exists | updated configuration items | Record updated the same day the change lands |
+| 9 | [ERP and CRM Consultant Developer](../../it-roles-software-development-and-engineering/references/erp-and-crm-consultant-developer.md) | binds the reviewed ABAP Cloud extension and its transport evidence to the release candidate (normal/abap-cloud only) | reviewed ABAP Cloud extension and release evidence for the named change authority | The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence |
+
+Step 9 applies to the normal ABAP Cloud path between release packaging and change approval. The ERP and CRM Consultant Developer supplies extension evidence for the exact SAP Cloud ERP Public Edition tenant, candidate and transport. The Change Manager receives it through the existing approval route.
 
 ## Operating this chain
 
@@ -74,6 +77,7 @@ Approval class is separate from application/IaC/settings mechanism; exact author
 | normal/application | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | normal/infrastructure-as-code | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | normal/configuration | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+| normal/abap-cloud | 1, 2, 3, 4, 9, 5, 6, 7, 8 | 8 |
 | emergency/application | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/infrastructure-as-code | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/configuration | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |

@@ -116,6 +116,21 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/abap-cloud`.
+
+**Producer:** `software-engineer`; **receiver:** `engagement:change-impact-owner`.
+
+**Receiving condition:** Small enough to review in one pass
+
+**Next:** Step 2.
+
+**Role output contracts:** `software-engineer:1`, `software-engineer:4`.
+
+- **`handoff_reviewed_change`**: For reviewed change and rollback plan, supply the actual versioned reviewed change record, including source_revision, change_scope, review_result, review_size, recovery_plan. Independently assess the evidence against this exact criterion: Small enough to review in one pass. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `source_revision`, `change_scope`, `review_result`, `review_size`, `recovery_plan`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `software-engineer`; **receiver:** `engagement:change-impact-owner`.
@@ -274,6 +289,21 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/abap-cloud`.
+
+**Producer:** `engagement:change-impact-owner`; **receiver:** `test-analyst`.
+
+**Receiving condition:** Assess the application change against infrastructure dependencies; evidence supports any unchanged-infrastructure conclusion rather than claiming an IaC apply that did not occur.
+
+**Next:** Step 3.
+
+**Role output contracts:** `configuration-manager:3`.
+
+- **`handoff_application_infrastructure_impact`**: Assess the application change against infrastructure dependencies; evidence supports any unchanged-infrastructure conclusion rather than claiming an IaC apply that did not occur.
+  Required fields: `change_revision`, `affected_assets`, `infrastructure_delta`, `retained_baseline`, `compatibility_evidence`, `owner`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `engagement:change-impact-owner`; **receiver:** `test-analyst`.
@@ -420,6 +450,21 @@ Alternative bindings replace the base obligations for the selected path. Select 
 **Selected path:** `normal/configuration`.
 
 **Producer:** `test-analyst`; **receiver:** `engagement:release-control-owner`.
+
+**Receiving condition:** Residual risk accepted by a named person
+
+**Next:** Step 4.
+
+**Role output contracts:** `test-analyst:2`, `test-analyst:4`.
+
+- **`handoff_change_test_evidence`**: For test evidence with coverage and residual risk, supply the actual versioned change test evidence record, including tested_revision, coverage, actual_results, residual_risks, named_risk_disposition. Independently assess the evidence against this exact criterion: Residual risk accepted by a named person. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `tested_revision`, `coverage`, `actual_results`, `residual_risks`, `named_risk_disposition`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/abap-cloud`.
+
+**Producer:** `test-analyst`; **receiver:** `release-engineer`.
 
 **Receiving condition:** Residual risk accepted by a named person
 
@@ -590,6 +635,21 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/abap-cloud`.
+
+**Producer:** `release-engineer`; **receiver:** `erp-and-crm-consultant-developer`.
+
+**Receiving condition:** The release manifest pins the exact ABAP Cloud candidate, tenant, product release and transport scope with the existing source and signature provenance.
+
+**Next:** Step 9.
+
+**Role output contracts:** `release-engineer:2`.
+
+- **`handoff_abap_cloud_release_provenance`**: The release manifest pins the exact ABAP Cloud candidate, tenant, product release and transport scope with the existing source and signature provenance.
+  Required fields: `manifest_revision`, `artifacts`, `source_commits`, `signatures`, `target_scope`, `candidate_ref`, `tenant_ref`, `product_release`, `transport_scope`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `release-engineer`; **receiver:** `change-manager`.
@@ -745,6 +805,21 @@ Alternative bindings replace the base obligations for the selected path. Select 
 
 - **`handoff_change_record`**: For change record and schedule slot, supply the actual versioned change record record, including change_id, risk_class, authorisation_ref, schedule, preauthorisation_basis, measurement. Independently assess the evidence against this exact criterion: Standard changes pre-authorised and measured, not queued for ceremony. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
   Required fields: `change_id`, `risk_class`, `authorisation_ref`, `schedule`, `preauthorisation_basis`, `measurement`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/abap-cloud`.
+
+**Producer:** `change-manager`; **receiver:** `gitops-and-continuous-delivery-engineer`.
+
+**Receiving condition:** The existing change authority decides on the exact SAP Cloud ERP Public Edition candidate, tenant and transport using its reviewed ABAP Cloud evidence.
+
+**Next:** Step 6.
+
+**Role output contracts:** `change-manager:1`, `change-manager:2`.
+
+- **`handoff_abap_cloud_change_record`**: The existing change authority decides on the exact SAP Cloud ERP Public Edition candidate, tenant and transport using its reviewed ABAP Cloud evidence.
+  Required fields: `change_id`, `risk_class`, `authorisation_ref`, `schedule`, `preauthorisation_basis`, `measurement`, `extension_evidence_ref`, `candidate_ref`, `tenant_ref`, `product_release`, `transport_scope`.
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
@@ -906,6 +981,21 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/abap-cloud`.
+
+**Producer:** `gitops-and-continuous-delivery-engineer`; **receiver:** `site-reliability-engineer`.
+
+**Receiving condition:** Rollback exercised, not merely documented
+
+**Next:** Step 7.
+
+**Role output contracts:** `gitops-and-continuous-delivery-engineer:3`, `gitops-and-continuous-delivery-engineer:4`.
+
+- **`handoff_rollout_readiness`**: For rollout with automatic reversal armed, supply the actual versioned rollout readiness record, including artifact_revision, rollout_steps, reversal_triggers, rehearsal_evidence, permitted_scope. Independently assess the evidence against this exact criterion: Rollback exercised, not merely documented. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `artifact_revision`, `rollout_steps`, `reversal_triggers`, `rehearsal_evidence`, `permitted_scope`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `gitops-and-continuous-delivery-engineer`; **receiver:** `site-reliability-engineer`.
@@ -1050,6 +1140,21 @@ Alternative bindings replace the base obligations for the selected path. Select 
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
 **Selected path:** `normal/configuration`.
+
+**Producer:** `site-reliability-engineer`; **receiver:** `configuration-manager`.
+
+**Receiving condition:** Reversal executed on trigger, not on debate
+
+**Next:** Step 8.
+
+**Role output contracts:** `site-reliability-engineer:1`, `site-reliability-engineer:3`.
+
+- **`handoff_release_health_decision`**: For post-release confirmation or a reversal decision, supply the actual versioned release health decision record, including observation_window, signals, thresholds, decision, actual_reversal_evidence. Independently assess the evidence against this exact criterion: Reversal executed on trigger, not on debate. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `observation_window`, `signals`, `thresholds`, `decision`, `actual_reversal_evidence`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `normal/abap-cloud`.
 
 **Producer:** `site-reliability-engineer`; **receiver:** `configuration-manager`.
 
@@ -1222,6 +1327,21 @@ Alternative bindings replace the base obligations for the selected path. Select 
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
+**Selected path:** `normal/abap-cloud`.
+
+**Producer:** `configuration-manager`; **receiver:** `engagement:named-authority`.
+
+**Receiving condition:** Record updated the same day the change lands
+
+**Next:** Terminal disposition; no downstream step.
+
+**Role output contracts:** `configuration-manager:1`, `configuration-manager:3`.
+
+- **`handoff_configuration_reconciliation`**: For updated configuration items, supply the actual versioned configuration reconciliation record, including changed_assets, actual_revision, record_revision, effective_date, reconciliation_gaps. Independently assess the evidence against this exact criterion: Record updated the same day the change lands. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `changed_assets`, `actual_revision`, `record_revision`, `effective_date`, `reconciliation_gaps`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 **Selected path:** `emergency/application`.
 
 **Producer:** `configuration-manager`; **receiver:** `engagement:named-authority`.
@@ -1264,6 +1384,44 @@ Alternative bindings replace the base obligations for the selected path. Select 
 
 - **`handoff_configuration_reconciliation`**: For updated configuration items, supply the actual versioned configuration reconciliation record, including changed_assets, actual_revision, record_revision, effective_date, reconciliation_gaps. Independently assess the evidence against this exact criterion: Record updated the same day the change lands. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
   Required fields: `changed_assets`, `actual_revision`, `record_revision`, `effective_date`, `reconciliation_gaps`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+<a id="output-handoff-production-change-9"></a>
+
+## reviewed ABAP Cloud extension and release evidence for the named change authority
+
+**Handoff content contract:** `handoff/production-change:9`.
+
+**Basis:** JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.
+
+These requirements supplement the linked role output contracts. A related policy or published view does not replace the specific decision or repository/interchange records required here.
+
+### Required information (MUST)
+
+- **`handoff_abap_cloud_extension_evidence`**: For reviewed ABAP Cloud extension and release evidence for the named change authority, supply the actual versioned abap cloud extension evidence record, including candidate_ref, release_manifest_ref, tenant_ref, product_release, released_apis, transport_scope, regression_evidence, upgrade_evidence, reversal_prerequisites. Independently assess the evidence against this exact criterion: The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `candidate_ref`, `release_manifest_ref`, `tenant_ref`, `product_release`, `released_apis`, `transport_scope`, `regression_evidence`, `upgrade_evidence`, `reversal_prerequisites`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+The existing authenticated receiver reviews each required unit against this exact handoff. A content record alone does not grant acceptance or release.
+
+### Context-selected alternatives
+
+Alternative bindings replace the base obligations for the selected path. Select the path from the reviewed intake context and the workflow operating profile; requirements from other paths are not cumulative.
+
+**Selected path:** `normal/abap-cloud`.
+
+**Producer:** `erp-and-crm-consultant-developer`; **receiver:** `change-manager`.
+
+**Receiving condition:** The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence
+
+**Next:** Step 5.
+
+**Role output contracts:** `erp-and-crm-consultant-developer:2`.
+
+- **`handoff_abap_cloud_extension_evidence`**: For reviewed ABAP Cloud extension and release evidence for the named change authority, supply the actual versioned abap cloud extension evidence record, including candidate_ref, release_manifest_ref, tenant_ref, product_release, released_apis, transport_scope, regression_evidence, upgrade_evidence, reversal_prerequisites. Independently assess the evidence against this exact criterion: The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `candidate_ref`, `release_manifest_ref`, `tenant_ref`, `product_release`, `released_apis`, `transport_scope`, `regression_evidence`, `upgrade_evidence`, `reversal_prerequisites`.
 - **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
   Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

@@ -294,10 +294,10 @@ def test_materialization_followed_by_unrelated_commit_keeps_current_run_and_sign
     changed = []
 
     @contextmanager
-    def concurrent_commit(path):
-        with original_lock(path):
+    def concurrent_commit(path, *, wait=False, shared=False):
+        with original_lock(path, wait=wait, shared=shared):
             yield
-        if path == host.path and not changed and any(item.is_file() for item in output.rglob('*')):
+        if not shared and path == host.path and not changed and any(item.is_file() for item in output.rglob('*')):
             changed.append(True)
             host.record('concurrent-staged-input', 'source', source)
 

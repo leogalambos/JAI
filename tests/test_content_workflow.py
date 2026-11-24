@@ -140,10 +140,10 @@ def case():
     return prepare_case(fixture,ContentSpec(ROOT))
 
 
-def test_all_215_canonical_handoffs_have_explicit_sources_receivers_and_contracts():
+def test_all_217_canonical_handoffs_have_explicit_sources_receivers_and_contracts():
     catalog=load_bindings(ROOT)
     assert catalog==build(ROOT)
-    assert catalog['handoff_count']==215
+    assert catalog['handoff_count']==217
     assert catalog['workflow_count']==24
     workflows={w['key']:w for w in json.loads((ROOT/'.ai/runtime/workflows.json').read_text())['workflows']}
     for row in catalog['bindings']:
@@ -167,7 +167,7 @@ def test_draft_receiving_cli_cannot_claim_acceptance(tmp_path,capsys):
     a.write_text(json.dumps(model));b.write_text(json.dumps(report))
     assert main(['--root',str(ROOT),'check','semantic-to-enterprise-publication:1',str(a),str(b)])==2
     assert main(['--root',str(ROOT),'list'])==0
-    assert '215' in capsys.readouterr().out
+    assert '217' in capsys.readouterr().out
 
 
 def test_wrong_contract_and_forged_rehashed_qa_are_not_accepted():
@@ -472,11 +472,11 @@ def _selected_handoff_fixture(row, model):
     return row['variant_bindings'][payload['selected_path']]
 
 
-def _variant_case(handoff_id, path_id):
+def _variant_case(handoff_id, path_id, contract_id=None):
     engine = ContentSpec(ROOT)
     catalog = load_bindings(ROOT)
     row = next(row for row in catalog['bindings'] if row['handoff_id'] == handoff_id)
-    cid = row['variant_bindings'][path_id]['contract_ids'][0]
+    cid = contract_id or row['variant_bindings'][path_id]['contract_ids'][0]
     manifest = json.loads((ROOT/'.ai/runtime/evals/content_quality/manifest.json').read_text())
     reference = next(reference for path in [*manifest['cases'], *manifest['enterprise_cases']]
                      if (reference := json.loads((ROOT/'.ai/runtime'/path).read_text()))['contract_id'] == cid
@@ -522,17 +522,24 @@ def _reviewed_variant_result(row, model, spec, engine, authority_factory=None, *
     return result, report
 
 
-@pytest.mark.parametrize('change,expected', [
-    ('matching', None),
-    ('missing', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
-    ('path', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
-    ('version', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
-    ('receiver', 'RECEIVER_SUBJECT_MISMATCH'),
-    ('receiver-role', 'WORKFLOW_RECEIVER_SELECTION_MISMATCH'),
+@pytest.mark.parametrize('case,change,expected', [
+    ('saas', 'matching', None),
+    ('saas', 'missing', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
+    ('saas', 'path', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
+    ('saas', 'version', 'WORKFLOW_PRODUCER_SELECTION_MISMATCH'),
+    ('saas', 'receiver', 'RECEIVER_SUBJECT_MISMATCH'),
+    ('saas', 'receiver-role', 'WORKFLOW_RECEIVER_SELECTION_MISMATCH'),
+    ('java', 'matching', None),
+    ('java', 'receiver-role', 'WORKFLOW_RECEIVER_SELECTION_MISMATCH'),
 ])
-def test_compatible_handoff_requires_exact_producer_choice_and_receiver_subject(change, expected, monkeypatch):
-    path = 'saas-cots'
-    row, model, spec, engine = _variant_case('new-service-onboarding:1', path)
+def test_compatible_handoff_requires_exact_producer_choice_and_receiver_subject(case, change, expected, monkeypatch):
+    if case == 'java':
+        handoff, path = 'vulnerability-to-remediation:6', 'planned/application-dependency'
+        slug = 'java-software-engineering-specialist'
+    else:
+        handoff, path = 'new-service-onboarding:1', 'saas-cots'
+        slug = 'fixture-specialist'
+    row, model, spec, engine = _variant_case(handoff, path)
     catalog = load_bindings(ROOT)
     staged_row = next(item for item in catalog['bindings'] if item['handoff_id'] == row['handoff_id'])
     effective = staged_row['variant_bindings'][path]
@@ -544,7 +551,6 @@ def test_compatible_handoff_requires_exact_producer_choice_and_receiver_subject(
     catalog['catalog_hash'] = canonical_hash({key: value for key, value in catalog.items() if key != 'catalog_hash'})
     engine._workflow_catalog = catalog
     monkeypatch.setattr(sys.modules[__name__], 'load_bindings', lambda root: catalog)
-    slug = 'fixture-specialist'
     mapping = canonical_hash({'fixture': 'reviewed-product-mapping'})
     producer = {
         'slug': slug, 'selection_ref': {'fixture': 'exact-choice'}, 'scope_ref': {'fixture': 'product-scope'},
@@ -735,6 +741,9 @@ def test_every_handoff_executes_positive_and_missing_receiver_or_authority_check
             references.setdefault(reference['contract_id'],reference)
     fallback=next(iter(references))
     for row in catalog['bindings']:
+        if row['handoff_id'] in {'idea-to-production:14', 'production-change:9'}:
+            # The linked evidence regressions cover these with their exact inputs.
+            continue
         contract=row['contract_ids'][0] if row['contract_ids'] else fallback
         model,spec=prepare_case(references[contract],engine)
         model = _current_workflow_fixture(model, spec)
@@ -776,6 +785,109 @@ def test_every_handoff_executes_positive_and_missing_receiver_or_authority_check
             assert 'RECEIVER_ROLE_UNASSIGNED' in check(row['handoff_id'],model,report,ROOT,**kwargs)['findings']
 
 
+@pytest.mark.parametrize(('case', 'mismatch'), [
+    ('mobile', None), ('mobile', 'candidate_build_ref'), ('mobile', 'device_scope'),
+    ('mobile', 'automation_evidence_ref'), ('abap', None), ('abap', 'tenant_ref'),
+    ('abap', 'transport_scope'), ('abap', 'unreleased_api'),
+])
+def test_workflow_evidence_chain_binds_the_exact_reviewed_input(case, mismatch):
+    if case == 'mobile':
+        workflow, path = 'idea-to-production', 'mobile-delivery'
+        steps = ((7, 'mobile_build', None, None),
+                 (14, 'mobile_automation_evidence', 'build_evidence_ref', None),
+                 (8, 'mobile_test_verdict', 'automation_evidence_ref', 'test-analyst:4'))
+        identity = {'candidate_build_ref': 'immutable-build-a', 'sdk_scope': 'SDK fixture',
+                    'device_scope': 'Device fixture'}
+    else:
+        workflow, path = 'production-change', 'normal/abap-cloud'
+        steps = ((4, 'abap_cloud_release_provenance', None, None),
+                 (9, 'abap_cloud_extension_evidence', 'release_manifest_ref', None),
+                 (5, 'abap_cloud_change_record', 'extension_evidence_ref', None))
+        identity = {'candidate_ref': 'immutable-extension-a', 'tenant_ref': 'Tenant fixture',
+                    'product_release': 'Release fixture', 'transport_scope': 'Transport fixture'}
+    engine = ContentSpec(ROOT)
+    catalog = load_bindings(ROOT)
+    trusted = {}
+    roles = {}
+    links = {}
+    predecessor = None
+    prior = None
+
+    def dispatcher(token):
+        return copy.deepcopy(trusted.get(token))
+
+    dispatcher.predecessor_input = lambda current, previous: links.get((current, previous))
+    for index, (step, name, field, contract_id) in enumerate(steps):
+        handoff = f'{workflow}:{step}'
+        row, model, spec, _ = _variant_case(handoff, path, contract_id)
+        selected = row['variant_bindings'][path]
+        facts = model['semantic_units']['handoff_' + name]
+        facts.update(identity)
+        producer_token = f'producer-{step}'
+        receiver_token = f'receiver-{step}'
+        if prior is not None:
+            reference = {'logical_id': prior['handoff_id'], 'version_id': 'admitted-version'}
+            links[producer_token, predecessor['model']['producer']['attestation']] = reference
+            facts[field] = reference
+        api_failure = name == 'abap_cloud_extension_evidence' and mismatch == 'unreleased_api'
+        identity_failure = index == 2 and mismatch is not None and mismatch != 'unreleased_api'
+        if name == 'abap_cloud_extension_evidence':
+            facts['released_apis'] = ['SYN-ABAP-API']
+            model['evidence'].append({'id': 'SYN-ABAP-API', 'version': '1', 'payload': {
+                'api_id': 'Synthetic API', 'release_status': 'unreleased' if api_failure else 'released',
+                'tenant_ref': identity['tenant_ref'], 'product_release': identity['product_release']}})
+        if identity_failure:
+            facts[mismatch] = 'different fixture input'
+        model, review, _, local = _host_reviewed_workflow(model, spec)
+        model['producer']['attestation'] = producer_token
+        review['semantic_hash'] = canonical_hash(model)
+        review_token = f'review-{step}'
+        review['attestation'] = review_token
+        trusted[producer_token] = local['producer-token']
+        trusted[review_token] = {
+            **local['review-token'], 'snapshot_digest': canonical_hash(model),
+            'subject_digest': canonical_hash({key: value for key, value in review.items() if key != 'attestation'}),
+        }
+        report = evaluate(model, spec, reviewer=review, trusted_executions=dispatcher)
+        subject = {'handoff_id': handoff, 'path_id': path, 'semantic_hash': canonical_hash(model),
+                   'report_hash': report['report_hash'], 'catalog_hash': catalog['catalog_hash'],
+                   'criterion': selected['acceptance_criterion'], 'receiving_role': selected['receiving_role'],
+                   'handoff_content_hash': canonical_hash(selected['handoff_content_contract']),
+                   'verdict': 'PASS', 'evidence': 'Reviewed exact synthetic mobile evidence.',
+                   'context_manifest': {'history_policy': 'fresh'},
+                   'unit_reviews': [{'unit_id': unit['id'], 'verdict': 'PASS',
+                                     'rationale': 'The exact synthetic obligation was reviewed.',
+                                     'evidence': 'Reviewed the synthetic artifact and its bound input.'}
+                                    for unit in selected['handoff_content_contract']['units']]}
+        if prior is not None and not identity_failure:
+            subject['predecessor'] = {'artifact_ref': reference, 'result_hash': prior['result_hash']}
+        principal = f'fixture-receiver-{step}'
+        roles[principal] = [selected['receiving_role']]
+        trusted[receiver_token] = {'principal': principal, 'reviewer': True,
+                                   'subject_digest': canonical_hash(subject), 'snapshot_digest': canonical_hash(model),
+                                   'context_digest': canonical_hash(subject['context_manifest'])}
+        subject['attestation'] = receiver_token
+        result = check(handoff, model, report, ROOT, acceptance=subject, trusted_executions=dispatcher,
+                       receiving_assignments=roles, resolver=engine, predecessor=predecessor)
+        if api_failure:
+            assert 'WORKFLOW_ABAP_RELEASED_API_EVIDENCE_REQUIRED' in result['findings']
+            assert result['status'] == 'ACCEPTANCE_PENDING'
+            break
+        if identity_failure:
+            assert 'WORKFLOW_EVIDENCE_PREDECESSOR_UNVERIFIED' in result['findings']
+            assert result['status'] == 'ACCEPTANCE_PENDING'
+        else:
+            assert result['status'] == 'ACCEPTANCE_VERIFIED', result['findings']
+            if index == 1 and mismatch is None:
+                missing_receiver = check(handoff, model, report, ROOT, acceptance=subject,
+                    trusted_executions=dispatcher, receiving_assignments={}, resolver=engine, predecessor=predecessor)
+                assert 'RECEIVER_ROLE_UNASSIGNED' in missing_receiver['findings']
+        predecessor = {'model': model, 'report': report, 'acceptance': subject, 'predecessor': predecessor}
+        if predecessor['predecessor'] is None:
+            del predecessor['predecessor']
+        prior = result
+
+
 def test_rehashed_catalog_cannot_replace_real_workflow_source(tmp_path):
     runtime=tmp_path/'content';runtime.mkdir()
     for name in ('registry.json','workflow-acceptance.json'):
@@ -789,6 +901,70 @@ def test_rehashed_catalog_cannot_replace_real_workflow_source(tmp_path):
     (runtime/'workflow-acceptance.json').write_text(json.dumps(data))
     with pytest.raises(ValueError,match='SOURCE_PROVENANCE'):
         load_bindings(tmp_path)
+
+
+@pytest.mark.parametrize('mutation', [
+    None, 'functional-receiver', 'partial', 'duplicate', 'assignment', 'invocation', 'context', 'receiver',
+])
+def test_all_required_output_set_binds_one_independent_receipt(mutation):
+    import content_workflow
+    from workflow_specialist_profiles import ALL_REQUIRED_PROTOCOL
+
+    contracts = {'protocol': ALL_REQUIRED_PROTOCOL, 'contracts': [
+        {'id': f'software-engineer:{number}', 'version': '3.0.0', 'digest': str(number) * 64}
+        for number in (1, 4)]}
+    receiver = 'engagement:change-impact-owner' if mutation == 'functional-receiver' else 'configuration-manager'
+    common = {'handoff_id': 'production-change:1', 'catalog_hash': 'catalogue',
+              'criterion': 'Exact change evidence', 'receiving_role': receiver,
+              'path_id': 'normal/application', 'handoff_content_hash': 'handoff',
+              'producer_selection': {'selection_ref': 'selection'}, 'contract_set': contracts,
+              'governing_subject': {'context': 'context-a', 'source_revision': 'candidate-a'},
+              'findings': [], 'human_step': False, 'next_step': 2}
+    members = []
+    for ref in contracts['contracts']:
+        identity = ref['id']
+        members.append({**common, 'contract_id': identity, 'semantic_hash': identity, 'report_hash': identity,
+                        'producer': {'principal': 'author', 'invocation': 'native-invocation', 'workflow_output': {
+                            'assignment': 'exact-author-assignment',
+                            'material_digest': identity,
+                            'artifact': {'ref': {'version_id': 'same-product'}, 'use_scope': 'engagement'}}}})
+    registry = {}
+
+    def verifier(token):
+        return registry.get(token)
+
+    verifier.receiving_specialties = lambda token: ['configuration-manager'] if token == 'receipt' else []
+    assignments = {'independent': [receiver]}
+    prepared = content_workflow._accept_output_set(members, None, verifier, assignments)
+    subject = {key: value for key, value in prepared.items()
+               if key not in {'findings', 'receiver_principal', 'status', 'result_hash'}}
+    subject.update(verdict='PASS', evidence='Reviewed both exact fixture outputs.',
+                   context_manifest={'version': 'review'})
+    registry['receipt'] = {'principal': 'independent', 'reviewer': True,
+                          'subject_digest': canonical_hash(subject), 'snapshot_digest': subject['semantic_hash'],
+                          'context_digest': canonical_hash(subject['context_manifest'])}
+    subject['attestation'] = 'receipt'
+    if mutation == 'partial':
+        members.pop()
+    elif mutation == 'duplicate':
+        members[1]['producer'] = members[0]['producer']
+    elif mutation == 'assignment':
+        members[1]['producer']['workflow_output']['assignment'] = 'different-assignment'
+    elif mutation == 'invocation':
+        members[1]['producer']['invocation'] = 'different-invocation'
+    elif mutation == 'context':
+        members[1]['governing_subject'] = {'context': 'context-a', 'source_revision': 'candidate-b'}
+    elif mutation == 'receiver':
+        assignments = {}
+    result = content_workflow._accept_output_set(members, subject, verifier, assignments)
+    if mutation in (None, 'functional-receiver'):
+        assert result['status'] == 'ACCEPTANCE_VERIFIED', result['findings']
+        assert len(result['outputs']) == 2
+    else:
+        assert result['status'] == 'ACCEPTANCE_PENDING'
+        assert ('WORKFLOW_RECEIVER_SELECTION_MISMATCH' if mutation == 'receiver'
+                else 'WORKFLOW_OUTPUT_SET_MISMATCH') in result['findings']
+    assert not result['production_release_authorized']
 
 
 @pytest.mark.parametrize('mutation',['selection','contracts','handoff-content'])

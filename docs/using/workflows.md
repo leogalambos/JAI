@@ -52,3 +52,20 @@ Ask explicitly for the workflow you want, or describe the situation so the syste
 ## Why workflows are better than ad-hoc prompts
 
 A role tells the system **who** is relevant. A workflow tells it **how** the work should move and **where** the governance gates are.
+
+## Product scope and versioned outputs
+
+The canonical workflow catalogue includes a mobile delivery variant of
+[Idea to production](../workflow-library/idea-to-production.md) and a normal
+ABAP Cloud path in [Production change](../workflow-library/production-change.md).
+The mobile path links build and test automation evidence to the Test Analyst's
+independent verdict. The ABAP Cloud path carries the exact release candidate,
+tenant, product release and transport evidence into the existing change
+approval route.
+
+An enrolled compatibility profile can require a set of output contracts for
+one producer selection. The author returns separately identified outputs in the
+same native result. The receiving control checks each output and its review,
+verifies the common assignment and governing subject, and binds the full set
+to one independent receiving decision. Profile enrollment and declared product
+scope govern applicability. See [Roles and disciplines](roles.md#professional-bases-and-specializations).

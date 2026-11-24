@@ -594,7 +594,7 @@ def test_direct_recorded_adapter_never_invokes_canonical_verification_and_preser
     # Availability means bounded readable material, not a fresh digest verdict.
     for identifier in oracle['materialIds']: (material / identifier).write_bytes(b'readable recorded material')
     def forbidden(*_args, **_kwargs): raise AssertionError('Viewer invoked canonical verification')
-    monkeypatch.setattr(lc.Store, '_verified', forbidden)
+    monkeypatch.setattr(lc.Store, '_verified_file', forbidden)
     monkeypatch.setattr(lc, '_verify_transaction', forbidden)
     monkeypatch.setattr(lc, 'replay', forbidden)
     monkeypatch.setattr(lc.State, 'derive', forbidden)
@@ -639,7 +639,7 @@ def test_recorded_chain_and_signature_claims_are_not_reverified(environment, mon
     raw = b''.join(json.dumps(row).encode() + b'\n' for row in rows)
     path = data / 'recorded.jsonl'; path.write_bytes(raw)
     def forbidden(*_args, **_kwargs): raise AssertionError('Canonical adjudication called')
-    monkeypatch.setattr(lc.Store, '_verified', forbidden); monkeypatch.setattr(findings, '_parse_events', forbidden)
+    monkeypatch.setattr(lc.Store, '_verified_file', forbidden); monkeypatch.setattr(findings, '_parse_events', forbidden)
     group, sources = admitted(reader, path, family); candidate = semantic.begin(group, sources, LIMITS)
     facts = all_facts(semantic, group, candidate['leaseId']); summary = candidate['sources'][0]
     assert facts and summary['head'] == 'e' * 64 and summary['sequence'] == expected_sequence

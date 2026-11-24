@@ -54,6 +54,7 @@ Approval class is separate from application/IaC/settings mechanism; exact author
 | normal/application | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | normal/infrastructure-as-code | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | normal/configuration | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+| normal/abap-cloud | 1, 2, 3, 4, 9, 5, 6, 7, 8 | 8 |
 | emergency/application | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/infrastructure-as-code | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/configuration | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
@@ -72,10 +73,11 @@ A path with a separate mechanism requires that explicit mechanism selection in t
 <li data-step="6"><span class="ai-workflow-step-number" aria-hidden="true">6</span><div><strong>GitOps and Continuous Delivery Engineer</strong><p>deploys progressively behind a health gate</p></div></li>
 <li data-step="7"><span class="ai-workflow-step-number" aria-hidden="true">7</span><div><strong>Site Reliability Engineer</strong><p>watches the agreed signals for the agreed window</p></div></li>
 <li data-step="8"><span class="ai-workflow-step-number" aria-hidden="true">8</span><div><strong>Configuration Manager</strong><p>updates the record of what now exists</p></div></li>
+<li data-step="9"><span class="ai-workflow-step-number" aria-hidden="true">9</span><div><strong>ERP and CRM Consultant Developer</strong><p>binds the reviewed ABAP Cloud extension and its transport evidence to the release candidate</p></div></li>
 </ol>
 </div>
 
-[Open the full-size workflow diagram](../assets/diagrams/workflow-production-change.svg). Follow the numbered order. The table below specifies the outputs and receiving conditions for each handoff.
+[Open the full-size workflow diagram](../assets/diagrams/workflow-production-change.svg). Use the applicable path table for the sequence, including variant-only stages.
 <!-- JAI:WORKFLOW-DIAGRAM:END -->
 
 ## Workflow steps and gates
@@ -90,6 +92,7 @@ A path with a separate mechanism requires that explicit mechanism selection in t
 | 6 | GitOps and Continuous Delivery Engineer | deploys progressively behind a health gate | rollout with automatic reversal armed | Rollback exercised, not merely documented |
 | 7 | Site Reliability Engineer | watches the agreed signals for the agreed window | post-release confirmation or a reversal decision | Reversal executed on trigger, not on debate |
 | 8 | Configuration Manager | updates the record of what now exists | updated configuration items | Record updated the same day the change lands |
+| 9 | ERP and CRM Consultant Developer | binds the reviewed ABAP Cloud extension and its transport evidence to the release candidate (normal/abap-cloud only) | reviewed ABAP Cloud extension and release evidence for the named change authority | The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence |
 
 ## Running this workflow: operator and implementer boundary
 

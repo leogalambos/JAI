@@ -131,7 +131,8 @@ def test_no_policy_preserves_exact_default(policy):
     assert evidence["mode"] == "exact"
 
 
-def test_reviewed_profile_applies_to_equivalent_endpoints_without_workflow_edits(policy):
+@pytest.mark.parametrize("all_required", [False, True])
+def test_reviewed_profile_applies_to_equivalent_endpoints_without_workflow_edits(policy, all_required):
     from workflow_specialist_profiles import (PROFILE_PROTOCOL, compile_profiles, profile_for,
         role_revision, stage_policy, verify_policy)
 
@@ -150,9 +151,19 @@ def test_reviewed_profile_applies_to_equivalent_endpoints_without_workflow_edits
     catalogue["bindings"].append(second)
     contract = policy["reviewed"]["requirements"][0]["contract"]
     contracts = {contract["id"]: contract}
+    if all_required:
+        second_contract = {"id": "security-engineer:2", "version": "3.0.0"}
+        contracts[second_contract["id"]] = second_contract
+        for endpoint in (binding, second_binding):
+            endpoint["contract_ids"] = list(contracts)
     instructions = {slug: "a" * 64 for slug in roles}
     profile = {"id": "siem-ingestion", "version": "1",
-               "definition": profile_for(row, binding, roles["security-engineer"], contract)}
+               "definition": profile_for(row, binding, roles["security-engineer"],
+                                         list(contracts.values()) if all_required else contract)}
+    if all_required:
+        for invalid in ([contract], [contract, contract]):
+            with pytest.raises(ValueError, match="WORKFLOW_PROFILE_CONTRACT"):
+                profile_for(row, binding, roles["security-engineer"], invalid)
     endpoints = [{"handoff": key, "path": "trial", "endpoint": "producer",
                   "profile": profile["id"], "version": profile["version"], "mode": "required-specialist"}
                  for key in ("pilot:1", "second:1")]
@@ -175,14 +186,15 @@ def test_reviewed_profile_applies_to_equivalent_endpoints_without_workflow_edits
     assert source["endpoints"] == previous["endpoints"]
     assert [len(row["mappings"]) for row in before["requirements"]] == [1, 1]
     assert [len(row["mappings"]) for row in compiled["requirements"]] == [2, 2]
-    compile_requirements(catalogue, compiled, roles, policy["ancestry"], policy["contract_versions"])
+    if not all_required:
+        compile_requirements(catalogue, compiled, roles, policy["ancestry"], policy["contract_versions"])
     assert compiled["requirements"][1]["mappings"][0]["covered_units"] == ["handoff/second:1.source"]
     assert compiled == compile_profiles(catalogue, source, roles, instructions, contracts)[0]
     source["endpoints"][0]["mode"] = "preferred-specialist"
     staged = stage_policy(catalogue, source, roles, instructions, contracts, policy["ancestry"])
     verify_policy(staged, roles, instructions, catalogue=catalogue, contracts=contracts)
     compiled_scope = compile_requirements(staged["catalogue"], staged["reviewed"], roles,
-                                          policy["ancestry"], policy["contract_versions"])
+                                          policy["ancestry"], staged["contract_versions"])
     selection = {key: policy[key] for key in ("handoff", "path", "endpoint", "responsibility",
                                              "scope", "available", "independent")}
     def choose(**overrides):
@@ -190,6 +202,12 @@ def test_reviewed_profile_applies_to_equivalent_endpoints_without_workflow_edits
 
     selected, evidence = choose()
     assert selected == ["qradar-siem"]
+    if all_required:
+        assert [ref["id"] for ref in evidence["contract"]["contracts"]] == list(contracts)
+        wrong_digest = deepcopy(contracts)
+        wrong_digest[second_contract["id"]]["version"] = "older"
+        with pytest.raises(ValueError, match="WORKFLOW_PROFILE_OBLIGATIONS"):
+            verify_policy(staged, roles, instructions, catalogue=catalogue, contracts=wrong_digest)
     assert evidence["profile"]["mappings"]["qradar-siem"]["review_receipt"] == source["mappings"][0]["review_receipt"]
     fallback, reason = choose(scope=None, generic_applicable=True)
     assert fallback == ["security-engineer"]

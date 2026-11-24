@@ -5,6 +5,9 @@ optional discovery; [refresh it after tool changes](../getting-started/install.m
 Version probes use portable Python subprocesses, but actual rendering and
 provider confinement remain environment-dependent and are not certified by discovery.
 
+This page records the package release inventory. For the composed role
+catalogue in the current checkout, use [Roles and disciplines](../using/roles.md).
+
 <!-- GENERATED-INVENTORY:START -->
 ## Current generated release inventory
 

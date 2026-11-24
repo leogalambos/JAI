@@ -81,6 +81,9 @@ For invocation, see the [workflow selection guide](../using/workflows.md) and [u
 13. **Product Analyst:** benefit measurement against the success measure.
    **Receiving condition:** Result reported with effect size, not just direction
    **Output specifications:** [`product-analyst:1`](output-contracts/role-product-analyst.md#output-product-analyst-1); [`product-analyst:2`](output-contracts/role-product-analyst.md#output-product-analyst-2); [handoff/idea-to-production:13](output-contracts/workflow-idea-to-production.md#output-handoff-idea-to-production-13)
+14. **Test Automation Engineer:** versioned automated mobile test observations and uncovered scope.
+   **Receiving condition:** Results identify the exact candidate, applicable SDK and devices, observed outcomes and coverage gaps
+   **Output specifications:** [`test-automation-engineer:1`](output-contracts/role-test-automation-engineer.md#output-test-automation-engineer-1); [handoff/idea-to-production:14](output-contracts/workflow-idea-to-production.md#output-handoff-idea-to-production-14)
 
 [Roles, activities and acceptance gates for this chain](../workflow-library/idea-to-production.md#workflow-steps-and-gates).
 
@@ -167,6 +170,9 @@ For invocation, see the [workflow selection guide](../using/workflows.md) and [u
 8. **Configuration Manager:** updated configuration items.
    **Receiving condition:** Record updated the same day the change lands
    **Output specifications:** [`configuration-manager:1`](output-contracts/role-configuration-manager.md#output-configuration-manager-1); [`configuration-manager:3`](output-contracts/role-configuration-manager.md#output-configuration-manager-3); [handoff/production-change:8](output-contracts/workflow-production-change.md#output-handoff-production-change-8)
+9. **ERP and CRM Consultant Developer:** reviewed ABAP Cloud extension and release evidence for the named change authority.
+   **Receiving condition:** The exact candidate and SAP Cloud ERP Public Edition tenant use released APIs and have verified transport, regression, upgrade and reversal evidence
+   **Output specifications:** [`erp-and-crm-consultant-developer:2`](output-contracts/role-erp-and-crm-consultant-developer.md#output-erp-and-crm-consultant-developer-2); [handoff/production-change:9](output-contracts/workflow-production-change.md#output-handoff-production-change-9)
 
 [Roles, activities and acceptance gates for this chain](../workflow-library/production-change.md#workflow-steps-and-gates).
 

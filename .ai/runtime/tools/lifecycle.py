@@ -5243,28 +5243,37 @@ class Store:
                 return State(self.engagement, self._blob)
 
     def submit_invocation_completion(self, build_message):
-        """Build an observed host completion under exclusive current-state ownership."""
-        return self.submit(None, _completion=build_message)
+        """Build an observed host completion under exclusive current-state ownership.
 
-    def submit(self, raw_message, authority_proof=None, *, _completion=None):
+        Args:
+            build_message: Host callback constructing the completion from current state.
+
+        Returns:
+            The completion response or the original receipt for an exact retry.
+        """
+        return self._submit(None, completion=build_message)
+
+    def submit(self, raw_message, authority_proof=None):
         """Record one local-runtime transition atomically, deriving it once.
 
         Args:
             raw_message: Closed host message; direct assignment senders are refused.
             authority_proof: Actual external L0 wrapper bytes or object for a reserved act.
-            _completion: Internal factory for an observed native completion only.
         Returns:
             Closed response; exact retries return the original receipt without a new event.
             Rejection never changes the accepted journal or private checkpoint.
         """
+        return self._submit(raw_message, authority_proof)
+
+    def _submit(self, raw_message, authority_proof=None, *, completion=None):
         message = None
         try:
-            if _completion is None:
+            if completion is None:
                 message = _parse_message(raw_message)
                 if message['sender']['kind'] == 'assignment':
                     raise ERROR('P_ORIGIN', 'Direct entity ingestion is unsupported; use its captured issued RunReturn')
             self.path.parent.mkdir(parents=True, exist_ok=True)
-            with store_lock(self.path, wait=_completion is not None):
+            with store_lock(self.path, wait=completion is not None):
                 with ExitStack() as opened:
                     try:
                         fd = opened.enter_context(operator.regular_descriptor(self.path, os.O_RDWR | os.O_APPEND))
@@ -5276,8 +5285,8 @@ class Store:
                         accepted = State(self.engagement, self._blob)
                     else:
                         accepted = self._verified_file(fd, recover=True)
-                    if _completion is not None:
-                        prepared = _completion(accepted)
+                    if completion is not None:
+                        prepared = completion(accepted)
                         if prepared.get('status') == 'already_committed':
                             return prepared
                         message = _parse_message(prepared)
