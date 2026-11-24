@@ -913,6 +913,9 @@
       "runner": "node",
       "tags": [
         "integration"
+      ],
+      "assets": [
+        "installer-cli"
       ]
     },
     {
@@ -999,6 +1002,10 @@
     "import-worker": {
       "source": "apps/fabric-explorer/desktop/src/import/worker.ts",
       "output": "dist/import-worker.cjs"
+    },
+    "installer-cli": {
+      "source": "apps/fabric-explorer/packaging/installer-cli.ts",
+      "output": "dist/installer.cjs"
     },
     "performance-native": {
       "source": "apps/fabric-explorer/desktop/test/performance-native.ts",

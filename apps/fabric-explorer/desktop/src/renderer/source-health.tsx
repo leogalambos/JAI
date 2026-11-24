@@ -5,9 +5,10 @@ import type { ShellState } from '../shell/controller.js';
 /**
  * Display accepted snapshot provenance and bounded import diagnostics.
  * @param props Current immutable shell state, null before initialization.
+ * @param props.onAudit Optional handler for paging an accepted saved audit.
  * @returns Literal source observations and fixed import-health labels.
  */
-export function SourceHealth({ shell }: { shell: ShellState | null }) {
+export function SourceHealth({ shell, onAudit }: { shell: ShellState | null; onAudit?: (sourceId: string) => void }) {
   const report = shell?.report;
   return <>
     <p id="import-counts" className="muted">{report ? `${report.status}: ${report.acceptedSources}/${report.selectedSources} sources accepted; ${report.skippedItems} skipped. ${report.diagnosticTotal} diagnostics.${report.limitation ? ` ${report.limitation}` : ''}` : 'No import report yet.'}</p>
@@ -19,7 +20,9 @@ export function SourceHealth({ shell }: { shell: ShellState | null }) {
     {Number(report?.diagnosticTotal ?? 0) > 20 && <p className="muted">Only the first 20 diagnostics are displayed.</p>}
     {!!report?.supportedVersions.length && <details><summary>Source compatibility</summary><ul className="source-list">{report.supportedVersions.map((version, index) => <li key={`${version.sourceId}-${index}`}>{version.family} · {version.supported ? 'supported' : 'unsupported'} · format {version.declaredFormat ?? 'unknown'} · protocol {version.declaredProtocol ?? 'unknown'} · adapter {version.adapterVersion}</li>)}</ul></details>}
     {shell?.snapshot && <details id="snapshot-provenance"><summary>Snapshot provenance · observed revision set</summary><p className="muted">No viewing action grants authority or performs a fresh assessment. These fields are recorded observations, not a combined transaction or current permission.</p>
-      {shell.snapshot.sources.map(source => <details key={source.revisionId}><summary>{source.family}: {source.relativePath} · {source.verification.mode}</summary><dl className="provenance-fields">
+      {shell.snapshot.sources.map(source => <details key={source.revisionId}><summary>{source.family}: {source.relativePath} · {source.verification.mode}</summary>
+      {source.family === 'audit' && onAudit && <button onClick={() => onAudit(source.sourceId)}>Read saved audit</button>}
+      <dl className="provenance-fields">
         <dt>Revision</dt><dd><code>{source.revisionId}</code></dd><dt>Observed at</dt><dd>{source.observedAt}</dd><dt>Digest</dt><dd><code>{source.digest}</code></dd>
         <dt>Head</dt><dd><code>{source.head ?? 'Not recorded'}</code></dd><dt>Sequence</dt><dd>{source.sequence ?? 'Not recorded'}</dd><dt>Bytes</dt><dd>{source.byteLength}</dd>
         <dt>Adapter</dt><dd>{source.adapterVersion}</dd><dt>Mode</dt><dd>{source.verification.mode}</dd><dt>Decoded</dt><dd>{source.verification.decoded}</dd>

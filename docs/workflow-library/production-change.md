@@ -55,6 +55,9 @@ Approval class is separate from application/IaC/settings mechanism; exact author
 | normal/infrastructure-as-code | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | normal/configuration | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | normal/abap-cloud | 1, 2, 3, 4, 9, 5, 6, 7, 8 | 8 |
+| normal/aws | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+| normal/azure | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+| normal/google-cloud | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/application | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/infrastructure-as-code | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/configuration | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
@@ -118,3 +121,38 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
+
+## Cloud delivery paths
+
+Select a normal change and one provider mechanism after establishing
+repository eligibility, the intended target and current regional support.
+The delivery handoffs preserve source revision, immutable image digest,
+target identity, environment and release identity. Use a separately scoped
+short-lived build and deployment identity. Capture package feed, backlog,
+manual test management and reporting obligations when applicable.
+
+| Path | Repository and build | Artifact and deployment | Reversal evidence |
+| --- | --- | --- | --- |
+| `normal/aws` | CodeCommit or a CodeConnections source, then CodePipeline and CodeBuild | Amazon ECR image, applicable CodeArtifact packages and the ECS standard deploy action using the versioned image definitions | Previous completed task definition, deployment circuit breaker configuration and observed service stabilization |
+| `normal/azure` | Azure Repos and Azure Pipelines in Azure DevOps Services | Azure Container Registry image, applicable Azure Artifacts packages and an environment-checked Container Apps revision deployment using an Azure Resource Manager workload identity connection | Previous revision, traffic assignment and observed health |
+| `normal/google-cloud` | Secure Source Manager or a supported Cloud Build repository connection, then Cloud Build. Confirm existing eligibility before using Cloud Source Repositories. | Artifact Registry image and an exact Cloud Deploy release to a Cloud Run target | Previous successful release, rollback rollout identity and observed service recovery |
+
+Bind the pre-effect decision to the accepted promotion, source material,
+artifact and target. Configure the provider-side approval and deployment
+identity restrictions at the effect boundary. Keep Azure environment checks
+under resource-owner control outside pipeline YAML. Record any required
+provider-side approval separately from the JAI decision. The rollout handoff
+must cite the prior approved change and carry observed deployment and reversal
+disposition. The SRE independently receives the rollout evidence.
+
+- [AWS CodePipeline ECS standard deploy action](https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference-ECS.html)
+- [Azure Pipelines approvals and checks](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals)
+- [Google Cloud Deploy supported targets](https://docs.cloud.google.com/deploy/docs/deploying-application)
+
+For a linked cloud handoff, supply the prior model, QA report and independent
+receiving attestation through the existing predecessor input. At promotion,
+cite versioned applicability evidence that names the same provider, target,
+region and deployment action. Use the approved rollback target in both rollout
+and health evidence. Before an external deployment, the effect consumer must
+enforce its provider-side approval and deployment permissions. JAI workflow
+acceptance verifies evidence and the scoped decision.

@@ -101,6 +101,9 @@ export function selectTests(options = {}) {
  */
 export function preparationCommands(packageName, rows) {
   if (packageName === 'contracts') return [['npm', 'run', 'generate']];
+  if (packageName === 'packaging' && rows.some(row => row.assets?.includes('installer-cli'))) {
+    return [[process.execPath, 'build-installer.mjs']];
+  }
   if (packageName !== 'desktop') return [];
   if (rows.some(row => row.assets?.length)) return [
     ['npm', 'run', 'build:contracts'],
@@ -136,8 +139,10 @@ function main(args) {
       if (result.status !== 0) process.exit(result.status || 1);
     };
     const vitest = selected.filter(row => row.runner === 'vitest');
-    if (vitest.length) {
+    if (vitest.length || selected.some(row => row.assets?.length)) {
       for (const [command, ...argv] of preparationCommands(packageName, selected)) run(command, argv);
+    }
+    if (vitest.length) {
       run(process.execPath, [resolve(cwd, 'node_modules/vitest/vitest.mjs'), 'run', ...vitest.map(row => relative(cwd, resolve(root, row.path)))]);
     }
     const native = selected.filter(row => row.runner === 'node');

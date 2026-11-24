@@ -38,6 +38,19 @@ Use the actual bounded request, current environment and decision rights to selec
 | --- | --- | --- |
 | new-service | Establish complete receiving operations evidence | Runbooks, monitoring, access, recovery and support rehearsal |
 | existing-service-delta | Assess affected readiness and dependencies while reusing unchanged approved evidence | Exact design delta, impact and current evidence references |
+| zero-trust-migration | Existing hybrid network transition | Versioned inventory, observed dependencies, policy and independently measured reversal evidence. |
+| zero-trust-greenfield | Requirements-led Zero Trust design | Attributable requirements, candidate enforcement design and independent verification of design coverage. |
+| zero-trust-assessment | Independent existing Zero Trust or hybrid estate assessment | Commissioned scope, actual control observations, evidence gaps and prioritized remediation. |
+| terraform-readiness | Terraform implementation and promotion readiness | Versioned configuration, state topology, reviewed immutable plan and bounded recovery evidence. |
+| aws-greenfield | AWS infrastructure greenfield | Validate the organization, organizational unit, account and Region against requirements and placement constraints and record independent receiving evidence. |
+| aws-migration | AWS infrastructure migration | Validate the organization, organizational unit, account and Region against on-premises inventory, dependency observations and migration constraints and record independent receiving evidence. |
+| aws-assessment | AWS infrastructure assessment | Validate the organization, organizational unit, account and Region against independent commission, exact current inventory and evidence coverage and record independent receiving evidence. |
+| azure-greenfield | Microsoft Azure infrastructure greenfield | Validate the tenant, management group, subscription and region against requirements and placement constraints and record independent receiving evidence. |
+| azure-migration | Microsoft Azure infrastructure migration | Validate the tenant, management group, subscription and region against on-premises inventory, dependency observations and migration constraints and record independent receiving evidence. |
+| azure-assessment | Microsoft Azure infrastructure assessment | Validate the tenant, management group, subscription and region against independent commission, exact current inventory and evidence coverage and record independent receiving evidence. |
+| google-cloud-greenfield | Google Cloud infrastructure greenfield | Validate the organization, folder, project and location against requirements and placement constraints and record independent receiving evidence. |
+| google-cloud-migration | Google Cloud infrastructure migration | Validate the organization, folder, project and location against on-premises inventory, dependency observations and migration constraints and record independent receiving evidence. |
+| google-cloud-assessment | Google Cloud infrastructure assessment | Validate the organization, folder, project and location against independent commission, exact current inventory and evidence coverage and record independent receiving evidence. |
 
 Return failed readiness criteria to the accountable design/platform/support owner before the change decision. Stop go-live for unowned critical readiness gaps or absent required change authority. Accept operational responsibility with explicit residual risks or defer activation with owned remediation. Mechanism selection is not a waiver of security, legal or acceptance obligations.
 
@@ -64,6 +77,19 @@ New-service and changed-service readiness share evidence types; unchanged valid 
 | --- | --- | ---: |
 | new-service | 1, 2, 3, 4, 5, 6, 7 | 7 |
 | existing-service-delta | 1, 2, 3, 4, 5, 6, 7 | 7 |
+| zero-trust-migration | 1, 2, 3, 4, 5, 6, 7 | 7 |
+| zero-trust-greenfield | 1, 2, 3 | 3 |
+| zero-trust-assessment | 1, 2, 3 | 3 |
+| terraform-readiness | 1, 2, 3 | 3 |
+| aws-greenfield | 1, 2, 3, 4 | 4 |
+| aws-migration | 1, 2, 3, 4 | 4 |
+| aws-assessment | 1, 2, 3 | 3 |
+| azure-greenfield | 1, 2, 3, 4 | 4 |
+| azure-migration | 1, 2, 3, 4 | 4 |
+| azure-assessment | 1, 2, 3 | 3 |
+| google-cloud-greenfield | 1, 2, 3, 4 | 4 |
+| google-cloud-migration | 1, 2, 3, 4 | 4 |
+| google-cloud-assessment | 1, 2, 3 | 3 |
 
 A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
 <!-- END workflow-applicability -->

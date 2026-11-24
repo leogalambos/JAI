@@ -281,3 +281,32 @@ def test_stage_siem_workflow_preserves_exact_authority_and_contract():
     wrong_contract['steps'][0]['role_requirement']['contract']['version'] = '0.0.0'
     with pytest.raises(ValueError, match='WORKFLOW_PILOT_CONTRACT'):
         stage_siem_workflow(wrong_contract, deployments, baseline, contracts)
+
+
+def test_infrastructure_routes_preserve_exact_boundaries():
+    from infrastructure_workflow_definitions import DELIVERY, PROVIDERS
+
+    catalogue = generator.build(ROOT)
+    readiness, change = 'design-to-operational-readiness', 'production-change'
+    paths = {key: {path['id']: path for path in catalogue['profiles'][key]['paths']}
+             for key in (readiness, change)}
+    rows = {(row['workflow_id'], row['step']): row['variant_bindings'] for row in catalogue['bindings']}
+    for provider in PROVIDERS:
+        for intent in ('greenfield', 'migration', 'assessment'):
+            path = f'{provider}-{intent}'
+            assert paths[readiness][path]['steps'][0] == 1
+            receiver = rows[readiness, 1][path]['receiving_role']
+            assert receiver == ('security-assurance-and-measurement-architect' if intent == 'assessment'
+                                else 'cloud-architect')
+        assert provider in DELIVERY
+        path = f'normal/{provider}'
+        assert paths[change][path]['steps'] == list(range(1, 9))
+        assert rows[change, 5][path]['producer_role'] == 'change-manager'
+        assert rows[change, 5][path]['receiving_role'] == 'gitops-and-continuous-delivery-engineer'
+        assert rows[change, 6][path]['receiving_role'] == 'site-reliability-engineer'
+        for step in range(1, 8):
+            assert rows[change, step][path]['next_step'] == step + 1
+            assert rows[change, step][path]['receiving_role'] == rows[change, step + 1][path]['producer_role']
+    assert paths[readiness]['zero-trust-migration']['steps'] == list(range(1, 8))
+    assert rows[readiness, 3]['zero-trust-migration']['receiving_role'] == (
+        'security-assurance-and-measurement-architect')

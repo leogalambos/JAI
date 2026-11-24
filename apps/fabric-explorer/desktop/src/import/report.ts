@@ -25,7 +25,10 @@ export function captureReport(lease: Pick<SemanticLease, 'sources' | 'compatibil
     const evidence = source.verification;
     const recorded = evidence.mode === 'recorded' && evidence.decoded === 'decoded' && evidence.chain === 'unknown' && evidence.replay === 'recorded';
     const verified = evidence.mode === 'canonical' && evidence.decoded === 'decoded' && evidence.chain === 'verified' && (source.family !== 'fabric' || evidence.replay === 'verified');
-    if (!recorded && !verified) throw new ImportError('read-failed', 'A required source could not be decoded for display.');
+    const audit = source.family === 'audit' && source.sequence === null && source.byteLength !== '0' && evidence.mode === 'diagnostic'
+      && evidence.decoded === 'decoded' && evidence.chain === 'unknown' && evidence.replay === 'unknown'
+      && evidence.publicTrust === 'unknown' && evidence.material === 'not-observed' && evidence.recordedApplicability === null;
+    if (source.family === 'audit' ? !audit : !recorded && !verified) throw new ImportError('read-failed', 'A required source could not be decoded for display.');
   }
   const report = lease.report;
   if (!report || Object.keys(report).sort().join() !== 'accepted,diagnosticTotal,diagnostics,rejected,selected,skipped' || unsigned(report.selected) !== BigInt(selected.length) || unsigned(report.accepted) !== BigInt(selected.length) || unsigned(report.rejected) !== 0n || unsigned(report.skipped) !== 0n || !Array.isArray(report.diagnostics) || report.diagnostics.length > 1000 || unsigned(report.diagnosticTotal) < BigInt(report.diagnostics.length)) throw new ImportError('invalid-model', 'Capture did not produce a complete source set.');
@@ -37,8 +40,9 @@ export function captureReport(lease: Pick<SemanticLease, 'sources' | 'compatibil
     if (!source || source.family !== item.family || source.adapterVersion !== item.adapterVersion || typeof item.supported !== 'boolean') throw new ImportError('invalid-model', 'Source compatibility namespace differs.');
     const emptyFabric = item.family === 'fabric' && source.sequence === '0' && source.head === '0'.repeat(64);
     const fabricDeclaration = emptyFabric ? item.declaredFormat === null && item.declaredProtocol === null : item.declaredFormat === '9' && item.declaredProtocol === 'jai.governed-delivery/1';
-    const adapterSupported = item.adapterVersion === `jai.fabric-explorer.${item.family}/1` || source.verification.mode === 'recorded' && item.adapterVersion === `jai.fabric-explorer.${item.family}/2`;
-    if (!item.supported || !adapterSupported || item.family === 'audit' || item.family === 'fabric' && !fabricDeclaration || item.family === 'findings' && (item.declaredFormat !== null || item.declaredProtocol !== null)) throw new ImportError('incompatible-source', 'The selected source format or adapter version is unsupported.');
+    const adapterSupported = item.adapterVersion === `jai.fabric-explorer.${item.family}/1` || ['recorded', 'diagnostic'].includes(source.verification.mode) && item.adapterVersion === `jai.fabric-explorer.${item.family}/2`;
+    const auditDeclaration = item.declaredFormat === 'jai.gen2-audit/1' && item.declaredProtocol === null;
+    if (!item.supported || !adapterSupported || item.family === 'audit' && !auditDeclaration || item.family === 'fabric' && !fabricDeclaration || item.family === 'findings' && (item.declaredFormat !== null || item.declaredProtocol !== null)) throw new ImportError('incompatible-source', 'The selected source format or adapter version is unsupported.');
     hasUndeclaredEmptyFabric ||= emptyFabric;
   }
   const diagnostics = report.diagnostics.map((item: ReaderDiagnostic): Diagnostic => {

@@ -48,6 +48,33 @@ it('streams actual Fabric and Findings into the compact graph with exact immutab
   expect(source.digest).toBe(createHash('sha256').update(original).digest('hex')); expect(model.span(source.sourceId, '', null)).toEqual({ offset: '0', length: String(original.length) });
   await writeFile(path, 'changed live bytes'); const page = await archive.page(source.sourceId, '0', 262144); expect(Buffer.from(page.bytesBase64, 'base64')).toEqual(original);
 });
+it.each(['codex', 'claude'])('opens the journal emitted by the ordinary %s layered startup', async provider => {
+  const task = join(data, 'task.txt');
+  await writeFile(task, 'Describe a controlled document access service.');
+  const python = join(repository, 'build/fabric-explorer/helper-venv', process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python');
+  const startup = promisify(execFile)(python, ['-B', join(repository, '.ai/runtime/tools/governed_layered.py'),
+    'start', '--home', data, '--engagement', 'ordinary-startup', '--task', task,
+    '--provider', provider, '--work-item', 'document-access']);
+  startup.child.stdin?.end();
+  expect(JSON.parse((await startup).stdout)).toMatchObject({ id: 'startup', ok: true });
+  const journal = join(data, 'ordinary-startup.jsonl');
+  const original = await readFile(journal);
+  const transactions = original.toString('utf8').trimEnd().split('\n')
+    .map(line => JSON.parse(line) as { hash: string });
+  const selected = await broker.open('owner', [{ projectPath: data, path: journal, family: 'fabric' }]);
+  const workerEntry = join(repository, 'apps/fabric-explorer/desktop/dist/import-worker.cjs');
+  const session = new ImportSession({ sessionId: 'owner', capability: selected.capability,
+    sources: selected.sources, broker, archiveDirectory: join(app, 'captures'),
+    workerFactory: () => new NativeImportWorker(workerEntry) });
+  cleanup.push(() => session.dispose());
+  const sourceId = selected.sources[0]!.sourceId;
+  const snapshot = await session.import([sourceId], null);
+  expect(snapshot.sources[0]).toMatchObject({ family: 'fabric', sequence: String(transactions.length),
+    head: transactions.at(-1)!.hash,
+    digest: createHash('sha256').update(original).digest('hex') });
+  expect(BigInt(snapshot.counts.vertices)).toBeGreaterThan(0n);
+  expect(await readFile(journal)).toEqual(original);
+});
 it('refreshes unchanged sources without another worker and uses explicit Import as a deliberate candidate', async () => {
   const selected = await opened(); const counter = { created: 0, imports: 0, stopped: 0 }; const session = new ImportSession({ sessionId: 'owner', capability: selected.capability, sources: selected.sources, broker, archiveDirectory: join(app, 'captures'), workerFactory: () => localWorker(counter) }); cleanup.push(() => session.dispose());
   const ids = selected.sources.map(source => source.sourceId); const first = await session.import(ids, null); const same = await session.refresh(first.generation);

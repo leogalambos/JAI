@@ -178,9 +178,9 @@ export class RecordedProjection {
   /**
    * Bind projection state to one admitted opaque source.
    * @param sourceId Opaque selected source identifier.
-   * @param family Supported source family; audit remains explicitly unavailable in the model.
+   * @param family Journal family parsed one physical row at a time.
    */
-  constructor(readonly sourceId: string, readonly family: 'fabric' | 'findings' | 'audit') { this.head = family === 'fabric' ? '0'.repeat(64) : null; }
+  constructor(readonly sourceId: string, readonly family: 'fabric' | 'findings') { this.head = family === 'fabric' ? '0'.repeat(64) : null; }
   private check(control: RecordedControl): void { if (control.cancelled()) throw new ImportError('cancelled', 'Recorded import cancelled.'); }
   private ref(identifier: string): SourceReference { const value = this.versions.get(identifier)?.manifest ?? bad(); return { engagement: text(value.content.engagement), scope: text(value.content.scope), logical_id: text(value.logical_id), version_id: identifier }; }
   private point(ref: SourceReference, scope = this.scope): CanonicalPoint { return { ref, use_scope: scope }; }
@@ -255,10 +255,15 @@ export class RecordedProjection {
    */
   consume(value: RecordedValue, offset: number, length: number): void {
     const row = object(value); this.currentSequence = String(this.rows + 1);
-    if (this.family === 'audit') throw new ImportError('incompatible-source', 'The optional audit adapter is unavailable in this build.');
     if (this.family === 'findings') { this.finding(row, offset, length); this.rows++; this.sequence = String(this.rows); return; }
     if (this.rows === 0) { this.declaredFormat = ['bigint', 'string', 'number'].includes(typeof row.format) && String(row.format).length <= 128 ? String(row.format) : null; this.declaredProtocol = typeof row.protocol === 'string' && row.protocol.length <= 128 ? row.protocol : null; }
-    if (row.format !== 9n || row.protocol !== PROTOCOL) { this.supported = false; throw new ImportError('incompatible-source', 'The selected recorded source format is unsupported.'); }
+    if (row.format !== 9n || row.protocol !== PROTOCOL) {
+      this.supported = false;
+      const enrollment = this.rows === 0 && (row.schema_version === 'jai.layered-session/1' || row.protocol === 'jai.host-dispatch/1');
+      throw new ImportError('incompatible-source', enrollment
+        ? 'This is a JAI enrollment control. Select the engagement journal (.jsonl).'
+        : 'The selected recorded source format is unsupported.');
+    }
     const operations = array(row.operations); if (operations.length !== 1 || object(operations[0]).op !== 'governed') return bad();
     const data = object(operations[0].data); const message = object(data.message); const effects = array(data.effects); const sequence = integer(row.sequence); if (sequence < 1n) return bad();
     this.scope = text(message.scope); if (!this.rows) this.anchor = this.scope;

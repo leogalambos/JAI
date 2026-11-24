@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from content_spec import canonical_hash
 
 from content_workflow import HANDOFF_CONTENT_CONTRACTS, SELECTIONS
+import infrastructure_workflow_definitions as infrastructure
 from workflow_professional_definitions import (HANDOFF_REQUIREMENTS, WORKFLOW_PROFILES,
     WORKFLOW_VARIANT_CONDITIONS, WORKFLOW_MECHANISMS, WORKFLOW_MECHANISM_BASES,
     WORKFLOW_PATH_MECHANISMS, WORKFLOW_PATH_STEPS,
@@ -70,6 +71,12 @@ SOURCE_HANDOFF_CONTENT = {
 }
 
 
+def _variant_requirement(workflow, step, selector, base):
+    return infrastructure.REQUIREMENTS.get((workflow, step, selector),
+        VARIANT_HANDOFF_REQUIREMENTS.get((workflow, step, selector),
+            VARIANT_HANDOFF_REQUIREMENTS.get((workflow, step, base))))
+
+
 def professional_workflows(root=ROOT):
     """Return canonical workflows enriched by exact authored professional profiles.
 
@@ -111,7 +118,7 @@ def professional_workflows(root=ROOT):
             'basis': 'JAI-authored professional intake and route practice; independent professional qualification remains separate.',
             'entry_inputs': inputs,
             'variants': [{'id': name, 'mechanisms': mechanisms, 'evidence': evidence}
-                         for name, mechanisms, evidence in variants],
+                         for name, mechanisms, evidence in (*variants, *infrastructure.VARIANTS.get(key, []))],
             'routes': [
                 {'id': 'continue', 'trigger': 'The current handoff criteria and applicable prerequisites are satisfied.',
                  'action': 'Continue to the registered receiving duty with exact output and evidence references.'},
@@ -126,13 +133,15 @@ def professional_workflows(root=ROOT):
             name = variant['id']
             mechanisms = (ONBOARDING_MECHANISMS if key == 'new-service-onboarding' and name in ONBOARDING_OVERLAYS
                           else WORKFLOW_MECHANISMS.get(key, [None]))
-            mechanisms = WORKFLOW_PATH_MECHANISMS.get((key, name), mechanisms)
+            mechanisms = infrastructure.MECHANISMS.get((key, name),
+                WORKFLOW_PATH_MECHANISMS.get((key, name), mechanisms))
             if key == 'vulnerability-to-remediation' and name == 'risk-acceptance':
                 mechanisms = [None]
             for mechanism in mechanisms:
                 path_id = name + '/' + mechanism if mechanism else name
                 default_steps = [step['step'] for step in workflow['steps'] if not step.get('variant_only')]
                 path_steps = WORKFLOW_PATH_STEPS.get((key, path_id), WORKFLOW_PATH_STEPS.get((key, name), default_steps))
+                path_steps = infrastructure.PATH_STEPS.get((key, path_id), path_steps)
                 profile['paths'].append({'id': path_id,
                     'variant': name, 'mechanism': mechanism or name,
                     'steps': path_steps, 'terminal_step': path_steps[-1]})
@@ -146,7 +155,7 @@ def professional_workflows(root=ROOT):
                 'selection_rule': 'Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.',
                 'invariant_outcomes': [workflow['outcome'], 'Retain source-version traceability, accountable receiving duties and every applicable existing gate.'],
                 'variants': [{'context': name, 'mechanisms': mechanisms, 'evidence': evidence}
-                             for name, mechanisms, evidence in variants],
+                             for name, mechanisms, evidence in (*variants, *infrastructure.VARIANTS.get(key, []))],
                 'disposition_rule': rework + ' ' + stop + ' ' + exit_rule + ' Mechanism selection is not a waiver of security, legal or acceptance obligations.',
             }
         for step, (record, fields) in zip(workflow['steps'], definitions):
@@ -179,8 +188,7 @@ def professional_workflows(root=ROOT):
                 selector = (mechanism if key in WORKFLOW_MECHANISMS or key == 'new-service-onboarding'
                             else path['variant'])
                 base_selector = WORKFLOW_MECHANISM_BASES.get((key, selector), selector)
-                override = VARIANT_HANDOFF_REQUIREMENTS.get((key, step['step'], selector),
-                    VARIANT_HANDOFF_REQUIREMENTS.get((key, step['step'], base_selector)))
+                override = _variant_requirement(key, step['step'], selector, base_selector)
                 chosen = copy.deepcopy(step['handoff_content_contract'])
                 criterion = step['gate']
                 contract_role = {'architecture-repository-engineer': 'architecture-repository-and-modelling-lead',
@@ -211,8 +219,7 @@ def professional_workflows(root=ROOT):
                 next_steps = path['steps'][position + 1:]
                 if next_steps:
                     next_step = workflow['steps'][next_steps[0] - 1]
-                    next_override = VARIANT_HANDOFF_REQUIREMENTS.get((key, next_step['step'], selector),
-                        VARIANT_HANDOFF_REQUIREMENTS.get((key, next_step['step'], base_selector)))
+                    next_override = _variant_requirement(key, next_step['step'], selector, base_selector)
                     receiver = next_override[4] if next_override else ('agent:' if next_step['skill'] == 'agent' else 'engagement:' if next_step['skill'] in ('dynamic', 'external') else '') + next_step['slug']
                 else:
                     receiver = 'engagement:named-authority'

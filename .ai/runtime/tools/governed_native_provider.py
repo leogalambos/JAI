@@ -82,36 +82,62 @@ def _profile(controller, work_item, request_ttl_ms, limits, deadline_ms, local_b
 
 
 def _packaged_references(runtime, skills, rows, instructions):
-    """Load named deferred sections from the versioned composition projection."""
+    """Load only named, digest-pinned references from the role projection."""
     manifest = runtime / 'role-composition.json'
-    if not manifest.exists():
-        return None
-    composition = lc.loads(manifest.read_bytes())
-    if composition.get('schema_version') != 1 or set(composition['roles']) != set(instructions):
-        raise ValueError('Packaged composition differs from the exact role catalogue')
+    index = {}
+    if manifest.exists():
+        composition = lc.loads(manifest.read_bytes())
+        if composition.get('schema_version') != 1 or set(composition['roles']) != set(instructions):
+            raise ValueError('Packaged composition differs from the exact role catalogue')
+        for row in rows:
+            slug = row['slug']
+            role = composition['roles'][slug]
+            if hashlib.sha256(instructions[slug]).hexdigest() != role['instruction_sha256']:
+                raise ValueError('Packaged role instructions differ from composition: ' + slug)
+            prefix = '.ai/skills/' + row['skill'] + '/references/'
+            for module in role['modules']:
+                for section in module['sections']:
+                    if section['delivery'] == 'optional':
+                        projection = section['projection_path']
+                        if not projection.startswith(prefix + 'knowledge/'):
+                            raise ValueError('Deferred reference is outside its packaged skill: ' + projection)
+                        index.setdefault(slug, {})[projection.removeprefix(prefix)] = section['reference_sha256']
+    else:
+        source = runtime / 'knowledge/infrastructure-role-guidance.json'
+        if not source.exists():
+            return None
+        guidance = lc.loads(source.read_bytes())
+        if guidance.get('schema_version') != 1 or not isinstance(guidance.get('roles'), dict):
+            raise ValueError('Invalid packaged infrastructure guidance')
+        for row in rows:
+            overlay = guidance['roles'].get(row['path'])
+            if overlay is None:
+                continue
+            slug = row['slug']
+            suffix = overlay['supplement'].encode('utf-8')
+            instruction = instructions[slug]
+            if (not suffix or not instruction.endswith(suffix)
+                    or hashlib.sha256(instruction[:-len(suffix)]).hexdigest() != overlay['baseline']):
+                # The source checkout retains the unmodified professional input
+                # to the composer. Only installed exact role projections carry
+                # the deferred attachments.
+                if hashlib.sha256(instruction).hexdigest() != overlay['baseline']:
+                    raise ValueError('Packaged role guidance does not match: ' + slug)
+                continue
+            index[slug] = overlay['references']
     result = {}
     for row in rows:
         slug = row['slug']
-        role = composition['roles'][slug]
-        if hashlib.sha256(instructions[slug]).hexdigest() != role['instruction_sha256']:
-            raise ValueError('Packaged role instructions differ from composition: ' + slug)
         base = (skills / row['skill'] / 'references').resolve()
-        prefix = '.ai/skills/' + row['skill'] + '/references/'
-        for module in role['modules']:
-            for section in module['sections']:
-                if section['delivery'] != 'optional':
-                    continue
-                projection = section['projection_path']
-                if not projection.startswith(prefix + 'knowledge/'):
-                    raise ValueError('Deferred reference is outside its packaged skill: ' + projection)
-                name = projection.removeprefix(prefix)
-                path = (base / name).resolve()
-                if not path.is_relative_to(base) or b'(' + name.encode() + b')' not in instructions[slug]:
-                    raise ValueError('Deferred reference is outside its effective instructions: ' + projection)
-                raw = path.read_bytes()
-                if hashlib.sha256(raw).hexdigest() != section['reference_sha256']:
-                    raise ValueError('Deferred reference differs from packaged composition: ' + projection)
-                result.setdefault(slug, {})[name] = raw
+        for name, digest in index.get(slug, {}).items():
+            path = (base / name).resolve()
+            if (not name.startswith('knowledge/') or not path.is_relative_to(base)
+                    or b'(' + name.encode() + b')' not in instructions[slug]):
+                raise ValueError('Deferred reference is outside its effective instructions: ' + name)
+            raw = path.read_bytes()
+            if hashlib.sha256(raw).hexdigest() != digest:
+                raise ValueError('Deferred reference differs from packaged composition: ' + name)
+            result.setdefault(slug, {})[name] = raw
     return result
 
 
@@ -297,8 +323,7 @@ def _response_contract(packet, assignment, profile):
             'Return jai.semantic-return/1 with one actual role result per issued member. '
             'Use only declared aliases in reference fields. Domain materials and business identifiers '
             'remain your actual content. The host fills exact structural metadata; do not calculate '
-            'hashes, construct wire records, copy context fields or invent a verdict. '
-            'Every entity chooses its own specialties from the complete catalogue.')}
+            'hashes, construct wire records, copy context fields or invent a verdict.')}
 
 
 def _operator_projections(execution, responsibility, provider, models, workload):
@@ -395,28 +420,36 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
                 raise ValueError('Presentation resource has conflicting procedural/domain provenance')
         return {'handle': handle, 'path': item['path'], 'byte_length': len(raw)}
 
-    instructions = {}
-    categories = {}
+    selection = packet['execution']['phase'] == 'selection'
+    specialties = set(packet['execution'].get('specialties', []))
+    scoped = packet['execution'].get('workflow_selection')
+    visible = (None if scoped is None else set(scoped['eligible'])) if selection else specialties
+    instructions, categories = {}, {}
     for row in run.execution['snapshot']['catalogue']['roles']:
-        detail = add('Complete catalogue record: ' + row['slug'], row, ['catalogue'])
-        entry = {key: copy.deepcopy(row[key]) for key in
-                 ('slug', 'name', 'aliases', 'tool_tier', 'operator_agent')}
         slug = row['slug']
+        if visible is not None and slug not in visible:
+            continue
         instructions[slug] = add('Exact professional instruction: ' + slug,
             run.execution['snapshot']['instructions'][slug]['text'].encode('utf-8'), ['instruction:' + slug])
-        entry.update(details=detail, instruction_handle='instruction:' + slug, instruction=instructions[slug])
-        categories.setdefault(row['category'], []).append(entry)
-    navigation = []
-    for category, rows in categories.items():
-        pages = [add(category + ' page ' + str(index // 6 + 1),
-                     {'category': category, 'roles': rows[index:index + 6]}, ['catalogue'])
-                 for index in range(0, len(rows), 6)]
-        category_ref = add(category, {'category': category, 'count': len(rows), 'pages': pages}, ['catalogue'])
-        navigation.append({'category': category, 'count': len(rows), **category_ref})
-    catalogue = add('Complete catalogue navigation', {
-        'count': sum(len(rows) for rows in categories.values()), 'categories': navigation,
-        'meaning': 'Discovery navigation, not a ranking or permission boundary. '
-            'Every full row and instruction remains accessible; read candidate instructions before selection.'}, ['catalogue'])
+        if selection:
+            detail = add('Complete catalogue record: ' + slug, row, ['catalogue'])
+            entry = {key: copy.deepcopy(row[key]) for key in
+                     ('slug', 'name', 'aliases', 'tool_tier', 'operator_agent')}
+            entry.update(details=detail, instruction_handle='instruction:' + slug, instruction=instructions[slug])
+            categories.setdefault(row['category'], []).append(entry)
+    catalogue = None
+    if selection:
+        navigation = []
+        for category, rows in categories.items():
+            pages = [add(category + ' page ' + str(index // 6 + 1),
+                         {'category': category, 'roles': rows[index:index + 6]}, ['catalogue'])
+                     for index in range(0, len(rows), 6)]
+            category_ref = add(category, {'category': category, 'count': len(rows), 'pages': pages}, ['catalogue'])
+            navigation.append({'category': category, 'count': len(rows), **category_ref})
+        label = 'Complete catalogue navigation' if visible is None else 'Eligible catalogue navigation'
+        catalogue = add(label, {
+            'count': len(instructions), 'categories': navigation,
+            'meaning': 'Discovery navigation. Read candidate professional instructions before selection.'}, ['catalogue'])
     record_index, machine_index, business_material = [], [], set()
     for item in packet['manifest']:
         parts = {key: add(item['ref']['logical_id'] + ' /' + key, value, [item['handle']])
@@ -567,31 +600,21 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
             workforce_body['deferred_references'] = [
                 {'handle': handle, 'path': handle.split(':', 2)[2]}
                 for handle in packet['execution']['deferred_references']]
-    workforce = add('Exact staffing/model availability', workforce_body, ['catalogue'])
+    workforce = add('Exact staffing/model availability', workforce_body,
+                    ['catalogue'] if selection else ['instruction:' + slug for slug in sorted(specialties)])
     selection_context = None
     if kind == 'selection' and getattr(session, 'single_member', False):
-        # Group the small, exact selection essentials under the same inputs. The
-        # ordinary handles remain available for full detail and binary material.
+        # Carry a short authored mandate for immediate staffing. Source material
+        # can contain large or unrelated sections and stays behind its handle.
         sources = [*actual_sources, 'catalogue']
         summary = {'workforce': workforce_body, 'purpose': response_contract['purpose'],
                    'mandate': response_contract['mandate'], 'inputs': inputs, 'procedure': procedure,
-                   'role_choices': sorted(instructions), 'material_text': []}
-        remaining = 16 * 1024
-        selected_resources = [entry['resource'] for entry in material_index]
-        if mandate is not None:
-            selected_resources.insert(0, mandate)
-        for descriptor in selected_resources:
-            if descriptor['byte_length'] > remaining:
-                continue
-            raw = store._blob(descriptor['handle'].removeprefix('resource:'))
-            try:
-                text = raw.decode('utf-8', errors='strict')
-            except UnicodeDecodeError:
-                continue
-            summary['material_text'].append({'handle': descriptor['handle'],
-                'label': resources[descriptor['handle']]['label'], 'text': text})
-            sources.extend(resources[descriptor['handle']]['source_handles'])
-            remaining -= len(raw)
+                   'material_text': []}
+        if mandate is not None and mandate['byte_length'] <= 1024:
+            raw = store._blob(mandate['handle'].removeprefix('resource:'))
+            summary['material_text'].append({'handle': mandate['handle'],
+                'label': resources[mandate['handle']]['label'], 'text': raw.decode('utf-8')})
+            sources.extend(resources[mandate['handle']]['source_handles'])
         raw_context = json.dumps(summary, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
         selection_context = add('Selection essentials from exact entitled material', raw_context, sorted(set(sources)))
 
@@ -618,13 +641,15 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
                    'meaning': 'limits are original ceilings, not a fresh allowance; remaining_ms is shared-budget time as of preparation. Finish before effective_deadline_ms.'},
         'tool_ceiling': tools, 'governed_operations': operations,
         'mandatory': [*_COMMON_INSTRUCTIONS[:4],
-            'Read actual business material through inputs.material resource paths and any exact local mandate. '
+            'Read the exact local mandate and only business material needed for the current responsibility. '
+            'Request detailed material through its exact input or deferred reference handle. '
                 'The optional_machine_index contains host controls, not required business reading.',
             ('Read candidate professional instructions before choosing exact catalogue slugs.' if kind == 'selection'
                 else 'Read the selected professional instructions and the actual role semantic contract before work.'),
             *_COMMON_INSTRUCTIONS[4:]],
         'resources': {'procedure': procedure, 'inputs': inputs, 'constraints': constraints,
-                      'catalogue': catalogue, 'workforce': workforce, 'optional_machine_index': optional_machine,
+                      'workforce': workforce, 'optional_machine_index': optional_machine,
+                      **({'catalogue': catalogue} if catalogue else {}),
                       **({'selection_context': selection_context} if selection_context else {})},
         'delivery_manifest': 'resource:' + manifest_blob}
     prompt_raw = lc.canonical(base)

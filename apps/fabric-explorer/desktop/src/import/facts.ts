@@ -106,5 +106,6 @@ export function projectedFactOrigin(fact: CanonicalFact, sources: ReadonlyMap<st
   if (offset + length > unsigned(source.byteLength)) throw new ImportError('invalid-model', 'Helper span exceeds captured source.');
   if (fact.kind !== 'finding' && fact.kind !== 'audit' && source.family !== 'fabric') throw new ImportError('invalid-model', 'Canonical record has incompatible source family.');
   if (fact.kind === 'finding' && source.family !== 'findings') throw new ImportError('invalid-model', 'Finding has incompatible source family.');
-  if (fact.kind === 'audit') throw new ImportError('incompatible-source', 'The optional audit adapter is unavailable in this build.');
+  if (fact.kind === 'audit' && (source.family !== 'audit' || origin.pointer !== '' || origin.sequence !== null
+    || offset !== 0n || length === 0n || length !== unsigned(source.byteLength))) throw new ImportError('invalid-model', 'Audit fact must identify the complete captured report.');
 }

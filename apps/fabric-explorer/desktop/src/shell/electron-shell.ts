@@ -71,7 +71,16 @@ export async function startDesktop(dependencies: DesktopDependencies, distributi
     window = current;
     const picker: PickerPort = dependencies.picker ?? createSourcePicker({
       project: async () => { const result = await dialog.showOpenDialog(current, { title: 'Choose project association', properties: ['openDirectory'] }); return result.canceled ? null : result.filePaths[0] ?? null; },
-      files: async (family, defaultPath) => { const result = await dialog.showOpenDialog(current, { title: family === 'fabric' ? 'Choose Fabric journals (referenced companion material is read-only)' : `Choose ${family} source files`, defaultPath, properties: ['openFile', 'multiSelections', 'dontAddToRecent'], filters: [{ name: 'JSON and JSON Lines sources', extensions: ['json', 'jsonl', 'ndjson'] }] }); return result.canceled ? null : result.filePaths; },
+      files: async (family, defaultPath) => {
+        const filter = family === 'audit'
+          ? { name: 'Saved audit reports', extensions: ['json'] }
+          : { name: 'JSON Lines journals', extensions: ['jsonl', 'ndjson'] };
+        const title = family === 'fabric' ? 'Choose Fabric journals (referenced companion material is read-only)' : `Choose ${family} source files`;
+        const result = await dialog.showOpenDialog(current, {
+          title, defaultPath, properties: ['openFile', 'multiSelections', 'dontAddToRecent'], filters: [filter],
+        });
+        return result.canceled ? null : result.filePaths;
+      },
     });
     const owner = new ShellController(broker, picker, new PreferenceStore(paths), dependencies.createImport ? input => dependencies.createImport!(input, broker, paths) : undefined); controller = owner;
     current.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));

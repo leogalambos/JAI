@@ -12,22 +12,28 @@ class PublicWorkflowsTest(unittest.TestCase):
     def test_public_stages_and_real_canonical_capture(self):
         """Import real maintained table rows and submit a source-only canonical message."""
         rows = collect_workflows()
-        self.assertEqual([len(row['stages']) for row in rows], [13, 8])
+        self.assertEqual([len(row['stages']) for row in rows], [14, 8])
         self.assertEqual(rows[0]['stages'][6]['role'], 'Software Engineer')
         self.assertEqual(rows[0]['stages'][6]['activity'], 'implements with tests and telemetry')
+        self.assertEqual(rows[0]['stages'][13]['role'], 'Test Automation Engineer')
+        self.assertEqual(rows[0]['stages'][13]['activity'],
+                         'executes automated tests against the exact reviewed mobile build')
         with tempfile.TemporaryDirectory() as directory:
             manifest = generate(Path(directory))
-            self.assertEqual(manifest['source_records'], 42)
+            self.assertEqual(manifest['source_records'], 44)
             roles = {item['role']: item for item in manifest['roles']}
+            self.assertEqual(len(roles), 20)
             self.assertEqual(len(roles['Software Engineer']['occurrences']), 2)
             self.assertEqual(len(roles['Change Manager']['occurrences']), 2)
+            self.assertEqual(len(roles['Test Automation Engineer']['occurrences']), 1)
             transactions = [json.loads(line) for line in (Path(directory) / manifest['journal']).read_text().splitlines()]
             self.assertEqual(len(transactions), 1)
             self.assertNotIn('assessment', (Path(directory) / 'capture-request.json').read_text())
             inputs = json.loads((Path(directory) / 'capture-request.json').read_text())['payload']['l0_inputs']
-            self.assertEqual(len(inputs), 42)
+            self.assertEqual(len(inputs), 44)
             stages = [item for item in inputs if item['logical_id'].startswith(('Delivery ', 'Remediation '))]
-            self.assertEqual(len(stages), 21)
+            self.assertEqual(len(stages), 22)
+            self.assertIn('Delivery 14 · Test Automation Engineer', [item['logical_id'] for item in stages])
             for stage in stages:
                 roles = [ref for ref in stage['record']['inherited'] if ref['logical_id'].startswith('Role · ')]
                 self.assertEqual(len(roles), 1)

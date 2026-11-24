@@ -42,7 +42,9 @@ describe('Electron wrapper', () => {
     const frame = encodeFrame({ protocol: PROTOCOL, kind: 'request', operation: 'roots.pick', requestId: 'native-default', binding: { sessionId: state.sessionId, capability: null, generation: null }, payload: { families: ['fabric'] } });
     await fake.handlers.get('jai:request')!(event, frame);
     expect(fake.dialog).toHaveBeenCalledTimes(2);
-    expect(fake.dialog.mock.calls[1]?.[1]).toMatchObject({ defaultPath: project, properties: ['openFile', 'multiSelections', 'dontAddToRecent'] });
+    expect(fake.dialog.mock.calls[1]?.[1]).toMatchObject({ defaultPath: project,
+      properties: ['openFile', 'multiSelections', 'dontAddToRecent'],
+      filters: [{ extensions: ['jsonl', 'ndjson'] }] });
   });
 
   it('fixes all write locations before readiness/session/window and applies hardened window options', async () => {

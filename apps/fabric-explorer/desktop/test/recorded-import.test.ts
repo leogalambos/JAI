@@ -67,7 +67,7 @@ it('checks cumulative input bytes before reading and includes the exact1GiB boun
     await expect(importRecordedSources([{ ...input, byteLength: 600 * 1024 ** 2 }, { ...input, sourceId: 'second', byteLength: 600 * 1024 ** 2 }], () => {}, { cancelled: () => false })).rejects.toMatchObject({ code: 'resource-limit' });
   });
 });
-it('accepts empty sources without inventing format declarations and rejects optional audit explicitly', async () => {
+it('accepts an empty Fabric journal without inventing declarations and rejects an empty audit document', async () => {
   await files(Buffer.alloc(0), async input => {
     const seen = await importRecordedSources([{ ...input, family: 'fabric' }], () => { throw new Error('No facts expected'); }, { cancelled: () => false });
     expect(seen[0]!.head).toBe('0'.repeat(64)); expect(seen[0]!.sequence).toBe('0'); expect(seen[0]!.compatibility.declaredFormat).toBeNull();
@@ -110,13 +110,32 @@ it('uses one bounded source read for each owned chunk and no fact transport roun
   });
 });
 
-it('retains the prior explicit unsupported product boundary for a well-formed saved audit', async () => {
+it('captures a well-formed saved audit as one inspectable diagnostic document', async () => {
   const document = { format: 'jai.gen2-audit/1', head: 'a'.repeat(64), read_only: true, authority_granted: false };
   const raw = Buffer.from(JSON.stringify(document, null, 2) + '\n');
   await files(raw, async (input, archive) => {
+    const facts: CanonicalFact[] = [];
+    const observed = await importRecordedSources([{ ...input, family: 'audit' }], fact => facts.push(fact), { cancelled: () => false });
+    expect(observed).toMatchObject([{ head: document.head, sequence: null,
+      compatibility: { declaredFormat: document.format, declaredProtocol: null, supported: true },
+      verification: { mode: 'diagnostic', replay: 'unknown', authorityGranted: false, freshAssessment: false } }]);
+    expect(facts).toEqual([{ kind: 'audit', sourceId: 'synthetic',
+      origin: { pointer: '', sequence: null, byteOffset: '0', byteLength: String(raw.length) },
+      attributes: { kind: 'paged', byteLength: String(raw.length), mediaType: 'application/json' } }]);
+    expect(await readFile(archive)).toEqual(raw);
+  });
+});
+
+it.each([
+  { format: 'jai.gen2-audit/2', read_only: true, authority_granted: false },
+  { format: 'jai.gen2-audit/1', read_only: false, authority_granted: false },
+  { format: 'jai.gen2-audit/1', read_only: true, authority_granted: true },
+])('rejects saved audit declarations outside the read-only report contract', async document => {
+  await files(Buffer.from(JSON.stringify(document)), async input => {
     let facts = 0;
-    await expect(importRecordedSources([{ ...input, family: 'audit' }], () => facts++, { cancelled: () => false })).rejects.toMatchObject({ code: 'incompatible-source' });
-    expect(facts).toBe(0); expect(await readFile(archive)).toHaveLength(0);
+    await expect(importRecordedSources([{ ...input, family: 'audit' }], () => facts++, { cancelled: () => false }))
+      .rejects.toMatchObject({ code: 'incompatible-source', compatibility: [{ declaredFormat: document.format, supported: false }] });
+    expect(facts).toBe(0);
   });
 });
 
@@ -139,6 +158,16 @@ it('retains bounded observed format and source sequence in a failure without rer
     await expect(importRecordedSources([{ ...input, family: 'fabric' }], () => {}, { cancelled: () => false })).rejects.toMatchObject({ code: 'incompatible-source', diagnostic: { sourceId: 'synthetic', sequence: '1', pointer: '', code: 'incompatible-source' }, compatibility: [{ sourceId: 'synthetic', family: 'fabric', declaredFormat: '8', declaredProtocol: 'recorded-unsupported', supported: false }] });
   });
 });
+
+it.each([{ schema_version: 'jai.layered-session/1' }, { protocol: 'jai.host-dispatch/1' }])
+  ('identifies an enrollment control selected as a journal', async control => {
+    await files(Buffer.from(JSON.stringify(control)), async input => {
+      await expect(importRecordedSources([{ ...input, family: 'fabric' }], () => {}, { cancelled: () => false }))
+        .rejects.toMatchObject({ code: 'incompatible-source', diagnostic: {
+          message: 'This is a JAI enrollment control. Select the engagement journal (.jsonl).'
+        } });
+    });
+  });
 
 it('keeps duplicate and descending recorded claims while physical locators stay distinct', async () => {
   const rows = [

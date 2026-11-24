@@ -11,3 +11,51 @@ migrations:
     source: roles/methods/sabsa/conceptual-security-architect-sabsa-architect-s-view.yaml
     legacy_row_sha256: c204ae6f350b0dad12f7723241f5d43260f056a857f2082d0058e079ecbf3e60
     legacy_instruction_sha256: f2ab6c6f58a1dc15925d61dded226a8021c985b3491b67ffb20366dd3e02ae10
+  network-architect:
+    source: roles/methods/zero-trust/resource-access/network-architect.yaml
+    legacy_row_sha256: 5d25e5bf07321ef294b9d0a937a729786e5d52de5fe28633438c30c0930adc8f
+    legacy_instruction_sha256: 70bff2c0fce44c3ada66d0da099276552dd2830eb83a0feb99ce4ebd3995a004
+  network-engineer:
+    source: roles/methods/zero-trust/resource-access/network-engineer.yaml
+    legacy_row_sha256: 2d55c13848b8b863ea63a74c4f7e15faac6da90c801705add88e45cd1abe7501
+    legacy_instruction_sha256: 45f27658d4e5f3d260c5af848deba1cd2451b1a4c31e11a51dbdee39cfec2072
+  security-architect:
+    source: roles/methods/zero-trust/resource-access/security-architect.yaml
+    legacy_row_sha256: 0a69136a5e0d63d8b37caa69cf642cd3d44a4df38041b0be1f3cc23ccfd33065
+    legacy_instruction_sha256: ee0b1cf59a34ce37d767d5815918be5934e4b3871b196dbefeeb29c6afae6deb
+  identity-and-access-management-architect:
+    source: roles/methods/zero-trust/resource-access/identity-and-access-management-architect.yaml
+    legacy_row_sha256: 069d9654db3d7d0cd61ba6e0f2d301a4861cb33287db3613c6f937976c24aa3e
+    legacy_instruction_sha256: a697faceedff42af19402b769afb3e9991daccfa0d462f729e4b3c934e6e865e
+  security-assurance-and-measurement-architect:
+    source: roles/methods/zero-trust/resource-access/security-assurance-and-measurement-architect.yaml
+    legacy_row_sha256: f495f5db8529a8b77fdf932cf316095e01d85b54dad5c8d572c08f368afab665
+    legacy_instruction_sha256: 5c62c880dee3330720b24db23c6f1d9e069be9d1bd1b21269835d0d62803816f
+  infrastructure-as-code-engineer:
+    source: roles/products/hashicorp/terraform/governed-plans/infrastructure-as-code-engineer.yaml
+    legacy_row_sha256: 6e61ccb13d60f0d77184b00f486cb75dbdae4fa33a925f85756f78b410dcd89e
+    legacy_instruction_sha256: 70d5da8f7ed2f77c7976580630a0c41921b0e2513cf1c8758227e37d7adb1444
+  cloud-architect:
+    source: roles/domains/cloud/landing-zone-evidence/cloud-architect.yaml
+    legacy_row_sha256: 46deb64f03893e29e477f3b96c626084e25f74e2765d34e470c641beb63303bf
+    legacy_instruction_sha256: 09cf2f26c40f72d270658f0c8fad2c33e1446fafb528a65858c18c1fb14d1ef9
+  cloud-engineer:
+    source: roles/domains/cloud/landing-zone-evidence/cloud-engineer.yaml
+    legacy_row_sha256: 495eeddf0eb0f33884cbbdbc262306733893e45b7ff58d64cced09f93d54db2a
+    legacy_instruction_sha256: efd10a02a852e532a84994fe14b5a7d1d75a08e3801f82de023c532e5bdc7241
+  cloud-security-engineer:
+    source: roles/domains/cloud/landing-zone-evidence/cloud-security-engineer.yaml
+    legacy_row_sha256: 854ce01c2338ffd267fb51071181295fbd72eb939530f8aaefd193bc6eef522a
+    legacy_instruction_sha256: 4e7d2852d1a06e0624da9e9163c8dfa98a7bbbccf4f2d390d87c8992bacd30da
+  devops-engineer:
+    source: roles/domains/cloud/delivery-pipelines/devops-engineer.yaml
+    legacy_row_sha256: ef707624469555c510142dc09cfc3813d804af6e8d185477b1da8af2093c3504
+    legacy_instruction_sha256: 4cbc7cc72546f4e962f1087ea429e268de700b0b7928541df996dba7c06586d6
+  ci-cd-platform-engineer:
+    source: roles/domains/cloud/delivery-pipelines/ci-cd-platform-engineer.yaml
+    legacy_row_sha256: 1bada8df9bf153d673ba9d200285290379b11a4b732942cce9d5cb1944814228
+    legacy_instruction_sha256: 747c740a5e924f46f2385ddbd1c3354b87183cf766bc1fc8fd6138f460463731
+  gitops-and-continuous-delivery-engineer:
+    source: roles/domains/cloud/delivery-pipelines/gitops-and-continuous-delivery-engineer.yaml
+    legacy_row_sha256: 4167ffc7d37e87e5d2ea55c794cd96c6b09c039d959a45d454393848a839fd51
+    legacy_instruction_sha256: 0969fcc69ef182581edc0819fc71ee9aa888b6142a3ab8a3b27d08153d218c6e

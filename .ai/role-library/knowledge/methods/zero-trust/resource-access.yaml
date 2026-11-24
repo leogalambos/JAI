@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+id: methods/zero-trust/resource-access
+title: Zero Trust resource access and transition
+version: 1.0.0
+applicability: Resource access design, migration or independent assessment with a versioned scoped baseline.
+sections:
+- source: nist
+  applicability: Resource access design, migration or independent assessment with a versioned scoped baseline.
+  exclusions: Execution authority and independent acceptance.
+  owner: JAI infrastructure and security practice maintainers
+  reviewed: '2026-11-24'
+  id: scoped-guidance
+  delivery: optional
+  reference: resource-access.md
+  read_when: The assignment asks for Zero Trust resource access design, migration or independent assessment.
+sources:
+  nist:
+    publisher: NIST
+    authority: Primary publication
+    title: SP 800-207 Zero Trust Architecture
+    url: https://csrc.nist.gov/pubs/sp/800/207/final
+    applicability: Resource access design, migration or independent assessment with a versioned scoped
+      baseline.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+  cisa:
+    publisher: CISA
+    authority: Primary publication
+    title: Zero Trust Maturity Model 2.0
+    url: https://www.cisa.gov/resources-tools/resources/zero-trust-maturity-model
+    applicability: Resource access design, migration or independent assessment with a versioned scoped
+      baseline.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.

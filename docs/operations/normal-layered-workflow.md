@@ -286,3 +286,18 @@ the existing externally attested protocol ingress described in the
 contradiction, insufficient information, actual search/resource exhaustion and
 human termination. Exhausted search does not mean that no solution exists.
 None of these observations silently creates L0 result acceptance or release.
+
+## Model-facing context
+
+Each model call receives the current mandate, applicable controls and the
+handles needed to complete its assigned responsibility. Preparation keeps
+large source material, detailed professional guidance and the complete
+catalogue navigable through the existing broker. A selection briefing can
+include a short authored mandate. It links to business inputs and catalogue
+pages for any additional details required to choose the role.
+
+Use an applicability trigger to identify when to read a detailed reference.
+A work invocation receives deferred reference handles for its admitted
+specialties. Request the applicable reference when the assignment needs it.
+The broker enforces the member's read rights. The immutable prepared prompt
+and reference bindings remain available for replay.

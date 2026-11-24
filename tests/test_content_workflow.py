@@ -761,7 +761,8 @@ def test_every_handoff_executes_positive_and_missing_receiver_or_authority_check
         if human:
             authority,host=signed_governed_acceptance(bound,tmp_path,monkeypatch)
             kwargs['authority']=authority
-            assert check(row['handoff_id'],model,report,ROOT,**kwargs)['status']=='ACCEPTANCE_VERIFIED',row['handoff_id']
+            result = check(row['handoff_id'], model, report, ROOT, **kwargs)
+            assert result['status'] == 'ACCEPTANCE_VERIFIED', (row['handoff_id'], result['findings'])
             kwargs['authority']=None
             assert 'EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED' in check(row['handoff_id'],model,report,ROOT,**kwargs)['findings']
         else:
@@ -780,7 +781,8 @@ def test_every_handoff_executes_positive_and_missing_receiver_or_authority_check
             registry['receiver-token'] = payload
             subject['attestation'] = 'receiver-token'
             kwargs.update(acceptance=subject,receiving_assignments={principal:[selected['receiving_role']]})
-            assert check(row['handoff_id'],model,report,ROOT,**kwargs)['status']=='ACCEPTANCE_VERIFIED',row['handoff_id']
+            result = check(row['handoff_id'], model, report, ROOT, **kwargs)
+            assert result['status'] == 'ACCEPTANCE_VERIFIED', (row['handoff_id'], result['findings'])
             kwargs['receiving_assignments']={}
             assert 'RECEIVER_ROLE_UNASSIGNED' in check(row['handoff_id'],model,report,ROOT,**kwargs)['findings']
 
@@ -1048,3 +1050,215 @@ def test_staged_siem_terminal_keeps_recorded_role_and_signed_authority(
     assert result['status'] == 'ACCEPTANCE_PENDING'
     assert 'EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED' in result['findings']
     assert ('WORKFLOW_TERMINAL_PRODUCER_ROLE_MISMATCH' in result['findings']) == (specialty == 'software-engineer')
+
+
+def test_zero_trust_rehearsal_rejects_failed_readiness_dependency_and_reversal():
+    from infrastructure_workflow_evidence import _transition_coverage, _transition_observed
+
+    observations = {
+        'readiness': 'PASS',
+        'allowed_paths': [{'flow_id': 'office-to-inventory', 'expected': 'allow',
+                           'observed': 'allow', 'observation_ref': 'run:1'}],
+        'denied_paths': [{'flow_id': 'guest-to-inventory', 'expected': 'deny',
+                          'observed': 'deny', 'observation_ref': 'run:2'}],
+        'mandatory_dependencies': [{'dependency_id': 'name-resolution',
+                                    'status': 'verified', 'observation_ref': 'run:3'}],
+        'reversal': {'status': 'restored', 'observation_ref': 'run:4',
+                     'elapsed_seconds': 38, 'limit_seconds': 60},
+    }
+    observations['verification_scope'] = {
+        'allowed_flow_ids': ['office-to-inventory'], 'denied_flow_ids': ['guest-to-inventory'],
+        'dependency_ids': ['name-resolution'], 'reversal_limit_seconds': 60,
+    }
+    records = [*observations['allowed_paths'], *observations['denied_paths'],
+               *observations['mandatory_dependencies'], observations['reversal']]
+    observed_model = {'evidence': [_synthetic_observation(record) for record in records]}
+    assert _transition_observed(observations)
+    assert _transition_coverage(observations, observed_model)
+    changed_scope = {**observations['verification_scope'], 'dependency_ids': ['name-resolution', 'time-sync']}
+    assert not _transition_coverage({**observations, 'verification_scope': changed_scope}, observed_model)
+    assert not _transition_coverage(observations, {'evidence': observed_model['evidence'][1:]})
+    assert not _transition_observed({**observations, 'readiness': 'FAIL'})
+    assert not _transition_observed({**observations, 'mandatory_dependencies': [
+        {'dependency_id': 'name-resolution', 'status': 'unknown', 'observation_ref': 'run:3'}]})
+    assert not _transition_observed({**observations, 'reversal': {
+        **observations['reversal'], 'elapsed_seconds': 61}})
+
+
+def _synthetic_observation(record):
+    return {'id': record['observation_ref'], 'version': '1',
+            'payload': {key: value for key, value in record.items() if key != 'observation_ref'}}
+
+
+@pytest.mark.parametrize('provider,integration,store,action', [
+    ('aws', 'codeconnections', 'ecr', 'ecs-rolling'),
+    ('azure', 'azure-repos', 'acr', 'container-apps-revisions'),
+    ('google-cloud', 'secure-source-manager', 'artifact-registry', 'cloud-run'),
+])
+def test_cloud_delivery_chain_binds_previous_artifact_and_target(provider, integration, store, action):
+    from infrastructure_workflow_definitions import EVIDENCE
+    from infrastructure_workflow_evidence import verify
+
+    workflow = 'production-change'
+    path = {'id': 'normal/' + provider, 'mechanism': provider, 'steps': list(range(1, 9))}
+    models = {}
+    hints = {'target_id': 'service-A', 'environment': 'stage', 'provider': provider,
+             'artifact_digest': 'sha256:' + '1' * 64, 'source_revision': 'commit-1',
+             'release_id': 'release-1', 'rollback_target': 'previous-revision'}
+    identity = {'target_id': hints['target_id'], 'environment': hints['environment'],
+                'short_lived': True, 'principal': 'pipeline-stage'}
+    hints.update(integration=integration, region='synthetic-region', artifact_store=store,
+                 deployment_action=action, credential_scope=identity,
+                 deployment_identity=identity, independent_verdict='PASS',
+                 applicability_ref='APP')
+    hints['rollout_observations'] = {'target_id': hints['target_id'], 'artifact_digest': hints['artifact_digest'],
+                                    'status': 'healthy', 'observation_ref': 'synthetic-rollout'}
+    hints['rollback_record'] = {'target': hints['rollback_target'], 'status': 'not-needed',
+                                'observation_ref': 'synthetic-recovery'}
+    application = {key: hints[key] for key in (
+        'provider', 'target_id', 'region', 'integration', 'deployment_action')}
+    application.update(supported=True, source='Synthetic provider evidence')
+    context = {'id': 'CTX', 'version': '1', 'payload': {'workflow_id': workflow,
+                'mechanism_variant': provider}}
+
+    class Trust:
+        def verify(self, token):
+            return {'snapshot_digest': canonical_hash(models[token])}
+
+        def predecessor_input(self, current, previous):
+            assert current == previous + 1
+            return {'engagement': 'synthetic', 'scope': 'stage', 'logical_id': f'step-{previous}',
+                    'version_id': str(previous) * 64}
+
+    host = Trust()
+    predecessor = None
+    for number in path['steps']:
+        field, _, link = EVIDENCE[workflow, path['id'], number]
+        facts = dict(hints)
+        if link:
+            facts[link] = host.predecessor_input(number, number - 1)
+        snapshot = {'producer': {}, 'semantic_units': {
+            field: facts, 'workflow_context': {'context_ref': 'CTX'}},
+            'evidence': [context, {'id': 'APP', 'version': '1', 'payload': application},
+                         _synthetic_observation(hints['rollout_observations']),
+                         _synthetic_observation(hints['rollback_record'])]}
+        model = {**snapshot, 'producer': {'attestation': number}}
+        models[number] = snapshot
+        findings, actual = verify(workflow, path, number, model, number, predecessor, host)
+        assert findings == []
+        assert actual == facts.get(link)
+        if number == 1:
+            unsupported = {**model, 'evidence': [context, {'id': 'APP', 'version': '1',
+                           'payload': {**application, 'supported': False}}]}
+            assert verify(workflow, path, number, unsupported, number, predecessor, host)[0] == [
+                'INFRASTRUCTURE_APPLICABILITY_UNVERIFIED']
+        if number == 6:
+            for key, wrong in [('artifact_digest', 'sha256:' + '2' * 64), ('environment', 'production')]:
+                changed = copy.deepcopy(model)
+                changed['semantic_units'][field][key] = wrong
+                if key == 'artifact_digest':
+                    changed['semantic_units'][field]['rollout_observations'][key] = wrong
+                    changed['evidence'][-2]['payload'][key] = wrong
+                assert verify(workflow, path, number, changed, number, predecessor, host)[0] == [
+                    'INFRASTRUCTURE_SUBJECT_MISMATCH']
+            assert verify(workflow, path, number, model, number, None, host)[0] == [
+                'INFRASTRUCTURE_PREDECESSOR_UNVERIFIED']
+        predecessor = {'model': model}
+
+
+def test_zero_trust_transition_rejects_changed_baseline_and_scope():
+    from infrastructure_workflow_evidence import verify
+
+    workflow = 'design-to-operational-readiness'
+    path = {'id': 'zero-trust-migration', 'mechanism': 'zero-trust-migration',
+            'steps': list(range(1, 8))}
+    scope = {'allowed_flow_ids': ['business'], 'denied_flow_ids': ['guest'],
+             'dependency_ids': ['dns'], 'reversal_limit_seconds': 60}
+    baseline = {'engagement': 'synthetic', 'scope': 'default', 'logical_id': 'baseline',
+                'version_id': 'a' * 64}
+    design = {**baseline, 'logical_id': 'design', 'version_id': 'b' * 64}
+    context = {'id': 'context', 'version': '1', 'payload': {'workflow_id': workflow}}
+    common = {'estate_id': 'network-1', 'baseline_ref': baseline, 'verification_scope': scope}
+    earlier = {'producer': {}, 'evidence': [context], 'semantic_units': {
+        'workflow_context': {'context_ref': 'context'}, 'handoff_zero_trust_target': common}}
+    predecessor = {'model': {**earlier, 'producer': {'attestation': 'prior'}}}
+    candidate = {'evidence': [context], 'semantic_units': {'workflow_context': {'context_ref': 'context'},
+                 'handoff_transition_candidate': {**common, 'design_ref': design}}}
+
+    class Trust:
+        def verify(self, token):
+            assert token == 'prior'
+            return {'snapshot_digest': canonical_hash(earlier)}
+
+        def predecessor_input(self, current, previous):
+            assert (current, previous) == ('current', 'prior')
+            return design
+
+    host = Trust()
+    assert verify(workflow, path, 3, candidate, 'current', predecessor, host) == ([], design)
+    for field, value in [('baseline_ref', {**baseline, 'version_id': 'c' * 64}),
+                         ('verification_scope', {**scope, 'reversal_limit_seconds': 90})]:
+        altered = copy.deepcopy(candidate)
+        altered['semantic_units']['handoff_transition_candidate'][field] = value
+        assert verify(workflow, path, 3, altered, 'current', predecessor, host) == (
+            ['INFRASTRUCTURE_SUBJECT_MISMATCH'], None)
+
+
+@pytest.mark.parametrize('provider', ['aws', 'azure', 'google-cloud'])
+def test_cloud_rollout_rechecks_exact_signed_prior_approval(tmp_path, monkeypatch, provider):
+    from content_workflow import _infrastructure_receiving_subject
+
+    workflow, path_id = 'production-change', f'normal/{provider}'
+    row, model, spec, engine = _variant_case(workflow + ':5', path_id)
+    model['semantic_units']['handoff_delivery_authority'].update(
+        provider=provider, artifact_digest='sha256:' + '1' * 64)
+    selected = row['variant_bindings'][path_id]
+    catalogue = load_bindings(ROOT)
+    path = next(path for path in catalogue['profiles'][workflow]['paths'] if path['id'] == path_id)
+    model, reviewer, dispatcher, registry = _host_reviewed_workflow(model, spec)
+    report = evaluate(model, spec, reviewer=reviewer, trusted_executions=dispatcher)
+    assert report['gate_verdict'] == 'CONTENT_PASS'
+    receiver, producer = selected['receiving_role'], selected['producer_role']
+    receiving = 'uid:999:worker:103:execution:synthetic-receiver'
+    assignments = {receiving: [receiver]}
+    current_producer = {'principal': receiving}
+    reference = {'engagement': 'synthetic', 'scope': 'default', 'logical_id': 'promotion',
+                 'version_id': 'a' * 64}
+    bound = {'handoff_id': row['handoff_id'], 'semantic_hash': canonical_hash(model),
+             'report_hash': report['report_hash'], 'catalog_hash': catalogue['catalog_hash'],
+             'criterion': selected['acceptance_criterion'], 'receiving_role': receiver,
+             'path_id': path_id, 'handoff_content_hash': canonical_hash(selected['handoff_content_contract']),
+             'infrastructure_input': reference}
+    acceptance = {**bound, 'verdict': 'PASS', 'evidence': 'Synthetic exact scoped promotion reviewed.',
+                  'context_manifest': {'history_policy': 'fresh'},
+                  'unit_reviews': [{'unit_id': unit['id'], 'verdict': 'PASS',
+                                    'rationale': 'Synthetic scoped criterion reviewed.',
+                                    'evidence': 'Exact synthetic accepted promotion.'}
+                                   for unit in selected['handoff_content_contract']['units']]}
+    registry['receiver-token'] = {
+        'dispatch_id': 'synthetic-receiver', 'principal': receiving, 'reviewer': True, 'exit_code': 0,
+        'worker_execution': {'pid': 103, 'uid': 999, 'execution_id': 'synthetic-receiver',
+                             'readonly_inputs': True, 'fresh_namespace': True},
+        'subject_digest': canonical_hash(acceptance), 'snapshot_digest': bound['semantic_hash'],
+        'context_digest': canonical_hash(acceptance['context_manifest']),
+    }
+    expected_receiver = [receiver]
+    dispatcher.receiving_specialties = lambda _token, reviewer=True: expected_receiver if reviewer else [producer]
+    predecessor = {'model': model, 'report': report,
+                   'acceptance': {**acceptance, 'attestation': 'receiver-token'}}
+
+    def authorized(record, authority=None):
+        return _infrastructure_receiving_subject(
+            catalogue, workflow, path, 6, record, current_producer, dispatcher, assignments, authority, engine)
+
+    assert not authorized(predecessor)
+    authority, _ = signed_governed_acceptance(bound, tmp_path, monkeypatch)
+    assert authorized(predecessor, authority)
+    changed = copy.deepcopy(predecessor)
+    changed['report']['report_hash'] = '0' * 64
+    assert not authorized(changed, authority)
+    changed = copy.deepcopy(predecessor)
+    changed['model']['semantic_units']['handoff_delivery_authority']['environment'] = 'different-environment'
+    assert not authorized(changed, authority)
+    expected_receiver[:] = ['release-engineer']
+    assert not authorized(predecessor, authority)

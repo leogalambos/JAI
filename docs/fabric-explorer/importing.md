@@ -52,11 +52,22 @@ Fabric Explorer imports sources selected through its native project picker. For 
 | --- | --- | --- |
 | Fabric | Format `9`, protocol `jai.governed-delivery/1`, manifest `jai.lifecycle.manifest/2` | Direct projection of recorded effects across six record families and recorded decisions |
 | Findings | Unversioned append-only findings envelope | Direct event parsing and recorded state reduction; no invented envelope version |
-| Audit | Optional `jai.gen2-audit/1` selection | Explicit unsupported-adapter diagnostic in this import build; never silently omitted or treated as a full journal |
+| Audit | Saved read-only `jai.gen2-audit/1` JSON report | Diagnostic source with pages of the captured report; adds no graph records |
 
 An existing empty Fabric journal has no declared format or protocol. Its report retains null declarations and an explicit empty-journal limitation; future records must use a supported format. An empty source cannot supply record facts.
 
-The application transfers native read-only source handles to its fixed TypeScript import worker. Each source is streamed once into its private archive while recorded data is projected directly into the compact graph; no Python runtime or intermediate fact transport is involved. It reads recorded manifests and effects to build version, use-point and dependency views. It does not call the canonical Store, replay or derivation engine, verify journal chains or signatures, consult public trust, or assess authority and current applicability. A recorded use state or decision remains a source claim. Successful parsing grants no authority and does not make an assessment fresh. Source heads remain recorded claims; physical JSONL row counts and row ordinals identify direct-adapter source locators. Recorded sequence claims remain in attributes and provenance; the capture digest identifies the exact displayed bytes.
+For Fabric, select the engagement's `.jsonl` journal. JAI's `.session.json` and
+`.host.json` files configure enrollment and resumption. The journal picker
+offers JSON Lines files, and the importer identifies enrollment controls if
+they are selected as Fabric.
+
+For Audit, select a saved JSON report. In **Sources**, open its snapshot
+provenance and choose **Read saved audit** to inspect the captured report.
+The Explorer checks the report format, read-only declaration and absence of
+an authority grant. The saved report describes its original audit at the
+recorded journal head.
+
+The application transfers native read-only source handles to its fixed TypeScript import worker. Each source is streamed once into its private archive. Journal data is projected directly into the compact graph, and audit reports remain available as captured documents. The worker reads recorded manifests and effects to build version, use-point and dependency views. It does not call the canonical Store, replay or derivation engine, verify journal chains or signatures, consult public trust, or assess authority and current applicability. A recorded use state or decision remains a source claim. Successful parsing grants no authority and does not make an assessment fresh. Source heads remain recorded claims; physical JSONL row counts and row ordinals identify direct-adapter source locators. Recorded sequence claims remain in attributes and provenance; the capture digest identifies the exact displayed bytes.
 
 Selecting a Fabric journal also permits read-only access to its referenced companion material at `<journal>.blobs/<digest>` beneath the same retained source directory. Each material name must have the exact digest-name shape; each object is bounded at 32 MiB. Availability records whether this admitted path can be read, without verifying its content digest or authenticity. The application does not search unrelated directories or load project code. Unavailable companion material is shown as missing; absent public trust does not prevent viewing recorded data.
 

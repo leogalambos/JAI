@@ -63,5 +63,11 @@ test('compiled consumers rebuild current contracts and exact bundles without cle
   assert.equal(preparationCommands('desktop', rows)[1][2], '--test-performance-assets');
   assert.deepEqual(preparationCommands('desktop', rows.filter(row => !row.assets?.length)), [['npm', 'run', 'build:contracts'], ['npm', 'run', 'build:sdk']]);
   assert.deepEqual(preparationCommands('contracts', rows), [['npm', 'run', 'generate']]);
-  assert.deepEqual(preparationCommands('packaging', rows), []);
+  const packaging = rows.filter(row => row.package === 'packaging');
+  const installer = packaging.find(row => row.path.endsWith('installer-cli.test.ts'));
+  assert.ok(installer);
+  assert.deepEqual(preparationCommands('packaging', [installer]), [[process.execPath, 'build-installer.mjs']]);
+  assert.deepEqual(preparationCommands('packaging', packaging.filter(row => row !== installer)), []);
+  assert.ok(selectTests({ profile: 'development', package: 'packaging',
+    changed: [`${prefix}packaging/installer-cli.ts`] }).some(row => row.path === installer.path));
 });

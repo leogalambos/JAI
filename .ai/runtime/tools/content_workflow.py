@@ -16,6 +16,8 @@ from pathlib import Path
 import content_spec
 import content_lint
 import lifecycle
+import infrastructure_workflow_evidence
+from infrastructure_workflow_definitions import DELIVERY, EVIDENCE
 
 
 # Numbers are editorial selections of canonical role deliverables, not title matching.
@@ -296,6 +298,72 @@ _EVIDENCE_PREDECESSORS = {
 }
 
 
+def _infrastructure_receiving_subject(catalogue, workflow, path, step, predecessor,
+                                      current_producer, verifier, assignments, authority, resolver):
+    """Check the preceding receiving attestation before advancing a scoped infrastructure path."""
+    previous = path['steps'][path['steps'].index(step) - 1]
+    previous_id = f'{workflow}:{previous}'
+    binding = next(row for row in catalogue['bindings'] if row['handoff_id'] == previous_id)
+    selected = binding['variant_bindings'][path['id']]
+    model = predecessor['model']
+    report = predecessor.get('report')
+    subject = predecessor.get('acceptance')
+    if not isinstance(report, dict) or not isinstance(subject, dict):
+        return False
+    subject = copy.deepcopy(subject)
+    token = subject.pop('attestation', None)
+    proof = content_lint._host_verify(verifier, token) or {}
+    prior_token = model.get('producer', {}).get('attestation')
+    prior_author = content_lint._host_verify(verifier, prior_token) or {}
+    specialties = getattr(verifier, 'receiving_specialties', None)
+    principal = proof.get('principal')
+    expected = {
+        'handoff_id': previous_id,
+        'semantic_hash': content_spec.canonical_hash(model),
+        'report_hash': report.get('report_hash'),
+        'catalog_hash': catalogue['catalog_hash'],
+        'criterion': selected['acceptance_criterion'],
+        'receiving_role': selected['receiving_role'],
+        'path_id': path['id'],
+        'handoff_content_hash': content_spec.canonical_hash(selected['handoff_content_contract']),
+    }
+    if (model.get('contract_id') not in selected['contract_ids']
+            or selected['next_step'] != step or not expected['report_hash']
+            or subject.get('verdict') != 'PASS'
+            or not content_lint._substantive(subject.get('evidence'))
+            or any(subject.get(key) != value for key, value in expected.items())
+            or not principal or principal == prior_author.get('principal')
+            or principal != (current_producer or {}).get('principal')
+            or proof.get('reviewer') is not True
+            or proof.get('subject_digest') != content_spec.canonical_hash(subject)
+            or proof.get('context_digest') != content_spec.canonical_hash(subject.get('context_manifest'))
+            or proof.get('snapshot_digest') != expected['semantic_hash']
+            or selected['receiving_role'] not in (assignments or {}).get(principal, [])
+            or not callable(specialties)
+            or specialties(prior_token, reviewer=False) != [selected['producer_role']]
+            or specialties(token) != [selected['receiving_role']]):
+        return False
+    unit_reviews = subject.get('unit_reviews')
+    if not isinstance(unit_reviews, list):
+        return False
+    for unit in selected['handoff_content_contract']['units']:
+        reviews = [row for row in unit_reviews if isinstance(row, dict) and row.get('unit_id') == unit['id']]
+        if (len(reviews) != 1 or reviews[0].get('verdict') != 'PASS'
+                or not content_lint._substantive(reviews[0].get('evidence'))
+                or not content_lint._substantive(reviews[0].get('rationale'))):
+            return False
+    if infrastructure_workflow_evidence.artifact_findings(workflow, path, previous, model):
+        return False
+    prior_spec = resolver.resolve(model['contract_id'], model.get('context', {}))
+    if (report.get('gate_verdict') != 'CONTENT_PASS' or report.get('deterministic_status') != 'PASS'
+            or content_lint.verify_report(report, model, prior_spec, verifier, authority)):
+        return False
+    if workflow == 'production-change' and previous == 5:
+        expected['infrastructure_input'] = subject.get('infrastructure_input')
+        return bool(expected['infrastructure_input']) and _human_accepted(authority, expected)
+    return True
+
+
 def _evidence_predecessor(model, predecessor, link, lookup):
     """Resolve a workflow evidence link against the host's exact assigned input.
 
@@ -376,7 +444,7 @@ def _accept_output_set(members, acceptance, verifier, receiving_assignments):
     contract_set = first['contract_set']
     references = contract_set.get('contracts', [])
     shared = ('handoff_id', 'catalog_hash', 'criterion', 'receiving_role', 'path_id',
-              'handoff_content_hash', 'producer_selection', 'predecessor')
+              'handoff_content_hash', 'producer_selection', 'predecessor', 'infrastructure_input')
     bound = {key: first[key] for key in shared if key in first}
     findings = list(dict.fromkeys(code for member in members for code in member['findings']))
     producers = [member.get('producer') or {} for member in members]
@@ -659,6 +727,28 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
             failures.append('WORKFLOW_EVIDENCE_PREDECESSOR_UNVERIFIED')
         else:
             bound['predecessor'] = prior
+    infrastructure_step = (row['workflow_id'], bound['path_id'], row['step']) in EVIDENCE
+    if infrastructure_step:
+        specialties = getattr(trusted_executions, 'receiving_specialties', None)
+        if (not callable(specialties) or not producer or specialties(
+                model.get('producer', {}).get('attestation'), reviewer=False) != [effective['producer_role']]):
+            failures.append('INFRASTRUCTURE_PRODUCER_SELECTION_MISMATCH')
+        if not human_step and (not callable(specialties) or not payload
+                               or specialties(token) != [effective['receiving_role']]):
+            failures.append('INFRASTRUCTURE_RECEIVER_SELECTION_MISMATCH')
+        infrastructure_findings, accepted_input = infrastructure_workflow_evidence.verify(
+            row['workflow_id'], selected_path, row['step'], model,
+            model.get('producer', {}).get('attestation'), predecessor, trusted_executions)
+        failures.extend(infrastructure_findings)
+        if accepted_input is not None:
+            bound['infrastructure_input'] = accepted_input
+            if not _infrastructure_receiving_subject(
+                    catalog, row['workflow_id'], selected_path, row['step'], predecessor,
+                    producer, trusted_executions, receiving_assignments, authority, engine):
+                failures.append('INFRASTRUCTURE_PREDECESSOR_ACCEPTANCE_UNVERIFIED')
+    if (selected_path is not None and row['workflow_id'] == 'production-change' and row['step'] == 5
+            and selected_path['mechanism'] in DELIVERY and not _human_accepted(authority, bound)):
+        failures.append('EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED')
     if conjunction_member:
         facts = model.get('semantic_units', {})
         governing_subject = {

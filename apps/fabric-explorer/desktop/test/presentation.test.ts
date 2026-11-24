@@ -71,6 +71,21 @@ describe('immutable read-only exploration presentation', () => {
     await f.controller.pageSource('7', 2); expect(f.controller.getSnapshot().sourcePage).toMatchObject({ text: 'é', page: { offset: '7', byteLength: 2 } });
     await f.controller.select(f.finding.identity); expect(f.controller.getSnapshot().selection?.subjectCandidates.map(v => v.id)).toEqual([f.vertex.id]); await f.controller.dispose();
   });
+  it('pages an accepted audit without turning it into a selected graph element', async () => {
+    const f = fixture();
+    const audit = { ...revision(), sourceId: 'audit', family: 'audit' as const, sequence: null };
+    await f.controller.setShell({ ...f.shell, snapshot: { ...f.shell.snapshot!, sources: [...f.shell.snapshot!.sources, audit] } });
+    await f.controller.select(f.finding.identity);
+    await f.controller.viewAudit('fabric');
+    expect(f.bridge.pageSource).not.toHaveBeenCalled();
+    await f.controller.viewAudit('audit');
+    expect(f.controller.getSnapshot().selection).toBeNull();
+    await f.controller.pageSource('2', 2);
+    expect(f.bridge.pageSource).toHaveBeenLastCalledWith(expect.anything(), expect.anything(),
+      { sourceId: 'audit', pointer: '', sequence: null, offset: '2', length: 2 });
+    expect(f.controller.getSnapshot().sourcePage?.text).toBe('é');
+    await f.controller.dispose();
+  });
   it('reverses exact filters without importing and releases every base and derived projection using its owner', async () => {
     const f = fixture(); await f.controller.setShell(f.shell); const original = f.controller.getSnapshot().projection!;
     await f.controller.setFilter({ projectIds: [], families: [], findingStates: ['verified'], relations: [] }); expect(f.controller.getSnapshot().projection?.vertices.map(v => v.id)).toEqual([f.vertex.id]); expect(f.controller.getSnapshot().projection?.hiddenVertices).toBe('1');

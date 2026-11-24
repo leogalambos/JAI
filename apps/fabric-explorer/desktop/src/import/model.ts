@@ -202,7 +202,7 @@ export class ImportModel {
         }
         break;
       }
-      case 'audit': throw new ImportError('incompatible-source', 'The optional audit adapter is unavailable in this build.');
+      case 'audit': break; // The captured span supports inspection without adding graph claims.
     }
   }
   /**

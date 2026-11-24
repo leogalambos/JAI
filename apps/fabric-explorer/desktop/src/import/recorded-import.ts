@@ -16,11 +16,12 @@ export interface RecordedWriteHandle { write(buffer: Buffer, offset: number, len
 /** Source paths are deliberately absent; only opaque metadata and already admitted capabilities enter. */
 export interface RecordedInput { readonly sourceId: string; readonly family: 'fabric' | 'findings' | 'audit'; readonly byteLength: number; readonly sourceHandle: RecordedReadHandle; readonly archiveHandle: RecordedWriteHandle }
 /** Final captured-byte observation merged into the main owner's immutable source namespace. */
-export interface RecordedObservation { readonly sourceId: string; readonly family: 'fabric' | 'findings' | 'audit'; readonly byteLength: string; readonly digest: string; readonly head: string | null; readonly sequence: string; readonly adapterVersion: string; readonly compatibility: SourceCompatibility; readonly verification: Verification }
+export interface RecordedObservation { readonly sourceId: string; readonly family: 'fabric' | 'findings' | 'audit'; readonly byteLength: string; readonly digest: string; readonly head: string | null; readonly sequence: string | null; readonly adapterVersion: string; readonly compatibility: SourceCompatibility; readonly verification: Verification }
 /** Worker cancellation/material capability callbacks; no arbitrary filesystem operation is exposed. */
 export type RecordedImportControl = RecordedControl;
 const TOTAL = 1024 * 1024 * 1024; const RECORD = 100 * 1024 * 1024; const READ = 256 * 1024;
 const verification: Verification = Object.freeze({ mode: 'recorded', decoded: 'decoded', chain: 'unknown', replay: 'recorded', publicTrust: 'unknown', material: 'not-observed', recordedApplicability: null, authorityGranted: false, freshAssessment: false });
+const auditVerification: Verification = Object.freeze({ ...verification, mode: 'diagnostic', replay: 'unknown' });
 
 /** Source-bound fixed-category failure; no native exception text or source values are serialized. */
 export class RecordedReadError extends ImportError {
@@ -96,11 +97,15 @@ export async function importRecordedSources(inputs: readonly RecordedInput[], si
   const cancelled = (): void => { if (control.cancelled()) throw new ImportError('cancelled', 'Recorded import cancelled.'); };
   for (const input of inputs) {
     cancelled();
-    if (input.family === 'audit') throw new RecordedReadError(new ImportError('incompatible-source', 'The optional audit adapter is unavailable in this build.'), input.sourceId, { sequence: null, compatibility: [{ sourceId: input.sourceId, family: 'audit', declaredFormat: null, declaredProtocol: null, supported: false, adapterVersion: 'jai.fabric-explorer.audit/2' }] });
-    const projection = new RecordedProjection(input.sourceId, input.family); const digest = createHash('sha256'); const decoder = new TextDecoder('utf-8', { fatal: true });
+    const audit = input.family === 'audit';
+    const auditCompatibility: SourceCompatibility[] = [];
+    const document: Buffer[] = [];
+    const projection = audit ? null : new RecordedProjection(input.sourceId, input.family);
+    const digest = createHash('sha256'); const decoder = new TextDecoder('utf-8', { fatal: true });
     let position = 0; let rowOrdinal = 0; let activeSequence: string | null = null; let activePointer = '';
-    const framer = new RecordedRowFramer((body, offset, span) => { cancelled(); activeSequence = String(++rowOrdinal); records++; projection.consume(parseRecordedJSON(decoder.decode(body), input.family), offset, span); activeSequence = null; });
+    const framer = projection && new RecordedRowFramer((body, offset, span) => { cancelled(); activeSequence = String(++rowOrdinal); records++; projection.consume(parseRecordedJSON(decoder.decode(body), input.family), offset, span); activeSequence = null; });
     try {
+      if (audit && input.byteLength > RECORD) throw new ImportError('resource-limit', 'Selected audit document exceeds its byte limit.');
       while (position < input.byteLength) {
         cancelled();
         // Each read has its own buffer: retained row fragments never alias a
@@ -111,14 +116,36 @@ export async function importRecordedSources(inputs: readonly RecordedInput[], si
         const chunk = buffer.subarray(0, bytesRead); digest.update(chunk);
         let written = 0;
         while (written < bytesRead) { cancelled(); const result = await input.archiveHandle.write(chunk, written, bytesRead - written, position + written); if (!Number.isSafeInteger(result.bytesWritten) || result.bytesWritten < 1 || result.bytesWritten > bytesRead - written) throw new ImportError('read-failed', 'Private archive write was incomplete.'); written += result.bytesWritten; }
-        position += bytesRead; completedBytes += bytesRead; framer.push(chunk); progress();
+        position += bytesRead; completedBytes += bytesRead;
+        if (framer) framer.push(chunk); else document.push(chunk);
+        progress();
       }
-      framer.finish();
+      framer?.finish();
       cancelled();
-      for await (const fact of projection.facts(control)) { cancelled(); activeSequence = fact.origin.sequence; activePointer = fact.origin.pointer; sink(fact); factsProcessed++; progress(); activeSequence = null; activePointer = ''; }
-      const summary = projection.summary();
-      observations.push({ sourceId: input.sourceId, family: input.family, byteLength: String(position), digest: digest.digest('hex'), head: summary.head, sequence: summary.sequence, adapterVersion: summary.compatibility.adapterVersion, compatibility: summary.compatibility, verification }); progress();
-    } catch (error) { const failure = error instanceof ImportError ? error : new ImportError('read-failed', 'The selected source or private archive could not be read.'); const wrapped = new RecordedReadError(failure, input.sourceId, { ...projection.failureContext(), sequence: activeSequence }); if (activePointer) Object.assign(wrapped.diagnostic, { pointer: activePointer }); throw wrapped; }
+      if (projection) {
+        for await (const fact of projection.facts(control)) { cancelled(); activeSequence = fact.origin.sequence; activePointer = fact.origin.pointer; sink(fact); factsProcessed++; progress(); activeSequence = null; activePointer = ''; }
+        const summary = projection.summary();
+        observations.push({ sourceId: input.sourceId, family: input.family, byteLength: String(position), digest: digest.digest('hex'), head: summary.head, sequence: summary.sequence, adapterVersion: summary.compatibility.adapterVersion, compatibility: summary.compatibility, verification });
+      } else {
+        const parsed = position ? parseRecordedJSON(decoder.decode(Buffer.concat(document, position)), 'audit') : null;
+        const report = parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : null;
+        const format = typeof report?.format === 'string' && report.format.length <= 128 ? report.format : null;
+        const supported = format === 'jai.gen2-audit/1' && report?.read_only === true && report.authority_granted === false;
+        const compatibility = { sourceId: input.sourceId, family: 'audit', declaredFormat: format,
+          declaredProtocol: null, supported, adapterVersion: 'jai.fabric-explorer.audit/2' } as const;
+        auditCompatibility.push(compatibility);
+        if (!supported) throw new ImportError('incompatible-source', 'Expected a saved read-only JAI audit report in format jai.gen2-audit/1.');
+        const head = typeof report?.head === 'string' && /^[0-9a-f]{64}$/.test(report.head) ? report.head : null;
+        const byteLength = String(position);
+        sink({ kind: 'audit', sourceId: input.sourceId,
+          origin: { pointer: '', sequence: null, byteOffset: '0', byteLength },
+          attributes: { kind: 'paged', byteLength, mediaType: 'application/json' } });
+        factsProcessed++;
+        observations.push({ sourceId: input.sourceId, family: 'audit', byteLength, digest: digest.digest('hex'),
+          head, sequence: null, adapterVersion: compatibility.adapterVersion, compatibility, verification: auditVerification });
+      }
+      progress();
+    } catch (error) { const failure = error instanceof ImportError ? error : new ImportError('read-failed', 'The selected source or private archive could not be read.'); const wrapped = new RecordedReadError(failure, input.sourceId, { compatibility: projection?.failureContext().compatibility ?? auditCompatibility, sequence: activeSequence }); if (activePointer) Object.assign(wrapped.diagnostic, { pointer: activePointer }); throw wrapped; }
   }
   return observations;
 }

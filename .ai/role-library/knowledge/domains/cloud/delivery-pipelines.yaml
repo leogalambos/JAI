@@ -1,0 +1,85 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+id: domains/cloud/delivery-pipelines
+title: Governed cloud delivery pipelines
+version: 1.0.0
+applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
+  or Google Cloud target.
+sections:
+- source: aws
+  applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
+    or Google Cloud target.
+  exclusions: Execution authority and independent acceptance.
+  owner: JAI infrastructure and security practice maintainers
+  reviewed: '2026-11-24'
+  id: scoped-guidance
+  delivery: optional
+  reference: delivery-pipelines.md
+  read_when: The assignment builds, promotes, deploys or verifies an AWS, Azure DevOps or Google Cloud
+    delivery pipeline.
+- source: aws
+  applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
+    or Google Cloud target.
+  exclusions: Execution authority and independent acceptance.
+  owner: JAI infrastructure and security practice maintainers
+  reviewed: '2026-11-24'
+  id: aws-guidance
+  delivery: optional
+  reference: delivery-pipelines-aws.md
+  read_when: The assignment concerns AWS and requires governed cloud delivery pipelines.
+- source: azure
+  applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
+    or Google Cloud target.
+  exclusions: Execution authority and independent acceptance.
+  owner: JAI infrastructure and security practice maintainers
+  reviewed: '2026-11-24'
+  id: azure-guidance
+  delivery: optional
+  reference: delivery-pipelines-azure.md
+  read_when: The assignment concerns Microsoft Azure and requires governed cloud delivery pipelines.
+- source: google
+  applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
+    or Google Cloud target.
+  exclusions: Execution authority and independent acceptance.
+  owner: JAI infrastructure and security practice maintainers
+  reviewed: '2026-11-24'
+  id: google-cloud-guidance
+  delivery: optional
+  reference: delivery-pipelines-google-cloud.md
+  read_when: The assignment concerns Google Cloud and requires governed cloud delivery pipelines.
+sources:
+  aws:
+    publisher: AWS
+    authority: Primary publication
+    title: Amazon ECS standard deployment action
+    url: https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference-ECS.html
+    applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
+      or Google Cloud target.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+  azure:
+    publisher: Microsoft
+    authority: Primary publication
+    title: Azure Pipelines approvals and checks
+    url: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals
+    applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
+      or Google Cloud target.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+  google:
+    publisher: Google Cloud
+    authority: Primary publication
+    title: Deploy your application
+    url: https://docs.cloud.google.com/deploy/docs/deploying-application
+    applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
+      or Google Cloud target.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.

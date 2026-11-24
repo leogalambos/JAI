@@ -1,0 +1,44 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+id: products/hashicorp/terraform/governed-plans
+title: Terraform governed plans and state
+version: 1.0.0
+applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers
+  and backend.
+sections:
+- source: terraform
+  applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers
+    and backend.
+  exclusions: Execution authority and independent acceptance.
+  owner: JAI infrastructure and security practice maintainers
+  reviewed: '2026-11-24'
+  id: scoped-guidance
+  delivery: optional
+  reference: governed-plans.md
+  read_when: The assignment uses Terraform or explicitly evaluates OpenTofu compatibility for plan, state
+    or execution.
+sources:
+  terraform:
+    publisher: HashiCorp
+    authority: Primary publication
+    title: Terraform state locking
+    url: https://developer.hashicorp.com/terraform/language/state/locking
+    applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers
+      and backend.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+  opentofu:
+    publisher: OpenTofu
+    authority: Primary publication
+    title: OpenTofu introduction
+    url: https://opentofu.org/docs/intro/
+    applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers
+      and backend.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.

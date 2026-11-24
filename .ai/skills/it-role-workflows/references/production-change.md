@@ -78,6 +78,9 @@ Approval class is separate from application/IaC/settings mechanism; exact author
 | normal/infrastructure-as-code | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | normal/configuration | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | normal/abap-cloud | 1, 2, 3, 4, 9, 5, 6, 7, 8 | 8 |
+| normal/aws | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+| normal/azure | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+| normal/google-cloud | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/application | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/infrastructure-as-code | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
 | emergency/configuration | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |

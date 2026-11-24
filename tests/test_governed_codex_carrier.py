@@ -29,7 +29,7 @@ def test_worker_thread_opens_isolated_worker_with_explicit_model(worker_peer):
     """Return the acknowledged thread after checking its exact inventory."""
     peer, started, _ = worker_peer
     observe = Mock()
-    result = carrier.worker_thread(peer, 12, 'selected-model', role_choices=['software-engineer'], observe=observe)
+    result = carrier.worker_thread(peer, 12, 'selected-model', observe=observe)
     assert result == started
     start, inventory = [request.args for request in peer.call.call_args_list]
     method, params, deadline, callback = start
@@ -40,7 +40,8 @@ def test_worker_thread_opens_isolated_worker_with_explicit_model(worker_peer):
     tool, = params['dynamicTools']
     assert tool['name'] == carrier.TOOL
     role_shape = tool['inputSchema']['properties']['request']['anyOf'][-1]
-    assert role_shape['properties']['role']['enum'] == ['software-engineer']
+    assert role_shape['properties']['role'] == {'type': 'string', 'minLength': 1}
+    assert 'software-engineer' not in json.dumps(params)
     assert inventory == ('mcpServerStatus/list', {'threadId': 'acknowledged-thread'}, 12, observe)
 
 
@@ -49,7 +50,7 @@ def test_worker_thread_rejects_empty_but_paginated_inventory(worker_peer):
     peer, _, inventory = worker_peer
     inventory['nextCursor'] = 'another-page'
     with pytest.raises(carrier.InvocationError, match='ambient MCP'):
-        carrier.worker_thread(peer, 12, role_choices=['software-engineer'])
+        carrier.worker_thread(peer, 12)
     assert 'model' not in peer.call.call_args_list[0].args[1]
     assert peer.call.call_count == 2
 
@@ -59,7 +60,7 @@ def test_worker_thread_rejects_unconfirmed_network_denial(worker_peer):
     peer, started, _ = worker_peer
     del started['sandbox']['networkAccess']
     with pytest.raises(carrier.InvocationError, match='network-denied'):
-        carrier.worker_thread(peer, 12, role_choices=['software-engineer'])
+        carrier.worker_thread(peer, 12)
     peer.call.assert_called_once()
 
 
@@ -92,7 +93,7 @@ class AppServer:
             assert params['approvalPolicy'] == 'never'
             assert [item['name'] for item in params['dynamicTools']] == [carrier.TOOL]
             choices = params['dynamicTools'][0]['inputSchema']['properties']['request']['anyOf'][-1]
-            self.advertised_roles = choices['properties']['role']['enum']
+            self.role_schema = choices['properties']['role']
             return {'thread': {'id': self.thread, 'environments': []}, 'approvalPolicy': 'never',
                     'sandbox': {'type': 'readOnly', 'networkAccess': False}}
         if method == 'mcpServerStatus/list':
@@ -306,14 +307,15 @@ def test_worker_controls_fail_closed_before_dispatch(ready, gap):
 def test_dynamic_broker_schema_advertises_exact_closed_read():
     """A worker sees the same closed read shape that semantic admission validates."""
     from jsonschema import Draft202012Validator
-    schema = carrier._tool(('software-engineer',))['inputSchema']
+    schema = carrier._tool()['inputSchema']
     validator = Draft202012Validator(schema)
     valid = {'request': {'id': 'catalogue-1', 'operation': 'read', 'handle': 'catalogue'}}
     assert not validator.is_valid({**valid, 'member_key': 'foreign'})
     assert validator.is_valid(valid)
     role_read = {'id': 'role-1', 'operation': 'read_role_instruction', 'role': 'software-engineer'}
     assert validator.is_valid({'request': role_read})
-    assert not validator.is_valid({'request': {**role_read, 'role': 'unlisted'}})
+    assert validator.is_valid({'request': {**role_read, 'role': 'unlisted'}})
+    assert not validator.is_valid({'request': {**role_read, 'role': ''}})
     assert not validator.is_valid({'request': {**role_read, 'handle': 'instruction:software-engineer'}})
     assert not validator.is_valid({**valid, 'request': {'operation': 'read', 'handle': 'catalogue'}})
     assert not validator.is_valid({**valid, 'request': {**valid['request'], 'path': '/synthetic'}})
@@ -346,10 +348,13 @@ def test_selection_context_groups_exact_grants_and_preserves_full_catalogue(read
     roles = carrier._role_choices(run.execution)
     assert roles == tuple(sorted(row['slug'] for row in snapshot['catalogue']['roles']))
     assert len(roles) == 286
-    assert bundled['role_choices'] == list(roles)
-    request_schema = carrier._tool(roles)['inputSchema']
-    assert request_schema['properties']['request']['anyOf'][-1]['properties']['role']['enum'] == list(roles)
-    assert carrier._tool(roles)['inputSchema'] is request_schema
+    assert 'role_choices' not in bundled
+    assert bundled['inputs']['handle']
+    assert roles
+    request_schema = carrier._tool()['inputSchema']
+    assert request_schema['properties']['request']['anyOf'][-1]['properties']['role'] == {
+        'type': 'string', 'minLength': 1}
+    assert carrier._tool()['inputSchema'] is request_schema
     for slug in ('software-engineer', 'business-analyst', 'systems-analyst'):
         reply = carrier._response(session, invocation, member, {'tool': carrier.TOOL, 'arguments': {
             'request': {'id': 'instruction-' + slug, 'operation': 'read_role_instruction', 'role': slug}}})
@@ -358,14 +363,15 @@ def test_selection_context_groups_exact_grants_and_preserves_full_catalogue(read
         carrier._response(session, invocation, member, {'tool': carrier.TOOL, 'arguments': {
             'request': {'id': 'unknown-role', 'operation': 'read_role_instruction', 'role': 'systems-engineer'}}})
     assert bundled['workforce']['availability']
-    assert any('Exact owner-authored local task' == item['label'] for item in bundled['material_text'])
+    assert [item['label'] for item in bundled['material_text']] == ['Exact owner-authored local task']
+    assert len(bundled['material_text'][0]['text'].encode()) <= 1024
     for i, item in enumerate(bundled['material_text']):
         original = session.request(invocation, member, {'id': f'material-{i}', 'operation': 'read', 'handle': item['handle']})
         assert base64.b64decode(original['result']['data'], validate=True) == item['text'].encode()
 
 
-def test_work_thread_advertises_only_the_admitted_role(ready):
-    """A work thread uses the admitted role and denies unselected enum choices."""
+def test_work_thread_broker_enforces_only_the_admitted_role(ready):
+    """The broker enforces the admitted role without sending a catalogue enum."""
     session, offered, directory = ready
     selection = offered['invocation_id']
     assignment = offered['members'][0]['assignment']
@@ -379,7 +385,7 @@ def test_work_thread_advertises_only_the_admitted_role(ready):
     peer.role_reads = ('software-engineer', 'business-analyst')
     peer.thread = 'thread-controlled-work'
     carrier.carry(session, work, peer, directory)
-    assert peer.advertised_roles == ['software-engineer']
+    assert peer.role_schema == {'type': 'string', 'minLength': 1}
     responses = {frame['id']: frame['result'] for frame in peer.sent if frame['id'] in {20, 21}}
     assert responses[20]['success'] is True
     assert responses[21]['success'] is False

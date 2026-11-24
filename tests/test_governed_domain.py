@@ -877,3 +877,40 @@ def test_native_conjunction_qualifies_both_outputs_and_aggregate_receipt(tmp_pat
     assert result['status'] == 'ACCEPTANCE_VERIFIED', result['findings']
     assert [item['contract_id'] for item in result['outputs']] == binding['contract_ids']
     assert not result['production_release_authorized']
+
+
+def test_native_zero_trust_baseline_requires_exact_selected_endpoints(tmp_path, monkeypatch):
+    from test_content_workflow import _variant_case
+
+    host = _fixture(tmp_path, monkeypatch)
+    original_message = host.message
+    chosen_receiver = ['security-architect']
+
+    def select_exact(kind, body, **kwargs):
+        if kind == 'decision' and body.get('action') == 'select_execution':
+            assignment = host._known_record(body['assignment'], 'assignment')
+            role = ['network-architect'] if assignment['responsibility'] == 'author' else chosen_receiver
+            body = {**body, 'specialties': role}
+        return original_message(kind, body, **kwargs)
+
+    monkeypatch.setattr(host, 'message', select_exact)
+    handoff = 'design-to-operational-readiness:1'
+    _, baseline, spec, engine = _variant_case(handoff, 'zero-trust-migration')
+    baseline['semantic_units']['handoff_network_baseline'].update(
+        estate_id='synthetic-estate', verification_scope={
+            'allowed_flow_ids': ['staff-to-service'], 'denied_flow_ids': ['guest-to-service'],
+            'dependency_ids': ['name-resolution'], 'reversal_limit_seconds': 60})
+
+    def model_source(_, token, manifest):
+        return {**baseline, 'producer': {'attestation': token, 'context_manifest': manifest}}
+
+    subject, _, model, _, review = _qualified(host, model_factory=model_source)
+    adapter = domain.GovernedDomain(host.store, [{'ref': subject, 'use_scope': host.scope}])
+    qa = content_lint.evaluate(model, spec, reviewer=review, trusted_executions=adapter)
+    assert qa['gate_verdict'] == 'CONTENT_PASS', qa['findings']
+    receiving, assignments, _ = _receiving(host, subject, model, qa, handoff_id=handoff)
+    result = content_workflow.check(handoff, model, qa, ROOT, acceptance=receiving,
+        receiving_assignments=assignments, governed=adapter, resolver=engine)
+    assert result['status'] == 'ACCEPTANCE_VERIFIED', result['findings']
+    assert result['next_step'] == 2
+    assert result['production_release_authorized'] is False

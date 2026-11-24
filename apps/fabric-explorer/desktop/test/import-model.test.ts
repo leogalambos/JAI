@@ -98,14 +98,14 @@ it('maps every provenance variant, explicit decision targets and distinct parall
   expect(new Set(records.filter(item => 'relation' in item).map(item => item.id)).size).toBe(6);
 });
 
-it('rejects unbounded/no-progress streams, unsupported audit, bad metadata and late terminal data', () => {
+it('rejects unbounded/no-progress streams, partial audit spans, bad metadata and late terminal data', () => {
   const model = new ImportModel(modelInput()); expect(() => model.consume({ sequence: '0', facts: [], next: 'continue' })).toThrow('progress');
   const sealed = new ImportModel(modelInput()); sealed.consume({ sequence: '0', facts: [], next: null }); sealed.finish(); expect(() => sealed.consume({ sequence: '1', facts: [], next: null })).toThrow('terminal'); expect(() => sealed.finish()).toThrow('terminal');
   const source = revision(); const sources = new Map([['fabric', source]]);
   for (const fact of [{ ...versionFact(), kind: 'unknown' }, { ...versionFact(), sourceId: 'foreign' }, { ...versionFact(), origin: { ...versionFact().origin, sequence: '2' } }]) expect(() => factChunk({ sequence: '0', facts: [fact], next: null }, sources, 0n)).toThrow();
   expect(() => new ImportModel({ ...modelInput(), generation: '2' })).toThrow('generation');
   const audit = { ...source, family: 'audit' as const, verification: { ...source.verification, replay: 'unknown' as const } };
-  expect(() => factChunk({ sequence: '0', facts: [{ kind: 'audit', sourceId: 'fabric', origin: versionFact().origin, attributes: { kind: 'inline', value: { type: 'null' } } }], next: null }, new Map([['fabric', audit]]), 0n)).toThrow('audit');
+  expect(() => factChunk({ sequence: '0', facts: [{ kind: 'audit', sourceId: 'fabric', origin: versionFact().origin, attributes: { kind: 'inline', value: { type: 'null' } } }], next: null }, new Map([['fabric', audit]]), 0n)).toThrow('Audit fact must identify the complete captured report');
 });
 
 it('rejects facts from canonically empty sources regardless of source byte length', () => {

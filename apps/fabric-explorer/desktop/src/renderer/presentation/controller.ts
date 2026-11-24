@@ -322,8 +322,36 @@ export class ExploreController {
    */
   async pageSource(offset = '0', length = 4096): Promise<void> {
     this.beginAction();
-    const selection = this.value.selection; if (!selection) return;
-    const source = selection.attributes.kind === 'paged' ? selection.attributes.source : selection.element.source;
+    const selection = this.value.selection;
+    if (selection) {
+      const source = selection.attributes.kind === 'paged' ? selection.attributes.source : selection.element.source;
+      await this.readSourcePage(source, offset, length);
+    } else if (this.value.sourcePage) {
+      const source = this.auditLocator(this.value.sourcePage.page.sourceId);
+      if (source) await this.readSourcePage(source, offset, length);
+    }
+  }
+  /**
+   * Open a saved audit from the accepted generation at the start of its capture.
+   * @param sourceId Opaque source identifier from the accepted snapshot.
+   * @returns Completion of the first page, or no action for other source IDs.
+   */
+  async viewAudit(sourceId: string): Promise<void> {
+    const source = this.auditLocator(sourceId);
+    if (!source) return;
+    this.beginAction();
+    const selecting = this.jobs.get('selection');
+    if (selecting) void this.abort(selecting);
+    this.selectionIntent = null;
+    this.publish({ selection: null, sourcePage: null });
+    await this.readSourcePage(source, '0', 4096);
+  }
+  private auditLocator(sourceId: string): Pick<RequestPayloads['source.page'], 'sourceId' | 'pointer' | 'sequence'> | null {
+    return this.value.shell?.snapshot?.sources.some(source => source.sourceId === sourceId && source.family === 'audit')
+      ? { sourceId, pointer: '', sequence: null } : null;
+  }
+  private async readSourcePage(source: Pick<RequestPayloads['source.page'], 'sourceId' | 'pointer' | 'sequence'>, offset: string, length: number): Promise<void> {
+    const selection = this.value.selection;
     await this.run('source', async job => {
       const response = await this.call(job, id => this.bridge.pageSource(job.binding, id, { sourceId: source.sourceId, pointer: source.pointer, sequence: source.sequence, offset, length }));
       if (!response || typeof response !== 'object' || !('status' in response) || response.status !== 'ok' || !('operation' in response) || response.operation !== 'source.page' || !('payload' in response)) throw new Error('Source page unavailable.');

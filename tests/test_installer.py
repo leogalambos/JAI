@@ -429,3 +429,26 @@ def test_managed_same_bytes_mode_drift_converges_without_rewriting_content(tmp_p
     unchanged = install()
     assert '0 mode-only' in unchanged.stdout
     assert file_state(target.stat()) == file_state(repaired) and target.read_bytes() == original_bytes
+
+
+def test_infrastructure_guidance_matches_composed_native_role_references(tmp_path):
+    from tools.compose_role_library import compose
+
+    compilation = compose(ROOT)
+    registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+    homes = [tmp_path / name for name in ('house', 'claude', 'codex')]
+    outputs, _ = installer.desired_outputs(ROOT, ['claude', 'codex'], *homes, registry)
+    guidance = json.loads((ROOT / '.ai/runtime/knowledge/infrastructure-role-guidance.json').read_text())
+    assert len(guidance['roles']) == 12
+    for path in guidance['roles']:
+        slug = Path(path).stem
+        for home in homes:
+            assert outputs[str(home / path)] == compilation.instructions[slug]
+    for path, text in guidance['references'].items():
+        assert text.encode() == compilation.files['.ai/' + path]
+        for home in homes:
+            assert outputs[str(home / path)] == text.encode()
+    for path in ('references/design-to-operational-readiness.md', 'references/production-change.md'):
+        for home in homes:
+            assert outputs[str(home / 'skills/it-role-workflows' / path)] == (
+                ROOT / '.ai/skills/it-role-workflows' / path).read_bytes()

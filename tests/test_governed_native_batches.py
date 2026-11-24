@@ -1358,6 +1358,11 @@ def test_named_specialist_reference_is_deferred_and_scoped(tmp_path, monkeypatch
     workforce = lc.loads(store._blob(view['resources']['workforce']['handle'].removeprefix('resource:')))
     assert workforce['deferred_references'] == [{'handle': handle, 'path': name}]
     assert captured not in lc.canonical(prepared)
+    assert 'catalogue' not in view['resources']
+    delivery = lc.loads(store._blob(member['host_delivery']['manifest_blob_id']))
+    assert [entry['label'] for entry in delivery['resources']
+            if entry['label'].startswith('Exact professional instruction:')] == [
+                'Exact professional instruction: qradar-siem-specialist']
     session.start(invocation, carrier, invocation, {'fixture': 'Offline work'})
     (tmp_path / projection).write_bytes(b'Changed installation bytes.')
     cold = layered.LayeredSession.open(session.locator)
@@ -1544,3 +1549,85 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(
     print(f'{carrier}: {len(candidate)} prepared intents; baseline bytes {baseline}; profile bytes {candidate}')
     print(f'{carrier}: author prompt and workforce resource bytes {baseline_context} baseline, '
           f'{candidate_context} specialized')
+
+
+@pytest.mark.parametrize('carrier', ['claude', 'codex'])
+def test_installed_zero_trust_guidance_is_prepared_and_replayed_offline(tmp_path, monkeypatch, carrier):
+    from test_installer import ROOT, installer
+
+    root = tmp_path / 'install'
+    house, claude, codex = (root / name for name in ('house', 'claude', 'codex'))
+    registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+    outputs, _ = installer.desired_outputs(ROOT, [carrier], house, claude, codex, registry)
+    for name, raw in outputs.items():
+        path = Path(name)
+        if path.is_relative_to(house):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(raw)
+    now = time.time()
+    monkeypatch.setattr(lc.time, 'time', lambda: now)
+    slug = 'network-architect'
+
+    def prepare(path, selected=slug):
+        session = _layer_session(path, single_member=True, carrier=carrier)
+        selection = session.next()
+        invocation = selection['invocation_id']
+        members = selection['prepared']['members']
+        choices = [_choice(member['packet'], carrier) for member in members]
+        choices[0]['specialties'] = [selected]
+        session.start(invocation, carrier, invocation, {'fixture': 'Offline selection'})
+        session.complete(invocation, json.dumps({'format': 'jai.semantic-return/1', 'results': choices}),
+                         {'fixture': 'Offline selection result'})
+        work = session.next()
+        member = work['prepared']['members'][0]
+        delivery = member['host_delivery']
+        manifest = lc.loads(session.store._blob(delivery['manifest_blob_id']))
+        byte_count = sum(len(session.store._blob(item['blob_id'])) for item in manifest['resources'])
+        snapshot = session.store.read()
+        return session, work, manifest, byte_count, len(snapshot.invocations)
+
+    _, baseline_work, _, baseline_bytes, baseline_count = prepare(tmp_path / 'baseline')
+    monkeypatch.setattr(provider, 'ROOT', house)
+    session, work, manifest, installed_bytes, installed_count = prepare(tmp_path / 'installed')
+    resources = [session.store._blob(item['blob_id']) for item in manifest['resources']]
+    trigger = b'The assignment asks for Zero Trust resource access design'
+    guidance = b'Version the subject, workload and device identities'
+    assert any(trigger in raw for raw in resources)
+    assert all(guidance not in raw for raw in resources)
+    assert installed_count == baseline_count
+    assert 'catalogue' not in work['prepared']['model_view']['members'][0]['resources']
+    instruction_labels = [item['label'] for item in manifest['resources']
+                          if item['label'].startswith('Exact professional instruction:')]
+    assert instruction_labels == ['Exact professional instruction: network-architect']
+    assert installed_bytes > baseline_bytes
+    assert installed_bytes < session.workflow.dispatcher.config['limits']['total_bytes']
+    before = session.store.read().head
+    reopened = layered.LayeredSession.open(session.locator)
+    assert reopened.prepare(work['invocation_id'])['invocation'] == work['prepared']['invocation']
+    assert reopened.store.read().head == before
+    member = work['prepared']['members'][0]
+    handle, = member['packet']['execution']['deferred_references']
+    invocation = work['invocation_id']
+    reopened.start(invocation, carrier, invocation, {'fixture': 'Offline scoped work'})
+    requested = reopened.request(invocation, member['member_key'],
+                                 {'id': 'applicable-reference', 'operation': 'read', 'handle': handle})
+    assert guidance in base64.b64decode(requested['result']['data'])
+    unrelated_session, unrelated, _, _, unrelated_count = prepare(tmp_path / 'unrelated', 'software-engineer')
+    unrelated_member = unrelated['prepared']['members'][0]
+    assert unrelated_member['packet']['execution']['specialties'] == ['software-engineer']
+    assert not unrelated_member['packet']['execution'].get('deferred_references')
+    assert unrelated_count == installed_count
+    unrelated_invocation = unrelated['invocation_id']
+    unrelated_session.start(unrelated_invocation, carrier, unrelated_invocation,
+                            {'fixture': 'Offline unrelated work'})
+    with pytest.raises(DispatchError, match='outside the exact input manifest'):
+        unrelated_session.request(unrelated_invocation, unrelated_member['member_key'],
+                                  {'id': 'unrelated-reference', 'operation': 'read', 'handle': handle})
+    prompt_key = 'message' if carrier == 'codex' else 'prompt'
+    baseline_prompt = baseline_work['prepared']['invocation']['arguments'][prompt_key].encode()
+    installed_prompt = work['prepared']['invocation']['arguments'][prompt_key].encode()
+    assert guidance not in installed_prompt
+    assert trigger not in installed_prompt
+    print(f'{carrier}: prepared resource bytes {baseline_bytes} -> {installed_bytes}, '
+          f'initial prompt bytes {len(baseline_prompt)} -> {len(installed_prompt)}, '
+          f'invocations {baseline_count} -> {installed_count}')

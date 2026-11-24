@@ -23,6 +23,19 @@ Use the actual bounded request, current environment and decision rights to selec
 | --- | --- | --- |
 | new-service | Establish complete receiving operations evidence | Runbooks, monitoring, access, recovery and support rehearsal |
 | existing-service-delta | Assess affected readiness and dependencies while reusing unchanged approved evidence | Exact design delta, impact and current evidence references |
+| zero-trust-migration | Existing hybrid network transition | Versioned inventory, observed dependencies, policy and independently measured reversal evidence. |
+| zero-trust-greenfield | Requirements-led Zero Trust design | Attributable requirements, candidate enforcement design and independent verification of design coverage. |
+| zero-trust-assessment | Independent existing Zero Trust or hybrid estate assessment | Commissioned scope, actual control observations, evidence gaps and prioritized remediation. |
+| terraform-readiness | Terraform implementation and promotion readiness | Versioned configuration, state topology, reviewed immutable plan and bounded recovery evidence. |
+| aws-greenfield | AWS infrastructure greenfield | Validate the organization, organizational unit, account and Region against requirements and placement constraints and record independent receiving evidence. |
+| aws-migration | AWS infrastructure migration | Validate the organization, organizational unit, account and Region against on-premises inventory, dependency observations and migration constraints and record independent receiving evidence. |
+| aws-assessment | AWS infrastructure assessment | Validate the organization, organizational unit, account and Region against independent commission, exact current inventory and evidence coverage and record independent receiving evidence. |
+| azure-greenfield | Microsoft Azure infrastructure greenfield | Validate the tenant, management group, subscription and region against requirements and placement constraints and record independent receiving evidence. |
+| azure-migration | Microsoft Azure infrastructure migration | Validate the tenant, management group, subscription and region against on-premises inventory, dependency observations and migration constraints and record independent receiving evidence. |
+| azure-assessment | Microsoft Azure infrastructure assessment | Validate the tenant, management group, subscription and region against independent commission, exact current inventory and evidence coverage and record independent receiving evidence. |
+| google-cloud-greenfield | Google Cloud infrastructure greenfield | Validate the organization, folder, project and location against requirements and placement constraints and record independent receiving evidence. |
+| google-cloud-migration | Google Cloud infrastructure migration | Validate the organization, folder, project and location against on-premises inventory, dependency observations and migration constraints and record independent receiving evidence. |
+| google-cloud-assessment | Google Cloud infrastructure assessment | Validate the organization, folder, project and location against independent commission, exact current inventory and evidence coverage and record independent receiving evidence. |
 
 Return failed readiness criteria to the accountable design/platform/support owner before the change decision. Stop go-live for unowned critical readiness gaps or absent required change authority. Accept operational responsibility with explicit residual risks or defer activation with owned remediation. Mechanism selection is not a waiver of security, legal or acceptance obligations.
 
@@ -49,6 +62,19 @@ New-service and changed-service readiness share evidence types; unchanged valid 
 | --- | --- | ---: |
 | new-service | 1, 2, 3, 4, 5, 6, 7 | 7 |
 | existing-service-delta | 1, 2, 3, 4, 5, 6, 7 | 7 |
+| zero-trust-migration | 1, 2, 3, 4, 5, 6, 7 | 7 |
+| zero-trust-greenfield | 1, 2, 3 | 3 |
+| zero-trust-assessment | 1, 2, 3 | 3 |
+| terraform-readiness | 1, 2, 3 | 3 |
+| aws-greenfield | 1, 2, 3, 4 | 4 |
+| aws-migration | 1, 2, 3, 4 | 4 |
+| aws-assessment | 1, 2, 3 | 3 |
+| azure-greenfield | 1, 2, 3, 4 | 4 |
+| azure-migration | 1, 2, 3, 4 | 4 |
+| azure-assessment | 1, 2, 3 | 3 |
+| google-cloud-greenfield | 1, 2, 3, 4 | 4 |
+| google-cloud-migration | 1, 2, 3, 4 | 4 |
+| google-cloud-assessment | 1, 2, 3 | 3 |
 
 A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
 <!-- END workflow-applicability -->
@@ -105,3 +131,41 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
+
+## Zero Trust and cloud readiness
+
+Use `zero-trust-migration` for an existing network. Record the versioned
+estate, observed dependencies and required flow tests before design. Carry
+the baseline through target design and the transition candidate. Rehearse the
+required access decisions, coexistence, continuity and reversal before
+receiving readiness. Record exception ownership and expiry. Advance actual
+rollout through production change with its applicable authority.
+
+Use `zero-trust-greenfield` for an attributable set of requirements and an
+independent design assessment. Use `zero-trust-assessment` for an independently
+commissioned review of an existing Zero Trust or hybrid estate. Keep
+observations, evidence gaps and remediation disposition distinct.
+
+The `terraform-readiness` path binds the saved plan digest to its target,
+environment, source version, toolchain and state identity. Protect the saved
+plan and state as sensitive. Replan after relevant drift or an input change.
+Identify the selected Terraform or OpenTofu edition and licensing separately.
+
+The `aws-*`, `azure-*` and `google-cloud-*` variants distinguish
+`greenfield`, `migration` and `assessment`. Pin the exact hierarchy,
+placement, identity, connectivity, policy, logging, data residency, recovery
+and operating model. For migration, capture the on-premises dependencies and
+continuity requirements. For assessment, compare intended controls with
+observed evidence under an independent receiving duty.
+
+- [NIST SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
+- [CISA Zero Trust Maturity Model](https://www.cisa.gov/resources-tools/resources/zero-trust-maturity-model)
+- [Terraform state locking](https://developer.hashicorp.com/terraform/language/state/locking)
+- [OpenTofu documentation](https://opentofu.org/docs/intro/)
+
+For migration, the baseline's `verification_scope` includes the exact
+`allowed_flow_ids`, `denied_flow_ids`, `dependency_ids` and
+`reversal_limit_seconds`. Carry this record through design, candidate and
+observations. The observations identify each required flow and dependency
+and cite a versioned evidence record for each result. The readiness receiver
+checks completeness and restoration within the approved limit.

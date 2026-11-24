@@ -191,8 +191,8 @@ def _save(path, value):
         Path(temporary).unlink(missing_ok=True)
 
 
-@lru_cache(maxsize=64)
-def _tool(role_choices):
+@lru_cache(maxsize=1)
+def _tool():
     """Expose the maintained nonterminal broker request shapes with local references resolved."""
     schema = json.loads((wire.PACKAGE / 'broker-request.schema.json').read_bytes())
     common = json.loads((wire.PACKAGE / 'common.schema.json').read_bytes())['$defs']
@@ -210,7 +210,7 @@ def _tool(role_choices):
     requests.append({'type': 'object', 'properties': {
         'id': {'type': 'string', 'minLength': 1},
         'operation': {'type': 'string', 'const': 'read_role_instruction'},
-        'role': {'type': 'string', 'enum': list(role_choices)},
+        'role': {'type': 'string', 'minLength': 1},
     }, 'required': ['id', 'operation', 'role'], 'additionalProperties': False})
     return {'type': 'function', 'name': TOOL,
             'description': 'Relay a closed JAI request. For read include id, operation=read and the exact handle.',
@@ -218,14 +218,13 @@ def _tool(role_choices):
                             'required': ['request'], 'additionalProperties': False}}
 
 
-def worker_thread(rpc, deadline, model=None, *, role_choices, observe=None):
+def worker_thread(rpc, deadline, model=None, *, observe=None):
     """Open a worker and require host acknowledgments before sending task text.
 
     Args:
         rpc: App Server peer bound to the worker directory.
         deadline: Shared absolute monotonic deadline for both requests.
         model: Optional explicit model identifier.
-        role_choices: Exact role slugs exposed to the worker.
         observe: Optional observer forwarded to the peer.
 
     Returns:
@@ -235,17 +234,16 @@ def worker_thread(rpc, deadline, model=None, *, role_choices, observe=None):
         InvocationError: Worker isolation or absence of ambient MCP is unconfirmed.
     """
     params = {'cwd': str(rpc.directory), 'approvalPolicy': 'never', 'sandbox': 'read-only',
-              'environments': [], 'dynamicTools': [_tool(tuple(role_choices))], 'baseInstructions': (
+              'environments': [], 'dynamicTools': [_tool()], 'baseInstructions': (
                   'Follow the exact JAI task. Request resources only via jai_member_broker. '
                   'The host binds the sole member; omit member_key from tool calls. '
                   'For reads use request={id: a unique nonempty string, operation: read, handle: the exact handle}. '
                   'Use the handle from the resource descriptor, not its label, path or index. '
                   'When selection_context is present, read that handle first. It includes the exact local mandate, '
-                  'model availability, role_choices and bounded business text. Choose a role from role_choices. '
-                  'If the list is missing from an older selection_context, read the exact catalogue resource '
-                  'handle, then follow its category and page handles to find role slugs. '
+                  'model availability and handles for exact business inputs. Request only the material needed. '
+                  'Use the catalogue category and page handles to discover candidate roles when needed. '
                   'Call jai_member_broker with {"request":{"id":"role-1","operation":"read_role_instruction",'
-                  '"role":"<chosen role from role_choices>"}}. Replace the placeholder with the chosen slug. '
+                  '"role":"<exact candidate slug>"}}. Replace the placeholder with the chosen slug. '
                   'Use the same exact slug in specialties. '
                   'Read the candidate professional instruction before returning the selection. '
                   'For the semantic envelope copy the exact member value from the sole prepared member. '
@@ -270,7 +268,10 @@ def _matches(params, thread, turn):
 def _role_choices(execution):
     """Use the enrolled catalogue for selection and the admitted specialties for work."""
     enrolled = execution['snapshot']['descriptor']['instruction_blobs']
-    choices = enrolled if execution['phase'] == 'selection' else execution['specialties']
+    scoped = execution.get('workflow_selection')
+    choices = execution.get('specialties', [])
+    if execution['phase'] == 'selection':
+        choices = scoped['eligible'] if scoped is not None else enrolled
     if not choices or any(role not in enrolled for role in choices):
         raise InvocationError('Worker roles must belong to the invocation catalogue')
     return tuple(sorted(choices))
@@ -520,8 +521,8 @@ def carry(session, invocation, rpc, directory, *, route=None):
             if not route(frame):
                 rpc.deny(frame, deadline)
         run, _ = session._member(invocation, status['members'][0]['member_key'], running=False)
-        role_choices = _role_choices(run.execution)
-        thread = worker_thread(rpc, deadline, args.get('model'), role_choices=role_choices,
+        _role_choices(run.execution)
+        thread = worker_thread(rpc, deadline, args.get('model'),
                                observe=observe if route else None)
         receipt = {'invocation': invocation, 'prompt_id': prompt_id, 'thread': thread['thread']['id'], 'stage': 'staged'}
         _save(path, receipt)
