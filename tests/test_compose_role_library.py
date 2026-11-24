@@ -246,3 +246,105 @@ def test_cli_stages_independent_builds_and_leaves_prior_good_output_after_failur
     assert 'duplicate YAML key' in rejected.stderr
     assert not failed.exists()
     assert (previous / '.ai/runtime/roles.json').read_bytes() == (duplicate / '.ai/runtime/roles.json').read_bytes()
+
+
+def test_catalogue_validator_checks_synthetic_roles_and_reports_policy_failures(tmp_path):
+    """Use the same CLI rules on the maintained and a previously unseen role."""
+    command = [sys.executable, str(ROOT / 'tools/validate_role_library.py'),
+               '--root', str(ROOT), '--format', 'json']
+    baseline = subprocess.run(command, check=True, capture_output=True, text=True)
+    inventory = json.loads(baseline.stdout)['inventory']
+    assert set(inventory['distributed_roles']) < set(inventory['effective_roles'])
+    assert any(item['rule'] == 'ROLE009' and item['severity'] == 'advisory'
+               for item in json.loads(baseline.stdout)['findings'])
+
+    command += ['--library', str(tmp_path)]
+    _write(tmp_path / 'roles/new.yaml',
+           _role('new-product-engineer', facets={'product': ['new-product']}))
+    result = subprocess.run(command, check=True, capture_output=True, text=True)
+    assert 'new-product-engineer' in json.loads(result.stdout)['inventory']['effective_roles']
+
+    _write(tmp_path / 'roles/new.yaml',
+           _role('new-product-engineer', aliases=['software-engineer'],
+                 overrides={'mission': 'A' * 15000}))
+    result = subprocess.run(command, capture_output=True, text=True)
+    assert result.returncode == 1
+    failures = {item['rule'] for item in json.loads(result.stdout)['findings'] if item['severity'] == 'error'}
+    assert failures == {'ROLE007', 'ROLE008'}
+    _write(tmp_path / 'roles/new.yaml', _role('new-product-engineer'))
+    _write(tmp_path / 'knowledge/new-product.yaml', _module('new-product'))
+    result = subprocess.run(command, capture_output=True, text=True)
+    assert result.returncode == 1
+    finding, = [item for item in json.loads(result.stdout)['findings'] if item['severity'] == 'error']
+    assert finding['rule'] == 'KNOW001'
+    assert finding['identity'] == 'new-product/check'
+
+    _write(tmp_path / 'roles/new.yaml', _role('new-product-engineer', parent='missing-role'))
+    result = subprocess.run(command, capture_output=True, text=True)
+    assert result.returncode == 1
+    finding, = [item for item in json.loads(result.stdout)['findings'] if item['severity'] == 'error']
+    assert finding['rule'] == 'COMPOSE001'
+    assert 'missing-role' in finding['message']
+
+
+def test_classification_is_bound_to_scope_delivery_and_exact_content(tmp_path):
+    """Changing applicable scope invalidates the review even with identical prose."""
+    _write(tmp_path / 'roles/example.yaml', _role('example-engineer', includes=['example']))
+    _write(tmp_path / 'scope-vocabulary.yaml', {
+        'schema_version': 1, 'dimensions': {
+            'product': ['new-product', 'other-product'], 'task': ['normal/new-product'],
+        },
+    })
+    module = _module('example')
+    section = module['sections'][0]
+    section['scope'] = {'product': ['new-product'], 'task': ['normal/new-product']}
+    presentation = {key: section[key] for key in ('source', 'applicability', 'exclusions', 'owner', 'reviewed')}
+    presentation.update(read_when=None, reference=None, module_title=module['title'],
+                        module_applicability=module['applicability'],
+                        source_record=module['sources'][section['source']])
+    presentation_raw = json.dumps(presentation, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()
+    evidence = {'module': 'example', 'section': 'check', 'delivery': 'required',
+                'presentation_sha256': _digest(presentation_raw),
+                'rule_version': 1, 'scope': section['scope'],
+                'content_sha256': _digest(section['text'].encode())}
+    raw = json.dumps(evidence, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()
+    section['classification'] = {'reviewer': 'Fixture reviewer', 'rule_version': 1,
+                                 'binding_sha256': _digest(raw)}
+    module_path = tmp_path / 'knowledge/example.yaml'
+    _write(module_path, module)
+    result = compose(ROOT, tmp_path)
+    assert result.manifest['knowledge_sections']['example/check']['classified']
+    projected, = result.manifest['roles']['example-engineer']['context_sections']
+    instruction = result.instructions['example-engineer'][projected['start']:projected['end']]
+    assert section['text'].encode() in instruction
+    assert _digest(instruction) == projected['sha256']
+
+    section['scope'] = {'product': ['other-product']}
+    _write(module_path, module)
+    with pytest.raises(ValueError, match='stale section classification'):
+        compose(ROOT, tmp_path)
+    section['scope'] = {'product': ['not-in-vocabulary']}
+    _write(module_path, module)
+    with pytest.raises(ValueError, match='unknown product scope value'):
+        compose(ROOT, tmp_path)
+
+
+def test_catalogue_validator_checks_changed_source_consumers_or_falls_back():
+    """Follow authored role inheritance and shared knowledge reference consumers."""
+    command = [sys.executable, str(ROOT / 'tools/validate_role_library.py'),
+               '--root', str(ROOT), '--format', 'json']
+
+    def scope(path):
+        out = subprocess.run([*command, '--changed', path], check=True, capture_output=True, text=True)
+        return json.loads(out.stdout)['scope']
+
+    java = scope('.ai/role-library/knowledge/products/oracle/java-se/api-documentation.md')
+    assert java['mode'] == 'changed'
+    assert java['roles'] == ['java-software-engineering-specialist']
+    base = scope('.ai/role-library/roles/methods/zero-trust/resource-access/identity-and-access-management-architect.yaml')
+    assert base['mode'] == 'changed'
+    assert 'identity-and-access-management-architect' in base['roles']
+    assert 'entra-identity-architect' in base['roles']
+    broad = scope('.ai/runtime/artifacts/contracts/role-deliverables.v3.json')
+    assert broad['mode'] == 'full'
+    assert 'software-engineer' in broad['roles']

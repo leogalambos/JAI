@@ -19,6 +19,15 @@ sections:
     exclusions: Unverified APIs, retention defaults, tenant administration and authority to accept risk.
     owner: JAI internal audit maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - optro
+      activity:
+      - evidence-workpapers
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: b70dacf497f26ee24f23d77fb816c18c3411c6096926d25d0c05d8d8a880aa64
   - id: verification-reference
     delivery: optional
     reference: evidence-workflows-evidence.md
@@ -30,6 +39,15 @@ sections:
     exclusions: Unverified APIs, retention defaults, tenant administration and authority to accept risk.
     owner: JAI internal audit maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - optro
+      activity:
+      - evidence-workpapers
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 4c6d26921c76569851589622c2428af148c1d7f275e2e9a9f06746ac7037867d
 sources:
   product-source:
     publisher: Optro

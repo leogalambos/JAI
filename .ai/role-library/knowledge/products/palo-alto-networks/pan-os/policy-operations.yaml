@@ -20,6 +20,15 @@ sections:
       products.
     owner: JAI firewall engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - pan-os
+      activity:
+      - firewall-policy-change
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 56d43d52358e99bc359cac0e853a5a8d3e66d8f2f87d494b83da4d83f5ed3e4c
   - id: verification-reference
     delivery: optional
     reference: policy-operations-evidence.md
@@ -32,6 +41,16 @@ sections:
       products.
     owner: JAI firewall engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - pan-os
+      activity:
+      - firewall-policy-change
+      - os-upgrade
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 0eed576e37dcdc07c2350e2d3f02827e683934692626de12f53e42043cc2d042
 sources:
   product-source:
     publisher: Palo Alto Networks

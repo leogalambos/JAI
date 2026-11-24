@@ -20,6 +20,15 @@ sections:
     versions.
   owner: JAI security engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - ibm-qradar-siem
+    activity:
+    - siem-source-compatibility
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: bd71d2d69e273ba3c8849334060abf797d2c2957c5c5a6f04fe7b7abcce81c56
 - id: log-source-identification
   delivery: required
   text: Document the log source identifier, collection protocol and applicable device support module.
@@ -32,6 +41,16 @@ sections:
     versions.
   owner: JAI security engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - ibm-qradar-siem
+    activity:
+    - siem-parser-review
+    - siem-source-onboarding
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 7453968bd2e7371cf8e2b577766ca5ad893b194dd374f9fddc1e5eec0c34b4fd
 - id: qradar-reference
   delivery: optional
   reference: qradar-source-evidence.md
@@ -43,6 +62,17 @@ sections:
     versions.
   owner: JAI security engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - ibm-qradar-siem
+    activity:
+    - siem-parser-review
+    - siem-source-compatibility
+    - siem-source-onboarding
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 3f06561737feb544296c330a4af9bf6dae63fc7a8b640c9a05b0939a3a5a8d6e
 sources:
   ibm-qradar-lifecycle:
     publisher: IBM

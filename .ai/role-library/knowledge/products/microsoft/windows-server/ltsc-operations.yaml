@@ -21,6 +21,15 @@ sections:
       outside an AD DS mandate.
     owner: JAI windows systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - windows-server
+      activity:
+      - os-maintenance
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: c401ece240c32f11f56848eca3c6c146153ef9a975650eb31d580d17d9af1dad
   - id: verification-reference
     delivery: optional
     reference: ltsc-operations-evidence.md
@@ -33,6 +42,16 @@ sections:
       outside an AD DS mandate.
     owner: JAI windows systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - windows-server
+      activity:
+      - os-maintenance
+      - os-upgrade
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: a461b2f5d91f79c7ab1592288918eb86ba0bf3cfaf561443c40678e4b89bce5d
 sources:
   product-source:
     publisher: Microsoft

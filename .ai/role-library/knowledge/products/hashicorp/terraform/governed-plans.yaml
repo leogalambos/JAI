@@ -5,28 +5,47 @@ schema_version: 1
 id: products/hashicorp/terraform/governed-plans
 title: Terraform governed plans and state
 version: 1.0.0
-applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers
-  and backend.
+applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers and backend.
 sections:
 - source: terraform
-  applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers
-    and backend.
+  applicability: Terraform engineering for an explicitly selected tool version, providers and backend.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
   id: scoped-guidance
   delivery: optional
   reference: governed-plans.md
-  read_when: The assignment uses Terraform or explicitly evaluates OpenTofu compatibility for plan, state
-    or execution.
+  read_when: The assignment uses Terraform for plan, state, locking or promotion.
+  scope:
+    task:
+    - terraform-readiness
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 7264bf5510adc2ec96d49162341664510b48ea42033b6d3fa067e87e7f824a8b
+- source: opentofu
+  applicability: OpenTofu compatibility evidence for the declared target.
+  exclusions: Execution authority and independent acceptance.
+  owner: JAI infrastructure and security practice maintainers
+  reviewed: '2026-11-24'
+  id: opentofu-compatibility
+  delivery: optional
+  reference: opentofu-compatibility.md
+  read_when: The assignment explicitly evaluates OpenTofu compatibility and licensing.
+  scope:
+    activity:
+    - opentofu-compatibility
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 5332944bb5e722ae56e42039a02ab1df14e45252f9649950570653738bf30834
 sources:
   terraform:
     publisher: HashiCorp
     authority: Primary publication
     title: Terraform state locking
     url: https://developer.hashicorp.com/terraform/language/state/locking
-    applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers
-      and backend.
+    applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers and backend.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
@@ -36,8 +55,7 @@ sources:
     authority: Primary publication
     title: OpenTofu introduction
     url: https://opentofu.org/docs/intro/
-    applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers
-      and backend.
+    applicability: Terraform infrastructure engineering for an explicitly selected tool version, providers and backend.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.

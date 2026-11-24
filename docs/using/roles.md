@@ -1,6 +1,8 @@
 # Roles and disciplines
 
-The current working catalogue contains **{{ JAI_ROLE_COVERAGE }}**.
+The standard distribution includes **{{ JAI_PACKAGED_ROLE_COVERAGE }}**.
+The table covers the full source catalogue of **{{ JAI_ROLE_COVERAGE }}**,
+including **{{ JAI_SPECIALIZATION_COVERAGE }}**.
 
 The table below summarises the disciplines. The [complete role catalogue by
 category](../reference/roles.md) lists professional roles, specializations and their purposes;
@@ -18,10 +20,20 @@ example, existing SABSA roles can share method guidance while keeping their own
 responsibilities and outputs.
 
 Use the [specialization index](../reference/roles.md#product-specializations)
-to find a specialist by name, exact slug or professional base. Each role's
-selected instructions carry the routinely needed knowledge. Load its named
-references for detailed checks and verify changing product facts against the
-manufacturer when a decision depends on them.
+to find a specialist by name, exact slug or professional base. The standard
+installation provides Zero Trust, Terraform, cloud infrastructure and cloud
+delivery guidance through named references on applicable base roles. Selecting a composed specialist by its exact slug requires that
+role to be registered in the active runtime. Load named references when the
+assignment needs their detailed checks and verify changing product facts
+against the manufacturer when a decision depends on them.
+
+For Android work, use the implementation scope for the app and the test
+automation scope for repeatable build and device evidence. For SAP Cloud ERP,
+application architecture owns the design boundaries and the ABAP Cloud
+extension role addresses implementation within them. A Java SE assignment
+inherits Software Engineer outputs and identifies the Java and JDK target.
+The [workflow guide](workflows.md#product-scope-and-versioned-outputs) shows
+where mobile and ABAP Cloud evidence enters a governed handoff.
 
 **Terraform Engineer** resolves to the Infrastructure as Code Engineer. Use
 its Terraform reference for plan, state and promotion obligations. The network,
@@ -31,8 +43,8 @@ an applicable named reference through the broker when the selected role
 needs its details. See [model-facing context](../operations/normal-layered-workflow.md#model-facing-context).
 
 A workflow defines the roles, sequence and handoffs for its goal. A reviewed
-compatibility profile can permit a specialist to fill an exact producer step
-for a declared product scope. The existing selection phase checks the step,
+and enrolled compatibility profile can permit a registered specialist to fill
+an eligible producer step for a declared product scope. The existing selection phase checks the step,
 variant, side of the handoff and versioned output requirements. The specialist
 receives the same assignment and controls, and the independent receiver keeps
 its responsibility. Exact-slug steps retain their original role.

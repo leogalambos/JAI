@@ -19,6 +19,16 @@ sections:
     exclusions: Classic Engine behavior, customer identity products, and unverified tenant features.
     owner: JAI identity engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - workforce-identity
+      activity:
+      - federation-change
+      - workforce-sign-in-policy
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: f07b3fc39e1093689f2514e685bf4499e635dd32d4585255dc095c826a77faab
   - id: verification-reference
     delivery: optional
     reference: authentication-and-federation-evidence.md
@@ -30,6 +40,17 @@ sections:
     exclusions: Classic Engine behavior, customer identity products, and unverified tenant features.
     owner: JAI identity engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - workforce-identity
+      activity:
+      - federation-change
+      - identity-runtime-change
+      - workforce-sign-in-policy
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 58060b061a6113fb93559a57a4fce96349601969a13f736b23d2645b0f7428d2
 sources:
   product-source:
     publisher: Okta

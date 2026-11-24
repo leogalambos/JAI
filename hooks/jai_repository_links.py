@@ -198,9 +198,9 @@ def render_release_inventory(root: Path) -> str:
     return "\n".join(rows)
 
 
-def _role_inventory(root):
+def _role_inventory(root, *, packaged=False):
     manifest = {}
-    if (root / '.ai/role-library').is_dir():
+    if not packaged and (root / '.ai/role-library').is_dir():
         sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
         try:
             from tools.compose_role_library import compose
@@ -220,20 +220,37 @@ def _role_inventory(root):
     return registry, manifest
 
 
-def render_role_coverage(root: Path) -> str:
-    """Return homepage role and domain coverage from the composed catalogue.
+def render_role_coverage(root: Path, *, packaged: bool = False) -> str:
+    """Return role and domain coverage for the selected inventory.
 
     Args:
         root: Checkout containing the maintained role library or runtime registry.
+        packaged: Use the distributed runtime registry.
     Returns:
         Plain English role and domain counts.
     Raises:
         ValueError: Count, role identity or skill-domain metadata is invalid.
         OSError: Canonical source cannot be read.
     """
-    registry, _ = _role_inventory(root)
+    registry, _ = _role_inventory(root, packaged=packaged)
     roles = registry['roles']
     return f"{len(roles)} IS/IT roles across {len({role['skill'] for role in roles})} domains"
+
+
+def render_specialization_coverage(root: Path) -> str:
+    """Count product specializations in the composed source catalogue.
+
+    Args:
+        root: Checkout containing the maintained role library or runtime registry.
+    Returns:
+        The source specialization count, or zero for a runtime-only checkout.
+    Raises:
+        ValueError: The composed role library or runtime registry is invalid.
+        OSError: A canonical source cannot be read.
+    """
+    _, manifest = _role_inventory(root)
+    count = sum(bool(entry.get('professional_parent')) for entry in manifest.values())
+    return f"{count} source {'specialization' if count == 1 else 'specializations'}"
 
 
 def render_specializations(root: Path) -> str:
@@ -242,12 +259,12 @@ def render_specializations(root: Path) -> str:
     Args:
         root: Checkout containing the role library and canonical registry.
     Returns:
-        Markdown inventory of specialist slugs, base roles and product facets.
+        Markdown inventory of specialist slugs, base roles, product facets and assignment missions.
     """
     registry, manifest = _role_inventory(root)
     roles = {row['slug']: row for row in registry['roles']}
-    rows = ['| Specialization | Exact slug | Professional base | Product facet |',
-            '| --- | --- | --- | --- |']
+    rows = ['| Specialization | Exact slug | Professional base | Product facet | Assignment mission |',
+            '| --- | --- | --- | --- | --- |']
     for slug, entry in sorted(manifest.items(), key=lambda item: roles[item[0]]['name'].casefold()):
         parent = entry.get('professional_parent')
         if not parent:
@@ -256,18 +273,21 @@ def render_specializations(root: Path) -> str:
         facets = ', '.join(entry.get('facets', {}).get('product', []))
         label = escape(roles[slug]['name']).replace('|', '&#124;')
         base_label = escape(base['name']).replace('|', '&#124;')
-        rows.append(f"| {label} | `{slug}` | [{base_label}](output-contracts/role-{parent}.md) | {facets} |")
+        mission = escape(roles[slug]['mission']).replace('|', '&#124;')
+        anchor = entry['legacy_anchor']
+        rows.append(f"| {label} | `{slug}` | [{base_label}](output-contracts/role-{anchor}.md) | {facets} | {mission} |")
     return '\n'.join(rows)
 
 
-def render_workflow_coverage(root: Path, *, handoffs=False) -> str:
+def render_workflow_coverage(root: Path, *, handoffs=False, paths=False) -> str:
     """Render homepage workflow coverage from the canonical catalogue.
 
     Args:
         root: Checkout containing .ai/runtime/workflows.json.
-        handoffs: Render the number of registered handoffs instead of chains.
+        handoffs: Render the number of registered handoffs.
+        paths: Render the number of registered operating paths.
     Returns:
-        The actual number of distinct enterprise workflow chains.
+        The count of chains, handoffs or operating paths.
     Raises:
         ValueError: Count or workflow identities are malformed or inconsistent.
         OSError: The canonical registry cannot be read.
@@ -282,6 +302,9 @@ def render_workflow_coverage(root: Path, *, handoffs=False) -> str:
                    or not row['key'].strip() for row in workflows)
             or len({row['key'] for row in workflows}) != len(workflows)):
         raise ValueError('Invalid canonical workflow coverage')
+    if paths:
+        count = sum(len(row['operating_profile']['paths']) for row in workflows)
+        return f"{count} operating {'path' if count == 1 else 'paths'}"
     if handoffs:
         steps = [row.get('steps') for row in workflows]
         if any(not isinstance(items, list) for items in steps):
@@ -362,6 +385,12 @@ def on_page_markdown(markdown, *, page, config, files):
         markdown = markdown.replace(RELEASE_INVENTORY_TOKEN, render_release_inventory(root))
     if "{{ JAI_ROLE_COVERAGE }}" in markdown:
         markdown = markdown.replace("{{ JAI_ROLE_COVERAGE }}", render_role_coverage(root))
+    if "{{ JAI_PACKAGED_ROLE_COVERAGE }}" in markdown:
+        markdown = markdown.replace("{{ JAI_PACKAGED_ROLE_COVERAGE }}", render_role_coverage(root, packaged=True))
+    if "{{ JAI_SPECIALIZATION_COVERAGE }}" in markdown:
+        markdown = markdown.replace("{{ JAI_SPECIALIZATION_COVERAGE }}", render_specialization_coverage(root))
+    if "{{ JAI_WORKFLOW_PATH_COVERAGE }}" in markdown:
+        markdown = markdown.replace("{{ JAI_WORKFLOW_PATH_COVERAGE }}", render_workflow_coverage(root, paths=True))
     if "{{ JAI_WORKFLOW_COVERAGE }}" in markdown:
         markdown = markdown.replace("{{ JAI_WORKFLOW_COVERAGE }}", render_workflow_coverage(root))
     if "{{ JAI_WORKFLOW_HANDOFF_COVERAGE }}" in markdown:

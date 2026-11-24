@@ -21,6 +21,15 @@ sections:
       without approval.
     owner: JAI windows systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - active-directory-domain-services
+      activity:
+      - ad-domain-level-change
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: e97d87b169f415ae89abd4b80dc8fb04b40e20fa674c0dd230274b75dda95c4f
   - id: verification-reference
     delivery: optional
     reference: functional-levels-evidence.md
@@ -33,6 +42,15 @@ sections:
       without approval.
     owner: JAI windows systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - active-directory-domain-services
+      activity:
+      - ad-domain-level-change
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 64fa8a57e9a18099994ceb53209f4b5edc2cba15c126adf811e7c35dae170373
 sources:
   product-source:
     publisher: Microsoft

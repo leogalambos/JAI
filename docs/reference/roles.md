@@ -14,10 +14,12 @@ for protecting public lookup queries without anonymising the deliverable itself.
 
 ## Product specializations
 
-The tables below this index document the professional bases and their output
-contracts. The index lists the composed specializations available through the
-same discipline skills. Follow a base role link for its inherited outputs and
-use the exact specialist slug for lookup.
+The standard distribution includes **{{ JAI_PACKAGED_ROLE_COVERAGE }}**.
+The source catalogue also defines **{{ JAI_SPECIALIZATION_COVERAGE }}**.
+Each entry identifies the exact specialist slug, assignment mission and
+professional base. Follow the base role link for the inherited output
+contracts. See [using specializations](../using/roles.md#professional-bases-and-specializations)
+for runtime registration and workflow selection.
 
 {{ JAI_SPECIALIZATIONS }}
 

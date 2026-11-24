@@ -147,6 +147,31 @@ checks. Desktop CI runs selected desktop and reader controls in addition to
 building actual assets. Manual native-reader qualification remains explicit.
 The release pipeline continues its separate publication checks.
 
+### Role catalogue specification checks
+
+Run the same catalogue check as source validation and release validation.
+
+```sh
+python3 tools/validate_role_library.py --root .
+python3 tools/validate_role_library.py --root . --format json
+```
+
+The command composes the role library and checks the effective role
+inventory, professional output contracts, instruction projections and
+workflow bindings. Every knowledge section requires a current classification,
+including its applicability, delivery mode and exact content and presentation.
+The JSON inventory reports missing classifications as policy violations.
+A role alias cannot shadow an exact role identifier. Shared lookup aliases
+report the candidates for disambiguation. The role instruction limit is
+36 KiB and an initial classified section is limited to 1,536 UTF-8 bytes.
+
+Use `--changed PATH` repeatedly to check affected roles and their dependent
+workflow bindings. The validator still checks the shared composition,
+classification and alias invariants. Unknown paths or global inputs widen
+the check to the full catalogue. CI and release use the full check.
+Exit codes are 0 for a passing check, 1 for a policy violation and 2 for
+an incomplete check.
+
 Preserve test evidence for unchanged inputs. Record the tested revision or
 relevant input digest, profile, selected scope, result and reason to rerun in
 private local evidence. Measure total time to a verified result and selector

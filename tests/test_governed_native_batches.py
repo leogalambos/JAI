@@ -13,6 +13,7 @@ from threading import Barrier, Event
 import time
 
 import pytest
+
 import jsonschema
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.ai/runtime/tools'))
@@ -224,13 +225,14 @@ def _controlled_result(session, assignment, phase, produce, selection=None, *, c
 
 
 def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000, *, single_member=False,
-                   question_dependencies=None, sabsa_row_mode=None, operator_dependencies=None, carrier='codex'):
+                   question_dependencies=None, sabsa_row_mode=None, operator_dependencies=None, carrier='codex',
+                   knowledge_scopes=()):
     session, created = layered.LayeredSession.create(tmp_path, 'layer-batch',
         b'Define a bounded backup service.', carrier, 'backup',
         None if aggregate_limit_ms is None else int(time.time() * 1000) + 180000,
         aggregate_limit_ms, b'Identify the business boundary, restore requirements and uncertainty.',
         local_budget=local_budget, single_member=single_member, sabsa_row_mode=sabsa_row_mode,
-        question_dependencies=operator_dependencies)
+        question_dependencies=operator_dependencies, knowledge_scopes=knowledge_scopes)
     if question_dependencies is None and single_member and sabsa_row_mode is None:
         question_dependencies = {question: [] for question in provider.QUESTIONS}
     root = created['entry']['assignment']
@@ -1315,8 +1317,9 @@ def test_local_procedure_applies_entitled_specialist_only_to_its_exact_author(
 
 
 @pytest.mark.parametrize('carrier', ['claude', 'codex'])
-def test_named_specialist_reference_is_deferred_and_scoped(tmp_path, monkeypatch, carrier):
-    """Deliver the packaged reference only to the selected live member."""
+@pytest.mark.parametrize('legacy', [True, False], ids=['legacy', 'standalone'])
+def test_named_specialist_reference_is_deferred_and_scoped(tmp_path, monkeypatch, carrier, legacy):
+    """Replay a role reference with legacy or attributable standalone routing."""
     from tools.compose_role_library import compose
 
     compilation = compose(Path(__file__).resolve().parents[1])
@@ -1325,10 +1328,22 @@ def test_named_specialist_reference_is_deferred_and_scoped(tmp_path, monkeypatch
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(raw)
     runtime = tmp_path / '.ai/runtime'
+    manifest_path = runtime / 'role-composition.json'
+    manifest = lc.loads(manifest_path.read_bytes())
+    if legacy:
+        for role in manifest['roles'].values():
+            role.pop('context_sections', None)
+        manifest_path.write_bytes(lc.canonical(manifest))
     monkeypatch.setattr(provider, 'ROOT', runtime)
     now = [time.time()]
     monkeypatch.setattr(lc.time, 'time', lambda: now[0])
-    session = _layer_session(tmp_path / 'engagement', carrier=carrier)
+    owner = {'layer': 1, 'work_kind': 'question', 'question': 'how', 'work_item': 'backup'}
+    knowledge_scopes = () if legacy else (lc.canonical({
+        'owner': owner, 'knowledge_targets': [
+            {'product': ['ibm-qradar-siem'], 'activity': ['siem-source-onboarding']},
+        ],
+    }),)
+    session = _layer_session(tmp_path / 'engagement', carrier=carrier, knowledge_scopes=knowledge_scopes)
     store = session.store
     slug = 'qradar-siem-specialist'
     name = 'knowledge/products/ibm/qradar-siem/log-source-integration/qradar-source-evidence.md'
@@ -1353,6 +1368,17 @@ def test_named_specialist_reference_is_deferred_and_scoped(tmp_path, monkeypatch
     prepared = offered['prepared']
     member = next(item for item in prepared['members'] if item['assignment'] == target)
     sibling = next(item for item in prepared['members'] if item['assignment'] != target)
+    if not legacy:
+        state = store.read()
+        assignment = state.resolve(member['assignment'], 'assignment')
+        assert assignment['owner'] == owner
+        assert state.assignment_routing(assignment)['knowledge_scope']['knowledge_targets'] == [
+            {'product': ['ibm-qradar-siem'], 'activity': ['siem-source-onboarding']},
+        ]
+        assert 'workflow_scope' not in assignment['routing']
+        assert not any(item['ref']['logical_id'].startswith('question-knowledge-scope:')
+                       for item in member['packet']['manifest'])
+        assert 'supported-fix-level' not in member['packet']['execution']['instructions'][0]['text']
     assert member['packet']['execution']['deferred_references'] == {handle: lc.blob(captured)}
     view = lc.loads(store._blob(member['host_delivery']['prompt_blob_id']))
     workforce = lc.loads(store._blob(view['resources']['workforce']['handle'].removeprefix('resource:')))
@@ -1445,10 +1471,15 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(
     now = time.time()
     monkeypatch.setattr(lc.time, 'time', lambda: now)
     owner = {'layer': 1, 'work_kind': 'question', 'question': 'what', 'work_item': work_item}
+    activity = {'retirement': 'identity-runtime-change', 'dependency-fix': 'java-implementation',
+                'application-change': 'java-api-documentation', 'erp-sourcing': 'erp-capability-fit'}[work_item]
     scope = {'workflow_catalogue': policy['catalogue']['catalog_hash'], 'work_item': work_item,
              'handoff': row['handoff_id'], 'path': path, 'endpoint': 'producer',
              'mode': 'compatible-specialization', 'product_scope': {'product': product, **deployment},
-             'procedure_owner': owner}
+             'knowledge_scope': {'activity': [activity]}, 'procedure_owner': owner}
+    if work_item == 'dependency-fix':
+        scope['knowledge_scope'] = {'product': [product]}
+        scope['discover_knowledge'] = True
 
     def follow(scoped):
         profile_options = {'workflow_policy': lc.canonical(policy),
@@ -1477,14 +1508,41 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(
                     view['resources']['workforce']['handle'].removeprefix('resource:'))
                 if scoped:
                     session.start(invocation, carrier, invocation, {'fixture': 'Offline profiled work'})
-                    references = packet['execution']['deferred_references']
+                    reopened = layered.LayeredSession.open(session.locator)
+                    if work_item == 'dependency-fix':
+                        assert not packet['execution'].get('deferred_references')
+                        lookup = packet['execution']['knowledge_lookup']
+                        result = reopened.request(invocation, member['member_key'],
+                            {'id': 'lookup-knowledge', 'operation': 'read', 'handle': lookup})
+                        raw_lookup = base64.b64decode(result['result']['data'])
+                        entries = lc.loads(raw_lookup)['references']
+                        assert len(raw_lookup) <= 2048 and len(entries) <= 8
+                        references = {entry['handle']: None for entry in entries}
+                        assert any(name.endswith('/jdk-compatibility.md') for name in references)
+                        assert not any('keycloak' in name for name in references)
+                    else:
+                        references = packet['execution']['deferred_references']
                     if product == 'keycloak':
                         assert len(references) == 1
+                    if activity == 'java-api-documentation':
+                        assert {handle.rsplit('/', 1)[1] for handle in references} == {'api-documentation.md'}
+                        assert 'logging-evidence.md' not in packet['execution']['instructions'][0]['text']
+                        assert 'performance-evidence.md' not in packet['execution']['instructions'][0]['text']
+                        denied = ('role-reference:java-software-engineering-specialist:knowledge/'
+                                  'products/oracle/java-se/professional-engineering/performance-evidence.md')
+                        with pytest.raises(DispatchError, match='outside the exact input manifest'):
+                            reopened.request(invocation, member['member_key'], {
+                                'id': 'excluded-sibling-knowledge', 'operation': 'read', 'handle': denied,
+                            })
                     handle = next(iter(references))
-                    reopened = layered.LayeredSession.open(session.locator)
                     data = reopened.request(invocation, member['member_key'],
                         {'id': 'approved-reference', 'operation': 'read', 'handle': handle})
-                    assert lc.blob(base64.b64decode(data['result']['data'])) == packet['execution']['deferred_references'][handle]
+                    raw = base64.b64decode(data['result']['data'])
+                    if work_item == 'dependency-fix':
+                        name = handle.split(':', 2)[2]
+                        assert raw == next(value for path, value in composition.files.items() if path.endswith(name))
+                    else:
+                        assert lc.blob(raw) == references[handle]
                     cold = lc.Store(session.store.path, session.store.engagement).read()
                     execution = cold.context_execution(cold.resolve(member['context'], 'context'), live=False)
                     assert execution['specialties'] == [specialist]
@@ -1520,7 +1578,9 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(
                     operations = execution['allowed_operations']
                 else:
                     operations = state.context_execution(state.resolve(member['context'], 'context'))['allowed_operations']
-                return measurements, operations, (len(prompt_bytes), len(workforce_bytes))
+                delivery_manifest = session.store._blob(member['host_delivery']['manifest_blob_id'])
+                resource_bytes = sum(item['byte_length'] for item in lc.loads(delivery_manifest)['resources'])
+                return measurements, operations, (len(prompt_bytes), len(delivery_manifest), resource_bytes)
             if phase == 'selection':
                 response = _choice(packet, carrier)
                 if assignment['owner'] == owner and assignment['responsibility'] == 'author':
@@ -1547,12 +1607,13 @@ def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(
         assert candidate_operations == ['materialize', 'measure', 'propose', 'read']
     assert len(baseline) == len(candidate)
     print(f'{carrier}: {len(candidate)} prepared intents; baseline bytes {baseline}; profile bytes {candidate}')
-    print(f'{carrier}: author prompt and workforce resource bytes {baseline_context} baseline, '
+    print(f'{carrier}: author prompt, delivery manifest and resource bytes {baseline_context} baseline, '
           f'{candidate_context} specialized')
 
 
 @pytest.mark.parametrize('carrier', ['claude', 'codex'])
-def test_installed_zero_trust_guidance_is_prepared_and_replayed_offline(tmp_path, monkeypatch, carrier):
+def test_legacy_installed_zero_trust_guidance_is_prepared_and_replayed_offline(tmp_path, monkeypatch, carrier):
+    """Keep the legacy reference snapshot readable after the classification migration."""
     from test_installer import ROOT, installer
 
     root = tmp_path / 'install'
@@ -1564,6 +1625,11 @@ def test_installed_zero_trust_guidance_is_prepared_and_replayed_offline(tmp_path
         if path.is_relative_to(house):
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(raw)
+    guidance_path = house / 'knowledge/infrastructure-role-guidance.json'
+    guidance = json.loads(guidance_path.read_bytes())
+    for overlay in guidance['roles'].values():
+        overlay.pop('context_sections', None)
+    guidance_path.write_text(json.dumps(guidance), encoding='utf-8')
     now = time.time()
     monkeypatch.setattr(lc.time, 'time', lambda: now)
     slug = 'network-architect'
@@ -1606,7 +1672,8 @@ def test_installed_zero_trust_guidance_is_prepared_and_replayed_offline(tmp_path
     assert reopened.prepare(work['invocation_id'])['invocation'] == work['prepared']['invocation']
     assert reopened.store.read().head == before
     member = work['prepared']['members'][0]
-    handle, = member['packet']['execution']['deferred_references']
+    handle = next(name for name in member['packet']['execution']['deferred_references']
+                  if name.endswith('/resource-access.md'))
     invocation = work['invocation_id']
     reopened.start(invocation, carrier, invocation, {'fixture': 'Offline scoped work'})
     requested = reopened.request(invocation, member['member_key'],
@@ -1631,3 +1698,58 @@ def test_installed_zero_trust_guidance_is_prepared_and_replayed_offline(tmp_path
     print(f'{carrier}: prepared resource bytes {baseline_bytes} -> {installed_bytes}, '
           f'initial prompt bytes {len(baseline_prompt)} -> {len(installed_prompt)}, '
           f'invocations {baseline_count} -> {installed_count}')
+
+
+@pytest.mark.parametrize('carrier', ['claude', 'codex'])
+def test_classified_installed_role_limits_carrier_and_broker(tmp_path, monkeypatch, carrier):
+    """Replay a classified role and deny a guessed excluded knowledge handle."""
+    from test_installer import ROOT, installer
+
+    house, claude, codex = (tmp_path / name for name in ('house', 'claude', 'codex'))
+    registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+    outputs, _ = installer.desired_outputs(ROOT, [carrier], house, claude, codex, registry)
+    for name, raw in outputs.items():
+        path = Path(name)
+        if path.is_relative_to(house):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(raw)
+    guidance_path = house / 'knowledge/infrastructure-role-guidance.json'
+    guidance = json.loads(guidance_path.read_bytes())
+    slug = 'network-architect'
+    relative = f'skills/it-roles-architecture/references/{slug}.md'
+    overlay = guidance['roles'][relative]
+    installed = (house / relative).read_bytes()
+    reference = next(name for name in overlay['references'] if name.endswith('/resource-access.md'))
+    expected_instruction = installed
+    for section in reversed(overlay['context_sections']):
+        expected_instruction = expected_instruction[:section['start']] + expected_instruction[section['end']:]
+    monkeypatch.setattr(provider, 'ROOT', house)
+    now = time.time()
+    monkeypatch.setattr(lc.time, 'time', lambda: now)
+
+    session = _layer_session(tmp_path / 'work', single_member=True, carrier=carrier)
+    selection = session.next()
+    invocation = selection['invocation_id']
+    choices = [_choice(member['packet'], carrier) for member in selection['prepared']['members']]
+    choices[0]['specialties'] = [slug]
+    session.start(invocation, carrier, invocation, {'fixture': 'Offline selection'})
+    session.complete(invocation, json.dumps({'format': 'jai.semantic-return/1', 'results': choices}),
+                     {'fixture': 'Offline selection result'})
+    work = session.next()
+    member = work['prepared']['members'][0]
+    delivery = member['host_delivery']
+    manifest = lc.loads(session.store._blob(delivery['manifest_blob_id']))
+    instruction, = [item for item in manifest['resources']
+                    if item['label'] == f'Exact professional instruction: {slug}']
+    assert session.store._blob(instruction['blob_id']) == expected_instruction
+    prompt = session.store._blob(delivery['prompt_blob_id'])
+    assert reference.encode() not in prompt
+    assert 'deferred_references' not in member['packet']['execution']
+    reopened = layered.LayeredSession.open(session.locator)
+    invocation = work['invocation_id']
+    assert reopened.prepare(invocation)['invocation'] == work['prepared']['invocation']
+    reopened.start(invocation, carrier, invocation, {'fixture': 'Offline scoped work'})
+    with pytest.raises(DispatchError, match='outside the exact input manifest'):
+        reopened.request(invocation, member['member_key'], {
+            'id': 'guessed-reference', 'operation': 'read', 'handle': f'role-reference:{slug}:{reference}',
+        })

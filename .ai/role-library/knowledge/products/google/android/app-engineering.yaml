@@ -21,6 +21,15 @@ sections:
       unsupported device claims.
     reviewed: '2026-11-24'
     owner: JAI mobile engineering maintainers
+    scope:
+      product:
+      - android
+      activity:
+      - android-lifecycle
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: bc264f964357b5d79f47912ba4027b4b2de734ed53b850d41ec38bf29160509e
   - id: release-evidence
     delivery: required
     source: build-toolchain
@@ -33,6 +42,15 @@ sections:
       unsupported device claims.
     reviewed: '2026-11-24'
     owner: JAI mobile engineering maintainers
+    scope:
+      product:
+      - android
+      activity:
+      - android-release
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 5c7fdbc160acb0cb06228fd71e63232554c65dd4114d09a09796f161ebaaa449
   - id: verification-reference
     delivery: optional
     source: architecture
@@ -45,6 +63,16 @@ sections:
       unsupported device claims.
     reviewed: '2026-11-24'
     owner: JAI mobile engineering maintainers
+    scope:
+      product:
+      - android
+      activity:
+      - android-release
+      - android-toolchain-change
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 3ce9f9df4c8d1ed0281df35c27c4be58a5a2ac68df58f2c4ee2fb8a1575e77db
 sources:
   architecture:
     publisher: Google

@@ -21,6 +21,16 @@ sections:
       SAP editions have the same capabilities.
     reviewed: '2026-11-24'
     owner: JAI erp extension engineering maintainers
+    scope:
+      product:
+      - sap-abap-cloud
+      activity:
+      - abap-extension-design
+      - abap-extension-implementation
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 77301c0252e5587443e57af683f491827d110bc9368429406b5284933760f1ad
   - id: upgrade-evidence
     delivery: required
     source: rap-releases
@@ -33,6 +43,16 @@ sections:
       SAP editions have the same capabilities.
     reviewed: '2026-11-24'
     owner: JAI erp extension engineering maintainers
+    scope:
+      product:
+      - sap-abap-cloud
+      activity:
+      - abap-extension-release
+      - abap-extension-verification
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: bd405724e31df5b44022963df8ac6b696bd562f7a020424ca0d72ad7cb8af438
   - id: verification-reference
     delivery: optional
     source: developer-extensibility
@@ -45,6 +65,17 @@ sections:
       SAP editions have the same capabilities.
     reviewed: '2026-11-24'
     owner: JAI erp extension engineering maintainers
+    scope:
+      product:
+      - sap-abap-cloud
+      activity:
+      - abap-extension-design
+      - abap-extension-implementation
+      - abap-extension-release
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: d8cc2131aba6cd9d97991aff076354474b43a8cf656822bbd709acdde6e20abe
 sources:
   developer-extensibility:
     publisher: SAP

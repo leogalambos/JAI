@@ -5,22 +5,34 @@ schema_version: 1
 id: domains/cloud/landing-zone-evidence
 title: Cloud infrastructure and landing-zone evidence
 version: 1.0.0
-applicability: AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target environment.
+applicability: Cloud estate commissioning, transition and independent assessment for the declared target.
 sections:
-- source: aws
-  applicability: AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target
-    environment.
+- source: common
+  applicability: Cloud estate commissioning, transition and independent assessment for the declared target.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
   id: scoped-guidance
   delivery: optional
   reference: landing-zone-evidence.md
-  read_when: The assignment provisions, migrates or independently assesses AWS, Azure or Google Cloud
-    infrastructure.
+  read_when: The assigned work needs the common evidence chain for the declared boundary.
+  scope:
+    task:
+    - aws-assessment
+    - aws-greenfield
+    - aws-migration
+    - azure-assessment
+    - azure-greenfield
+    - azure-migration
+    - google-cloud-assessment
+    - google-cloud-greenfield
+    - google-cloud-migration
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: b883fcf69bf90b85fb505c41faf120ba80587511d37326008de076485e7c7b0f
 - source: aws
-  applicability: AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target
-    environment.
+  applicability: AWS work for the exact declared boundary and supported mechanism.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
@@ -28,20 +40,35 @@ sections:
   delivery: optional
   reference: landing-zone-evidence-aws.md
   read_when: The assignment concerns AWS and requires cloud infrastructure and landing-zone evidence.
+  scope:
+    task:
+    - aws-assessment
+    - aws-greenfield
+    - aws-migration
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 0985cbbe0300bd2ab76e1ddc8c3e6e0b8ffb4dbf3c8b98bab0c14853d8d08a0b
 - source: azure
-  applicability: AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target
-    environment.
+  applicability: Microsoft Azure work for the exact declared boundary and supported mechanism.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
   id: azure-guidance
   delivery: optional
   reference: landing-zone-evidence-azure.md
-  read_when: The assignment concerns Microsoft Azure and requires cloud infrastructure and landing-zone
-    evidence.
+  read_when: The assignment concerns Microsoft Azure and requires cloud infrastructure and landing-zone evidence.
+  scope:
+    task:
+    - azure-assessment
+    - azure-greenfield
+    - azure-migration
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 73d93849b276c2efa7d6a951938b7a29459794b157f9f81cadda9623a6d789a5
 - source: google
-  applicability: AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target
-    environment.
+  applicability: Google Cloud work for the exact declared boundary and supported mechanism.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
@@ -49,37 +76,53 @@ sections:
   delivery: optional
   reference: landing-zone-evidence-google-cloud.md
   read_when: The assignment concerns Google Cloud and requires cloud infrastructure and landing-zone evidence.
+  scope:
+    task:
+    - google-cloud-assessment
+    - google-cloud-greenfield
+    - google-cloud-migration
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 9103a75b322e5e67a060d0dec7462de660d6a350c88f1448d5d24fcb8efba23e
 sources:
   aws:
     publisher: AWS
     authority: Primary publication
     title: AWS Control Tower user guide
     url: https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html
-    applicability: AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target
-      environment.
+    applicability: AWS work for the exact declared boundary and supported mechanism.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
-    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+    review_trigger: the exact target or supported mechanism changes
   azure:
     publisher: Microsoft
     authority: Primary publication
     title: Azure landing zone
     url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/
-    applicability: AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target
-      environment.
+    applicability: Microsoft Azure work for the exact declared boundary and supported mechanism.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
-    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+    review_trigger: the exact target or supported mechanism changes
   google:
     publisher: Google Cloud
     authority: Primary publication
     title: Enterprise foundations blueprint
     url: https://docs.cloud.google.com/architecture/blueprints/security-foundations
-    applicability: AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target
-      environment.
+    applicability: Google Cloud work for the exact declared boundary and supported mechanism.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
-    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+    review_trigger: the exact target or supported mechanism changes
+  common:
+    publisher: JAI
+    authority: Canonical workflow policy
+    title: Cloud infrastructure and landing-zone evidence
+    applicability: Cloud estate commissioning, transition and independent assessment for the declared target.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: the governed workflow or common evidence obligations change
+    locator: .ai/runtime/workflows.json

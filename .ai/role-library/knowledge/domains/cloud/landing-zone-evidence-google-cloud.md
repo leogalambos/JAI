@@ -3,9 +3,8 @@
 
 # Google Cloud cloud infrastructure and landing-zone evidence
 
-AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target environment.
+Google Cloud architecture and engineering in a bounded target environment.
 
 Pin organization, folder, project and location. Identify inherited organization policies, shared networking and per-project identities. Record audit routing, data locations and backup or recovery ownership.
 
 [Enterprise foundations blueprint](https://docs.cloud.google.com/architecture/blueprints/security-foundations)
-

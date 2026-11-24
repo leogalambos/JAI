@@ -163,10 +163,10 @@ class NativeSession:
             peer.execution = state.context_execution(context, live=False)
             peer.handles = {item['handle']: lc.canonical(item['record']) for item in packet['manifest']}
             peer.delivered_handles = {item['handle']: item['blob_id'] for item in packet['attachments']}
-            snapshot = peer.execution['snapshot']['descriptor']
-            peer.intrinsic_handles = {'catalogue': snapshot['catalogue_blob_id'],
-                **{'instruction:' + slug: blob for slug, blob in snapshot['instruction_blobs'].items()}}
+            peer.intrinsic_handles = routing.instruction_handles(peer.execution, self.store.put_blob)
             peer.intrinsic_handles.update(routing.deferred_reference_handles(peer.execution))
+            discovery, _ = routing.discovered_knowledge_handles(peer.execution)
+            peer.intrinsic_handles.update(discovery)
             peer.allowed_blobs = {item['blob_id'] for item in packet['attachments']}
             peer.allowed_blobs.update(material['blob_id'] for returned in packet.get('owned_returns', [])
                                       for item in returned['records'] for material in item['material'])

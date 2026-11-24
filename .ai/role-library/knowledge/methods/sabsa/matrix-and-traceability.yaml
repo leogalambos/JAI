@@ -18,6 +18,15 @@ sections:
   exclusions: Layer-specific deliverable ownership, methodology certification and reserved acceptance.
   owner: JAI SABSA practice maintainers
   reviewed: '2026-11-23'
+  scope:
+    method:
+    - sabsa
+    activity:
+    - driver-objective-trace
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 3bc5daf0dc3d5191ad23191533d97eec13331a3ada552413d6ae161e0fd76b9c
 - id: traceability-reference
   delivery: optional
   reference: matrix-traceability-notes.md
@@ -27,6 +36,15 @@ sections:
   exclusions: Layer-specific deliverable ownership, methodology certification and reserved acceptance.
   owner: JAI SABSA practice maintainers
   reviewed: '2026-11-23'
+  scope:
+    method:
+    - sabsa
+    activity:
+    - driver-objective-trace
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: a26dff5a5f11b57182e7587604be8178d8e7cbd9a70fd04e4e839297ba21eefb
 sources:
   sabsa-executive-summary:
     publisher: The SABSA Institute

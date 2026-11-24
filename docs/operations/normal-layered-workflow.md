@@ -301,3 +301,41 @@ A work invocation receives deferred reference handles for its admitted
 specialties. Request the applicable reference when the assignment needs it.
 The broker enforces the member's read rights. The immutable prepared prompt
 and reference bindings remain available for replay.
+
+For a role with classified knowledge sections, the native host resolves
+applicability from the captured assignment and its attributable workflow
+scope. A versioned workflow scope can carry a `knowledge_scope.activity`
+value such as `java-api-documentation`. The exact workflow path and activity
+are distinct scope dimensions. Authoring, review and receiving obligations
+continue to follow the assignment and its contracts. The host removes
+excluded sections from the delivered role instructions and
+omits their read handles. The existing broker uses the same subset. The
+captured policy and exact instruction ranges support replay. An unresolved
+scope does not supply a match for a technology-specific section.
+
+For separate targets, an attributable workflow scope can provide
+`knowledge_targets` as a list of exact dimension records. All predicates
+must match the same target. A record can also carry supported observed
+`effects` that require a corresponding activity. For example,
+`java-public-api-change` adds `java-api-documentation` for that target.
+When a contributing dimension is genuinely unresolved, the exact scope
+can request `discover_knowledge`. The host exposes one read handle for up
+to eight compatible deferred references in at most 2,048 UTF-8 bytes. The
+response lists references to read when needed. Neutral work receives no
+discovery page.
+
+The host can also enroll an attributable standalone question scope on
+ordinary work without a workflow binding. Its record identifies the
+exact question owner and carries `knowledge_targets` and optional
+`discover_knowledge`. The native enrollment interface accepts this
+record as `knowledge_scopes` or an explicit maintainer
+`--knowledge-scope` input. An attributable target can name one exact
+captured `task` path when the assignment uses its documented mechanism.
+This selects the applicable knowledge and preserves the assignment's
+staffing, workflow and authority boundaries.
+
+Older captured routing snapshots retain their recorded delivery mode.
+New catalogue sections require exact classification. Installed infrastructure
+roles in the provider's skill directory link to a separate knowledge index.
+The provider controls file loading for direct skill use. The native broker
+policy applies to JAI-managed work.

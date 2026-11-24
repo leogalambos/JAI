@@ -4,6 +4,11 @@ Choose a chain by its starting situation and required result. Every entry lists 
 
 For invocation, see the [workflow selection guide](../using/workflows.md) and [usage modes](../using/usage-modes.md). For individual professions, see the [role catalogue](roles.md). Buyer-side sourcing is distinct from the supplier-side [commercial profile](../capabilities/commercial-delivery.md).
 
+The catalogue includes **{{ JAI_WORKFLOW_COVERAGE }}**, **{{ JAI_WORKFLOW_PATH_COVERAGE }}**
+and **{{ JAI_WORKFLOW_HANDOFF_COVERAGE }}**. Stage inventories below list
+registered stage IDs. The linked workflow's applicability table gives the
+execution order for each path, including variant-specific stages.
+
 <!-- JAI:OUTPUT-CONTRACTS:START -->
 | Workflow | Start when | Expected result |
 | --- | --- | --- |

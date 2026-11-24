@@ -19,6 +19,17 @@ sections:
   exclusions: Unverified add-ons, source classes and deployment-specific ingestion privileges.
   owner: JAI security engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - splunk-enterprise-security
+    - splunk-platform
+    activity:
+    - siem-parser-review
+    - telemetry-normalization
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 9a16196bc1309c4ea3fd72f00f9775605261fa0e092d03a02b56ec0374456c30
 sources:
   splunk-cim-overview:
     publisher: Splunk

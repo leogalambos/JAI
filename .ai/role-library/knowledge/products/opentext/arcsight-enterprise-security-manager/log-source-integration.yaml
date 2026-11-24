@@ -19,6 +19,16 @@ sections:
     exclusions: OpenText Content Management, unsupported connectors and unverified lifecycle status.
     owner: JAI security engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - arcsight-enterprise-security-manager
+      activity:
+      - siem-parser-review
+      - siem-source-onboarding
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 13957ff2ebe24fa94892c879730393827aab0a943d9a47a8112b1f2e05037415
   - id: verification-reference
     delivery: optional
     reference: log-source-integration-evidence.md
@@ -30,6 +40,17 @@ sections:
     exclusions: OpenText Content Management, unsupported connectors and unverified lifecycle status.
     owner: JAI security engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - arcsight-enterprise-security-manager
+      activity:
+      - siem-connector-upgrade
+      - siem-source-compatibility
+      - siem-source-onboarding
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: cbd92fb7ae1bc545909cdc5d0bb7190cd46e24d6bcd9e3d768701700e4b36634
 sources:
   product-source:
     publisher: OpenText

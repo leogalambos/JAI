@@ -21,6 +21,15 @@ sections:
       FortiCare or FortiGuard entitlement.
     owner: JAI firewall engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - fortigate-fortios
+      activity:
+      - firewall-policy-change
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 654399f97f5b7a5def59c82f88820cb71a8c51b7667b037aad7e7ac6f0ee53e3
   - id: verification-reference
     delivery: optional
     reference: policy-operations-evidence.md
@@ -33,6 +42,16 @@ sections:
       FortiCare or FortiGuard entitlement.
     owner: JAI firewall engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - fortigate-fortios
+      activity:
+      - firewall-policy-change
+      - os-upgrade
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: c33d57e3fcb3e11692a9d895b99c560843d19473178018937732c1774e59d4ee
 sources:
   product-source:
     publisher: Fortinet

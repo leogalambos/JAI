@@ -81,19 +81,24 @@ def _profile(controller, work_item, request_ttl_ms, limits, deadline_ms, local_b
                 'max_escalation_rounds': 10}}
 
 
-def _packaged_references(runtime, skills, rows, instructions):
-    """Load only named, digest-pinned references from the role projection."""
+def _packaged_role_context(runtime, skills, rows, instructions):
+    """Load references and section ranges from the same exact role projection."""
     manifest = runtime / 'role-composition.json'
-    index = {}
+    index, sections = {}, {}
     if manifest.exists():
         composition = lc.loads(manifest.read_bytes())
         if composition.get('schema_version') != 1 or set(composition['roles']) != set(instructions):
             raise ValueError('Packaged composition differs from the exact role catalogue')
+        inventory = composition.get('knowledge_sections', {})
+        if any(not item.get('classified') for item in inventory.values()):
+            raise ValueError('Packaged composition contains unclassified role knowledge')
         for row in rows:
             slug = row['slug']
             role = composition['roles'][slug]
             if hashlib.sha256(instructions[slug]).hexdigest() != role['instruction_sha256']:
                 raise ValueError('Packaged role instructions differ from composition: ' + slug)
+            if role.get('context_sections'):
+                sections[slug] = role['context_sections']
             prefix = '.ai/skills/' + row['skill'] + '/references/'
             for module in role['modules']:
                 for section in module['sections']:
@@ -105,7 +110,7 @@ def _packaged_references(runtime, skills, rows, instructions):
     else:
         source = runtime / 'knowledge/infrastructure-role-guidance.json'
         if not source.exists():
-            return None
+            return {}, {}
         guidance = lc.loads(source.read_bytes())
         if guidance.get('schema_version') != 1 or not isinstance(guidance.get('roles'), dict):
             raise ValueError('Invalid packaged infrastructure guidance')
@@ -125,6 +130,8 @@ def _packaged_references(runtime, skills, rows, instructions):
                     raise ValueError('Packaged role guidance does not match: ' + slug)
                 continue
             index[slug] = overlay['references']
+            if overlay.get('context_sections'):
+                sections[slug] = overlay['context_sections']
     result = {}
     for row in rows:
         slug = row['slug']
@@ -138,14 +145,13 @@ def _packaged_references(runtime, skills, rows, instructions):
             if hashlib.sha256(raw).hexdigest() != digest:
                 raise ValueError('Deferred reference differs from packaged composition: ' + name)
             result.setdefault(slug, {})[name] = raw
-    return result
-
+    return result, sections
 
 def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
               deadline_ms, model_config=None, *, human_id='L0-operator',
               destinations=(), tools=(), packet_bytes=2097152, total_bytes=8388608, local_budget=None,
               project=None, execution_profile=None, execution_context_policy=None, sabsa_row_policy=None,
-              workflow_policy=None, workflow_scopes=()):
+              workflow_policy=None, workflow_scopes=(), knowledge_scopes=()):
     """Start a new-format engagement from the actual operator's explicit inputs.
 
     Args:
@@ -161,7 +167,8 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
         execution_profile: Explicit new-run profile selection, never a resume override.
         sabsa_row_policy: Validated immutable scheduling mode and exact row prerequisite maps.
         workflow_policy: Exact reviewed policy bytes explicitly supplied for this new enrollment.
-        workflow_scopes: Exact attributable question-scope input bytes supplied by the host.
+        workflow_scopes: Exact attributable workflow question-scope bytes supplied by the host.
+        knowledge_scopes: Exact standalone question-scope input bytes supplied by the host.
         execution_context_policy: Explicit context from a current session selection;
             captured once at new-run entry, never applied on resume.
         human_id: Attribution of the current input supplier, not a verified signer.
@@ -224,11 +231,12 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
         'destination_handle': item['handle']} for item in destinations)
     capabilities['effects'].extend({'operation': 'measure', 'tool_policy': item['policy'],
         'destination_handle': None} for item in tools)
+    references, sections = _packaged_role_context(ROOT, skills, rows, instructions)
     policy = {'owner': human, 'source_role': 'policy', 'origin': human,
         'material': routing.capture_policy('host-routing', catalogue, lc.canonical(models),
             instructions, {'provider': provider, 'workload_class': 'light',
                            'model_selector': selector}, capabilities, store.put_blob,
-            workflow_policy=workflow_policy, references=_packaged_references(ROOT, skills, rows, instructions)),
+            workflow_policy=workflow_policy, references=references, context_sections=sections),
         'criteria': [], 'inherited': []}
     inputs = [('request', task), ('criteria', criteria), ('role-routing', policy)]
     if workflow_scopes and workflow_policy is None:
@@ -261,6 +269,25 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
             routing.workflow_eligibility({'owner': owner, 'responsibility': 'author',
                 'procedure_task': True, 'routing': {'workflow_scope': reference}}, snapshot, scope, reference)
             inputs.append((logical_id, record))
+    if knowledge_scopes and not sections:
+        raise ValueError('Standalone knowledge scopes require a classified role projection')
+    if knowledge_scopes and workflow_policy is None:
+        snapshot = routing.load_policy(policy, store._blob)
+    for raw in knowledge_scopes:
+        scope = lc.loads(raw)
+        owner = scope.get('owner') if isinstance(scope, dict) else None
+        if (not wire.validator('common.schema.json', 'ownership').is_valid(owner)
+                or owner['work_kind'] != 'question' or owner['work_item'] != work_item):
+            raise ValueError('Knowledge scope must identify an exact question in this work item')
+        identifier = routing.question_knowledge_scope_id(owner)
+        workflow_id = routing.procedure_scope_id(owner)
+        if any(name in {identifier, workflow_id} for name, _ in inputs):
+            raise ValueError('One attributable knowledge scope representation is allowed per question')
+        record = {'owner': human, 'source_role': 'input', 'origin': human,
+                  'material': [store.put_blob(raw)], 'criteria': [], 'inherited': []}
+        reference = _reference(store, identifier, 'source', record)
+        routing.standalone_knowledge_scope(owner, scope, reference, snapshot)
+        inputs.append((identifier, record))
     request_ttl_ms = local_budget['iteration_ms']
     profile = _profile(controller, work_item, request_ttl_ms, limits, deadline_ms, local_budget)
     bootstrap_expiry = now + request_ttl_ms
@@ -425,12 +452,14 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
     scoped = packet['execution'].get('workflow_selection')
     visible = (None if scoped is None else set(scoped['eligible'])) if selection else specialties
     instructions, categories = {}, {}
+    projected = {item['slug']: item for item in packet['execution']['instructions']}
     for row in run.execution['snapshot']['catalogue']['roles']:
         slug = row['slug']
         if visible is not None and slug not in visible:
             continue
+        detail = run.execution['snapshot']['instructions'][slug] if selection else projected[slug]
         instructions[slug] = add('Exact professional instruction: ' + slug,
-            run.execution['snapshot']['instructions'][slug]['text'].encode('utf-8'), ['instruction:' + slug])
+            detail['text'].encode('utf-8'), ['instruction:' + slug])
         if selection:
             detail = add('Complete catalogue record: ' + slug, row, ['catalogue'])
             entry = {key: copy.deepcopy(row[key]) for key in
@@ -600,8 +629,16 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
             workforce_body['deferred_references'] = [
                 {'handle': handle, 'path': handle.split(':', 2)[2]}
                 for handle in packet['execution']['deferred_references']]
+        if packet['execution'].get('knowledge_lookup'):
+            workforce_body['knowledge_lookup'] = {
+                'handle': packet['execution']['knowledge_lookup'],
+                'rule': 'If additional knowledge is relevant, use read(handle) to find eligible references.',
+            }
+    scoped_work = (not selection and
+                   run.execution['snapshot']['descriptor']['protocol'] == routing.CONTEXT_PROTOCOL)
+    workforce_sources = ['catalogue'] if selection else ['instruction:' + slug for slug in sorted(specialties)]
     workforce = add('Exact staffing/model availability', workforce_body,
-                    ['catalogue'] if selection else ['instruction:' + slug for slug in sorted(specialties)])
+                    () if scoped_work else workforce_sources, procedure=scoped_work)
     selection_context = None
     if kind == 'selection' and getattr(session, 'single_member', False):
         # Carry a short authored mandate for immediate staffing. Source material

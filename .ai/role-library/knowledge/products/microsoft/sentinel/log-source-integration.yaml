@@ -17,6 +17,16 @@ sections:
     exclusions: Unverified connector, content pack or regional support and independent acceptance authority.
     owner: JAI security engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - sentinel
+      activity:
+      - siem-parser-review
+      - siem-source-onboarding
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: ebc6a3b7c7f98132f015fc4d537dd3b416bba1d49b3e6d2a43efb2fca1edd80b
   - id: verification-reference
     delivery: optional
     reference: log-source-integration-evidence.md
@@ -27,6 +37,16 @@ sections:
     exclusions: Unverified connector, content pack or regional support and independent acceptance authority.
     owner: JAI security engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - sentinel
+      activity:
+      - siem-source-compatibility
+      - siem-source-onboarding
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: f207d016cc1e98cfdd1d229bf300b69bea2fc229fb65b458e45eabb4031e995d
 sources:
   product-source:
     publisher: Microsoft

@@ -3,9 +3,8 @@
 
 # Microsoft Azure cloud infrastructure and landing-zone evidence
 
-AWS, Microsoft Azure or Google Cloud architecture and engineering in a bounded target environment.
+Microsoft Azure architecture and engineering in a bounded target environment.
 
 Pin tenant, management group, subscription and region. Map placement, policy assignment and exceptions to hierarchy. Document network, identity, logging and service ownership with the applicable Azure landing-zone decisions.
 
 [Azure landing zone](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/)
-

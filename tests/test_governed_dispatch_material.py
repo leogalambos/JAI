@@ -4,7 +4,7 @@
 """Packet assembly preserves the exact material availability/error boundary."""
 import pytest
 
-import lifecycle as lc
+from governed_fixtures import lc
 import governed_dispatch as dispatch
 
 
@@ -32,7 +32,7 @@ def test_assembly_translates_missing_material_but_preserves_integrity(tmp_path, 
         path.write_bytes(b'Changed input')
     runner = object.__new__(dispatch.Dispatcher)
     runner.store = store
-    reference = {'scope': 'default', 'version_id': 'a' * 64}
+    reference = {'scope': 'default', 'logical_id': 'input', 'version_id': 'a' * 64}
     context = {'assignment': reference, 'effects': [], 'attachments': []}
     state = _PacketState({'material': [identifier]})
     expected = dispatch.DispatchError if condition == 'missing' else lc.ERROR

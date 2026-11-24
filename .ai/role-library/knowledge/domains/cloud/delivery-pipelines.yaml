@@ -5,23 +5,28 @@ schema_version: 1
 id: domains/cloud/delivery-pipelines
 title: Governed cloud delivery pipelines
 version: 1.0.0
-applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
-  or Google Cloud target.
+applicability: Repository-to-deployment engineering and review for the declared delivery boundary.
 sections:
-- source: aws
-  applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
-    or Google Cloud target.
+- source: common
+  applicability: Repository-to-deployment engineering and review for the declared delivery boundary.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
   id: scoped-guidance
   delivery: optional
   reference: delivery-pipelines.md
-  read_when: The assignment builds, promotes, deploys or verifies an AWS, Azure DevOps or Google Cloud
-    delivery pipeline.
+  read_when: The assigned work needs the common evidence chain for the declared boundary.
+  scope:
+    task:
+    - normal/aws
+    - normal/azure
+    - normal/google-cloud
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 856b6c2f183094a474c68fbaf4a46a2d0c195006b090e36d7aa3ceccf76bcbae
 - source: aws
-  applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
-    or Google Cloud target.
+  applicability: AWS work for the exact declared boundary and supported mechanism.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
@@ -29,9 +34,15 @@ sections:
   delivery: optional
   reference: delivery-pipelines-aws.md
   read_when: The assignment concerns AWS and requires governed cloud delivery pipelines.
+  scope:
+    task:
+    - normal/aws
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 56f2b6df628857064dc29bd58980a26645ae5418c0dcc9626b65db40e7ba1c71
 - source: azure
-  applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
-    or Google Cloud target.
+  applicability: Microsoft Azure work for the exact declared boundary and supported mechanism.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
@@ -39,9 +50,15 @@ sections:
   delivery: optional
   reference: delivery-pipelines-azure.md
   read_when: The assignment concerns Microsoft Azure and requires governed cloud delivery pipelines.
+  scope:
+    task:
+    - normal/azure
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: e7b4b365b8032f805a0b89ba34d1c5b8143e03490661ae03ffaddf793d01fc72
 - source: google
-  applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
-    or Google Cloud target.
+  applicability: Google Cloud work for the exact declared boundary and supported mechanism.
   exclusions: Execution authority and independent acceptance.
   owner: JAI infrastructure and security practice maintainers
   reviewed: '2026-11-24'
@@ -49,37 +66,51 @@ sections:
   delivery: optional
   reference: delivery-pipelines-google-cloud.md
   read_when: The assignment concerns Google Cloud and requires governed cloud delivery pipelines.
+  scope:
+    task:
+    - normal/google-cloud
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 5fb9912be45ca30255db260f051bfbecbd96b1174a94dfdf5c90e0c6ba25b404
 sources:
   aws:
     publisher: AWS
     authority: Primary publication
     title: Amazon ECS standard deployment action
     url: https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference-ECS.html
-    applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
-      or Google Cloud target.
+    applicability: AWS work for the exact declared boundary and supported mechanism.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
-    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+    review_trigger: the exact target or supported mechanism changes
   azure:
     publisher: Microsoft
     authority: Primary publication
     title: Azure Pipelines approvals and checks
     url: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals
-    applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
-      or Google Cloud target.
+    applicability: Microsoft Azure work for the exact declared boundary and supported mechanism.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
-    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+    review_trigger: the exact target or supported mechanism changes
   google:
     publisher: Google Cloud
     authority: Primary publication
     title: Deploy your application
     url: https://docs.cloud.google.com/deploy/docs/deploying-application
-    applicability: Repository-to-deployment CI/CD using an explicitly supported AWS, Azure DevOps Services
-      or Google Cloud target.
+    applicability: Google Cloud work for the exact declared boundary and supported mechanism.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
-    review_trigger: Recheck on a source revision or a change to the selected platform, deployment or use.
+    review_trigger: the exact target or supported mechanism changes
+  common:
+    publisher: JAI
+    authority: Canonical workflow policy
+    title: Governed cloud delivery pipelines
+    applicability: Repository-to-deployment engineering and review for the declared delivery boundary.
+    owner: JAI infrastructure and security practice maintainers
+    reviewed: '2026-11-24'
+    use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
+    review_trigger: the governed workflow or common evidence obligations change
+    locator: .ai/runtime/workflows.json

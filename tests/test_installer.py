@@ -442,8 +442,16 @@ def test_infrastructure_guidance_matches_composed_native_role_references(tmp_pat
     assert len(guidance['roles']) == 12
     for path in guidance['roles']:
         slug = Path(path).stem
-        for home in homes:
-            assert outputs[str(home / path)] == compilation.instructions[slug]
+        assert outputs[str(homes[0] / path)] == compilation.instructions[slug]
+        for home in homes[1:]:
+            direct = outputs[str(home / path)]
+            link = f'knowledge/direct/{slug}.md'
+            assert direct.startswith((ROOT / '.ai' / path).read_bytes())
+            assert link.encode() in direct
+            index = outputs[str(home / Path(path).parent / link)]
+            for reference in guidance['roles'][path]['references']:
+                assert reference.encode() not in direct
+                assert ('../' + reference.removeprefix('knowledge/')).encode() in index
     for path, text in guidance['references'].items():
         assert text.encode() == compilation.files['.ai/' + path]
         for home in homes:

@@ -20,6 +20,15 @@ sections:
     exclusions: Interim releases and unverified Ubuntu Pro service or package coverage.
     owner: JAI linux systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - ubuntu-server-lts
+      activity:
+      - os-maintenance
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: e458dbbd24bd53c87a368f8c54388cede6379d9e089abce9eb39e1ba1a1116ab
   - id: verification-reference
     delivery: optional
     reference: lifecycle-evidence.md
@@ -31,6 +40,15 @@ sections:
     exclusions: Interim releases and unverified Ubuntu Pro service or package coverage.
     owner: JAI linux systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - ubuntu-server-lts
+      activity:
+      - os-maintenance
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 4ffcd1d386cea047b407b752bf2f2430c3a420b259a0b75539202084dce21300
 sources:
   product-source:
     publisher: Canonical

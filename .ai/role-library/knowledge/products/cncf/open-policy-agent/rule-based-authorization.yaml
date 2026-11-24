@@ -21,6 +21,15 @@ sections:
     commercial support.
   owner: JAI IAM engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - open-policy-agent
+    activity:
+    - decision-integration
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 310d0650f13037f598d502cb7affb378ca1486b7d0bf5d03b0f616859c3b837b
 - id: decision-evidence
   delivery: required
   text: Link observed decisions to the active policy revision and the decision identifier when available.
@@ -33,6 +42,15 @@ sections:
     commercial support.
   owner: JAI IAM engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - open-policy-agent
+    activity:
+    - decision-observability
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 379df66ab9a57d04a2fb54a6627650ae91051eff9208be34b490222e722c1b5f
 - id: policy-operations-reference
   delivery: optional
   reference: policy-operations-evidence.md
@@ -44,6 +62,17 @@ sections:
     commercial support.
   owner: JAI IAM engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - open-policy-agent
+    activity:
+    - decision-integration
+    - decision-observability
+    - policy-rollout
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 0f4effe7815fea7e5159eb81fe0d6606d4ace10740ef566e2b0f4032f45e093d
 sources:
   opa-integration:
     publisher: Open Policy Agent maintainers

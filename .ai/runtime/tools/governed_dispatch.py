@@ -290,6 +290,8 @@ class Dispatcher:
         readable = [ref for effect in context['effects'] if effect['operation'] == 'read' for ref in effect['targets']]
         manifest, attachments, handles = [], [], {}
         for reference, use_scope in references:
+            if reference['logical_id'].startswith(routing.QUESTION_KNOWLEDGE_PREFIX):
+                continue
             if any(item['ref'] == reference and item['use_scope'] == use_scope for item in manifest):
                 continue
             record = state.resolve(reference)
@@ -326,9 +328,7 @@ class Dispatcher:
                   'manifest': manifest, 'attachments': attachments,
                   'ready_basis': copy.deepcopy(context['ready_basis'])}
         snapshot = execution['snapshot']
-        self.intrinsic_handles = {'catalogue': snapshot['descriptor']['catalogue_blob_id']}
-        self.intrinsic_handles.update({'instruction:' + slug: identifier
-                                      for slug, identifier in snapshot['descriptor']['instruction_blobs'].items()})
+        self.intrinsic_handles = routing.instruction_handles(execution, self.store.put_blob)
         packet['catalogue'] = {'handle': 'catalogue', 'blob_id': snapshot['descriptor']['catalogue_blob_id'],
                                'instruction_prefix': 'instruction:'}
         packet['execution'] = {'phase': execution['phase'], 'policy_use': execution['policy_use'],
@@ -358,6 +358,13 @@ class Dispatcher:
                 raise DispatchError('P_CONFLICT', 'Deferred reference collides with an assignment input handle')
             self.intrinsic_handles.update(deferred)
             packet['execution']['deferred_references'] = deferred
+        discovery, lookup = routing.discovered_knowledge_handles(execution)
+        if lookup is not None:
+            if discovery.keys() & (handles.keys() | self.intrinsic_handles.keys()):
+                raise DispatchError('P_CONFLICT', 'Knowledge discovery collides with an existing handle')
+            self.store.put_blob(lookup)
+            self.intrinsic_handles.update(discovery)
+            packet['execution']['knowledge_lookup'] = next(iter(discovery))
         feedback = state.assignment_feedback(assignment, live=True)
         if feedback:
             packet['historical_feedback'] = feedback
@@ -621,9 +628,14 @@ class Dispatcher:
         catalogue = folder / 'catalogue'
         (catalogue / 'instructions').mkdir(parents=True)
         snapshot = self.execution['snapshot']
-        (catalogue / 'catalogue.json').write_bytes(self.store._blob(snapshot['descriptor']['catalogue_blob_id']))
-        for slug, instruction in snapshot['instructions'].items():
-            (catalogue / 'instructions' / (slug + '.md')).write_bytes(self.store._blob(instruction['blob_id']))
+        if self.execution['phase'] == 'work' and snapshot['descriptor']['protocol'] == routing.CONTEXT_PROTOCOL:
+            for instruction in self.execution['instructions']:
+                (catalogue / 'instructions' / (instruction['slug'] + '.md')).write_text(
+                    instruction['text'], encoding='utf-8')
+        else:
+            (catalogue / 'catalogue.json').write_bytes(self.store._blob(snapshot['descriptor']['catalogue_blob_id']))
+            for slug, instruction in snapshot['instructions'].items():
+                (catalogue / 'instructions' / (slug + '.md')).write_bytes(self.store._blob(instruction['blob_id']))
         filter_path = folder / 'filter.bpf'
         _seccomp(filter_path)
         command = [backend, '--die-with-parent', '--new-session', '--unshare-user', '--unshare-pid',

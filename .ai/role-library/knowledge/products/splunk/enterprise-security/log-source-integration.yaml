@@ -22,6 +22,16 @@ sections:
     combinations.
   owner: JAI security engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - splunk-enterprise-security
+    activity:
+    - siem-source-compatibility
+    - siem-source-onboarding
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: d4466f987e82800e5b5b78fa60fb0e1492efcd665f7f0402a7a25b448d93fccd
 - id: enterprise-security-reference
   delivery: optional
   reference: enterprise-security-evidence.md
@@ -33,6 +43,17 @@ sections:
     combinations.
   owner: JAI security engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - splunk-enterprise-security
+    activity:
+    - siem-model-performance
+    - siem-parser-review
+    - siem-source-onboarding
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: f5afcf4c19f6200384c6594cc11f7bf3a0d14e8dbdaae5d5a49cd0079106b346
 sources:
   splunk-es-compatibility:
     publisher: Splunk

@@ -21,6 +21,15 @@ sections:
       alone.
     owner: JAI linux systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - red-hat-enterprise-linux
+      activity:
+      - os-maintenance
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 73903a768e1c2f512dff05784e112d7cf93150d3b51288ed65153260d78dd77e
   - id: verification-reference
     delivery: optional
     reference: enterprise-lifecycle-evidence.md
@@ -33,6 +42,16 @@ sections:
       alone.
     owner: JAI linux systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - red-hat-enterprise-linux
+      activity:
+      - os-maintenance
+      - os-upgrade
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: f9a5464b2adff3d47431d353df866c75e58b140c97ea798e8fd43395c7a3a098
 sources:
   product-source:
     publisher: Red Hat

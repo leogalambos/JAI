@@ -19,6 +19,15 @@ sections:
     exclusions: Testing and unstable branches, downstream distributions and unverified LTS package coverage.
     owner: JAI linux systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - debian-stable
+      activity:
+      - os-maintenance
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 67b20409249bc76da7d0287c5da2f3e2069f41c4719fb4155e6267dded3ea868
   - id: verification-reference
     delivery: optional
     reference: lifecycle-evidence.md
@@ -30,6 +39,15 @@ sections:
     exclusions: Testing and unstable branches, downstream distributions and unverified LTS package coverage.
     owner: JAI linux systems administration maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - debian-stable
+      activity:
+      - os-maintenance
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 6099e5a65a5778547480c0920d1a1f8136a25555cd53e3f8815414f34a5e4d27
 sources:
   product-source:
     publisher: Debian Project

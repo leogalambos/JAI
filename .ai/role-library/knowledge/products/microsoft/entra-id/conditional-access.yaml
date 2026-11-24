@@ -23,6 +23,15 @@ sections:
     state.
   owner: JAI IAM engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - microsoft-entra-id
+    activity:
+    - conditional-access-policy
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: daef27d9634c7b9301a1e2d5d22d5d2fa540b80e24d49174c02ee6a946a4327b
 - id: recovery-independence
   delivery: required
   text: Check whether emergency access remains usable during loss of the normal sign-in or privilege
@@ -35,6 +44,15 @@ sections:
     state.
   owner: JAI IAM engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - microsoft-entra-id
+    activity:
+    - conditional-access-recovery
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: d55d34a8f60ce29fc93adb30e28cfda0ea069952af0fb336ad8b29d41dd381a8
 - id: conditional-access-reference
   delivery: optional
   reference: conditional-access-evidence.md
@@ -46,6 +64,16 @@ sections:
     state.
   owner: JAI IAM engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - microsoft-entra-id
+    activity:
+    - conditional-access-policy
+    - conditional-access-recovery
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 678fb067349e3b85765345a807638460ca6ec1d5f3a02ef58b6d6b9a79571f3f
 sources:
   microsoft-conditional-access:
     publisher: Microsoft

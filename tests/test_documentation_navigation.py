@@ -412,7 +412,11 @@ def test_homepage_offers_contextual_catalogues_and_beginner_routes_without_link_
     assert '{{ JAI_WORKFLOW_COVERAGE }}' not in rendered
     assert links.render_workflow_coverage(ROOT) in rendered
     assert links.render_workflow_coverage(ROOT, handoffs=True) in rendered
-    assert links.render_role_coverage(ROOT) in rendered
+    assert links.render_workflow_coverage(ROOT, paths=True) in rendered
+    packaged = links.render_role_coverage(ROOT, packaged=True)
+    assert f'{packaged}<span>In the standard distribution</span>' in rendered
+    assert links.render_specialization_coverage(ROOT) in rendered
+    assert links.render_role_coverage(ROOT) != packaged
     assert 'href="https://github.com/team/JAI"' in rendered
 
 

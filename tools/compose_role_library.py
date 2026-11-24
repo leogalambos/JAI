@@ -216,7 +216,7 @@ def _validate_module(module, where):
     keys = {}
     for section in module['sections']:
         _closed(section, ('id', 'delivery', 'source', 'applicability', 'exclusions', 'owner', 'reviewed'),
-                ('text', 'reference', 'read_when'), f'{where}: section')
+                ('text', 'reference', 'read_when', 'scope', 'classification'), f'{where}: section')
         key = section['id']
         label = f'{where}: section {key!r}'
         _string(key, label, _SLUG)
@@ -236,10 +236,33 @@ def _validate_module(module, where):
             raise ValueError(f'{label}: required sections cannot be deferred')
         payload = 'text' if 'text' in section else 'reference'
         _string(section[payload], label, r'.+\.md' if payload == 'reference' else None)
+        if ('scope' in section) != ('classification' in section):
+            raise ValueError(f'{label}: applicability scope and classification must be paired')
+        if 'scope' in section:
+            scope = _mapping(section['scope'], f'{label}: scope')
+            _closed(scope, (), ('provider', 'product', 'method', 'responsibility', 'task', 'activity'), f'{label}: scope')
+            for dimension, values in scope.items():
+                _list(values, f'{label}: scope.{dimension}', _MODULE_ID if dimension == 'task' else _SLUG)
+                if not values:
+                    raise ValueError(f'{label}: empty scope dimension {dimension}')
+            classification = section['classification']
+            _closed(classification, ('reviewer', 'rule_version', 'binding_sha256'), (), f'{label}: classification')
+            _string(classification['reviewer'], f'{label}: reviewer')
+            if type(classification['rule_version']) is not int or classification['rule_version'] != 1:
+                raise ValueError(f'{label}: unsupported classification rule version')
+            _string(classification['binding_sha256'], f'{label}: binding digest', r'[a-f0-9]{64}')
         if key in keys and keys[key] != section:
             raise ValueError(f'{label}: conflicting section definitions')
         keys[key] = section
     module['sections'] = list(keys.values())
+    reference_modes = {}
+    for section in module['sections']:
+        if section['delivery'] != 'optional':
+            continue
+        reference = section['reference']
+        classified = 'scope' in section
+        if reference_modes.setdefault(reference, classified) != classified:
+            raise ValueError(f'{where}: cannot mix classified and unclassified uses of {reference}')
 
 
 def _order(nodes, dependencies, label):
@@ -327,7 +350,8 @@ def _obligations(chain, roles):
 
 
 def _knowledge(modules, module_order, references, row, files):
-    snippets, evidence, sources = [], [], {}
+    snippets, evidence, sources, scoped = [], [], {}, []
+    cursor = 0
     for key in module_order:
         module, owner_path, digest = modules[key]
         for source_key, source in module['sources'].items():
@@ -336,7 +360,10 @@ def _knowledge(modules, module_order, references, row, files):
                                  f'{sources[source_key][1]} and {owner_path}')
             sources.setdefault(source_key, (source, owner_path))
         sections = []
-        snippets.append(f'\n### {module["title"]}\n\nApplicability: {module["applicability"]}\n')
+        heading = f'\n### {module["title"]}\n\nApplicability: {module["applicability"]}\n'
+        if any('scope' not in section for section in module['sections']):
+            snippets.append(heading)
+            cursor += len(heading.encode('utf-8'))
         for section in module['sections']:
             sid = section['id']
             source = module['sources'][section['source']]
@@ -346,6 +373,7 @@ def _knowledge(modules, module_order, references, row, files):
             if 'reference' in section:
                 relative = section['reference']
                 raw = references[key, sid]
+                record['source_reference'] = relative
                 record['reference_sha256'] = _sha(raw)
             else:
                 raw = section['text'].encode()
@@ -367,13 +395,26 @@ def _knowledge(modules, module_order, references, row, files):
                 f'Source: {source["publisher"]}, {source["title"]} ({locator}). '
                 f'Recheck when {source["review_trigger"]}.\n'
             )
+            if 'scope' in section:
+                if section['delivery'] == 'optional':
+                    rendered = f'\n#### {sid}\n\n{content}\n'
+                rendered = heading + rendered
+                encoded = rendered.encode('utf-8')
+                scoped.append({
+                    'id': f'{key}/{sid}',
+                    'scope': {dimension: sorted(values) for dimension, values in section['scope'].items()},
+                    'reference': link if section['delivery'] == 'optional' else None,
+                    'start': cursor, 'end': cursor + len(encoded), 'sha256': _sha(encoded),
+                })
+            encoded = rendered.encode('utf-8')
             snippets.append(rendered)
-            record['rendered_section_sha256'] = _sha(rendered.encode())
+            cursor += len(encoded)
+            record['rendered_section_sha256'] = _sha(encoded)
             sections.append(record)
         evidence.append({'id': key, 'version': module['version'], 'source_path': owner_path,
                          'source_sha256': digest, 'sections': sections})
     records = {key: {'source_path': path, **record} for key, (record, path) in sorted(sources.items())}
-    return ''.join(snippets), evidence, records
+    return ''.join(snippets), evidence, records, scoped
 
 
 def _compile_role(slug, chain, roles, modules, order, row, baseline, references, files):
@@ -393,7 +434,7 @@ def _compile_role(slug, chain, roles, modules, order, row, baseline, references,
     deliverables = requirements['deliverables'].values()
     row['primary_deliverables'] = list(dict.fromkeys([*row['primary_deliverables'], *deliverables]))
     selected = _selected_modules(roots, modules, order, slug)
-    knowledge, provenance, sources = _knowledge(modules, selected, references, row, files)
+    knowledge, provenance, sources, scoped = _knowledge(modules, selected, references, row, files)
     header = (f'# {row["name"]}\n\nProfessional basis: {row["category"]}.\n\n'
               f'Assignment mission: {row["mission"]}\n\n'
               'Apply the inherited professional procedure, required inputs, deliverables, gates, '
@@ -412,10 +453,15 @@ def _compile_role(slug, chain, roles, modules, order, row, baseline, references,
     if 'extends' in roles[slug][0]:
         prefix = header.encode() + b'\n'
     instruction = prefix + baseline
+    sections = []
     if knowledge:
-        block = ('## Professional knowledge\n' + knowledge + '\n').encode()
+        heading = b'## Professional knowledge\n'
+        block = heading + knowledge.encode('utf-8') + b'\n'
         instruction = prefix + block + baseline if prefix else baseline + b'\n\n' + block
-    return instruction, provenance, {'facets': {key: sorted(values) for key, values in sorted(facets.items())},
+        offset = len(heading) + (len(prefix) if prefix else len(baseline) + 2)
+        sections = [{**entry, 'start': offset + entry['start'], 'end': offset + entry['end']}
+                    for entry in scoped]
+    return instruction, provenance, {'context_sections': sections, 'facets': {key: sorted(values) for key, values in sorted(facets.items())},
                                      'workflow_references': sorted(set(workflows)),
                                      'scope': scope, 'obligations': requirements, 'sources': sources}
 
@@ -481,12 +527,53 @@ def compose(repository_root, library_root=None):
             raise ValueError(f'{source}: a specialization requires exactly one professional parent')
     module_order = _order(modules, lambda key: modules[key][0].get('includes', []), 'knowledge module')
     references = {}
+    section_inventory = {}
+    vocabulary_path = library / 'scope-vocabulary.yaml'
+    vocabulary = {}
+    if vocabulary_path.exists():
+        vocabulary = _load_yaml(_read(library, 'scope-vocabulary.yaml'), 'scope-vocabulary.yaml')
+        _closed(vocabulary, ('schema_version', 'dimensions'), (), 'scope-vocabulary.yaml')
+        _version(vocabulary, 'scope-vocabulary.yaml')
+        vocabulary = _mapping(vocabulary['dimensions'], 'scope-vocabulary.yaml dimensions')
+        _closed(vocabulary, (), ('provider', 'product', 'method', 'responsibility', 'task', 'activity'), 'scope-vocabulary.yaml dimensions')
+        for dimension, values in vocabulary.items():
+            _list(values, f'scope-vocabulary.yaml: {dimension}', _MODULE_ID if dimension == 'task' else _SLUG)
     for module_id, (module, source, _) in modules.items():
         for section in module['sections']:
             if 'reference' in section:
                 references[module_id, section['id']] = _read(
                     library / PurePosixPath(source).parent, section['reference'], readable=True
                 )
+            identity = f'{module_id}/{section["id"]}'
+            label = f'{source}: section {section["id"]}'
+            raw = (references[module_id, section['id']] if 'reference' in section
+                   else section['text'].encode('utf-8'))
+            fingerprint = _sha(_canonical({
+                'identity': identity, 'section': section, 'content_sha256': _sha(raw),
+                'module_applicability': module['applicability'],
+                'source_record': module['sources'][section['source']],
+            }))
+            section_inventory[identity] = {
+                'source': source, 'classified': 'scope' in section, 'fingerprint': fingerprint,
+            }
+            if 'scope' not in section:
+                continue
+            scope = {key: sorted(values) for key, values in section['scope'].items()}
+            for key, values in scope.items():
+                if set(values) - set(vocabulary.get(key, ())):
+                    raise ValueError(f'{label}: unknown {key} scope value')
+            classification = section['classification']
+            presentation = {key: section[key] for key in
+                            ('source', 'applicability', 'exclusions', 'owner', 'reviewed')}
+            presentation.update(read_when=section.get('read_when'), reference=section.get('reference'),
+                                module_title=module['title'], module_applicability=module['applicability'],
+                                source_record=module['sources'][section['source']])
+            binding = {'module': module_id, 'section': section['id'], 'content_sha256': _sha(raw),
+                       'scope': scope, 'delivery': section['delivery'],
+                       'presentation_sha256': _sha(_canonical(presentation)),
+                       'rule_version': classification['rule_version']}
+            if classification['binding_sha256'] != _sha(_canonical(binding)):
+                raise ValueError(f'{label}: stale section classification')
 
     def parent(slug):
         if slug in roles and 'extends' in roles[slug][0]:
@@ -564,6 +651,7 @@ def compose(repository_root, library_root=None):
                                    'instruction_sha256': 'emitted UTF-8 role instruction bytes',
                                    'reference_sha256': 'raw UTF-8 reference file bytes',
                                    'rendered_section_sha256': 'emitted UTF-8 section bytes'},
+                'knowledge_sections': section_inventory,
                 'roles': {slug: provenance[slug] for slug in sorted(provenance)},
                 'roles_by_module': {key: sorted(reverse.get(key, [])) for key in sorted(modules)},
                 'descendants_by_role': {key: sorted(descendants[key]) for key in sorted(descendants)}}

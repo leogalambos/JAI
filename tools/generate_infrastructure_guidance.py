@@ -48,6 +48,8 @@ def _render():
             'supplement': instruction[len(baseline):].decode('utf-8'),
             'references': deferred,
         }
+        if row.get('context_sections'):
+            overlays[relative]['context_sections'] = row['context_sections']
     return json.dumps({'schema_version': 1, 'roles': overlays, 'references': references}, ensure_ascii=False, indent=2) + '\n'
 
 

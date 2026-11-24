@@ -412,7 +412,8 @@ def test_host_bwrap_lookup_preserves_confined_namespace(tmp_path, monkeypatch, a
         executable.chmod(0o755)
     monkeypatch.setenv('PATH', str(tools))
     launcher = object.__new__(dispatch.Dispatcher)
-    launcher.execution = {'snapshot': {'descriptor': {'catalogue_blob_id': 'fixture'}, 'instructions': {}}}
+    launcher.execution = {'phase': 'selection',
+                          'snapshot': {'descriptor': {'catalogue_blob_id': 'fixture'}, 'instructions': {}}}
     launcher.store = SimpleNamespace(_blob=lambda identifier: b'{}')
     monkeypatch.setattr(launcher, '_worker', lambda worker: None)
     monkeypatch.setattr(dispatch, '_seccomp', lambda path: path.write_bytes(b'disposable filter'))

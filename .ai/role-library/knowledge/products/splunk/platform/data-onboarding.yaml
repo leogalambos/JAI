@@ -20,6 +20,15 @@ sections:
     exclusions: Enterprise Security-specific correlation, risk and security operations outputs.
     owner: JAI data engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - splunk-platform
+      activity:
+      - telemetry-onboarding
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: f3f72e4d10c511fee4b037f1d89e1b6ecf15761771c1495164b0140bbbb4c3f9
   - id: verification-reference
     delivery: optional
     reference: data-onboarding-evidence.md
@@ -31,6 +40,16 @@ sections:
     exclusions: Enterprise Security-specific correlation, risk and security operations outputs.
     owner: JAI data engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - splunk-platform
+      activity:
+      - telemetry-component-upgrade
+      - telemetry-onboarding
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 09c063df7c86f73bcf05caecb6299f0f076256667cdb71147484d6c3431d9edd
 sources:
   product-source:
     publisher: Splunk

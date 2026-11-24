@@ -18,6 +18,15 @@ sections:
     exclusions: Downstream support terms, user-store redesign, and custom extension compatibility.
     owner: JAI identity engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - keycloak
+      activity:
+      - federation-change
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: abe058345b110bc318e262f1bdd06fd368c99f2a3be582de3b08730652e263bb
   - id: verification-reference
     delivery: optional
     reference: workforce-federation-evidence.md
@@ -29,6 +38,16 @@ sections:
     exclusions: Downstream support terms, user-store redesign, and custom extension compatibility.
     owner: JAI identity engineering maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - keycloak
+      activity:
+      - federation-change
+      - identity-runtime-change
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: f138a5db178f1db0256db322d430018f62854fcdb629cf4613fe007250e3c917
 sources:
   product-source:
     publisher: Keycloak maintainers

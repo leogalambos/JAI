@@ -1,12 +1,12 @@
 # Coverage matrix
 
-AI IT House {{ JAI_VERSION }} spans **{{ JAI_ROLE_COVERAGE }}**, **{{ JAI_WORKFLOW_COVERAGE }}** and **28 typed artefact classes**. The catalogues below describe the available professional scope.
+AI IT House {{ JAI_VERSION }} ships with **{{ JAI_PACKAGED_ROLE_COVERAGE }}**, **{{ JAI_WORKFLOW_COVERAGE }}** and **28 typed artefact classes**.
 
 ## Discipline coverage
 
 {{ JAI_DISCIPLINE_COVERAGE }}
 
-The table counts both professional bases and composed specializations. The full list is available in the [role catalogue](../reference/roles.md). Historical release counts remain in their release records.
+The table covers the complete source catalogue of **{{ JAI_ROLE_COVERAGE }}**, including **{{ JAI_SPECIALIZATION_COVERAGE }}**. The full list is available in the [role catalogue](../reference/roles.md). Historical release counts remain in their release records.
 
 ## Runtime/assurance coverage
 
@@ -24,7 +24,7 @@ The table counts both professional bases and composed specializations. The full 
 
 ## Workflow coverage
 
-The canonical catalogue contains **{{ JAI_WORKFLOW_HANDOFF_COVERAGE }}**. Its chains use the shared role catalogue and runtime contracts. Each defines a trigger, target outcome, responsible roles, explicit
+The canonical catalogue contains **{{ JAI_WORKFLOW_PATH_COVERAGE }}** and **{{ JAI_WORKFLOW_HANDOFF_COVERAGE }}**. Its chains use the shared role catalogue and runtime contracts. Each defines a trigger, target outcome, responsible roles, explicit
 handoffs and conditions for progression. Choose a chain for coordinated work
 without requiring the complete layered matrix; use layered delivery when the
 task needs all six layers and their local independent review.

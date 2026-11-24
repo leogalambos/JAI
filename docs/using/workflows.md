@@ -1,6 +1,6 @@
 # Enterprise workflows
 
-The enterprise library contains **24 named workflows**. A workflow connects
+The enterprise library contains **{{ JAI_WORKFLOW_COVERAGE }}** with **{{ JAI_WORKFLOW_PATH_COVERAGE }}**. A workflow connects
 roles, stages, gates and outcomes. Use this chooser after selecting your
 assurance arrangement in [How to use JAI](../examples/how-to-use-JAI/index.md).
 The `/commercial` extension adds supplier-side coordination; it is distinct
@@ -8,8 +8,8 @@ from these enterprise chains and their buyer-side sourcing processes.
 
 ## Choose by the outcome you need
 
-Use this short chooser to find a starting case. For all 24 chains, exact
-stage counts and registered outcomes, use the generated
+Use this short chooser to find a starting case. For the full list of chains, their
+stage inventories and registered outcomes, use the generated
 [workflow reference](../reference/workflows.md). Each chain retains its
 detailed page with role hand-offs, gates and an operating prompt.
 
@@ -20,6 +20,8 @@ detailed page with role hand-offs, gates and an operating prompt.
 | Migrate an existing network to Zero Trust, design a new one or assess an existing estate | [Zero Trust readiness paths](../workflow-library/design-to-operational-readiness.md#zero-trust-and-cloud-readiness). Choose migration, greenfield or independent assessment according to the starting evidence. |
 | Prepare Terraform or assess or migrate AWS, Azure or Google Cloud infrastructure | [Terraform and cloud readiness paths](../workflow-library/design-to-operational-readiness.md#zero-trust-and-cloud-readiness). Provide the exact target and intended use. |
 | Promote an artifact through AWS, Azure or Google Cloud CI/CD | [Cloud delivery paths](../workflow-library/production-change.md#cloud-delivery-paths). Supply the reviewed artifact digest, deployment target and approval evidence. |
+| Deliver and validate a mobile app | [Idea to production](../workflow-library/idea-to-production.md#context-and-mechanism-applicability), path `mobile-delivery`. |
+| Release an ABAP Cloud extension | [Production change](../workflow-library/production-change.md#context-and-mechanism-applicability), path `normal/abap-cloud`. |
 | Restore service, remove a vulnerability or validate recovery | Select incident, vulnerability or resilience work from [commented task walkthroughs](../examples/index.md); retain its evidence and emergency boundaries. |
 | Prepare a supplier proposal or select a supplier | [Proposal](../examples/proposal.md) for supplier-side work; the workflow reference's sourcing and supplier chains for buyer-side work. |
 | Govern architecture, access, change or release | Choose the corresponding chain in the [workflow reference](../reference/workflows.md). |
@@ -42,7 +44,7 @@ Use the migration-and-cutover workflow for our ERP replacement. First identify t
 
 **Human accountable roles:** supply evidence and decide on approval, risk acceptance, production change, legal obligations and other reserved business actions. Provider instructions and workflow metadata cannot substitute for those decisions.
 
-Use the grouped **Workflow library** in the navigation to open any of the 24 detailed chains. The pages specify **what the agent should coordinate** and **which human role remains accountable**; they are not 24 separate executable shell scripts. [Source to contract to service](../workflow-library/source-to-contract-to-service.md) and [Supplier onboarding](../workflow-library/supplier-onboarding.md) describe buyer-side obligations. Use [Commercial delivery](../capabilities/commercial-delivery.md) when you are the supplier preparing and delivering a proposal.
+Use the grouped **Workflow library** in the navigation to open the detailed chain pages. The pages specify **what the agent should coordinate** and **which human role remains accountable**. [Source to contract to service](../workflow-library/source-to-contract-to-service.md) and [Supplier onboarding](../workflow-library/supplier-onboarding.md) describe buyer-side obligations. Use [Commercial delivery](../capabilities/commercial-delivery.md) when you are the supplier preparing and delivering a proposal.
 
 ## How to use workflows
 
@@ -64,13 +66,15 @@ A role tells the system **who** is relevant. A workflow tells it **how** the wor
 
 ## Product scope and versioned outputs
 
-The canonical workflow catalogue includes a mobile delivery variant of
-[Idea to production](../workflow-library/idea-to-production.md) and a normal
-ABAP Cloud path in [Production change](../workflow-library/production-change.md).
-The mobile path links build and test automation evidence to the Test Analyst's
-independent verdict. The ABAP Cloud path carries the exact release candidate,
-tenant, product release and transport evidence into the existing change
-approval route.
+In `idea-to-production`, select `mobile-delivery` for a reviewed mobile build.
+Stage 14 hands build and test automation evidence to the Test Analyst at
+stage 8 for an independent verdict. Supply the immutable build identity, SDK
+and device scope and observed test results.
+
+In `production-change`, select `normal/abap-cloud` for a planned ABAP Cloud
+extension release. Stage 9 carries the exact release candidate, tenant,
+product release and transport evidence from stage 4 into change approval at
+stage 5.
 
 An enrolled compatibility profile can require a set of output contracts for
 one producer selection. The author returns separately identified outputs in the

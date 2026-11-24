@@ -19,6 +19,15 @@ sections:
     settings.
   owner: JAI IAM engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - microsoft-entra-id
+    activity:
+    - federation-trust-design
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: fc7aa12d5059a6feb6d8d60373f45170a09ae459f7ae918a84d8b8b1b46d0b58
 - id: federation-reference
   delivery: optional
   reference: federation-evidence.md
@@ -29,6 +38,17 @@ sections:
     settings.
   owner: JAI IAM engineering maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - microsoft-entra-id
+    activity:
+    - federation-recovery
+    - federation-trust-design
+    - hybrid-sign-in
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 15aa20f74c0b162ae040ef4f417538141df0c8858d48c499e310a29995a13e74
 sources:
   microsoft-hybrid-sign-in:
     publisher: Microsoft

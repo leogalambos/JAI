@@ -16,14 +16,38 @@ sections:
   delivery: optional
   reference: resource-access.md
   read_when: The assignment asks for Zero Trust resource access design, migration or independent assessment.
+  scope:
+    task:
+    - zero-trust-assessment
+    - zero-trust-greenfield
+    - zero-trust-migration
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: cd2e55280ffe241f3900498bf4914d464c1e971939ab01ab18c8fc244f1bd7ed
+- source: cisa
+  applicability: Zero Trust transition and reversal for the declared target.
+  exclusions: Execution authority and independent acceptance.
+  owner: JAI infrastructure and security practice maintainers
+  reviewed: '2026-11-24'
+  id: transition-and-reversal
+  delivery: optional
+  reference: transition-and-reversal.md
+  read_when: The assignment evaluates staged coexistence, exceptions, continuity or reversal.
+  scope:
+    task:
+    - zero-trust-migration
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: c6a1fc3c0bea487ab1bef7d4572da03f2783ee04db277a50b4ccdf01bea27cee
 sources:
   nist:
     publisher: NIST
     authority: Primary publication
     title: SP 800-207 Zero Trust Architecture
     url: https://csrc.nist.gov/pubs/sp/800/207/final
-    applicability: Resource access design, migration or independent assessment with a versioned scoped
-      baseline.
+    applicability: Resource access design, migration or independent assessment with a versioned scoped baseline.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.
@@ -33,8 +57,7 @@ sources:
     authority: Primary publication
     title: Zero Trust Maturity Model 2.0
     url: https://www.cisa.gov/resources-tools/resources/zero-trust-maturity-model
-    applicability: Resource access design, migration or independent assessment with a versioned scoped
-      baseline.
+    applicability: Resource access design, migration or independent assessment with a versioned scoped baseline.
     owner: JAI infrastructure and security practice maintainers
     reviewed: '2026-11-24'
     use_restrictions: Use public locators and original paraphrases. Check rights before importing excerpts.

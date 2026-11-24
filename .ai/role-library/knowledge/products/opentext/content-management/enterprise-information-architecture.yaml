@@ -20,6 +20,15 @@ sections:
     exclusions: OpenText Content Manager, ArcSight, deployment administration and records disposal authority.
     owner: JAI information architecture maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - content-management
+      activity:
+      - content-workspace-design
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 6dd4c0a1ddb3a909bc54b6f1089475b0349ed123a974ec87082d017302622e1f
   - id: verification-reference
     delivery: optional
     reference: enterprise-information-architecture-evidence.md
@@ -31,6 +40,16 @@ sections:
     exclusions: OpenText Content Manager, ArcSight, deployment administration and records disposal authority.
     owner: JAI information architecture maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - content-management
+      activity:
+      - content-integration-change
+      - content-workspace-design
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: d356355009e2cb1a9186116d65ee772a5b45e1cbe2c3c1ebe02ff5d37eb96f44
 sources:
   product-source:
     publisher: OpenText

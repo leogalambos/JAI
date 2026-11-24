@@ -20,6 +20,15 @@ sections:
     exclusions: Unverified desktop Analytics behavior, tenant configuration and business authority.
     owner: JAI internal audit maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - diligent-one-platform
+      activity:
+      - evidence-workpapers
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 1b7ae0bd41d7d47063ad6142a972581ade97cefc5896b9d388b6390a77b64741
   - id: verification-reference
     delivery: optional
     reference: highbond-evidence-evidence.md
@@ -31,6 +40,15 @@ sections:
     exclusions: Unverified desktop Analytics behavior, tenant configuration and business authority.
     owner: JAI internal audit maintainers
     reviewed: '2026-11-23'
+    scope:
+      product:
+      - diligent-one-platform
+      activity:
+      - evidence-workpapers
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 44bcbdbfeeccf586202bd221fdf70ed6ebd79bff80204c2349aa4ee3507e8d2f
 sources:
   product-source:
     publisher: Diligent

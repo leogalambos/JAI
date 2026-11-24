@@ -21,6 +21,15 @@ sections:
       own work.
     reviewed: '2026-11-24'
     owner: JAI test automation maintainers
+    scope:
+      product:
+      - android
+      activity:
+      - android-test-planning
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 5f1e2bb150d6cf21158cbbb1abea4cf63f1492b5ffe9a5c4012ff7bf8d6ee834
   - id: reliable-results
     delivery: required
     source: testing
@@ -33,6 +42,16 @@ sections:
       own work.
     reviewed: '2026-11-24'
     owner: JAI test automation maintainers
+    scope:
+      product:
+      - android
+      activity:
+      - android-test-execution
+      - android-test-reporting
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 1e87c186babc8b27a19d35a1dbaa3a5fd8b07a151a7441b1b1fa35b5c0a444b9
   - id: verification-reference
     delivery: optional
     source: testing
@@ -45,6 +64,16 @@ sections:
       own work.
     reviewed: '2026-11-24'
     owner: JAI test automation maintainers
+    scope:
+      product:
+      - android
+      activity:
+      - android-test-execution
+      - android-test-planning
+    classification:
+      reviewer: Codebase Reviewer (reviewed applicability assessment)
+      rule_version: 1
+      binding_sha256: 5f2d07ba9a8175cf40a6b8700d19777fb4f83d7ba5473cf17c71b88c960c24dd
 sources:
   testing:
     publisher: Google

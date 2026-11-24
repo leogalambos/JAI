@@ -2265,6 +2265,30 @@ class State:
             scope = loads(self._validation_bytes(scope_source['material'][0], live))
             selected['workflow_selection'] = governed_routing.workflow_eligibility(
                 record, snapshot, scope, workflow_scope)
+        if (snapshot['descriptor']['protocol'] == governed_routing.CONTEXT_PROTOCOL
+                and record['owner']['work_kind'] == 'question'):
+            identifier = governed_routing.question_knowledge_scope_id(record['owner'])
+            current = self.sources.get((record['use_scope'], identifier))
+            points = {}
+            for path, reference in _reference_paths(record):
+                if path.startswith(('/inputs/', '/inherited/')) and reference['logical_id'] == identifier:
+                    point = self._assignment_use(record, path, reference)
+                    points[canonical(point)] = point
+            if points or live and current is not None:
+                if workflow_scope is not None:
+                    raise ERROR('P_SCOPE', 'Question cannot mix standalone and workflow knowledge scopes')
+                if len(points) != 1:
+                    raise ERROR('P_SCOPE', 'Standalone knowledge scope needs one entitled assignment input')
+                point, = points.values()
+                reference = point['ref']
+                source = self.resolve(reference, 'source')
+                if ((live and reference != current) or not self._governing_input(point, live)
+                        or source['source_role'] != 'input' or source['owner'].get('kind') != 'authority'
+                        or source['origin'] != source['owner'] or len(source['material']) != 1):
+                    raise ERROR('P_SCOPE', 'Standalone knowledge scope requires one current attributable input')
+                scope = loads(self._validation_bytes(source['material'][0], live))
+                selected['knowledge_scope'] = governed_routing.standalone_knowledge_scope(
+                    record['owner'], scope, reference, snapshot)
         return selected
 
     def context_execution(self, context, live=True):
@@ -2309,7 +2333,7 @@ class State:
             raise ERROR('P_ORIGIN', 'Work choice is not from this exact local entity selection run')
         self._governing_grants(self._revision_grant(reference, assignment['use_scope']), live)
         selected = governed_routing.select_execution(assignment, available['snapshot'], choice,
-            workflow_selection=available.get('workflow_selection'))
+            workflow_selection=available.get('workflow_selection'), knowledge_scope=available.get('knowledge_scope'))
         import professional_review
         professional_review.enforce(self, assignment, available['snapshot'], choice, live=live)
         return {**selected, 'phase': 'work', 'selection': reference, 'policy_use': available['policy_use'],
@@ -3051,9 +3075,25 @@ class State:
         if deferred.keys() & handles.keys():
             raise ERROR('P_CONFLICT', 'Deferred reference collides with a native input handle')
         handles.update(deferred)
-        handles['catalogue'] = descriptor['catalogue_blob_id']
+        discovery, lookup = governed_routing.discovered_knowledge_handles(execution)
+        lookup_handle = next(iter(discovery), None)
+        if packet['execution'].get('knowledge_lookup') != lookup_handle:
+            raise ERROR('P_SCOPE', 'Native knowledge lookup differs from the selected work entitlement')
+        if discovery.keys() & handles.keys():
+            raise ERROR('P_CONFLICT', 'Knowledge lookup collides with a native input handle')
+        if lookup is not None and self._validation_bytes(discovery[lookup_handle], live) != lookup:
+            raise ERROR('P_PROOF', 'Captured knowledge lookup differs from the bounded scope')
+        handles.update(discovery)
+        scoped_work = execution['phase'] == 'work' and descriptor['protocol'] == governed_routing.CONTEXT_PROTOCOL
+        if scoped_work:
+            if packet['execution'].get('instructions') != execution['instructions']:
+                raise ERROR('P_SCOPE', 'Native instructions differ from the exact scoped projection')
+            instruction_blobs = {item['slug']: item['blob_id'] for item in execution['instructions']}
+        else:
+            handles['catalogue'] = descriptor['catalogue_blob_id']
+            instruction_blobs = descriptor['instruction_blobs']
         facts = {'handles': handles, 'allowed_blobs': sorted(allowed),
-                 'instruction_blobs': descriptor['instruction_blobs']}
+                 'instruction_blobs': instruction_blobs}
         if delivery is not None:
             if (not isinstance(delivery, dict) or set(delivery) != {'manifest_blob_id', 'prompt_blob_id'}):
                 raise ERROR('P_SCHEMA', 'Host delivery must identify its exact captured manifest and prompt')
@@ -3069,12 +3109,13 @@ class State:
                     or prompt.get('delivery_manifest') != 'resource:' + delivery['manifest_blob_id']
                     or prompt.get('active_provider') != binding['provider']):
                 raise ERROR('P_ORIGIN', 'Host delivery differs from its exact canonical input packet')
-            entitled = set(handles) | {'instruction:' + slug for slug in descriptor['instruction_blobs']}
+            entitled = set(handles) | {'instruction:' + slug for slug in instruction_blobs}
             presentation = {'resource:' + delivery['manifest_blob_id']: delivery['manifest_blob_id']}
             for item in manifest['resources']:
                 if (not isinstance(item, dict) or set(item) != {'handle', 'blob_id', 'label', 'kind',
                         'source_handles', 'runtime', 'path', 'byte_length'}
                         or not isinstance(item['blob_id'], str)
+                        or not isinstance(item['label'], str)
                         or not isinstance(item['source_handles'], list)
                         or any(not isinstance(source, str) for source in item['source_handles'])
                         or item['handle'] != 'resource:' + item['blob_id']
@@ -3089,6 +3130,12 @@ class State:
                 else:
                     raise ERROR('P_SCHEMA', 'Unknown host presentation provenance')
                 raw_resource = self._validation_bytes(item['blob_id'], live)
+                if scoped_work and any(
+                    source.startswith('instruction:')
+                    and item['blob_id'] != instruction_blobs.get(source.removeprefix('instruction:'))
+                    for source in item['source_handles']
+                ):
+                    raise ERROR('P_SCOPE', 'Presented instruction differs from the scoped bytes')
                 if type(item['byte_length']) is not int or item['byte_length'] != len(raw_resource):
                     raise ERROR('P_IDENTITY', 'Captured presentation resource length differs from its bytes')
                 presentation[item['handle']] = item['blob_id']
@@ -3904,7 +3951,7 @@ class State:
                 raise ERROR('P_SCOPE', 'Only the actual local selection run may choose its own execution')
             available = self._assignment_routing(assignment, live)
             governed_routing.select_execution(assignment, available['snapshot'], payload,
-                workflow_selection=available.get('workflow_selection'))
+                workflow_selection=available.get('workflow_selection'), knowledge_scope=available.get('knowledge_scope'))
             import professional_review
             professional_review.enforce(self, assignment, available['snapshot'], payload, live=live,
                 replay_conflict=context['run_id'] in self._replay_review_conflicts)

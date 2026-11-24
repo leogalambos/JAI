@@ -18,6 +18,15 @@ sections:
   exclusions: Customer identity tenants and non-Entra identity platforms.
   owner: JAI IAM architecture maintainers
   reviewed: '2026-11-23'
+  scope:
+    product:
+    - microsoft-entra-id
+    activity:
+    - hybrid-sign-in
+  classification:
+    reviewer: Codebase Reviewer (reviewed applicability assessment)
+    rule_version: 1
+    binding_sha256: 18c441ca55614a506ebe78ff858df36aeead0cba46cb3b68843aa9dcdffcbaab
 sources:
   microsoft-hybrid-method-comparison:
     publisher: Microsoft

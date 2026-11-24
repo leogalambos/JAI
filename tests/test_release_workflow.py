@@ -48,6 +48,9 @@ def test_publication_requires_release_tag_and_successful_validation_job():
     assert commands.count('tools/generate_content_workflows.py --check') == 1
     source_validation = (ROOT / '.github/workflows/validate-library.yml').read_text()
     assert source_validation.count('tools/generate_content_workflows.py --check') == 1
+    role_check = 'python3 tools/validate_role_library.py --root .'
+    assert commands.count(role_check) == 1
+    assert source_validation.count(role_check) == 1
     assert source_validation.count('generate_output_contract_docs.py --root . --check') == 1
     reference_check = 'tools/generate_reference_completion.py --root . --role-examples --check'
     assert commands.count(reference_check) == 1
@@ -91,13 +94,21 @@ def test_pages_build_checks_generated_catalogues_and_runs_on_their_source_change
                            'tools/workflow_professional_definitions.py',
                            '.ai/runtime/content/**',
                            '.ai/runtime/artifacts/contracts/**',
-                           '.ai/runtime/tools/content_spec.py'):
+                           '.ai/runtime/tools/content_spec.py',
+                           '.ai/role-library/**',
+                           'tools/compose_role_library.py',
+                           'tools/generate_infrastructure_guidance.py',
+                           '.ai/runtime/knowledge/infrastructure-role-guidance.json',
+                           '.ai/runtime/tools/infrastructure_workflow_definitions.py',
+                           '.ai/runtime/tools/content_workflow.py'):
             assert dependency in paths
     steps = workflow['jobs']['build']['steps']
     commands = '\n'.join(step.get('run', '') for step in steps)
     for generator in ('generate_output_contract_docs.py', 'generate_workflow_diagrams.py'):
         assert commands.count(f'python tools/{generator} --root . --check') == 1
     assert commands.count('python tools/generate_reference_completion.py --root . --role-examples --check') == 1
+    for generator in ('generate_content_workflows.py', 'generate_infrastructure_guidance.py'):
+        assert commands.count(f'python tools/{generator} --check') == 1
     assert '-r requirements.txt' in commands
     assert '-r requirements-ci.txt' not in commands
     assert '-m pytest' not in commands

@@ -236,7 +236,7 @@ def _project_infrastructure_guidance(pkg, providers, ai_house, claude_home, code
             modes[destination] = 0o644
     for relative, overlay in guidance['roles'].items():
         if (not re.fullmatch(r'skills/it-roles-[a-z0-9-]+/references/[a-z0-9-]+\.md', relative)
-                or not isinstance(overlay, dict) or set(overlay) != {'baseline', 'supplement', 'references'}
+                or not isinstance(overlay, dict) or set(overlay) - {'context_sections'} != {'baseline', 'supplement', 'references'}
                 or not isinstance(overlay['supplement'], str) or not overlay['supplement']):
             raise ValueError('Invalid infrastructure role guidance entry')
         for home in homes:
@@ -244,7 +244,30 @@ def _project_infrastructure_guidance(pkg, providers, ai_house, claude_home, code
             baseline = outputs.get(destination)
             if baseline is None or sha_bytes(baseline) != overlay['baseline']:
                 raise ValueError(f'Infrastructure role baseline changed: {relative}')
-            outputs[destination] = baseline + overlay['supplement'].encode('utf-8')
+            supplement = overlay['supplement'].encode('utf-8')
+            if home == ai_house or not overlay.get('context_sections'):
+                outputs[destination] = baseline + supplement
+                continue
+            # The provider-host role file is loaded outside JAI's scoped broker.
+            # Publish a single discovery link there and keep exact runtime bytes in the house.
+            role = Path(relative).stem
+            index_name = f'knowledge/direct/{role}.md'
+            index = Path(relative).parent / index_name
+            index_destination = str(home / index)
+            if index_destination in outputs:
+                raise ValueError(f'Direct role knowledge index collides: {index}')
+            outputs[index_destination] = (
+                '# Task-specific professional knowledge\n\n'
+                'Read a reference only if the assigned work needs its exact scope.\n\n'
+                + '\n'.join(f'- [{Path(name).stem}](../{name.removeprefix("knowledge/")})'
+                            for name in sorted(overlay['references']))
+                + '\n'
+            ).encode('utf-8')
+            modes[index_destination] = 0o644
+            outputs[destination] = baseline + (
+                '\n\nIf the assignment needs technology-specific guidance, first consult '
+                f'[the reference index]({index_name}).\n'
+            ).encode('utf-8')
 
 
 def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry):

@@ -22,9 +22,3 @@ Assign ownership of a versioned and access-controlled state backend. Confirm tha
 Validate and review the saved plan before effect. Bind its digest to the source and provider lock file, state identity, target environment and reviewed change scope. Replan after drift or a changed input. Apply the exact saved plan only with applicable prior authority and collect reconciliation and recovery evidence.
 
 [Terraform state locking](https://developer.hashicorp.com/terraform/language/state/locking)
-
-## Alternative
-
-Identify OpenTofu separately when selected. Recheck providers, state and plan compatibility, encryption and the applicable licenses for exact tool and module versions. Treat compatible configurations as evidence to verify rather than a portability assurance.
-
-[OpenTofu introduction](https://opentofu.org/docs/intro/)
