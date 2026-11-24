@@ -36,6 +36,7 @@ execution order for each path, including variant-specific stages.
 | [SIAM / multi-supplier service integration](../workflow-library/siam-multi-supplier.md) | A service depends on multiple suppliers/teams and end-to-end accountability, OLAs, incidents, problems, changes or acceptance are fragmented across boundaries. | One governed service-integration model joins supplier responsibilities into end-to-end service outcomes with measurable SLAs/OLAs, clear process ownership and cross-supplier escalation. |
 | [Enterprise release orchestration](../workflow-library/enterprise-release-orchestration.md) | Multiple products/platforms/suppliers must release into a shared business/technology environment and need one dependency, readiness and go/no-go process. | The integrated release is sequenced, independently readiness-checked, authorised, executed by technical owners, validated and closed with measurable release performance. |
 | [Regulatory change to assurance](../workflow-library/regulatory-change-to-assurance.md) | A new or changed law, regulation, supervisory expectation or contractual compliance obligation may affect IS/IT services, controls or architecture. | Applicability and obligations are translated into traceable requirements/controls, architecture and remediation changes are implemented, evidence is independently assured, and closure is authorised. |
+| [DAST integration and control assurance for containerised delivery](../workflow-library/dast-control-assurance.md) | An existing containerised CI/CD pipeline needs a DAST control introduced, qualified, reassessed or evaluated for release. | An implemented and qualified DAST integration with operational takeover, or a bounded qualification, release evidence or continuous assurance decision. |
 
 ## Idea to production
 
@@ -999,4 +1000,74 @@ execution order for each path, including variant-specific stages.
    **Output specifications:** [`compliance-officer-technology:2`](output-contracts/role-compliance-officer-technology.md#output-compliance-officer-technology-2); [handoff/regulatory-change-to-assurance:10](output-contracts/workflow-regulatory-change-to-assurance.md#output-handoff-regulatory-change-to-assurance-10)
 
 [Roles, activities and acceptance gates for this chain](../workflow-library/regulatory-change-to-assurance.md#workflow-steps-and-gates).
+
+## DAST integration and control assurance for containerised delivery
+
+**Workflow key:** `dast-control-assurance`.
+
+**Start when:** An existing containerised CI/CD pipeline needs a DAST control introduced, qualified, reassessed or evaluated for release.
+
+**Expected result:** An implemented and qualified DAST integration with operational takeover, or a bounded qualification, release evidence or continuous assurance decision.
+
+**Concrete stage outputs and receiving conditions:**
+
+1. **Solution Architect:** readiness and deployment decision.
+   **Receiving condition:** The application owner, policy and scope are identified. The deployment decision records feasibility evidence, trust boundaries, gateway and backend perspectives, and limitations.
+   **Output specifications:** [`solution-architect:4`](output-contracts/role-solution-architect.md#output-solution-architect-4); [handoff/dast-control-assurance:1](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-1)
+2. **Security Architect:** security architecture and traceability baseline.
+   **Receiving condition:** Each mandatory scenario traces to a versioned requirement, expected evidence and accountable control. Gaps have an owner and disposition.
+   **Output specifications:** [`security-architect:1`](output-contracts/role-security-architect.md#output-security-architect-1); [handoff/dast-control-assurance:2](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-2)
+3. **Control Owner:** control qualification dossier.
+   **Receiving condition:** The dossier records actual positive and negative observations, identity and session evidence, independent coverage denominators, cleanup and concurrency, and a protected release path. Unmet requirements remain visible.
+   **Output specifications:** [`control-owner:2`](output-contracts/role-control-owner.md#output-control-owner-2); [handoff/dast-control-assurance:3](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-3)
+4. **Internal IT Auditor:** independent security assessment.
+   **Receiving condition:** The reviewer is independent of design and implementation. Findings cite criteria and observed evidence, including qualification and release enforcement limitations.
+   **Output specifications:** [`internal-it-auditor:3`](output-contracts/role-internal-it-auditor.md#output-internal-it-auditor-3); [handoff/dast-control-assurance:4](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-4)
+5. **Named authority:** formal security acceptance record.
+   **Receiving condition:** The decision binds the exact independently reviewed qualification, scope and conditions. Missing or rejected authority blocks acceptance.
+   **Output specifications:** [handoff/dast-control-assurance:5](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-5); [dast-control-assurance:5](output-contracts/workflow-dast-control-assurance.md#output-dast-control-assurance-5)
+6. **Control Owner:** release evidence assessment.
+   **Receiving condition:** Evidence must bind the observed deployment, approved profile, identity, run and policy to the exact candidate. Missing, stale, out-of-scope or untrusted evidence cannot support ordinary promotion.
+   **Output specifications:** [`control-owner:2`](output-contracts/role-control-owner.md#output-control-owner-2); [handoff/dast-control-assurance:6](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-6)
+7. **Named authority:** DAST gate and release authority record.
+   **Receiving condition:** Untrusted evidence and non-waivable failures block. Any permitted exception is exact, current and sufficient. Promotion requires the verified release decision and all mandatory controls.
+   **Output specifications:** [handoff/dast-control-assurance:7](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-7); [dast-control-assurance:7](output-contracts/workflow-dast-control-assurance.md#output-dast-control-assurance-7)
+8. **Control Owner:** continuous assurance disposition.
+   **Receiving condition:** Material changes invalidate affected evidence where required and return impacted scope to qualification. Follow-up has accountable owners and review dates.
+   **Output specifications:** [`control-owner:2`](output-contracts/role-control-owner.md#output-control-owner-2); [handoff/dast-control-assurance:8](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-8)
+9. **Named authority:** integration mandate.
+   **Receiving condition:** A named application owner authorises the bounded change. Policy, scope, risk ownership and available resources are explicit.
+   **Output specifications:** [handoff/dast-control-assurance:9](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-9); [dast-control-assurance:9](output-contracts/workflow-dast-control-assurance.md#output-dast-control-assurance-9)
+10. **Solution Architect:** reviewed integration design and implementation backlog.
+   **Receiving condition:** The design binds readiness and requirements to a deployment decision, representative test environment, specific implementation changes and qualification plan. Critical uncertainties have observed feasibility evidence.
+   **Output specifications:** [`solution-architect:4`](output-contracts/role-solution-architect.md#output-solution-architect-4); [handoff/dast-control-assurance:10](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-10)
+11. **Software Engineer:** reviewed application changes.
+   **Receiving condition:** Application revision and tests are recorded. Release authentication and authorisation remain effective and test fixtures are isolated.
+   **Output specifications:** [`software-engineer:1`](output-contracts/role-software-engineer.md#output-software-engineer-1); [handoff/dast-control-assurance:11](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-11)
+12. **Network Engineer:** isolated environment evidence.
+   **Receiving condition:** The environment revision identifies approved connectivity, blocked destinations, resource limits, concurrency isolation and teardown results.
+   **Output specifications:** [`network-engineer:2`](output-contracts/role-network-engineer.md#output-network-engineer-2); [handoff/dast-control-assurance:12](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-12)
+13. **Identity and Access Management Engineer:** test identity lifecycle evidence.
+   **Receiving condition:** Required identities and roles are scoped, credential material stays out of records, and issue, expiry and revocation have observed evidence.
+   **Output specifications:** [`identity-and-access-management-engineer:1`](output-contracts/role-identity-and-access-management-engineer.md#output-identity-and-access-management-engineer-1); [handoff/dast-control-assurance:13](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-13)
+14. **Container Platform Engineer:** approved scanner platform baseline.
+   **Receiving condition:** The recorded platform is reproducible and isolated. Its immutable identity and lifecycle ownership are explicit.
+   **Output specifications:** [`container-platform-engineer:1`](output-contracts/role-container-platform-engineer.md#output-container-platform-engineer-1); [handoff/dast-control-assurance:14](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-14)
+15. **Control Owner:** control profile and evidence interface baseline.
+   **Receiving condition:** Approved profile and scope revisions are traceable to mandatory scenarios, qualified measurement and complementary controls. Missing coverage has an explicit disposition.
+   **Output specifications:** [`control-owner:1`](output-contracts/role-control-owner.md#output-control-owner-1); [handoff/dast-control-assurance:15](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-15)
+16. **CI/CD Platform Engineer:** reviewed pipeline evidence integration.
+   **Receiving condition:** Versioned pipeline changes bind evidence to the actual candidate and observed deployment. Synthetic tests demonstrate error handling, cleanup and tamper rejection. The intake is tested against the exact environment, identity, platform and control interface revisions.
+   **Output specifications:** [`ci-cd-platform-engineer:1`](output-contracts/role-ci-cd-platform-engineer.md#output-ci-cd-platform-engineer-1); [handoff/dast-control-assurance:16](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-16)
+17. **Release Engineer:** protected release gate implementation.
+   **Receiving condition:** The gate evidence shows exact candidate binding, blocked promotion for failed prerequisites, validated exceptions and separate release authority.
+   **Output specifications:** [`release-engineer:3`](output-contracts/role-release-engineer.md#output-release-engineer-3); [handoff/dast-control-assurance:17](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-17)
+18. **Test Manager:** system and negative integration qualification.
+   **Receiving condition:** Every applicable workstream has completion evidence and applicable requirements trace to tests. Unresolved integration failures block acceptance.
+   **Output specifications:** [`test-manager:2`](output-contracts/role-test-manager.md#output-test-manager-2); [handoff/dast-control-assurance:18](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-18)
+19. **Named authority:** operational takeover decision and lifecycle handoff.
+   **Receiving condition:** The signed takeover binds the accepted scope to runbooks, support ownership, metrics, remediation and requalification triggers.
+   **Output specifications:** [handoff/dast-control-assurance:19](output-contracts/workflow-dast-control-assurance.md#output-handoff-dast-control-assurance-19); [dast-control-assurance:19](output-contracts/workflow-dast-control-assurance.md#output-dast-control-assurance-19)
+
+[Roles, activities and acceptance gates for this chain](../workflow-library/dast-control-assurance.md#workflow-steps-and-gates).
 <!-- JAI:OUTPUT-CONTRACTS:END -->

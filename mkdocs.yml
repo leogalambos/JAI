@@ -218,6 +218,8 @@ nav:
           - Architecture model to repository governance: workflow-library/architecture-model-to-repository-governance.md
           - Service retirement and decommission: workflow-library/service-retirement-and-decommission.md
           - Regulatory change to assurance: workflow-library/regulatory-change-to-assurance.md
+          - DAST integration and control assurance: workflow-library/dast-control-assurance.md
+          - DAST integration methodology: reference/dast-methodology.md
   - Capabilities:
       - SABSA and enterprise architecture: capabilities/sabsa-ea.md
       - Publication and visual QA: capabilities/artifacts-publication.md
@@ -702,6 +704,7 @@ nav:
               - "Business case to realised benefits: source-owned handoff contracts": reference/output-contracts/workflow-business-case-to-benefits.md
               - "Inherited codebase takeover: source-owned handoff contracts": reference/output-contracts/workflow-codebase-takeover.md
               - "Cyber incident / breach to recovery: source-owned handoff contracts": reference/output-contracts/workflow-cyber-incident-breach-to-recovery.md
+              - "DAST integration and control assurance for containerised delivery: source-owned handoff contracts": reference/output-contracts/workflow-dast-control-assurance.md
               - "Data product delivery: source-owned handoff contracts": reference/output-contracts/workflow-data-product-delivery.md
               - "Demand to portfolio to funding: source-owned handoff contracts": reference/output-contracts/workflow-demand-to-portfolio-to-funding.md
               - "Design to operational readiness: source-owned handoff contracts": reference/output-contracts/workflow-design-to-operational-readiness.md

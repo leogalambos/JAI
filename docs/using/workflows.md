@@ -22,6 +22,7 @@ detailed page with role hand-offs, gates and an operating prompt.
 | Promote an artifact through AWS, Azure or Google Cloud CI/CD | [Cloud delivery paths](../workflow-library/production-change.md#cloud-delivery-paths). Supply the reviewed artifact digest, deployment target and approval evidence. |
 | Deliver and validate a mobile app | [Idea to production](../workflow-library/idea-to-production.md#context-and-mechanism-applicability), path `mobile-delivery`. |
 | Release an ABAP Cloud extension | [Production change](../workflow-library/production-change.md#context-and-mechanism-applicability), path `normal/abap-cloud`. |
+| Introduce DAST into an existing pipeline, qualify it, assess release evidence or review drift | [DAST control assurance](../workflow-library/dast-control-assurance.md). Supply the exact application scope and the evidence for the selected path. |
 | Restore service, remove a vulnerability or validate recovery | Select incident, vulnerability or resilience work from [commented task walkthroughs](../examples/index.md); retain its evidence and emergency boundaries. |
 | Prepare a supplier proposal or select a supplier | [Proposal](../examples/proposal.md) for supplier-side work; the workflow reference's sourcing and supplier chains for buyer-side work. |
 | Govern architecture, access, change or release | Choose the corresponding chain in the [workflow reference](../reference/workflows.md). |

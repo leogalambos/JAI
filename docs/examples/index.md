@@ -35,7 +35,7 @@ the most impressive output format:
 - You need to understand unfamiliar source before committing to changes:
   use [codebase takeover](inherited-codebase.md).
 
-The coverage table below maps all 24 enterprise workflow recipes to a
+The coverage table below maps 24 enterprise workflows to a
 primary walkthrough. Five additional guides cover proposal, SABSA,
 assessment, an architecture board and a general consequential decision:
 29 commented walkthroughs in total. A mapping illustrates a recipe; it

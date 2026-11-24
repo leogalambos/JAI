@@ -35,7 +35,7 @@ recommend one. For example:
 > establish review criteria and assess its condition; propose repairs only after
 > the independent assessment.
 
-The [workflow catalogue](../reference/workflows.md) lists all 24 enterprise
+The [workflow catalogue](../reference/workflows.md) lists the enterprise
 chains, their outcomes and detailed procedures. Each procedure selects relevant
 specialists from the same [complete role catalogue](../reference/roles.md).
 The [command reference](../reference/commands.md) separately lists the 17

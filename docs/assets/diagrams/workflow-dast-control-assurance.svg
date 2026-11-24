@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="ai-inline-diagram-svg" viewBox="0 0 996 2312" role="img" aria-labelledby="workflow-dast-control-assurance-title workflow-dast-control-assurance-description">
+<!-- SPDX-License-Identifier: BSD-4-Clause; Copyright (c) 2026 Leo Galambos and the Egothor team; https://www.egothor.org -->
+<title id="workflow-dast-control-assurance-title">DAST integration and control assurance for containerised delivery</title>
+<desc id="workflow-dast-control-assurance-description">An implemented and qualified DAST integration with operational takeover, or a bounded qualification, release evidence or continuous assurance decision. Arrows show the ordinary numbered stages. Follow the applicable path table for variant-only stages.</desc>
+<defs><marker id="workflow-dast-control-assurance-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#147eaa"/></marker></defs>
+<rect width="100%" height="100%" rx="16" fill="#f6fafc" stroke="#cbdde8"/>
+<text x="30" y="38" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#102d43" font-weight="700" text-anchor="start">DAST integration and control assurance for containerised delivery</text>
+<path d="M318,266 L346,266" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-dast-control-assurance-arrow)"/>
+<path d="M642,266 L670,266" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-dast-control-assurance-arrow)"/>
+<path d="M822,432 L822,480" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-dast-control-assurance-arrow)"/>
+<path d="M678,620 L650,620" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-dast-control-assurance-arrow)"/>
+<g data-step="1"><rect x="30" y="100" width="288" height="332" rx="12" fill="#145776"/>
+<text x="46" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">1. Solution Architect</text>
+<text x="46" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Assess the mandate, readiness</text>
+<text x="46" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and independently sourced</text>
+<text x="46" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">interface inventory. Compare</text>
+<text x="46" y="238" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">combined runtime, separate</text>
+<text x="46" y="262" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">containers, representative</text>
+<text x="46" y="286" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">stacks, remote service and</text>
+<text x="46" y="310" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">shared network namespace</text>
+<text x="46" y="334" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">against the required</text>
+<text x="46" y="358" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">perspectives.</text>
+</g>
+<g data-step="2"><rect x="354" y="100" width="288" height="332" rx="12" fill="#145776"/>
+<text x="370" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">2. Security Architect</text>
+<text x="370" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Map risk and policy to</text>
+<text x="370" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">measurable requirements, test</text>
+<text x="370" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">perspectives, identities,</text>
+<text x="370" y="238" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">environment fidelity,</text>
+<text x="370" y="262" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">compensating controls and gate</text>
+<text x="370" y="286" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">criteria. Review the control</text>
+<text x="370" y="310" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">trust model and protected</text>
+<text x="370" y="334" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">release path.</text>
+</g>
+<g data-step="3"><rect x="678" y="100" width="288" height="332" rx="12" fill="#145776"/>
+<text x="694" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">3. Control Owner</text>
+<text x="694" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Consolidate supplied</text>
+<text x="694" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">implementation and</text>
+<text x="694" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">qualification evidence from</text>
+<text x="694" y="238" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">application, CI/ CD, IAM,</text>
+<text x="694" y="262" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">infrastructure, scanner</text>
+<text x="694" y="286" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">platform, QA and release</text>
+<text x="694" y="310" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">platform owners. Assess</text>
+<text x="694" y="334" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">approved image provenance,</text>
+<text x="694" y="358" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">isolation, evidence integrity,</text>
+<text x="694" y="382" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">negative gate results and</text>
+<text x="694" y="406" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">operational readiness.</text>
+</g>
+<g data-step="4"><rect x="678" y="490" width="288" height="260" rx="12" fill="#145776"/>
+<text x="694" y="519" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">4. Internal IT Auditor</text>
+<text x="694" y="556" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Independently assess exact</text>
+<text x="694" y="580" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">versions of the requirements,</text>
+<text x="694" y="604" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">design, qualification dossier</text>
+<text x="694" y="628" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and operational readiness.</text>
+<text x="694" y="652" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Identify unsupported claims</text>
+<text x="694" y="676" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and blocking findings.</text>
+</g>
+<g data-step="5"><rect x="354" y="490" width="288" height="260" rx="12" fill="#145776"/>
+<text x="370" y="519" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">5. Named authority</text>
+<text x="370" y="556" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Record the named human</text>
+<text x="370" y="580" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">security acceptance of the</text>
+<text x="370" y="604" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">independently reviewed</text>
+<text x="370" y="628" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">control. Reference separate</text>
+<text x="370" y="652" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">risk and policy decisions for</text>
+<text x="370" y="676" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">permitted exceptions.</text>
+</g>
+<g data-step="6"><rect x="30" y="490" width="288" height="260" rx="12" fill="#145776"/>
+<text x="46" y="519" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">6. Control Owner</text>
+<text x="46" y="556" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Assess supplied evidence for</text>
+<text x="46" y="580" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">the exact release candidate</text>
+<text x="46" y="604" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">against the accepted</text>
+<text x="46" y="628" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">qualification, policy and</text>
+<text x="46" y="652" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">required scenarios. Preserve</text>
+<text x="46" y="676" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">findings from incomplete runs</text>
+<text x="46" y="700" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and distinguish validity from</text>
+<text x="46" y="724" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">compliance.</text>
+</g>
+<g data-step="7"><rect x="30" y="808" width="288" height="260" rx="12" fill="#145776"/>
+<text x="46" y="837" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">7. Named authority</text>
+<text x="46" y="874" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Record the protected gate</text>
+<text x="46" y="898" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">decision and verify the exact</text>
+<text x="46" y="922" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">human release decision and any</text>
+<text x="46" y="946" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">separately authorised</text>
+<text x="46" y="970" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">exceptions. Preserve original</text>
+<text x="46" y="994" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">technical findings and</text>
+<text x="46" y="1018" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">validity.</text>
+</g>
+<g data-step="8"><rect x="354" y="808" width="288" height="260" rx="12" fill="#145776"/>
+<text x="370" y="837" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">8. Control Owner</text>
+<text x="370" y="874" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Review supplied operating</text>
+<text x="370" y="898" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">evidence for drift, scoped</text>
+<text x="370" y="922" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">coverage, invalid or missing</text>
+<text x="370" y="946" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">runs, unresolved findings,</text>
+<text x="370" y="970" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">exceptions and cleanup.</text>
+<text x="370" y="994" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Identify the required</text>
+<text x="370" y="1018" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">requalification scope and</text>
+<text x="370" y="1042" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">ownership.</text>
+</g>
+<g data-step="9"><rect x="678" y="808" width="288" height="260" rx="12" fill="#145776"/>
+<text x="694" y="837" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">9. Named authority</text>
+<text x="694" y="874" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Record the application owner</text>
+<text x="694" y="898" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">mandate, delivery owner,</text>
+<text x="694" y="922" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">resources, applicable policies</text>
+<text x="694" y="946" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and exact project and pipeline</text>
+<text x="694" y="970" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">scope.</text>
+</g>
+<g data-step="10"><rect x="678" y="1126" width="288" height="260" rx="12" fill="#145776"/>
+<text x="694" y="1155" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">10. Solution Architect</text>
+<text x="694" y="1192" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Compare deployment options and</text>
+<text x="694" y="1216" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">confirm a feasible design for</text>
+<text x="694" y="1240" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">the existing pipeline. Obtain</text>
+<text x="694" y="1264" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">the security architect’s</text>
+<text x="694" y="1288" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">design disposition of trust</text>
+<text x="694" y="1312" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">boundaries, scope and</text>
+<text x="694" y="1336" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">environment differences.</text>
+</g>
+<g data-step="11"><rect x="354" y="1126" width="288" height="260" rx="12" fill="#145776"/>
+<text x="370" y="1155" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">11. Software Engineer</text>
+<text x="370" y="1192" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Implement approved application</text>
+<text x="370" y="1216" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">testability changes for</text>
+<text x="370" y="1240" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">startup, readiness, API</text>
+<text x="370" y="1264" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">contracts and isolated test</text>
+<text x="370" y="1288" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">data. Record an</text>
+<text x="370" y="1312" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">evidence-backed no-change</text>
+<text x="370" y="1336" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">disposition where existing</text>
+<text x="370" y="1360" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">behaviour suffices.</text>
+</g>
+<g data-step="12"><rect x="30" y="1126" width="288" height="260" rx="12" fill="#145776"/>
+<text x="46" y="1155" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">12. Network Engineer</text>
+<text x="46" y="1192" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Implement the approved test</text>
+<text x="46" y="1216" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">environment network boundaries</text>
+<text x="46" y="1240" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and verify isolation,</text>
+<text x="46" y="1264" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">lifecycle and capacity with</text>
+<text x="46" y="1288" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">non-offensive connectivity</text>
+<text x="46" y="1312" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">checks.</text>
+</g>
+<g data-step="13"><rect x="30" y="1444" width="288" height="236" rx="12" fill="#145776"/>
+<text x="46" y="1473" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">13. Identity and Access</text>
+<text x="46" y="1497" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Management Engineer</text>
+<text x="46" y="1534" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Implement scoped test</text>
+<text x="46" y="1558" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">identities, protected secret</text>
+<text x="46" y="1582" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">delivery and revocation under</text>
+<text x="46" y="1606" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">the approved test environment</text>
+<text x="46" y="1630" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">design.</text>
+</g>
+<g data-step="14"><rect x="354" y="1444" width="288" height="236" rx="12" fill="#145776"/>
+<text x="370" y="1473" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">14. Container Platform</text>
+<text x="370" y="1497" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Engineer</text>
+<text x="370" y="1534" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Establish the approved scanner</text>
+<text x="370" y="1558" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">platform artifact and</text>
+<text x="370" y="1582" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">lifecycle. Verify provenance,</text>
+<text x="370" y="1606" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">digest, dependencies, bounded</text>
+<text x="370" y="1630" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">privileges and update</text>
+<text x="370" y="1654" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">ownership.</text>
+</g>
+<g data-step="15"><rect x="678" y="1444" width="288" height="236" rx="12" fill="#145776"/>
+<text x="694" y="1473" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">15. Control Owner</text>
+<text x="694" y="1510" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Obtain the approved scanner</text>
+<text x="694" y="1534" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">profile reference from the</text>
+<text x="694" y="1558" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">responsible AppSec team and</text>
+<text x="694" y="1582" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">specify the evidence</text>
+<text x="694" y="1606" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">interface, required contexts,</text>
+<text x="694" y="1630" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">scope coverage and validity</text>
+<text x="694" y="1654" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">criteria for supplied reports.</text>
+</g>
+<g data-step="16"><rect x="678" y="1738" width="288" height="260" rx="12" fill="#145776"/>
+<text x="694" y="1767" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">16. CI/ CD Platform Engineer</text>
+<text x="694" y="1804" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Implement candidate identity,</text>
+<text x="694" y="1828" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">deployment readiness,</text>
+<text x="694" y="1852" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">protected intake of supplied</text>
+<text x="694" y="1876" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">DAST reports, cleanup and</text>
+<text x="694" y="1900" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">failure handling in the</text>
+<text x="694" y="1924" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">existing pipeline. Validate</text>
+<text x="694" y="1948" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">the integration with synthetic</text>
+<text x="694" y="1972" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">reports.</text>
+</g>
+<g data-step="17"><rect x="354" y="1738" width="288" height="260" rx="12" fill="#145776"/>
+<text x="370" y="1767" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">17. Release Engineer</text>
+<text x="370" y="1804" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Implement the protected</text>
+<text x="370" y="1828" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">release decision interface and</text>
+<text x="370" y="1852" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">fail-closed policy checks on</text>
+<text x="370" y="1876" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">the evidence manifest.</text>
+<text x="370" y="1900" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Exercise missing, stale,</text>
+<text x="370" y="1924" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">mismatched and unauthorised</text>
+<text x="370" y="1948" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">evidence with synthetic</text>
+<text x="370" y="1972" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">fixtures.</text>
+</g>
+<g data-step="18"><rect x="30" y="1738" width="288" height="260" rx="12" fill="#145776"/>
+<text x="46" y="1767" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">18. Test Manager</text>
+<text x="46" y="1804" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Independently verify the</text>
+<text x="46" y="1828" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">integration against the</text>
+<text x="46" y="1852" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">qualification plan.</text>
+<text x="46" y="1876" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Consolidate technical test</text>
+<text x="46" y="1900" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">results and externally</text>
+<text x="46" y="1924" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">supplied AppSec qualification</text>
+<text x="46" y="1948" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">evidence into a traceable</text>
+<text x="46" y="1972" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">verdict.</text>
+</g>
+<g data-step="19"><rect x="30" y="2056" width="288" height="188" rx="12" fill="#145776"/>
+<text x="46" y="2085" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">19. Named authority</text>
+<text x="46" y="2122" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Record the application owner</text>
+<text x="46" y="2146" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">operational takeover after</text>
+<text x="46" y="2170" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">security acceptance and</text>
+<text x="46" y="2194" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">identify the delivery owner</text>
+<text x="46" y="2218" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">closing the integration.</text>
+</g>
+</svg>

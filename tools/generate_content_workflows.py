@@ -16,16 +16,40 @@ from content_spec import canonical_hash
 
 from content_workflow import HANDOFF_CONTENT_CONTRACTS, SELECTIONS
 import infrastructure_workflow_definitions as infrastructure
-from workflow_professional_definitions import (HANDOFF_REQUIREMENTS, WORKFLOW_PROFILES,
+from workflow_professional_definitions import (DAST_METHOD_SECTIONS, HANDOFF_REQUIREMENTS, WORKFLOW_PROFILES,
     WORKFLOW_VARIANT_CONDITIONS, WORKFLOW_MECHANISMS, WORKFLOW_MECHANISM_BASES,
     WORKFLOW_PATH_MECHANISMS, WORKFLOW_PATH_STEPS,
     VARIANT_HANDOFF_REQUIREMENTS, ONBOARDING_MECHANISMS, ONBOARDING_OVERLAYS,
     VARIANT_SCOPE_ASSESSMENTS, ONBOARDING_OVERLAY_REQUIREMENTS)
 
 
-# Explicit source-owned publication contracts; these stages intentionally have no
+# Explicit source-owned handoff contracts; these stages intentionally have no
 # professional role-deliverable ID. Their requirements remain canonical here.
 SOURCE_HANDOFF_CONTENT = {
+    'dast-control-assurance:9': {
+        'required': [
+            'Record exact application and existing pipeline scope, the named application owner mandate, delivery ownership, funding and capacity.',
+            'Identify applicable policy, accountable authorities and integration bounds.'],
+        'conditional': [], 'optional': []},
+    'dast-control-assurance:19': {
+        'required': [
+            'Reference the accepted control baseline and versioned runbook, support responsibilities, follow-up and requalification triggers.',
+            'Record the named application owner decision for the exact qualified scope before closing the integration.'],
+        'conditional': [], 'optional': []},
+    'dast-control-assurance:5': {
+        'required': [
+            'Bind formal security acceptance to the exact qualification, independent review, policy and application scope.',
+            'Record the named security authority decision and effective conditions before operational takeover.'],
+        'conditional': [{'when': 'A permitted exception is relied upon.',
+                         'requirement': 'Reference the exact current governance decision and separate risk acceptance.'}],
+        'optional': []},
+    'dast-control-assurance:7': {
+        'required': [
+            'Reference the exact release manifest, assessed evidence and protected gate decision under the applicable policy revision.',
+            'Record the actual release authority decision and confirm the other mandatory release controls. Untrusted evidence or a non-waivable failure blocks promotion.'],
+        'conditional': [{'when': 'The gate relies on an exception.',
+                         'requirement': 'Show authority, scope and validity for each affected finding or control requirement; retain the original technical status.'}],
+        'optional': []},
     'ai-system-approval:6': {
         'required': [
             'Identify the named human authority, exact candidate version, intended use, deployment scope and reviewed risk and assurance evidence.',
@@ -171,6 +195,11 @@ def professional_workflows(root=ROOT):
                     'semantic_field': 'handoff_' + record,
                     'required_fields': fields,
                     'acceptance_criterion': 'For ' + step['hands_over'] + ', supply the actual versioned ' + record.replace('_', ' ') + ' record, including ' + ', '.join(fields) + '. Independently assess the evidence against this exact criterion: ' + step['gate'] + '. Do not substitute a related policy, plan or claimed execution for the required work product and observations.'}]}))
+            if key == 'dast-control-assurance':
+                sections = DAST_METHOD_SECTIONS[step['step']]
+                contract['units'][0]['acceptance_criterion'] += (
+                    ' Apply the relevant requirements and evidence criteria in dast-methodology.md: '
+                    + sections + '. Record each unmet or inapplicable obligation and its disposition.')
             contract['subject'] = step['hands_over']
             contract['workflow_profile_hash'] = canonical_hash(profile)
             contract['units'].append({
@@ -236,7 +265,7 @@ def build(root=ROOT):
     Args:
         root: Repository containing canonical workflow references and contracts.
     Returns:
-        JSON-compatible 24-workflow catalogue covering every explicit selected
+        JSON-compatible workflow catalogue covering every explicit selected
         stage exactly once; the handoff total follows the canonical chains.
     Raises:
         ValueError: If source rows, roles or editorial selections no longer match.
@@ -246,8 +275,8 @@ def build(root=ROOT):
     rows = []
     workflows=professional_workflows(root)['workflows']
     source_keys = [source['key'] for source in workflows]
-    if len(source_keys) != 24 or len(set(source_keys)) != 24 or set(source_keys) != set(SELECTIONS):
-        raise ValueError('WORKFLOW_KEY_COVERAGE: canonical chains and explicit selections must cover the same 24 workflows')
+    if len(source_keys) != len(set(source_keys)) or set(source_keys) != set(SELECTIONS):
+        raise ValueError('WORKFLOW_KEY_COVERAGE: canonical chains and explicit selections must cover the same workflows')
     for source in sorted(workflows,key=lambda item:item['key']):
         workflow=source['key']
         selections=SELECTIONS[workflow]
@@ -537,11 +566,13 @@ def main(argv=None):
         parser.error('--product-scopes requires --stage-siem-pilot')
     payloads = {**professional_projection(), '.ai/runtime/content/workflow-acceptance.json': json.dumps(build(),indent=2,ensure_ascii=False)+'\n',
                 **summary_projections(), **applicability_projections()}
+    methodology = ROOT / '.ai/skills/it-role-workflows/references/dast-methodology.md'
+    payloads['docs/reference/dast-methodology.md'] = methodology.read_text()
     if args.check:
         return 0 if all((ROOT/path).is_file() and (ROOT/path).read_text()==payload
                         for path,payload in payloads.items()) else 1
     for path,payload in payloads.items():
-        if (ROOT/path).read_text() != payload:
+        if not (ROOT/path).is_file() or (ROOT/path).read_text() != payload:
             (ROOT/path).write_text(payload)
     return 0
 

@@ -22,6 +22,8 @@ from infrastructure_workflow_definitions import DELIVERY, EVIDENCE
 
 # Numbers are editorial selections of canonical role deliverables, not title matching.
 SELECTIONS = {
+'dast-control-assurance': ['4','1','2','3','source','2','source','2',
+                           'source','4','1','2','1','1','1','1','3','2','source'],
 'access-request-to-review': ['1','2','2,3','1,2','1','3'],
 'ai-system-approval': ['1','2','1,2','1,4','1,2,3','source','1,2','2,4','3'],
 'architecture-model-to-repository-governance': ['1,4','1,3','3','4','1,4','1,2,3'],
@@ -621,7 +623,7 @@ def _check(handoff_id, model, report, root=None, acceptance=None, trusted_execut
             or not isinstance(context.get('route'), str)
             or context.get('route') not in {route['id'] for route in profile['routes']}):
         failures.append('WORKFLOW_CONTEXT_UNRESOLVED')
-    elif row['step'] == 1:
+    elif selected_path is not None and row['step'] == selected_path['steps'][0]:
         intake = context_payload.get('entry_inputs')
         if (not isinstance(intake, dict) or set(intake) != set(profile['entry_inputs'])
                 or any(not content_lint._substantive(value) for value in intake.values())):

@@ -8,7 +8,52 @@ and role names never classify runtime work. Requirements supplement existing
 source gates and do not establish external-standard conformance or approval.
 """
 
+# Required reading for each activity, carried in the versioned handoff criteria.
+DAST_METHOD_SECTIONS = {
+    1: 'Implementation lifecycle and Deployment patterns and fidelity',
+    2: 'Security requirements catalogue and Qualification and coverage',
+    3: 'Qualification and coverage and Example and completion',
+    4: 'Accountability and decision rights, Qualification and coverage, and Output Security Gate and exceptions',
+    5: 'Accountability and decision rights and Implementation lifecycle (A6)',
+    6: 'Recurring execution and evidence handoff and Qualification and coverage',
+    7: 'Output Security Gate and exceptions',
+    8: 'Remediation and operating assurance',
+    9: 'Accountability and decision rights and Implementation lifecycle (A0)',
+    10: 'Deployment patterns and fidelity and Qualification and coverage',
+    11: 'Implementation lifecycle (Application workstream) and Typical testability changes',
+    12: 'Deployment patterns and fidelity and the isolation and concurrency qualification cases',
+    13: 'Implementation lifecycle (IAM workstream) and identity qualification criteria AC-03 and AC-04',
+    14: 'Deployment patterns and fidelity and Remediation and operating assurance (platform lifecycle)',
+    15: 'Qualification and coverage and Recurring execution and evidence handoff',
+    16: 'Recurring execution and evidence handoff and Implementation lifecycle (Pipeline workstream)',
+    17: 'Output Security Gate and exceptions and the enforcement qualification cases',
+    18: 'Qualification and coverage and Security requirements catalogue',
+    19: 'Implementation lifecycle (A7), Remediation and operating assurance, and Example and completion',
+}
+
+
 HANDOFF_REQUIREMENTS = {
+    'dast-control-assurance': [
+        ('dast_readiness', 'mandate_ref application_scope owners policy_ref interface_inventory topology_decision feasibility_evidence'),
+        ('dast_security_baseline', 'risk_refs security_requirements architecture_ref coverage_matrix acceptance_criteria authority_matrix'),
+        ('dast_qualification', 'qualified_scope implementation_refs qualification_results coverage fitness_gaps gate_negative_results operations_runbook'),
+        ('dast_independent_review', 'reviewer independence source_versions criteria_refs findings verdict'),
+        ('dast_operational_acceptance', 'qualified_scope review_ref security_decision exception_disposition effective_conditions'),
+        ('dast_release_evidence', 'qualification_ref candidate_manifest observed_deployment run_refs evidence_integrity validity coverage policy_compliance findings'),
+        ('dast_release_decision', 'candidate_manifest evidence_ref policy_ref gate_result exception_disposition release_authority_ref'),
+        ('dast_assurance', 'qualification_ref review_period operating_metrics drift_events remediation_owners requalification_scope disposition'),
+        ('dast_mandate', 'application_scope pipeline_revision mandate_ref resources policy_ref accountable_owners'),
+        ('dast_integration_design', 'readiness_ref requirements_ref topology_decision feasibility_evidence design_review implementation_backlog qualification_plan'),
+        ('dast_application_change', 'design_ref application_revision change_disposition readiness_tests fixture_isolation peer_review'),
+        ('dast_environment', 'design_ref environment_revision network_controls isolation_results teardown_results'),
+        ('dast_identities', 'design_ref identity_revision role_mapping protected_delivery lifecycle_results'),
+        ('dast_platform', 'design_ref image_digest dependency_inventory provenance hardening_evidence lifecycle_owner'),
+        ('dast_control_interface', 'design_ref profile_ref coverage_matrix validity_rules evidence_schema complementary_controls'),
+        ('dast_pipeline_integration', 'design_ref prerequisite_revisions pipeline_revision candidate_binding report_intake cleanup_results integration_tests peer_review'),
+        ('dast_gate_implementation', 'pipeline_ref gate_revision policy_ref enforcement_tests exception_checks release_boundary'),
+        ('dast_system_qualification', 'plan_ref workstream_refs tested_versions positive_results negative_results traceability verdict'),
+        ('dast_takeover', 'acceptance_ref takeover_decision qualified_scope runbook_ref owner_register monitoring_plan requalification_plan'),
+    ],
     'idea-to-production': [
         ('demand_outcome', 'demand_id outcome owner source urgency'),
         ('product_opportunity', 'problem evidence target_users success_measure roadmap_scope'),
@@ -256,6 +301,16 @@ HANDOFF_REQUIREMENTS = {
 # distinct entry questions, normal variants and failure/exit semantics.
 # Tuple: required inputs; variant -> mechanism/evidence; rework; stop; exit.
 WORKFLOW_PROFILES = {
+    'dast-control-assurance': (
+        ['Exact application and control scope, decision owner and applicable policy',
+         'Versioned input bundle for the selected path'],
+        [('integration', 'Introduce DAST into an existing project pipeline', 'Approved mandate, implemented workstreams, qualification evidence and operational takeover'),
+         ('qualification', 'Qualify initial or materially changed DAST control scope', 'Application mandate, source architecture, qualification dossier, independent review and human acceptance'),
+         ('release-evidence', 'Assess evidence for a specific candidate under a current qualification', 'Accepted qualification, exact candidate, collected evidence, protected gate and exact release decision'),
+         ('continuous-assurance', 'Assess operating results and material changes', 'Accepted qualification, operating observations, measured degradation, owned actions and requalification scope')],
+        'Return failed criteria to the accountable stage and preserve valid evidence for unaffected scope.',
+        'Block on absent or incompatible prerequisites, untrusted evidence, or missing required authority. Use only supplied scan evidence.',
+        'Record the bounded decision and route material changes to qualification and confirmed findings to vulnerability remediation.'),
     'idea-to-production': (
         ['Business outcome and accountable sponsor', 'Problem evidence and intended users', 'Existing service and change constraints'],
         [('new-product', 'Discover and test the product hypothesis before committing build scope', 'Problem evidence, options and success baseline'), ('existing-service-change', 'Reuse current service controls and assess only changed dependencies', 'Current baseline, change impact and receiving acceptance'),
@@ -426,6 +481,10 @@ WORKFLOW_MECHANISM_BASES = {('production-change', 'abap-cloud'): 'application'}
 ONBOARDING_OVERLAYS = {'data-ai', 'critical-regulated'}
 ONBOARDING_MECHANISMS = ['cloud-native', 'saas-cots', 'existing-platform']
 WORKFLOW_PATH_STEPS = {
+    ('dast-control-assurance', 'integration'): [9, 1, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 3, 4, 5, 19],
+    ('dast-control-assurance', 'qualification'): [1, 2, 3, 4, 5, 19],
+    ('dast-control-assurance', 'release-evidence'): [6, 7],
+    ('dast-control-assurance', 'continuous-assurance'): [8],
     ('production-change', 'normal/abap-cloud'): [1, 2, 3, 4, 9, 5, 6, 7, 8],
     ('idea-to-production', 'mobile-delivery'): [1, 2, 3, 4, 5, 6, 7, 14, 8, 9, 10, 11, 12, 13],
     ('regulatory-change-to-assurance', 'not-applicable'): [1, 2],
@@ -561,6 +620,7 @@ VARIANT_HANDOFF_REQUIREMENTS = {
 # needed at a boundary. Unlisted combinations share actual outcome information;
 # a scope-limited variant terminates before work it does not authorise or require.
 VARIANT_SCOPE_ASSESSMENTS = {
+    'dast-control-assurance': 'Choose integration to introduce DAST into an existing pipeline, qualification for an already implemented control, release-evidence for an exact candidate within accepted scope, and continuous-assurance for operating review. Reconcile scope and exact versions before carrying evidence across paths.',
     'idea-to-production': 'New and changed products share requirement/design/execution/outcome evidence; current baseline and changed scope differ in values, not schema.',
     'new-service-onboarding': 'SaaS and inherited-platform mechanisms replace owned IaC/image/pipeline records with configuration, dependency assurance and governed change evidence; overlays select a base mechanism explicitly.',
     'production-change': 'Approval class is separate from application/IaC/settings mechanism; exact authored alternatives prevent fabricated code or IaC evidence.',

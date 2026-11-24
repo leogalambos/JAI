@@ -452,6 +452,7 @@ The links below specify shared requirements. Role pages select the effective fou
 - [Business case to realised benefits: source-owned handoff contracts](workflow-business-case-to-benefits.md)
 - [Inherited codebase takeover: source-owned handoff contracts](workflow-codebase-takeover.md)
 - [Cyber incident / breach to recovery: source-owned handoff contracts](workflow-cyber-incident-breach-to-recovery.md)
+- [DAST integration and control assurance for containerised delivery: source-owned handoff contracts](workflow-dast-control-assurance.md)
 - [Data product delivery: source-owned handoff contracts](workflow-data-product-delivery.md)
 - [Demand to portfolio to funding: source-owned handoff contracts](workflow-demand-to-portfolio-to-funding.md)
 - [Design to operational readiness: source-owned handoff contracts](workflow-design-to-operational-readiness.md)

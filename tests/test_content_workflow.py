@@ -140,11 +140,11 @@ def case():
     return prepare_case(fixture,ContentSpec(ROOT))
 
 
-def test_all_217_canonical_handoffs_have_explicit_sources_receivers_and_contracts():
+def test_all_canonical_handoffs_have_explicit_sources_receivers_and_contracts():
     catalog=load_bindings(ROOT)
     assert catalog==build(ROOT)
-    assert catalog['handoff_count']==217
-    assert catalog['workflow_count']==24
+    assert catalog['handoff_count']==236
+    assert catalog['workflow_count']==25
     workflows={w['key']:w for w in json.loads((ROOT/'.ai/runtime/workflows.json').read_text())['workflows']}
     for row in catalog['bindings']:
         source=workflows[row['workflow_id']]
@@ -167,7 +167,7 @@ def test_draft_receiving_cli_cannot_claim_acceptance(tmp_path,capsys):
     a.write_text(json.dumps(model));b.write_text(json.dumps(report))
     assert main(['--root',str(ROOT),'check','semantic-to-enterprise-publication:1',str(a),str(b)])==2
     assert main(['--root',str(ROOT),'list'])==0
-    assert '217' in capsys.readouterr().out
+    assert '236' in capsys.readouterr().out
 
 
 def test_wrong_contract_and_forged_rehashed_qa_are_not_accepted():
@@ -1262,3 +1262,55 @@ def test_cloud_rollout_rechecks_exact_signed_prior_approval(tmp_path, monkeypatc
     assert not authorized(changed, authority)
     expected_receiver[:] = ['release-engineer']
     assert not authorized(predecessor, authority)
+
+
+@pytest.mark.parametrize('defect, finding', [
+    ('missing-evidence', 'HANDOFF_CONTENT_MISSING_OR_INVALID'),
+    ('wrong-path', 'WORKFLOW_STAGE_OUTSIDE_SELECTED_PATH'),
+    ('missing-authority', 'EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED'),
+])
+def test_dast_release_authority_rejects_incomplete_or_incompatible_handoff(defect, finding):
+    """Reject a release boundary with absent evidence, outside its path or unsigned."""
+    row = next(item for item in load_bindings(ROOT)['bindings']
+               if item['handoff_id'] == 'dast-control-assurance:7')
+    model, spec = case()
+    model = _handoff_content_fixture(row, _current_workflow_fixture(model, spec), 'release-evidence')
+    if defect == 'missing-evidence':
+        del model['semantic_units']['handoff_dast_release_decision']['evidence_ref']
+    elif defect == 'wrong-path':
+        scope = next(item['payload'] for item in model['evidence'] if item['id'] == 'SYN-CONTEXT')
+        scope.update(variant='qualification', mechanism_variant='qualification', selected_path='qualification')
+    model, review, dispatcher, _ = _host_reviewed_workflow(model, spec)
+    report = evaluate(model, spec, reviewer=review, trusted_executions=dispatcher)
+    result = check(row['handoff_id'], model, report, ROOT, trusted_executions=dispatcher)
+    assert result['status'] == 'ACCEPTANCE_PENDING'
+    assert finding in result['findings']
+
+
+@pytest.mark.parametrize('step, path', [(6, 'release-evidence'), (8, 'continuous-assurance')])
+def test_dast_intake_is_required_at_the_first_selected_stage(step, path):
+    """Require scoped intake for paths whose first stage has a later number."""
+    row, model, spec, _ = _variant_case(f'dast-control-assurance:{step}', path)
+    context = next(item['payload'] for item in model['evidence'] if item['id'] == 'SYN-CONTEXT')
+    context.pop('entry_inputs')
+    result = check(row['handoff_id'], model, evaluate(model, spec), ROOT)
+    assert 'WORKFLOW_INTAKE_INCOMPLETE' in result['findings']
+
+
+@pytest.mark.parametrize('defect, finding', [
+    ('missing-workstreams', 'HANDOFF_CONTENT_MISSING_OR_INVALID'),
+    ('qualification-only', 'WORKFLOW_STAGE_OUTSIDE_SELECTED_PATH'),
+])
+def test_dast_integration_qualification_requires_workstream_evidence_and_path(defect, finding):
+    """Fail closed on an incomplete join or a qualification-only scope."""
+    row, model, spec, _ = _variant_case('dast-control-assurance:18', 'integration')
+    if defect == 'missing-workstreams':
+        del model['semantic_units']['handoff_dast_system_qualification']['workstream_refs']
+    else:
+        scope = next(item['payload'] for item in model['evidence'] if item['id'] == 'SYN-CONTEXT')
+        scope.update(variant='qualification', mechanism_variant='qualification', selected_path='qualification')
+    model, review, dispatcher, _ = _host_reviewed_workflow(model, spec)
+    report = evaluate(model, spec, reviewer=review, trusted_executions=dispatcher)
+    result = check(row['handoff_id'], model, report, ROOT, trusted_executions=dispatcher)
+    assert result['status'] == 'ACCEPTANCE_PENDING'
+    assert finding in result['findings']

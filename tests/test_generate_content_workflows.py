@@ -16,9 +16,9 @@ SPEC.loader.exec_module(generator)
 
 def test_current_complete_catalogue_covers_all_explicit_stages():
     catalog = generator.build(ROOT)
-    assert catalog['workflow_count'] == 24
-    assert catalog['handoff_count'] == 217
-    assert len({row['handoff_id'] for row in catalog['bindings']}) == 217
+    assert catalog['workflow_count'] == 25
+    assert catalog['handoff_count'] == 236
+    assert len({row['handoff_id'] for row in catalog['bindings']}) == 236
 
 
 def test_mobile_delivery_inserts_automation_before_independent_verdict():
@@ -71,8 +71,8 @@ def test_every_boundary_has_source_specific_content_and_current_route_obligation
 
 def test_professional_workflows_selects_exact_intake_and_handoff_definitions():
     document = generator.professional_workflows(ROOT)
-    assert len(document['workflows']) == 24
-    assert sum(len(workflow['steps']) for workflow in document['workflows']) == 217
+    assert len(document['workflows']) == 25
+    assert sum(len(workflow['steps']) for workflow in document['workflows']) == 236
     assert set(generator.professional_projection(ROOT)) == {'.ai/runtime/workflows.json'}
     assert json.loads(generator.professional_projection(ROOT)['.ai/runtime/workflows.json']) == document
 
@@ -152,7 +152,12 @@ def test_summary_generation_rejects_a_missing_domain_projection(tmp_path):
 
 def test_applicability_projections_preserve_invariants_for_each_service_context():
     projections = generator.applicability_projections(ROOT)
-    assert len(projections) == 48
+    workflow_ids = {workflow['key'] for workflow in generator.professional_workflows(ROOT)['workflows']}
+    assert set(projections) == {
+        f'{folder}/{workflow_id}.md'
+        for workflow_id in workflow_ids
+        for folder in ('.ai/skills/it-role-workflows/references', 'docs/workflow-library')
+    }
     for path, text in projections.items():
         assert '**Entry information (selected once per actual context version):**' in text
         assert '**Continuation, rework, stop and exit:**' in text
@@ -310,3 +315,53 @@ def test_infrastructure_routes_preserve_exact_boundaries():
     assert paths[readiness]['zero-trust-migration']['steps'] == list(range(1, 8))
     assert rows[readiness, 3]['zero-trust-migration']['receiving_role'] == (
         'security-assurance-and-measurement-architect')
+
+
+def test_dast_integration_requires_implemented_workstreams_before_acceptance():
+    """Protect implementation dependencies and separate human decisions."""
+    catalog = generator.build(ROOT)
+    workflow = 'dast-control-assurance'
+    rows = {row['step']: row for row in catalog['bindings'] if row['workflow_id'] == workflow}
+    paths = {path['id']: path['steps'] for path in catalog['profiles'][workflow]['paths']}
+    assert paths['integration'] == [9, 1, 2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 3, 4, 5, 19]
+    assert paths['qualification'] == [1, 2, 3, 4, 5, 19]
+    assert paths['release-evidence'] == [6, 7]
+    assert paths['continuous-assurance'] == [8]
+    for step, following in zip(paths['integration'], paths['integration'][1:]):
+        binding = rows[step]['variant_bindings']['integration']
+        assert binding['next_step'] == following
+        assert binding['receiving_role'] == rows[following]['producer_role']
+    assert rows[9]['producer_role'] == rows[5]['producer_role'] == rows[19]['producer_role'] == 'engagement:named-authority'
+    assert rows[16]['producer_role'] == 'ci-cd-platform-engineer'
+    assert rows[17]['producer_role'] == 'release-engineer'
+    assert rows[18]['producer_role'] == 'test-manager'
+    assert rows[4]['producer_role'] == 'internal-it-auditor'
+    assert 'workstream_refs' in rows[18]['handoff_content_contract']['units'][0]['required_fields']
+    for row in rows.values():
+        for binding in row['variant_bindings'].values():
+            criterion = binding['handoff_content_contract']['units'][0]['acceptance_criterion']
+            assert 'dast-methodology.md' in criterion
+
+
+def test_dast_stages_link_to_the_complete_requirement_and_acceptance_catalogues():
+    """Keep the technical criteria and stage references available in both views."""
+    import re
+
+    relative = '.ai/skills/it-role-workflows/references'
+    source = (ROOT / relative / 'dast-methodology.md').read_text()
+    assert source == (ROOT / 'docs/reference/dast-methodology.md').read_text()
+    for prefix, limit in (('SR', 28), ('AC', 12)):
+        expected = [f'{prefix}-{number:02}' for number in range(1, limit + 1)]
+        assert re.findall(rf'^\| ({prefix}-\d{{2}}) \|', source, re.MULTILINE) == expected
+    anchors = {re.sub(r'[^a-z0-9 -]', '', heading.lower()).replace(' ', '-')
+               for heading in re.findall(r'^#{2,3} (.+)$', source, re.MULTILINE)}
+    for path in (f'{relative}/dast-control-assurance.md',
+                 'docs/workflow-library/dast-control-assurance.md'):
+        document = (ROOT / path).read_text()
+        assert re.findall(r'^\| (\d+) \|', document, re.MULTILINE) == [
+            str(step) for step in range(1, 20)]
+        stage_map = document.split('## Read the methodology for the current stage')[1]
+        references = re.findall(r'dast-methodology\.md#([a-z0-9-]+)', stage_map)
+        assert set(references) <= anchors
+        assert {'security-requirements-catalogue', 'qualification-and-coverage',
+                'output-security-gate-and-exceptions'} <= set(references)

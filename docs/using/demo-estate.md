@@ -6,7 +6,7 @@ practice pack and follow the explanation of each step.
 
 ## Choose a scenario practice pack
 
-The maintained catalog contains 29 scenario packs spanning the 24 enterprise
+The maintained catalog contains 29 scenario packs spanning 24 enterprise
 workflow chains. Browse [commented task walkthroughs](../examples/index.md)
 or ask `/hint` (`$workflow-hint` in Codex) to recommend a starting procedure.
 

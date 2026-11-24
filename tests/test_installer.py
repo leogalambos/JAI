@@ -456,7 +456,8 @@ def test_infrastructure_guidance_matches_composed_native_role_references(tmp_pat
         assert text.encode() == compilation.files['.ai/' + path]
         for home in homes:
             assert outputs[str(home / path)] == text.encode()
-    for path in ('references/design-to-operational-readiness.md', 'references/production-change.md'):
+    for path in ('references/design-to-operational-readiness.md', 'references/production-change.md',
+                 'references/dast-control-assurance.md', 'references/dast-methodology.md'):
         for home in homes:
             assert outputs[str(home / 'skills/it-role-workflows' / path)] == (
                 ROOT / '.ai/skills/it-role-workflows' / path).read_bytes()

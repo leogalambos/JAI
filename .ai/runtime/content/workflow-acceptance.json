@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "status": "proposed",
-  "workflow_count": 24,
-  "handoff_count": 217,
+  "workflow_count": 25,
+  "handoff_count": 236,
   "profiles": {
     "idea-to-production": {
       "id": "workflow-profile/idea-to-production",
@@ -2671,6 +2671,120 @@
             2
           ],
           "terminal_step": 2
+        }
+      ]
+    },
+    "dast-control-assurance": {
+      "id": "workflow-profile/dast-control-assurance",
+      "version": "1.0.0",
+      "basis": "JAI-authored professional intake and route practice; independent professional qualification remains separate.",
+      "entry_inputs": [
+        "Exact application and control scope, decision owner and applicable policy",
+        "Versioned input bundle for the selected path"
+      ],
+      "variants": [
+        {
+          "id": "integration",
+          "mechanisms": "Introduce DAST into an existing project pipeline",
+          "evidence": "Approved mandate, implemented workstreams, qualification evidence and operational takeover"
+        },
+        {
+          "id": "qualification",
+          "mechanisms": "Qualify initial or materially changed DAST control scope",
+          "evidence": "Application mandate, source architecture, qualification dossier, independent review and human acceptance"
+        },
+        {
+          "id": "release-evidence",
+          "mechanisms": "Assess evidence for a specific candidate under a current qualification",
+          "evidence": "Accepted qualification, exact candidate, collected evidence, protected gate and exact release decision"
+        },
+        {
+          "id": "continuous-assurance",
+          "mechanisms": "Assess operating results and material changes",
+          "evidence": "Accepted qualification, operating observations, measured degradation, owned actions and requalification scope"
+        }
+      ],
+      "routes": [
+        {
+          "id": "continue",
+          "trigger": "The current handoff criteria and applicable prerequisites are satisfied.",
+          "action": "Continue to the registered receiving duty with exact output and evidence references."
+        },
+        {
+          "id": "rework",
+          "trigger": "A current criterion fails or required information changes.",
+          "action": "Return failed criteria to the accountable stage and preserve valid evidence for unaffected scope."
+        },
+        {
+          "id": "stop",
+          "trigger": "An applicable authority, legal, safety or mandatory-control boundary forbids the effect.",
+          "action": "Block on absent or incompatible prerequisites, untrusted evidence, or missing required authority. Use only supplied scan evidence."
+        },
+        {
+          "id": "exit",
+          "trigger": "The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope.",
+          "action": "Record the bounded decision and route material changes to qualification and confirmed findings to vulnerability remediation."
+        }
+      ],
+      "context_policy": "Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.",
+      "scope_assessment": "Choose integration to introduce DAST into an existing pipeline, qualification for an already implemented control, release-evidence for an exact candidate within accepted scope, and continuous-assurance for operating review. Reconcile scope and exact versions before carrying evidence across paths.",
+      "paths": [
+        {
+          "id": "integration",
+          "variant": "integration",
+          "mechanism": "integration",
+          "steps": [
+            9,
+            1,
+            2,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            3,
+            4,
+            5,
+            19
+          ],
+          "terminal_step": 19
+        },
+        {
+          "id": "qualification",
+          "variant": "qualification",
+          "mechanism": "qualification",
+          "steps": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            19
+          ],
+          "terminal_step": 19
+        },
+        {
+          "id": "release-evidence",
+          "variant": "release-evidence",
+          "mechanism": "release-evidence",
+          "steps": [
+            6,
+            7
+          ],
+          "terminal_step": 7
+        },
+        {
+          "id": "continuous-assurance",
+          "variant": "continuous-assurance",
+          "mechanism": "continuous-assurance",
+          "steps": [
+            8
+          ],
+          "terminal_step": 8
         }
       ]
     }
@@ -10272,6 +10386,2259 @@
           },
           "next_step": null
         }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:1",
+      "workflow_id": "dast-control-assurance",
+      "step": 1,
+      "producer_role": "solution-architect",
+      "receiving_role": "security-architect",
+      "handover": "readiness and deployment decision",
+      "acceptance_criterion": "The application owner, policy and scope are identified. The deployment decision records feasibility evidence, trust boundaries, gateway and backend perspectives, and limitations.",
+      "contract_ids": [
+        "solution-architect:4"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "architecture-decision"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:1",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:1.dast_readiness",
+            "semantic_field": "handoff_dast_readiness",
+            "required_fields": [
+              "mandate_ref",
+              "application_scope",
+              "owners",
+              "policy_ref",
+              "interface_inventory",
+              "topology_decision",
+              "feasibility_evidence"
+            ],
+            "acceptance_criterion": "For readiness and deployment decision, supply the actual versioned dast readiness record, including mandate_ref, application_scope, owners, policy_ref, interface_inventory, topology_decision, feasibility_evidence. Independently assess the evidence against this exact criterion: The application owner, policy and scope are identified. The deployment decision records feasibility evidence, trust boundaries, gateway and backend perspectives, and limitations.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle and Deployment patterns and fidelity. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:1.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "readiness and deployment decision",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "solution-architect:4"
+          ],
+          "producer_role": "solution-architect",
+          "receiving_role": "security-architect",
+          "acceptance_criterion": "The application owner, policy and scope are identified. The deployment decision records feasibility evidence, trust boundaries, gateway and backend perspectives, and limitations.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:1",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:1.dast_readiness",
+                "semantic_field": "handoff_dast_readiness",
+                "required_fields": [
+                  "mandate_ref",
+                  "application_scope",
+                  "owners",
+                  "policy_ref",
+                  "interface_inventory",
+                  "topology_decision",
+                  "feasibility_evidence"
+                ],
+                "acceptance_criterion": "For readiness and deployment decision, supply the actual versioned dast readiness record, including mandate_ref, application_scope, owners, policy_ref, interface_inventory, topology_decision, feasibility_evidence. Independently assess the evidence against this exact criterion: The application owner, policy and scope are identified. The deployment decision records feasibility evidence, trust boundaries, gateway and backend perspectives, and limitations.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle and Deployment patterns and fidelity. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:1.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "readiness and deployment decision",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 2
+        },
+        "qualification": {
+          "contract_ids": [
+            "solution-architect:4"
+          ],
+          "producer_role": "solution-architect",
+          "receiving_role": "security-architect",
+          "acceptance_criterion": "The application owner, policy and scope are identified. The deployment decision records feasibility evidence, trust boundaries, gateway and backend perspectives, and limitations.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:1",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:1.dast_readiness",
+                "semantic_field": "handoff_dast_readiness",
+                "required_fields": [
+                  "mandate_ref",
+                  "application_scope",
+                  "owners",
+                  "policy_ref",
+                  "interface_inventory",
+                  "topology_decision",
+                  "feasibility_evidence"
+                ],
+                "acceptance_criterion": "For readiness and deployment decision, supply the actual versioned dast readiness record, including mandate_ref, application_scope, owners, policy_ref, interface_inventory, topology_decision, feasibility_evidence. Independently assess the evidence against this exact criterion: The application owner, policy and scope are identified. The deployment decision records feasibility evidence, trust boundaries, gateway and backend perspectives, and limitations.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle and Deployment patterns and fidelity. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:1.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "readiness and deployment decision",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 2
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:2",
+      "workflow_id": "dast-control-assurance",
+      "step": 2,
+      "producer_role": "security-architect",
+      "receiving_role": "control-owner",
+      "handover": "security architecture and traceability baseline",
+      "acceptance_criterion": "Each mandatory scenario traces to a versioned requirement, expected evidence and accountable control. Gaps have an owner and disposition.",
+      "contract_ids": [
+        "security-architect:1"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "model"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:2",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:2.dast_security_baseline",
+            "semantic_field": "handoff_dast_security_baseline",
+            "required_fields": [
+              "risk_refs",
+              "security_requirements",
+              "architecture_ref",
+              "coverage_matrix",
+              "acceptance_criteria",
+              "authority_matrix"
+            ],
+            "acceptance_criterion": "For security architecture and traceability baseline, supply the actual versioned dast security baseline record, including risk_refs, security_requirements, architecture_ref, coverage_matrix, acceptance_criteria, authority_matrix. Independently assess the evidence against this exact criterion: Each mandatory scenario traces to a versioned requirement, expected evidence and accountable control. Gaps have an owner and disposition.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Security requirements catalogue and Qualification and coverage. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:2.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "security architecture and traceability baseline",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "security-architect:1"
+          ],
+          "producer_role": "security-architect",
+          "receiving_role": "solution-architect",
+          "acceptance_criterion": "Each mandatory scenario traces to a versioned requirement, expected evidence and accountable control. Gaps have an owner and disposition.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:2",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:2.dast_security_baseline",
+                "semantic_field": "handoff_dast_security_baseline",
+                "required_fields": [
+                  "risk_refs",
+                  "security_requirements",
+                  "architecture_ref",
+                  "coverage_matrix",
+                  "acceptance_criteria",
+                  "authority_matrix"
+                ],
+                "acceptance_criterion": "For security architecture and traceability baseline, supply the actual versioned dast security baseline record, including risk_refs, security_requirements, architecture_ref, coverage_matrix, acceptance_criteria, authority_matrix. Independently assess the evidence against this exact criterion: Each mandatory scenario traces to a versioned requirement, expected evidence and accountable control. Gaps have an owner and disposition.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Security requirements catalogue and Qualification and coverage. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:2.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "security architecture and traceability baseline",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 10
+        },
+        "qualification": {
+          "contract_ids": [
+            "security-architect:1"
+          ],
+          "producer_role": "security-architect",
+          "receiving_role": "control-owner",
+          "acceptance_criterion": "Each mandatory scenario traces to a versioned requirement, expected evidence and accountable control. Gaps have an owner and disposition.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:2",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:2.dast_security_baseline",
+                "semantic_field": "handoff_dast_security_baseline",
+                "required_fields": [
+                  "risk_refs",
+                  "security_requirements",
+                  "architecture_ref",
+                  "coverage_matrix",
+                  "acceptance_criteria",
+                  "authority_matrix"
+                ],
+                "acceptance_criterion": "For security architecture and traceability baseline, supply the actual versioned dast security baseline record, including risk_refs, security_requirements, architecture_ref, coverage_matrix, acceptance_criteria, authority_matrix. Independently assess the evidence against this exact criterion: Each mandatory scenario traces to a versioned requirement, expected evidence and accountable control. Gaps have an owner and disposition.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Security requirements catalogue and Qualification and coverage. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:2.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "security architecture and traceability baseline",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 3
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:3",
+      "workflow_id": "dast-control-assurance",
+      "step": 3,
+      "producer_role": "control-owner",
+      "receiving_role": "internal-it-auditor",
+      "handover": "control qualification dossier",
+      "acceptance_criterion": "The dossier records actual positive and negative observations, identity and session evidence, independent coverage denominators, cleanup and concurrency, and a protected release path. Unmet requirements remain visible.",
+      "contract_ids": [
+        "control-owner:2"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "document"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:3",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:3.dast_qualification",
+            "semantic_field": "handoff_dast_qualification",
+            "required_fields": [
+              "qualified_scope",
+              "implementation_refs",
+              "qualification_results",
+              "coverage",
+              "fitness_gaps",
+              "gate_negative_results",
+              "operations_runbook"
+            ],
+            "acceptance_criterion": "For control qualification dossier, supply the actual versioned dast qualification record, including qualified_scope, implementation_refs, qualification_results, coverage, fitness_gaps, gate_negative_results, operations_runbook. Independently assess the evidence against this exact criterion: The dossier records actual positive and negative observations, identity and session evidence, independent coverage denominators, cleanup and concurrency, and a protected release path. Unmet requirements remain visible.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Qualification and coverage and Example and completion. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:3.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "control qualification dossier",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "control-owner:2"
+          ],
+          "producer_role": "control-owner",
+          "receiving_role": "internal-it-auditor",
+          "acceptance_criterion": "The dossier records actual positive and negative observations, identity and session evidence, independent coverage denominators, cleanup and concurrency, and a protected release path. Unmet requirements remain visible.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:3",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:3.dast_qualification",
+                "semantic_field": "handoff_dast_qualification",
+                "required_fields": [
+                  "qualified_scope",
+                  "implementation_refs",
+                  "qualification_results",
+                  "coverage",
+                  "fitness_gaps",
+                  "gate_negative_results",
+                  "operations_runbook"
+                ],
+                "acceptance_criterion": "For control qualification dossier, supply the actual versioned dast qualification record, including qualified_scope, implementation_refs, qualification_results, coverage, fitness_gaps, gate_negative_results, operations_runbook. Independently assess the evidence against this exact criterion: The dossier records actual positive and negative observations, identity and session evidence, independent coverage denominators, cleanup and concurrency, and a protected release path. Unmet requirements remain visible.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Qualification and coverage and Example and completion. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:3.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "control qualification dossier",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 4
+        },
+        "qualification": {
+          "contract_ids": [
+            "control-owner:2"
+          ],
+          "producer_role": "control-owner",
+          "receiving_role": "internal-it-auditor",
+          "acceptance_criterion": "The dossier records actual positive and negative observations, identity and session evidence, independent coverage denominators, cleanup and concurrency, and a protected release path. Unmet requirements remain visible.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:3",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:3.dast_qualification",
+                "semantic_field": "handoff_dast_qualification",
+                "required_fields": [
+                  "qualified_scope",
+                  "implementation_refs",
+                  "qualification_results",
+                  "coverage",
+                  "fitness_gaps",
+                  "gate_negative_results",
+                  "operations_runbook"
+                ],
+                "acceptance_criterion": "For control qualification dossier, supply the actual versioned dast qualification record, including qualified_scope, implementation_refs, qualification_results, coverage, fitness_gaps, gate_negative_results, operations_runbook. Independently assess the evidence against this exact criterion: The dossier records actual positive and negative observations, identity and session evidence, independent coverage denominators, cleanup and concurrency, and a protected release path. Unmet requirements remain visible.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Qualification and coverage and Example and completion. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:3.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "control qualification dossier",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 4
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:4",
+      "workflow_id": "dast-control-assurance",
+      "step": 4,
+      "producer_role": "internal-it-auditor",
+      "receiving_role": "engagement:named-authority",
+      "handover": "independent security assessment",
+      "acceptance_criterion": "The reviewer is independent of design and implementation. Findings cite criteria and observed evidence, including qualification and release enforcement limitations.",
+      "contract_ids": [
+        "internal-it-auditor:3"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "assurance-report"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:4",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:4.dast_independent_review",
+            "semantic_field": "handoff_dast_independent_review",
+            "required_fields": [
+              "reviewer",
+              "independence",
+              "source_versions",
+              "criteria_refs",
+              "findings",
+              "verdict"
+            ],
+            "acceptance_criterion": "For independent security assessment, supply the actual versioned dast independent review record, including reviewer, independence, source_versions, criteria_refs, findings, verdict. Independently assess the evidence against this exact criterion: The reviewer is independent of design and implementation. Findings cite criteria and observed evidence, including qualification and release enforcement limitations.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Accountability and decision rights, Qualification and coverage, and Output Security Gate and exceptions. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:4.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "independent security assessment",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "internal-it-auditor:3"
+          ],
+          "producer_role": "internal-it-auditor",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "The reviewer is independent of design and implementation. Findings cite criteria and observed evidence, including qualification and release enforcement limitations.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:4",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:4.dast_independent_review",
+                "semantic_field": "handoff_dast_independent_review",
+                "required_fields": [
+                  "reviewer",
+                  "independence",
+                  "source_versions",
+                  "criteria_refs",
+                  "findings",
+                  "verdict"
+                ],
+                "acceptance_criterion": "For independent security assessment, supply the actual versioned dast independent review record, including reviewer, independence, source_versions, criteria_refs, findings, verdict. Independently assess the evidence against this exact criterion: The reviewer is independent of design and implementation. Findings cite criteria and observed evidence, including qualification and release enforcement limitations.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Accountability and decision rights, Qualification and coverage, and Output Security Gate and exceptions. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:4.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "independent security assessment",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 5
+        },
+        "qualification": {
+          "contract_ids": [
+            "internal-it-auditor:3"
+          ],
+          "producer_role": "internal-it-auditor",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "The reviewer is independent of design and implementation. Findings cite criteria and observed evidence, including qualification and release enforcement limitations.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:4",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:4.dast_independent_review",
+                "semantic_field": "handoff_dast_independent_review",
+                "required_fields": [
+                  "reviewer",
+                  "independence",
+                  "source_versions",
+                  "criteria_refs",
+                  "findings",
+                  "verdict"
+                ],
+                "acceptance_criterion": "For independent security assessment, supply the actual versioned dast independent review record, including reviewer, independence, source_versions, criteria_refs, findings, verdict. Independently assess the evidence against this exact criterion: The reviewer is independent of design and implementation. Findings cite criteria and observed evidence, including qualification and release enforcement limitations.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Accountability and decision rights, Qualification and coverage, and Output Security Gate and exceptions. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:4.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "independent security assessment",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 5
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:5",
+      "workflow_id": "dast-control-assurance",
+      "step": 5,
+      "producer_role": "engagement:named-authority",
+      "receiving_role": "engagement:named-authority",
+      "handover": "formal security acceptance record",
+      "acceptance_criterion": "The decision binds the exact independently reviewed qualification, scope and conditions. Missing or rejected authority blocks acceptance.",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:5",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:5.dast_operational_acceptance",
+            "semantic_field": "handoff_dast_operational_acceptance",
+            "required_fields": [
+              "qualified_scope",
+              "review_ref",
+              "security_decision",
+              "exception_disposition",
+              "effective_conditions"
+            ],
+            "acceptance_criterion": "For formal security acceptance record, supply the actual versioned dast operational acceptance record, including qualified_scope, review_ref, security_decision, exception_disposition, effective_conditions. Independently assess the evidence against this exact criterion: The decision binds the exact independently reviewed qualification, scope and conditions. Missing or rejected authority blocks acceptance.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Accountability and decision rights and Implementation lifecycle (A6). Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:5.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "formal security acceptance record",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [],
+          "producer_role": "engagement:named-authority",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "The decision binds the exact independently reviewed qualification, scope and conditions. Missing or rejected authority blocks acceptance.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:5",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:5.dast_operational_acceptance",
+                "semantic_field": "handoff_dast_operational_acceptance",
+                "required_fields": [
+                  "qualified_scope",
+                  "review_ref",
+                  "security_decision",
+                  "exception_disposition",
+                  "effective_conditions"
+                ],
+                "acceptance_criterion": "For formal security acceptance record, supply the actual versioned dast operational acceptance record, including qualified_scope, review_ref, security_decision, exception_disposition, effective_conditions. Independently assess the evidence against this exact criterion: The decision binds the exact independently reviewed qualification, scope and conditions. Missing or rejected authority blocks acceptance.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Accountability and decision rights and Implementation lifecycle (A6). Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:5.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "formal security acceptance record",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 19
+        },
+        "qualification": {
+          "contract_ids": [],
+          "producer_role": "engagement:named-authority",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "The decision binds the exact independently reviewed qualification, scope and conditions. Missing or rejected authority blocks acceptance.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:5",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:5.dast_operational_acceptance",
+                "semantic_field": "handoff_dast_operational_acceptance",
+                "required_fields": [
+                  "qualified_scope",
+                  "review_ref",
+                  "security_decision",
+                  "exception_disposition",
+                  "effective_conditions"
+                ],
+                "acceptance_criterion": "For formal security acceptance record, supply the actual versioned dast operational acceptance record, including qualified_scope, review_ref, security_decision, exception_disposition, effective_conditions. Independently assess the evidence against this exact criterion: The decision binds the exact independently reviewed qualification, scope and conditions. Missing or rejected authority blocks acceptance.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Accountability and decision rights and Implementation lifecycle (A6). Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:5.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "formal security acceptance record",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 19
+        }
+      },
+      "source_content_contract": {
+        "id": "dast-control-assurance:5",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Bind formal security acceptance to the exact qualification, independent review, policy and application scope.",
+          "Record the named security authority decision and effective conditions before operational takeover."
+        ],
+        "conditional": [
+          {
+            "when": "A permitted exception is relied upon.",
+            "requirement": "Reference the exact current governance decision and separate risk acceptance."
+          }
+        ],
+        "optional": []
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:6",
+      "workflow_id": "dast-control-assurance",
+      "step": 6,
+      "producer_role": "control-owner",
+      "receiving_role": "engagement:named-authority",
+      "handover": "release evidence assessment",
+      "acceptance_criterion": "Evidence must bind the observed deployment, approved profile, identity, run and policy to the exact candidate. Missing, stale, out-of-scope or untrusted evidence cannot support ordinary promotion.",
+      "contract_ids": [
+        "control-owner:2"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "document"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:6",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:6.dast_release_evidence",
+            "semantic_field": "handoff_dast_release_evidence",
+            "required_fields": [
+              "qualification_ref",
+              "candidate_manifest",
+              "observed_deployment",
+              "run_refs",
+              "evidence_integrity",
+              "validity",
+              "coverage",
+              "policy_compliance",
+              "findings"
+            ],
+            "acceptance_criterion": "For release evidence assessment, supply the actual versioned dast release evidence record, including qualification_ref, candidate_manifest, observed_deployment, run_refs, evidence_integrity, validity, coverage, policy_compliance, findings. Independently assess the evidence against this exact criterion: Evidence must bind the observed deployment, approved profile, identity, run and policy to the exact candidate. Missing, stale, out-of-scope or untrusted evidence cannot support ordinary promotion.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Recurring execution and evidence handoff and Qualification and coverage. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:6.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "release evidence assessment",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "release-evidence": {
+          "contract_ids": [
+            "control-owner:2"
+          ],
+          "producer_role": "control-owner",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "Evidence must bind the observed deployment, approved profile, identity, run and policy to the exact candidate. Missing, stale, out-of-scope or untrusted evidence cannot support ordinary promotion.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:6",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:6.dast_release_evidence",
+                "semantic_field": "handoff_dast_release_evidence",
+                "required_fields": [
+                  "qualification_ref",
+                  "candidate_manifest",
+                  "observed_deployment",
+                  "run_refs",
+                  "evidence_integrity",
+                  "validity",
+                  "coverage",
+                  "policy_compliance",
+                  "findings"
+                ],
+                "acceptance_criterion": "For release evidence assessment, supply the actual versioned dast release evidence record, including qualification_ref, candidate_manifest, observed_deployment, run_refs, evidence_integrity, validity, coverage, policy_compliance, findings. Independently assess the evidence against this exact criterion: Evidence must bind the observed deployment, approved profile, identity, run and policy to the exact candidate. Missing, stale, out-of-scope or untrusted evidence cannot support ordinary promotion.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Recurring execution and evidence handoff and Qualification and coverage. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:6.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "release evidence assessment",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 7
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:7",
+      "workflow_id": "dast-control-assurance",
+      "step": 7,
+      "producer_role": "engagement:named-authority",
+      "receiving_role": "engagement:named-authority",
+      "handover": "DAST gate and release authority record",
+      "acceptance_criterion": "Untrusted evidence and non-waivable failures block. Any permitted exception is exact, current and sufficient. Promotion requires the verified release decision and all mandatory controls.",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:7",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:7.dast_release_decision",
+            "semantic_field": "handoff_dast_release_decision",
+            "required_fields": [
+              "candidate_manifest",
+              "evidence_ref",
+              "policy_ref",
+              "gate_result",
+              "exception_disposition",
+              "release_authority_ref"
+            ],
+            "acceptance_criterion": "For DAST gate and release authority record, supply the actual versioned dast release decision record, including candidate_manifest, evidence_ref, policy_ref, gate_result, exception_disposition, release_authority_ref. Independently assess the evidence against this exact criterion: Untrusted evidence and non-waivable failures block. Any permitted exception is exact, current and sufficient. Promotion requires the verified release decision and all mandatory controls.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Output Security Gate and exceptions. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:7.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "DAST gate and release authority record",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "release-evidence": {
+          "contract_ids": [],
+          "producer_role": "engagement:named-authority",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "Untrusted evidence and non-waivable failures block. Any permitted exception is exact, current and sufficient. Promotion requires the verified release decision and all mandatory controls.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:7",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:7.dast_release_decision",
+                "semantic_field": "handoff_dast_release_decision",
+                "required_fields": [
+                  "candidate_manifest",
+                  "evidence_ref",
+                  "policy_ref",
+                  "gate_result",
+                  "exception_disposition",
+                  "release_authority_ref"
+                ],
+                "acceptance_criterion": "For DAST gate and release authority record, supply the actual versioned dast release decision record, including candidate_manifest, evidence_ref, policy_ref, gate_result, exception_disposition, release_authority_ref. Independently assess the evidence against this exact criterion: Untrusted evidence and non-waivable failures block. Any permitted exception is exact, current and sufficient. Promotion requires the verified release decision and all mandatory controls.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Output Security Gate and exceptions. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:7.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "DAST gate and release authority record",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": null
+        }
+      },
+      "source_content_contract": {
+        "id": "dast-control-assurance:7",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Reference the exact release manifest, assessed evidence and protected gate decision under the applicable policy revision.",
+          "Record the actual release authority decision and confirm the other mandatory release controls. Untrusted evidence or a non-waivable failure blocks promotion."
+        ],
+        "conditional": [
+          {
+            "when": "The gate relies on an exception.",
+            "requirement": "Show authority, scope and validity for each affected finding or control requirement; retain the original technical status."
+          }
+        ],
+        "optional": []
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:8",
+      "workflow_id": "dast-control-assurance",
+      "step": 8,
+      "producer_role": "control-owner",
+      "receiving_role": "engagement:named-authority",
+      "handover": "continuous assurance disposition",
+      "acceptance_criterion": "Material changes invalidate affected evidence where required and return impacted scope to qualification. Follow-up has accountable owners and review dates.",
+      "contract_ids": [
+        "control-owner:2"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "document"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:8",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:8.dast_assurance",
+            "semantic_field": "handoff_dast_assurance",
+            "required_fields": [
+              "qualification_ref",
+              "review_period",
+              "operating_metrics",
+              "drift_events",
+              "remediation_owners",
+              "requalification_scope",
+              "disposition"
+            ],
+            "acceptance_criterion": "For continuous assurance disposition, supply the actual versioned dast assurance record, including qualification_ref, review_period, operating_metrics, drift_events, remediation_owners, requalification_scope, disposition. Independently assess the evidence against this exact criterion: Material changes invalidate affected evidence where required and return impacted scope to qualification. Follow-up has accountable owners and review dates.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Remediation and operating assurance. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:8.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "continuous assurance disposition",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "continuous-assurance": {
+          "contract_ids": [
+            "control-owner:2"
+          ],
+          "producer_role": "control-owner",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "Material changes invalidate affected evidence where required and return impacted scope to qualification. Follow-up has accountable owners and review dates.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:8",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:8.dast_assurance",
+                "semantic_field": "handoff_dast_assurance",
+                "required_fields": [
+                  "qualification_ref",
+                  "review_period",
+                  "operating_metrics",
+                  "drift_events",
+                  "remediation_owners",
+                  "requalification_scope",
+                  "disposition"
+                ],
+                "acceptance_criterion": "For continuous assurance disposition, supply the actual versioned dast assurance record, including qualification_ref, review_period, operating_metrics, drift_events, remediation_owners, requalification_scope, disposition. Independently assess the evidence against this exact criterion: Material changes invalidate affected evidence where required and return impacted scope to qualification. Follow-up has accountable owners and review dates.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Remediation and operating assurance. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:8.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "continuous assurance disposition",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": null
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:9",
+      "workflow_id": "dast-control-assurance",
+      "step": 9,
+      "producer_role": "engagement:named-authority",
+      "receiving_role": "solution-architect",
+      "handover": "integration mandate",
+      "acceptance_criterion": "A named application owner authorises the bounded change. Policy, scope, risk ownership and available resources are explicit.",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:9",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:9.dast_mandate",
+            "semantic_field": "handoff_dast_mandate",
+            "required_fields": [
+              "application_scope",
+              "pipeline_revision",
+              "mandate_ref",
+              "resources",
+              "policy_ref",
+              "accountable_owners"
+            ],
+            "acceptance_criterion": "For integration mandate, supply the actual versioned dast mandate record, including application_scope, pipeline_revision, mandate_ref, resources, policy_ref, accountable_owners. Independently assess the evidence against this exact criterion: A named application owner authorises the bounded change. Policy, scope, risk ownership and available resources are explicit.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Accountability and decision rights and Implementation lifecycle (A0). Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:9.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "integration mandate",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [],
+          "producer_role": "engagement:named-authority",
+          "receiving_role": "solution-architect",
+          "acceptance_criterion": "A named application owner authorises the bounded change. Policy, scope, risk ownership and available resources are explicit.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:9",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:9.dast_mandate",
+                "semantic_field": "handoff_dast_mandate",
+                "required_fields": [
+                  "application_scope",
+                  "pipeline_revision",
+                  "mandate_ref",
+                  "resources",
+                  "policy_ref",
+                  "accountable_owners"
+                ],
+                "acceptance_criterion": "For integration mandate, supply the actual versioned dast mandate record, including application_scope, pipeline_revision, mandate_ref, resources, policy_ref, accountable_owners. Independently assess the evidence against this exact criterion: A named application owner authorises the bounded change. Policy, scope, risk ownership and available resources are explicit.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Accountability and decision rights and Implementation lifecycle (A0). Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:9.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "integration mandate",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 1
+        }
+      },
+      "source_content_contract": {
+        "id": "dast-control-assurance:9",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Record exact application and existing pipeline scope, the named application owner mandate, delivery ownership, funding and capacity.",
+          "Identify applicable policy, accountable authorities and integration bounds."
+        ],
+        "conditional": [],
+        "optional": []
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:10",
+      "workflow_id": "dast-control-assurance",
+      "step": 10,
+      "producer_role": "solution-architect",
+      "receiving_role": "software-engineer",
+      "handover": "reviewed integration design and implementation backlog",
+      "acceptance_criterion": "The design binds readiness and requirements to a deployment decision, representative test environment, specific implementation changes and qualification plan. Critical uncertainties have observed feasibility evidence.",
+      "contract_ids": [
+        "solution-architect:4"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "architecture-decision"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:10",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:10.dast_integration_design",
+            "semantic_field": "handoff_dast_integration_design",
+            "required_fields": [
+              "readiness_ref",
+              "requirements_ref",
+              "topology_decision",
+              "feasibility_evidence",
+              "design_review",
+              "implementation_backlog",
+              "qualification_plan"
+            ],
+            "acceptance_criterion": "For reviewed integration design and implementation backlog, supply the actual versioned dast integration design record, including readiness_ref, requirements_ref, topology_decision, feasibility_evidence, design_review, implementation_backlog, qualification_plan. Independently assess the evidence against this exact criterion: The design binds readiness and requirements to a deployment decision, representative test environment, specific implementation changes and qualification plan. Critical uncertainties have observed feasibility evidence.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Deployment patterns and fidelity and Qualification and coverage. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:10.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "reviewed integration design and implementation backlog",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "solution-architect:4"
+          ],
+          "producer_role": "solution-architect",
+          "receiving_role": "software-engineer",
+          "acceptance_criterion": "The design binds readiness and requirements to a deployment decision, representative test environment, specific implementation changes and qualification plan. Critical uncertainties have observed feasibility evidence.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:10",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:10.dast_integration_design",
+                "semantic_field": "handoff_dast_integration_design",
+                "required_fields": [
+                  "readiness_ref",
+                  "requirements_ref",
+                  "topology_decision",
+                  "feasibility_evidence",
+                  "design_review",
+                  "implementation_backlog",
+                  "qualification_plan"
+                ],
+                "acceptance_criterion": "For reviewed integration design and implementation backlog, supply the actual versioned dast integration design record, including readiness_ref, requirements_ref, topology_decision, feasibility_evidence, design_review, implementation_backlog, qualification_plan. Independently assess the evidence against this exact criterion: The design binds readiness and requirements to a deployment decision, representative test environment, specific implementation changes and qualification plan. Critical uncertainties have observed feasibility evidence.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Deployment patterns and fidelity and Qualification and coverage. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:10.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "reviewed integration design and implementation backlog",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 11
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:11",
+      "workflow_id": "dast-control-assurance",
+      "step": 11,
+      "producer_role": "software-engineer",
+      "receiving_role": "network-engineer",
+      "handover": "reviewed application changes",
+      "acceptance_criterion": "Application revision and tests are recorded. Release authentication and authorisation remain effective and test fixtures are isolated.",
+      "contract_ids": [
+        "software-engineer:1"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "decision-paper"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:11",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:11.dast_application_change",
+            "semantic_field": "handoff_dast_application_change",
+            "required_fields": [
+              "design_ref",
+              "application_revision",
+              "change_disposition",
+              "readiness_tests",
+              "fixture_isolation",
+              "peer_review"
+            ],
+            "acceptance_criterion": "For reviewed application changes, supply the actual versioned dast application change record, including design_ref, application_revision, change_disposition, readiness_tests, fixture_isolation, peer_review. Independently assess the evidence against this exact criterion: Application revision and tests are recorded. Release authentication and authorisation remain effective and test fixtures are isolated.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle (Application workstream) and Typical testability changes. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:11.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "reviewed application changes",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "software-engineer:1"
+          ],
+          "producer_role": "software-engineer",
+          "receiving_role": "network-engineer",
+          "acceptance_criterion": "Application revision and tests are recorded. Release authentication and authorisation remain effective and test fixtures are isolated.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:11",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:11.dast_application_change",
+                "semantic_field": "handoff_dast_application_change",
+                "required_fields": [
+                  "design_ref",
+                  "application_revision",
+                  "change_disposition",
+                  "readiness_tests",
+                  "fixture_isolation",
+                  "peer_review"
+                ],
+                "acceptance_criterion": "For reviewed application changes, supply the actual versioned dast application change record, including design_ref, application_revision, change_disposition, readiness_tests, fixture_isolation, peer_review. Independently assess the evidence against this exact criterion: Application revision and tests are recorded. Release authentication and authorisation remain effective and test fixtures are isolated.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle (Application workstream) and Typical testability changes. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:11.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "reviewed application changes",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 12
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:12",
+      "workflow_id": "dast-control-assurance",
+      "step": 12,
+      "producer_role": "network-engineer",
+      "receiving_role": "identity-and-access-management-engineer",
+      "handover": "isolated environment evidence",
+      "acceptance_criterion": "The environment revision identifies approved connectivity, blocked destinations, resource limits, concurrency isolation and teardown results.",
+      "contract_ids": [
+        "network-engineer:2"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "prototype"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:12",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:12.dast_environment",
+            "semantic_field": "handoff_dast_environment",
+            "required_fields": [
+              "design_ref",
+              "environment_revision",
+              "network_controls",
+              "isolation_results",
+              "teardown_results"
+            ],
+            "acceptance_criterion": "For isolated environment evidence, supply the actual versioned dast environment record, including design_ref, environment_revision, network_controls, isolation_results, teardown_results. Independently assess the evidence against this exact criterion: The environment revision identifies approved connectivity, blocked destinations, resource limits, concurrency isolation and teardown results.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Deployment patterns and fidelity and the isolation and concurrency qualification cases. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:12.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "isolated environment evidence",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "network-engineer:2"
+          ],
+          "producer_role": "network-engineer",
+          "receiving_role": "identity-and-access-management-engineer",
+          "acceptance_criterion": "The environment revision identifies approved connectivity, blocked destinations, resource limits, concurrency isolation and teardown results.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:12",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:12.dast_environment",
+                "semantic_field": "handoff_dast_environment",
+                "required_fields": [
+                  "design_ref",
+                  "environment_revision",
+                  "network_controls",
+                  "isolation_results",
+                  "teardown_results"
+                ],
+                "acceptance_criterion": "For isolated environment evidence, supply the actual versioned dast environment record, including design_ref, environment_revision, network_controls, isolation_results, teardown_results. Independently assess the evidence against this exact criterion: The environment revision identifies approved connectivity, blocked destinations, resource limits, concurrency isolation and teardown results.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Deployment patterns and fidelity and the isolation and concurrency qualification cases. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:12.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "isolated environment evidence",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 13
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:13",
+      "workflow_id": "dast-control-assurance",
+      "step": 13,
+      "producer_role": "identity-and-access-management-engineer",
+      "receiving_role": "container-platform-engineer",
+      "handover": "test identity lifecycle evidence",
+      "acceptance_criterion": "Required identities and roles are scoped, credential material stays out of records, and issue, expiry and revocation have observed evidence.",
+      "contract_ids": [
+        "identity-and-access-management-engineer:1"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "prototype"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:13",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:13.dast_identities",
+            "semantic_field": "handoff_dast_identities",
+            "required_fields": [
+              "design_ref",
+              "identity_revision",
+              "role_mapping",
+              "protected_delivery",
+              "lifecycle_results"
+            ],
+            "acceptance_criterion": "For test identity lifecycle evidence, supply the actual versioned dast identities record, including design_ref, identity_revision, role_mapping, protected_delivery, lifecycle_results. Independently assess the evidence against this exact criterion: Required identities and roles are scoped, credential material stays out of records, and issue, expiry and revocation have observed evidence.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle (IAM workstream) and identity qualification criteria AC-03 and AC-04. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:13.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "test identity lifecycle evidence",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "identity-and-access-management-engineer:1"
+          ],
+          "producer_role": "identity-and-access-management-engineer",
+          "receiving_role": "container-platform-engineer",
+          "acceptance_criterion": "Required identities and roles are scoped, credential material stays out of records, and issue, expiry and revocation have observed evidence.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:13",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:13.dast_identities",
+                "semantic_field": "handoff_dast_identities",
+                "required_fields": [
+                  "design_ref",
+                  "identity_revision",
+                  "role_mapping",
+                  "protected_delivery",
+                  "lifecycle_results"
+                ],
+                "acceptance_criterion": "For test identity lifecycle evidence, supply the actual versioned dast identities record, including design_ref, identity_revision, role_mapping, protected_delivery, lifecycle_results. Independently assess the evidence against this exact criterion: Required identities and roles are scoped, credential material stays out of records, and issue, expiry and revocation have observed evidence.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle (IAM workstream) and identity qualification criteria AC-03 and AC-04. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:13.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "test identity lifecycle evidence",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 14
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:14",
+      "workflow_id": "dast-control-assurance",
+      "step": 14,
+      "producer_role": "container-platform-engineer",
+      "receiving_role": "control-owner",
+      "handover": "approved scanner platform baseline",
+      "acceptance_criterion": "The recorded platform is reproducible and isolated. Its immutable identity and lifecycle ownership are explicit.",
+      "contract_ids": [
+        "container-platform-engineer:1"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "catalogue"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:14",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:14.dast_platform",
+            "semantic_field": "handoff_dast_platform",
+            "required_fields": [
+              "design_ref",
+              "image_digest",
+              "dependency_inventory",
+              "provenance",
+              "hardening_evidence",
+              "lifecycle_owner"
+            ],
+            "acceptance_criterion": "For approved scanner platform baseline, supply the actual versioned dast platform record, including design_ref, image_digest, dependency_inventory, provenance, hardening_evidence, lifecycle_owner. Independently assess the evidence against this exact criterion: The recorded platform is reproducible and isolated. Its immutable identity and lifecycle ownership are explicit.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Deployment patterns and fidelity and Remediation and operating assurance (platform lifecycle). Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:14.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "approved scanner platform baseline",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "container-platform-engineer:1"
+          ],
+          "producer_role": "container-platform-engineer",
+          "receiving_role": "control-owner",
+          "acceptance_criterion": "The recorded platform is reproducible and isolated. Its immutable identity and lifecycle ownership are explicit.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:14",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:14.dast_platform",
+                "semantic_field": "handoff_dast_platform",
+                "required_fields": [
+                  "design_ref",
+                  "image_digest",
+                  "dependency_inventory",
+                  "provenance",
+                  "hardening_evidence",
+                  "lifecycle_owner"
+                ],
+                "acceptance_criterion": "For approved scanner platform baseline, supply the actual versioned dast platform record, including design_ref, image_digest, dependency_inventory, provenance, hardening_evidence, lifecycle_owner. Independently assess the evidence against this exact criterion: The recorded platform is reproducible and isolated. Its immutable identity and lifecycle ownership are explicit.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Deployment patterns and fidelity and Remediation and operating assurance (platform lifecycle). Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:14.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "approved scanner platform baseline",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 15
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:15",
+      "workflow_id": "dast-control-assurance",
+      "step": 15,
+      "producer_role": "control-owner",
+      "receiving_role": "ci-cd-platform-engineer",
+      "handover": "control profile and evidence interface baseline",
+      "acceptance_criterion": "Approved profile and scope revisions are traceable to mandatory scenarios, qualified measurement and complementary controls. Missing coverage has an explicit disposition.",
+      "contract_ids": [
+        "control-owner:1"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "control-design"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:15",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:15.dast_control_interface",
+            "semantic_field": "handoff_dast_control_interface",
+            "required_fields": [
+              "design_ref",
+              "profile_ref",
+              "coverage_matrix",
+              "validity_rules",
+              "evidence_schema",
+              "complementary_controls"
+            ],
+            "acceptance_criterion": "For control profile and evidence interface baseline, supply the actual versioned dast control interface record, including design_ref, profile_ref, coverage_matrix, validity_rules, evidence_schema, complementary_controls. Independently assess the evidence against this exact criterion: Approved profile and scope revisions are traceable to mandatory scenarios, qualified measurement and complementary controls. Missing coverage has an explicit disposition.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Qualification and coverage and Recurring execution and evidence handoff. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:15.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "control profile and evidence interface baseline",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "control-owner:1"
+          ],
+          "producer_role": "control-owner",
+          "receiving_role": "ci-cd-platform-engineer",
+          "acceptance_criterion": "Approved profile and scope revisions are traceable to mandatory scenarios, qualified measurement and complementary controls. Missing coverage has an explicit disposition.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:15",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:15.dast_control_interface",
+                "semantic_field": "handoff_dast_control_interface",
+                "required_fields": [
+                  "design_ref",
+                  "profile_ref",
+                  "coverage_matrix",
+                  "validity_rules",
+                  "evidence_schema",
+                  "complementary_controls"
+                ],
+                "acceptance_criterion": "For control profile and evidence interface baseline, supply the actual versioned dast control interface record, including design_ref, profile_ref, coverage_matrix, validity_rules, evidence_schema, complementary_controls. Independently assess the evidence against this exact criterion: Approved profile and scope revisions are traceable to mandatory scenarios, qualified measurement and complementary controls. Missing coverage has an explicit disposition.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Qualification and coverage and Recurring execution and evidence handoff. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:15.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "control profile and evidence interface baseline",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 16
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:16",
+      "workflow_id": "dast-control-assurance",
+      "step": 16,
+      "producer_role": "ci-cd-platform-engineer",
+      "receiving_role": "release-engineer",
+      "handover": "reviewed pipeline evidence integration",
+      "acceptance_criterion": "Versioned pipeline changes bind evidence to the actual candidate and observed deployment. Synthetic tests demonstrate error handling, cleanup and tamper rejection. The intake is tested against the exact environment, identity, platform and control interface revisions.",
+      "contract_ids": [
+        "ci-cd-platform-engineer:1"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "prototype"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:16",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:16.dast_pipeline_integration",
+            "semantic_field": "handoff_dast_pipeline_integration",
+            "required_fields": [
+              "design_ref",
+              "prerequisite_revisions",
+              "pipeline_revision",
+              "candidate_binding",
+              "report_intake",
+              "cleanup_results",
+              "integration_tests",
+              "peer_review"
+            ],
+            "acceptance_criterion": "For reviewed pipeline evidence integration, supply the actual versioned dast pipeline integration record, including design_ref, prerequisite_revisions, pipeline_revision, candidate_binding, report_intake, cleanup_results, integration_tests, peer_review. Independently assess the evidence against this exact criterion: Versioned pipeline changes bind evidence to the actual candidate and observed deployment. Synthetic tests demonstrate error handling, cleanup and tamper rejection. The intake is tested against the exact environment, identity, platform and control interface revisions.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Recurring execution and evidence handoff and Implementation lifecycle (Pipeline workstream). Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:16.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "reviewed pipeline evidence integration",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "ci-cd-platform-engineer:1"
+          ],
+          "producer_role": "ci-cd-platform-engineer",
+          "receiving_role": "release-engineer",
+          "acceptance_criterion": "Versioned pipeline changes bind evidence to the actual candidate and observed deployment. Synthetic tests demonstrate error handling, cleanup and tamper rejection. The intake is tested against the exact environment, identity, platform and control interface revisions.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:16",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:16.dast_pipeline_integration",
+                "semantic_field": "handoff_dast_pipeline_integration",
+                "required_fields": [
+                  "design_ref",
+                  "prerequisite_revisions",
+                  "pipeline_revision",
+                  "candidate_binding",
+                  "report_intake",
+                  "cleanup_results",
+                  "integration_tests",
+                  "peer_review"
+                ],
+                "acceptance_criterion": "For reviewed pipeline evidence integration, supply the actual versioned dast pipeline integration record, including design_ref, prerequisite_revisions, pipeline_revision, candidate_binding, report_intake, cleanup_results, integration_tests, peer_review. Independently assess the evidence against this exact criterion: Versioned pipeline changes bind evidence to the actual candidate and observed deployment. Synthetic tests demonstrate error handling, cleanup and tamper rejection. The intake is tested against the exact environment, identity, platform and control interface revisions.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Recurring execution and evidence handoff and Implementation lifecycle (Pipeline workstream). Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:16.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "reviewed pipeline evidence integration",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 17
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:17",
+      "workflow_id": "dast-control-assurance",
+      "step": 17,
+      "producer_role": "release-engineer",
+      "receiving_role": "test-manager",
+      "handover": "protected release gate implementation",
+      "acceptance_criterion": "The gate evidence shows exact candidate binding, blocked promotion for failed prerequisites, validated exceptions and separate release authority.",
+      "contract_ids": [
+        "release-engineer:3"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "prototype"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:17",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:17.dast_gate_implementation",
+            "semantic_field": "handoff_dast_gate_implementation",
+            "required_fields": [
+              "pipeline_ref",
+              "gate_revision",
+              "policy_ref",
+              "enforcement_tests",
+              "exception_checks",
+              "release_boundary"
+            ],
+            "acceptance_criterion": "For protected release gate implementation, supply the actual versioned dast gate implementation record, including pipeline_ref, gate_revision, policy_ref, enforcement_tests, exception_checks, release_boundary. Independently assess the evidence against this exact criterion: The gate evidence shows exact candidate binding, blocked promotion for failed prerequisites, validated exceptions and separate release authority.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Output Security Gate and exceptions and the enforcement qualification cases. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:17.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "protected release gate implementation",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "release-engineer:3"
+          ],
+          "producer_role": "release-engineer",
+          "receiving_role": "test-manager",
+          "acceptance_criterion": "The gate evidence shows exact candidate binding, blocked promotion for failed prerequisites, validated exceptions and separate release authority.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:17",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:17.dast_gate_implementation",
+                "semantic_field": "handoff_dast_gate_implementation",
+                "required_fields": [
+                  "pipeline_ref",
+                  "gate_revision",
+                  "policy_ref",
+                  "enforcement_tests",
+                  "exception_checks",
+                  "release_boundary"
+                ],
+                "acceptance_criterion": "For protected release gate implementation, supply the actual versioned dast gate implementation record, including pipeline_ref, gate_revision, policy_ref, enforcement_tests, exception_checks, release_boundary. Independently assess the evidence against this exact criterion: The gate evidence shows exact candidate binding, blocked promotion for failed prerequisites, validated exceptions and separate release authority.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Output Security Gate and exceptions and the enforcement qualification cases. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:17.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "protected release gate implementation",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 18
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:18",
+      "workflow_id": "dast-control-assurance",
+      "step": 18,
+      "producer_role": "test-manager",
+      "receiving_role": "control-owner",
+      "handover": "system and negative integration qualification",
+      "acceptance_criterion": "Every applicable workstream has completion evidence and applicable requirements trace to tests. Unresolved integration failures block acceptance.",
+      "contract_ids": [
+        "test-manager:2"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "decision-paper"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:18",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:18.dast_system_qualification",
+            "semantic_field": "handoff_dast_system_qualification",
+            "required_fields": [
+              "plan_ref",
+              "workstream_refs",
+              "tested_versions",
+              "positive_results",
+              "negative_results",
+              "traceability",
+              "verdict"
+            ],
+            "acceptance_criterion": "For system and negative integration qualification, supply the actual versioned dast system qualification record, including plan_ref, workstream_refs, tested_versions, positive_results, negative_results, traceability, verdict. Independently assess the evidence against this exact criterion: Every applicable workstream has completion evidence and applicable requirements trace to tests. Unresolved integration failures block acceptance.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Qualification and coverage and Security requirements catalogue. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:18.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "system and negative integration qualification",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [
+            "test-manager:2"
+          ],
+          "producer_role": "test-manager",
+          "receiving_role": "control-owner",
+          "acceptance_criterion": "Every applicable workstream has completion evidence and applicable requirements trace to tests. Unresolved integration failures block acceptance.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:18",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:18.dast_system_qualification",
+                "semantic_field": "handoff_dast_system_qualification",
+                "required_fields": [
+                  "plan_ref",
+                  "workstream_refs",
+                  "tested_versions",
+                  "positive_results",
+                  "negative_results",
+                  "traceability",
+                  "verdict"
+                ],
+                "acceptance_criterion": "For system and negative integration qualification, supply the actual versioned dast system qualification record, including plan_ref, workstream_refs, tested_versions, positive_results, negative_results, traceability, verdict. Independently assess the evidence against this exact criterion: Every applicable workstream has completion evidence and applicable requirements trace to tests. Unresolved integration failures block acceptance.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Qualification and coverage and Security requirements catalogue. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:18.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "system and negative integration qualification",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": 3
+        }
+      }
+    },
+    {
+      "handoff_id": "dast-control-assurance:19",
+      "workflow_id": "dast-control-assurance",
+      "step": 19,
+      "producer_role": "engagement:named-authority",
+      "receiving_role": "engagement:named-authority",
+      "handover": "operational takeover decision and lifecycle handoff",
+      "acceptance_criterion": "The signed takeover binds the accepted scope to runbooks, support ownership, metrics, remediation and requalification triggers.",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "f68880cd3e2c146473f0c69e1c6a7ae968aac6195c179d139eded0fe21a7e558",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/dast-control-assurance:19",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/dast-control-assurance:19.dast_takeover",
+            "semantic_field": "handoff_dast_takeover",
+            "required_fields": [
+              "acceptance_ref",
+              "takeover_decision",
+              "qualified_scope",
+              "runbook_ref",
+              "owner_register",
+              "monitoring_plan",
+              "requalification_plan"
+            ],
+            "acceptance_criterion": "For operational takeover decision and lifecycle handoff, supply the actual versioned dast takeover record, including acceptance_ref, takeover_decision, qualified_scope, runbook_ref, owner_register, monitoring_plan, requalification_plan. Independently assess the evidence against this exact criterion: The signed takeover binds the accepted scope to runbooks, support ownership, metrics, remediation and requalification triggers.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle (A7), Remediation and operating assurance, and Example and completion. Record each unmet or inapplicable obligation and its disposition."
+          },
+          {
+            "id": "handoff/dast-control-assurance:19.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "operational takeover decision and lifecycle handoff",
+        "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+      },
+      "variant_bindings": {
+        "integration": {
+          "contract_ids": [],
+          "producer_role": "engagement:named-authority",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "The signed takeover binds the accepted scope to runbooks, support ownership, metrics, remediation and requalification triggers.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:19",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:19.dast_takeover",
+                "semantic_field": "handoff_dast_takeover",
+                "required_fields": [
+                  "acceptance_ref",
+                  "takeover_decision",
+                  "qualified_scope",
+                  "runbook_ref",
+                  "owner_register",
+                  "monitoring_plan",
+                  "requalification_plan"
+                ],
+                "acceptance_criterion": "For operational takeover decision and lifecycle handoff, supply the actual versioned dast takeover record, including acceptance_ref, takeover_decision, qualified_scope, runbook_ref, owner_register, monitoring_plan, requalification_plan. Independently assess the evidence against this exact criterion: The signed takeover binds the accepted scope to runbooks, support ownership, metrics, remediation and requalification triggers.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle (A7), Remediation and operating assurance, and Example and completion. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:19.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "operational takeover decision and lifecycle handoff",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": null
+        },
+        "qualification": {
+          "contract_ids": [],
+          "producer_role": "engagement:named-authority",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "The signed takeover binds the accepted scope to runbooks, support ownership, metrics, remediation and requalification triggers.",
+          "handoff_content_contract": {
+            "id": "handoff/dast-control-assurance:19",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/dast-control-assurance:19.dast_takeover",
+                "semantic_field": "handoff_dast_takeover",
+                "required_fields": [
+                  "acceptance_ref",
+                  "takeover_decision",
+                  "qualified_scope",
+                  "runbook_ref",
+                  "owner_register",
+                  "monitoring_plan",
+                  "requalification_plan"
+                ],
+                "acceptance_criterion": "For operational takeover decision and lifecycle handoff, supply the actual versioned dast takeover record, including acceptance_ref, takeover_decision, qualified_scope, runbook_ref, owner_register, monitoring_plan, requalification_plan. Independently assess the evidence against this exact criterion: The signed takeover binds the accepted scope to runbooks, support ownership, metrics, remediation and requalification triggers.. Do not substitute a related policy, plan or claimed execution for the required work product and observations. Apply the relevant requirements and evidence criteria in dast-methodology.md: Implementation lifecycle (A7), Remediation and operating assurance, and Example and completion. Record each unmet or inapplicable obligation and its disposition."
+              },
+              {
+                "id": "handoff/dast-control-assurance:19.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "operational takeover decision and lifecycle handoff",
+            "workflow_profile_hash": "2c4588ae440ba7c7287b53ff1f0811159525ebe9f039503e9c8b58c4777b732f"
+          },
+          "next_step": null
+        }
+      },
+      "source_content_contract": {
+        "id": "dast-control-assurance:19",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Reference the accepted control baseline and versioned runbook, support responsibilities, follow-up and requalification triggers.",
+          "Record the named application owner decision for the exact qualified scope before closing the integration."
+        ],
+        "conditional": [],
+        "optional": []
       }
     },
     {
@@ -45830,5 +48197,5 @@
       }
     }
   ],
-  "catalog_hash": "6550fa89c036721e3d12eb3673d36590abfad41052c097f0fab07fb5c42913a3"
+  "catalog_hash": "83a0275db7dda3a5ec38c3c86333bd1beada17622b570344e34841488930d13f"
 }

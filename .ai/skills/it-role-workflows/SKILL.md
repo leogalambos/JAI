@@ -1,6 +1,6 @@
 ---
 name: it-role-workflows
-description: "Route enterprise IS/IT work across 24 end-to-end workflow chains, including idea-to-production, onboarding, change, incident, security, data/AI, benefits, operational readiness, migration/cutover, adoption, publication, EA repository governance, decommission, cyber recovery, resilience, demand/funding, sourcing, SIAM, enterprise release and regulatory assurance. Use when work spans roles or when the user needs sequencing, hand-offs, accountable roles, mandatory artefacts and blocking gates. Read the matching reference before answering."
+description: "Route enterprise IS/IT work across 25 end-to-end workflow chains, including idea-to-production, onboarding, change, incident, security, data/AI, benefits, operational readiness, migration/cutover, adoption, publication, EA repository governance, decommission, cyber recovery, resilience, demand/funding, sourcing, SIAM, enterprise release and regulatory assurance. Use when work spans roles or when the user needs sequencing, hand-offs, accountable roles, mandatory artefacts and blocking gates. Read the matching reference before answering."
 allowed-tools: Read, Grep, Glob
 ---
 
@@ -8,7 +8,7 @@ allowed-tools: Read, Grep, Glob
 
 > **Agents named here** are subagents: delegate them through the active provider's operator/delegation mechanism — `role-router`.
 
-`workflows: 24`  ·  `tool-tier: route` (`Read, Grep, Glob`)  ·  `version: 1.0.0`
+`workflows: 25`  ·  `tool-tier: route` (`Read, Grep, Glob`)  ·  `version: 1.0.0`
 
 The role skills define single roles. This one defines the chains between them: the value streams, the hand-offs and the gate that must hold at each boundary. Routing and explanation only — it writes nothing and runs nothing.
 
@@ -76,6 +76,7 @@ evidence. Installed activation and live-provider qualification are separate fact
 | [SIAM / multi-supplier service integration](references/siam-multi-supplier.md) | 8 | A service depends on multiple suppliers/teams and end-to-end accountability, OLAs, incidents, problems, changes or acceptance are fragmented across boundaries. |
 | [Enterprise release orchestration](references/enterprise-release-orchestration.md) | 12 | Multiple products/platforms/suppliers must release into a shared business/technology environment and need one dependency, readiness and go/no-go process. |
 | [Regulatory change to assurance](references/regulatory-change-to-assurance.md) | 10 | A new or changed law, regulation, supervisory expectation or contractual compliance obligation may affect IS/IT services, controls or architecture. |
+| [DAST integration and control assurance for containerised delivery](references/dast-control-assurance.md) | 19 | An existing containerised CI/CD pipeline needs a DAST control introduced, qualified, reassessed or evaluated for release. |
 
 ## How to use this
 
