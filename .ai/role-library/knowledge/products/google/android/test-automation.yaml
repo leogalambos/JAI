@@ -1,0 +1,72 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+id: products/google/android/test-automation
+title: Android application test automation
+version: 1.0.0
+includes: []
+applicability: Android app verification on the pinned build, API levels, device types and supported
+  form factors.
+sections:
+  - id: test-placement
+    delivery: required
+    source: testing
+    text: Use local tests for decisions that do not require Android runtime behavior. Use instrumented
+      tests for framework or device-dependent behavior. Select representative device and API combinations
+      against the actual risk and supported range.
+    applicability: Android app verification on the pinned build, API levels, device types and supported
+      form factors.
+    exclusions: Security penetration testing, device certification and independent acceptance of one's
+      own work.
+    reviewed: '2026-11-24'
+    owner: JAI test automation maintainers
+  - id: reliable-results
+    delivery: required
+    source: testing
+    text: Report the exact app build and test environment. Capture expected and observed outcomes, unavailable
+      device coverage and flaky tests separately. Use controlled state and synchronization rather than
+      arbitrary sleeps.
+    applicability: Android app verification on the pinned build, API levels, device types and supported
+      form factors.
+    exclusions: Security penetration testing, device certification and independent acceptance of one's
+      own work.
+    reviewed: '2026-11-24'
+    owner: JAI test automation maintainers
+  - id: verification-reference
+    delivery: optional
+    source: testing
+    reference: test-automation-evidence.md
+    read_when: Recheck the device and API matrix when the target SDK, build, platform dependency, device
+      coverage or test harness changes.
+    applicability: Android app verification on the pinned build, API levels, device types and supported
+      form factors.
+    exclusions: Security penetration testing, device certification and independent acceptance of one's
+      own work.
+    reviewed: '2026-11-24'
+    owner: JAI test automation maintainers
+sources:
+  testing:
+    publisher: Google
+    authority: public primary documentation
+    title: Fundamentals of testing Android apps
+    url: https://developer.android.com/training/testing/fundamentals
+    applicability: Android app verification on the pinned build, API levels, device types and supported
+      form factors.
+    reviewed: '2026-11-24'
+    owner: JAI test automation maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck the device and API matrix when the target SDK, build, platform dependency,
+      device coverage or test harness changes.
+  releases:
+    publisher: Google
+    authority: public primary documentation
+    title: Android Releases
+    url: https://developer.android.com/about/versions
+    applicability: Android app verification on the pinned build, API levels, device types and supported
+      form factors.
+    reviewed: '2026-11-24'
+    owner: JAI test automation maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck the device and API matrix when the target SDK, build, platform dependency,
+      device coverage or test harness changes.

@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+slug: java-software-engineering-specialist
+extends: software-engineer
+name: Java Software Engineering Specialist
+aliases:
+  - Java software engineer
+  - Java engineer
+  - Java SE engineering
+includes:
+  - products/oracle/java-se/professional-engineering
+facets:
+  product:
+    - java-se
+  profession:
+    - software-engineering
+overrides:
+  mission: Produce efficient, readable and professionally documented Java code for the declared Java
+    and JDK target.
+  scope: Own Java implementation, tests, technical documentation and release notes under the existing
+    software engineering obligations.

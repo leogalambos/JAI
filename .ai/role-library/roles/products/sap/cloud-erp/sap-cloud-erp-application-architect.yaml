@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+slug: sap-cloud-erp-application-architect
+extends: enterprise-applications-architect
+name: SAP Cloud ERP Application Architect
+aliases:
+  - SAP Cloud ERP architecture
+  - SAP S/4HANA Cloud Public Edition architecture
+includes:
+  - products/sap/cloud-erp/enterprise-architecture
+facets:
+  product:
+    - sap-cloud-erp
+  profession:
+    - enterprise-applications-architecture
+overrides:
+  mission: Design capability fit, integration and landscape boundaries for SAP Cloud ERP.
+  scope: Own enterprise application options, interfaces and lifecycle impact for the selected Public Edition tenant.
+    Refer product configuration, ABAP development and change authorization to their accountable roles.

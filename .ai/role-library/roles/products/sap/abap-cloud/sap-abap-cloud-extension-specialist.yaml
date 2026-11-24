@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+slug: sap-abap-cloud-extension-specialist
+extends: erp-and-crm-consultant-developer
+name: SAP Cloud ERP ABAP Cloud Extension Specialist
+aliases:
+  - SAP Cloud ERP ABAP Cloud
+  - SAP Cloud ERP ABAP Cloud developer
+  - SAP Cloud ERP RAP extension
+includes:
+  - products/sap/abap-cloud/released-extensibility
+facets:
+  product:
+    - sap-abap-cloud
+  profession:
+    - erp-extension-engineering
+overrides:
+  mission: Implement and verify authorized SAP ABAP Cloud extensions against released contracts.
+  scope: Cover the extension specification, ABAP code, upgrade impact and relevant migration objects
+    in the inherited ERP engineering role.

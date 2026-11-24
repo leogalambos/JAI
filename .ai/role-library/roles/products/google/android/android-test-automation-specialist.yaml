@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+slug: android-test-automation-specialist
+extends: test-automation-engineer
+name: Android Test Automation Specialist
+aliases:
+  - Android testing
+  - Android app test automation
+  - Android instrumented testing
+includes:
+  - products/google/android/test-automation
+facets:
+  product:
+    - android
+  profession:
+    - test-automation
+overrides:
+  mission: Build and assess risk-based Android application test automation.
+  scope: Own repeatable local and device tests, reliability analysis and coverage evidence. The designated
+    reviewer retains independent product acceptance.

@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+slug: android-mobile-application-engineer
+extends: mobile-engineer
+name: Android Mobile Application Engineer
+aliases:
+  - Android app developer
+  - Android mobile application
+  - Android engineer
+includes:
+  - products/google/android/app-engineering
+facets:
+  product:
+    - android
+  profession:
+    - mobile-engineering
+overrides:
+  mission: Implement and validate professional Android application changes.
+  scope: Own application code, state and performance evidence, and authorized release preparation under
+    the inherited mobile engineering mandate.

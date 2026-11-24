@@ -1,0 +1,157 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+id: products/oracle/java-se/professional-engineering
+title: Java SE professional engineering
+version: 1.0.0
+includes: []
+applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+  is a reference baseline; use matching release documentation and confirm vendor support.
+sections:
+  - id: javadoc-contract
+    delivery: required
+    source: javadoc
+    text: Use conventional multiline Javadoc blocks. Never compress a multiline block comment into one
+      line. Document the purpose, every value and type parameter, applicable exceptions and their conditions,
+      and non-void return semantics for public and protected methods and other significant methods.
+      Use @param, @throws and @return where applicable. Inherit documentation only when it fully describes
+      the implementation.
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    exclusions: Unapproved preview features, unverified performance claims and inferred portability
+      of vendor support terms.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+  - id: readable-language
+    delivery: required
+    source: language
+    text: Declare explicit local variable types. Do not use var to infer local types. The generic diamond
+      operator <> is allowed where the surrounding declaration makes the type clear. Use other language
+      features only where compatible with the declared target and readable in context.
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    exclusions: Unapproved preview features, unverified performance claims and inferred portability
+      of vendor support terms.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+  - id: jdk-logging
+    delivery: required
+    source: logging
+    text: Prefer the JDK's java.util.logging (JUL). Use another logging API only when explicitly required
+      by the assignment. Choose meaningful levels and avoid disclosing sensitive data in log records.
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    exclusions: Unapproved preview features, unverified performance claims and inferred portability
+      of vendor support terms.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+  - id: target-aware-conventions
+    delivery: required
+    source: conventions
+    text: Apply relevant published Sun or Oracle guidance for naming, layout, documentation, API design
+      and implementation. Treat historical conventions as historical; check target-release guidance
+      and obey the standing JAI readability rules.
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    exclusions: Unapproved preview features, unverified performance claims and inferred portability
+      of vendor support terms.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+  - id: efficient-java
+    delivery: required
+    source: performance
+    text: Avoid unnecessary allocation, redundant scans and avoidable I/O. Use suitable algorithms and
+      data structures. Validate performance-sensitive claims with a representative workload and a pinned
+      runtime, using measurement and profiling when they inform the decision.
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    exclusions: Unapproved preview features, unverified performance claims and inferred portability
+      of vendor support terms.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+  - id: verification-reference
+    delivery: optional
+    source: javadoc
+    reference: professional-engineering-evidence.md
+    read_when: Recheck when Java language level, JDK distribution, public API, logging requirements
+      or performance-sensitive workload changes.
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    exclusions: Unapproved preview features, unverified performance claims and inferred portability
+      of vendor support terms.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+sources:
+  javadoc:
+    publisher: Oracle
+    authority: public primary documentation
+    title: JDK 25 JavaDoc Documentation Comment Specification
+    url: https://docs.oracle.com/en/java/javase/25/docs/specs/javadoc/doc-comment-spec.html
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck when Java language level, JDK distribution, public API, logging requirements
+      or performance-sensitive workload changes.
+  language:
+    publisher: Oracle
+    authority: public primary documentation
+    title: Local Variable Type Inference
+    url: https://docs.oracle.com/en/java/javase/25/language/local-variable-type-inference.html
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck when Java language level, JDK distribution, public API, logging requirements
+      or performance-sensitive workload changes.
+  logging:
+    publisher: Oracle
+    authority: public primary documentation
+    title: Java SE 25 java.util.logging package
+    url: https://docs.oracle.com/en/java/javase/25/docs/api/java.logging/java/util/logging/package-summary.html
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck when Java language level, JDK distribution, public API, logging requirements
+      or performance-sensitive workload changes.
+  conventions:
+    publisher: Sun Microsystems and Oracle
+    authority: public primary documentation
+    title: Code Conventions for the Java Programming Language
+    url: https://www.oracle.com/java/technologies/javase/codeconventions-introduction.html
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck when Java language level, JDK distribution, public API, logging requirements
+      or performance-sensitive workload changes.
+  performance:
+    publisher: Oracle
+    authority: public primary documentation
+    title: Troubleshoot Performance Issues Using Flight Recorder
+    url: https://docs.oracle.com/en/java/javase/25/troubleshoot/troubleshoot-performance-issues-using-jfr.html
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck when Java language level, JDK distribution, public API, logging requirements
+      or performance-sensitive workload changes.
+  support:
+    publisher: Oracle
+    authority: public primary documentation
+    title: Oracle Java SE Support Roadmap
+    url: https://www.oracle.com/java/technologies/java-se-support-roadmap.html
+    applicability: Java SE code on the project's declared Java and JDK target. Oracle Java SE 25 documentation
+      is a reference baseline; use matching release documentation and confirm vendor support.
+    reviewed: '2026-11-24'
+    owner: JAI software engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck when Java language level, JDK distribution, public API, logging requirements
+      or performance-sensitive workload changes.

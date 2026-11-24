@@ -1,0 +1,82 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+id: products/sap/abap-cloud/released-extensibility
+title: SAP ABAP Cloud released extensibility
+version: 1.0.0
+includes: []
+applicability: ABAP Cloud developer extensibility for applicable SAP Cloud ERP tenants. Use release-specific
+  ABAP RAP guidance and verify actual target availability.
+sections:
+  - id: released-contract
+    delivery: required
+    source: abap-cloud-concepts
+    text: Use the approved ABAP language version and released extension points and APIs. Verify the
+      release state of dependencies for the selected deployment before using them. Check RAP applicability
+      for service extensions where required.
+    applicability: ABAP Cloud developer extensibility for applicable SAP Cloud ERP tenants. Use release-specific
+      ABAP RAP guidance and verify actual target availability.
+    exclusions: Classic ABAP modifications, unreleased dependency use and assuming SAP BTP or other
+      SAP editions have the same capabilities.
+    reviewed: '2026-11-24'
+    owner: JAI erp extension engineering maintainers
+  - id: upgrade-evidence
+    delivery: required
+    source: rap-releases
+    text: Pin the tenant release and transport scope. Record applicable verification and regression
+      tests, authorization behavior and upgrade impact. Escalate unsupported or unreleased dependencies
+      instead of treating them as approved extension points.
+    applicability: ABAP Cloud developer extensibility for applicable SAP Cloud ERP tenants. Use release-specific
+      ABAP RAP guidance and verify actual target availability.
+    exclusions: Classic ABAP modifications, unreleased dependency use and assuming SAP BTP or other
+      SAP editions have the same capabilities.
+    reviewed: '2026-11-24'
+    owner: JAI erp extension engineering maintainers
+  - id: verification-reference
+    delivery: optional
+    source: developer-extensibility
+    reference: released-extensibility-evidence.md
+    read_when: Recheck the product release, system landscape, ABAP language version, object release
+      state and transport prerequisites when changing an extension.
+    applicability: ABAP Cloud developer extensibility for applicable SAP Cloud ERP tenants. Use release-specific
+      ABAP RAP guidance and verify actual target availability.
+    exclusions: Classic ABAP modifications, unreleased dependency use and assuming SAP BTP or other
+      SAP editions have the same capabilities.
+    reviewed: '2026-11-24'
+    owner: JAI erp extension engineering maintainers
+sources:
+  developer-extensibility:
+    publisher: SAP
+    authority: public primary documentation
+    title: Developer Extensibility
+    url: https://help.sap.com/docs/SAP_S4HANA_CLOUD/6aa39f1ac05441e5a23f484f31e477e7/657285a09f7148d894c27bb8e17827cf.html
+    applicability: ABAP Cloud developer extensibility for applicable SAP Cloud ERP tenants. Use release-specific
+      ABAP RAP guidance and verify actual target availability.
+    reviewed: '2026-11-24'
+    owner: JAI erp extension engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck the product release, system landscape, ABAP language version, object release
+      state and transport prerequisites when changing an extension.
+  rap-releases:
+    publisher: SAP
+    authority: public primary documentation
+    title: What's New in ABAP RAP
+    url: https://help.sap.com/docs/abap-cloud/abap-rap/what-s-new
+    applicability: ABAP Cloud developer extensibility for applicable SAP Cloud ERP tenants. Use release-specific
+      ABAP RAP guidance and verify actual target availability.
+    reviewed: '2026-11-24'
+    owner: JAI erp extension engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck the product release, system landscape, ABAP language version, object release
+      state and transport prerequisites when changing an extension.
+  abap-cloud-concepts:
+    publisher: SAP
+    authority: public primary documentation
+    title: 'ABAP Cloud: Background Concepts and Overview'
+    url: https://help.sap.com/doc/112b8531132e43398ed50b2ad38ab14b/latest/en-US/ffa919727c624f25a95bd2f9443244f4.pdf
+    applicability: ABAP Cloud development model and released API concepts, qualified by the enrolled SAP solution scope.
+    reviewed: '2026-11-24'
+    owner: JAI erp extension engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check the exact API release state and solution scope before adding or changing a dependency.

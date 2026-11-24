@@ -1,0 +1,71 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+schema_version: 1
+id: products/sap/cloud-erp/enterprise-architecture
+title: SAP Cloud ERP enterprise application architecture
+version: 1.0.0
+includes: []
+applicability: SAP Cloud ERP, also documented as SAP S/4HANA Cloud Public Edition. Qualify the actual
+  tenant and enabled scope.
+sections:
+  - id: landscape-fit
+    delivery: required
+    source: product
+    text: Record the edition, business capability, system of record and interface ownership. Evaluate
+      fit against the tenant's released scope and localization before choosing configuration or extension.
+    applicability: SAP Cloud ERP, also documented as SAP S/4HANA Cloud Public Edition. Qualify the actual
+      tenant and enabled scope.
+    exclusions: Private Edition, on-premises SAP S/4HANA, unrelated SAP suites and assumed cross-edition
+      parity.
+    reviewed: '2026-11-24'
+    owner: JAI enterprise applications architecture maintainers
+  - id: extension-boundary
+    delivery: required
+    source: extensibility
+    text: Compare standard fit, key-user and developer extensibility and side-by-side extensions against
+      lifecycle, data ownership and operating responsibilities. Pin released interfaces and record the
+      rationale and upgrade impact.
+    applicability: SAP Cloud ERP, also documented as SAP S/4HANA Cloud Public Edition. Qualify the actual
+      tenant and enabled scope.
+    exclusions: Private Edition, on-premises SAP S/4HANA, unrelated SAP suites and assumed cross-edition
+      parity.
+    reviewed: '2026-11-24'
+    owner: JAI enterprise applications architecture maintainers
+  - id: verification-reference
+    delivery: optional
+    source: product
+    reference: enterprise-architecture-evidence.md
+    read_when: Recheck the edition, release, localization, enabled business scope and interfaces when
+      assessing capability fit, extensibility or an upgrade.
+    applicability: SAP Cloud ERP, also documented as SAP S/4HANA Cloud Public Edition. Qualify the actual
+      tenant and enabled scope.
+    exclusions: Private Edition, on-premises SAP S/4HANA, unrelated SAP suites and assumed cross-edition
+      parity.
+    reviewed: '2026-11-24'
+    owner: JAI enterprise applications architecture maintainers
+sources:
+  product:
+    publisher: SAP
+    authority: public primary documentation
+    title: SAP Cloud ERP
+    url: https://www.sap.com/products/erp/s4hana.html
+    applicability: SAP Cloud ERP, also documented as SAP S/4HANA Cloud Public Edition. Qualify the actual
+      tenant and enabled scope.
+    reviewed: '2026-11-24'
+    owner: JAI enterprise applications architecture maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck the edition, release, localization, enabled business scope and interfaces
+      when assessing capability fit, extensibility or an upgrade.
+  extensibility:
+    publisher: SAP
+    authority: public primary documentation
+    title: Extensibility
+    url: https://help.sap.com/docs/SAP_S4HANA_CLOUD/0f69f8fb28ac4bf48d2b57b9637e81fa/533228e1e854433ab16d013f161ca509.html
+    applicability: SAP Cloud ERP, also documented as SAP S/4HANA Cloud Public Edition. Qualify the actual
+      tenant and enabled scope.
+    reviewed: '2026-11-24'
+    owner: JAI enterprise applications architecture maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck the edition, release, localization, enabled business scope and interfaces
+      when assessing capability fit, extensibility or an upgrade.
