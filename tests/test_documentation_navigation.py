@@ -255,6 +255,22 @@ class CanonicalNavigationTests(unittest.TestCase):
         self.assertIn(links.HOME_NAV_TOKEN, sidebar)
         self.assertNotIn('<a ', sidebar)
 
+    def test_architecture_is_a_top_level_reader_route(self):
+        config = (ROOT / 'mkdocs.yml').read_text()
+        nav = {name: branch for entry in yaml.safe_load(config.split('\nnav:\n', 1)[1])
+               for name, branch in entry.items()}
+        architecture = nav['Architecture']
+        self.assertEqual(architecture[0], {'System architecture': 'configuration/system-architecture.md'})
+        paths = {path for group in architecture[1:] for entries in group.values()
+                 for entry in entries for path in entry.values()}
+        self.assertIn('architecture/hierarchical-role-discovery.md', paths)
+        self.assertEqual({str(path.relative_to(ROOT / 'docs'))
+                          for path in (ROOT / 'docs/architecture').glob('*.md')},
+                         {path for path in paths if path.startswith('architecture/')})
+        self.assertLess(list(nav).index('Architecture'), list(nav).index('Reference'))
+        self.assertIn('    - navigation.path', config)
+        self.assertIn('assets/javascripts/current-navigation.js', config)
+
 
 if __name__ == '__main__':
     unittest.main()
@@ -414,9 +430,9 @@ def test_homepage_offers_contextual_catalogues_and_beginner_routes_without_link_
     assert links.render_workflow_coverage(ROOT, handoffs=True) in rendered
     assert links.render_workflow_coverage(ROOT, paths=True) in rendered
     packaged = links.render_role_coverage(ROOT, packaged=True)
+    assert packaged == links.render_role_coverage(ROOT)
     assert f'{packaged}<span>In the standard distribution</span></strong>' in rendered
     assert links.render_specialization_coverage(ROOT) not in rendered
-    assert links.render_role_coverage(ROOT) != packaged
     assert 'href="https://github.com/team/JAI"' in rendered
 
 
@@ -426,6 +442,25 @@ def test_specialization_index_uses_composed_parent_roles(tmp_path):
     assert '[Software Engineer](output-contracts/role-software-engineer.md)' in result
     assert '`android-test-automation-specialist`' in result
     assert '`sap-abap-cloud-extension-specialist`' in result
+    profiles = links.render_specialization_profiles(ROOT)
+    _, composition = links._role_inventory(ROOT)
+    for slug, entry in composition.items():
+        if entry.get('professional_parent'):
+            assert f'](product-specializations.md#{slug})' in result
+            assert f'{{ #{slug} }}' in profiles
+    qradar = profiles.split('{ #qradar-siem-specialist }', 1)[1].split('\n## ', 1)[0]
+    assert 'device support module parsing' in qradar
+    assert 'Supported fix level' in qradar
+    assert 'Document the log source identifier, collection protocol' in qradar
+    java = profiles.split('{ #java-software-engineering-specialist }', 1)[1].split('\n## ', 1)[0]
+    assert 'Declare explicit local variable types.' in java
+    assert 'representative workload and a pinned runtime' in java
+    assert 'Java SE code on the project' in java
+    assert '[Software Engineer](base-role-profiles/software-engineer.md)' in java
+    assert 'Verify the project JDK distribution, language release and support' in java
+    assert '![](../assets/images/role-portraits/software-development-and-engineering.webp)' in java
+    entra = profiles.split('{ #entra-identity-implementation-specialist }', 1)[1].split('\n## ', 1)[0]
+    assert 'Label report-only observations separately from enforced outcomes.' in entra
     runtime = tmp_path / '.ai/runtime'
     runtime.mkdir(parents=True)
     (runtime / 'roles.json').write_text('{"count": 0, "roles": []}')

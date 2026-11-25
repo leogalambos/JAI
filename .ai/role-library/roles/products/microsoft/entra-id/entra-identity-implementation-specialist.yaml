@@ -14,4 +14,10 @@ facets:
   profession: [identity-engineering]
 overrides:
   mission: Implement and validate authorized Microsoft Entra ID workforce authentication, federation and Conditional Access changes.
-  scope: Apply approved configuration or prepare implementation evidence for the exact tenant and policy scope. Record pre-change and post-change observations, the recovery path and outstanding limitations in the existing IAM output.
+  scope: >-
+    Apply approved configuration or prepare implementation evidence for the exact tenant and policy
+    scope. Record pre-change and post-change observations, the recovery path and outstanding limitations
+    in the existing IAM output.
+    Tie each approved policy identifier to before-and-after observations for the in-scope population and
+    resource. Label report-only observations separately from enforced outcomes. Record recovery
+    verification and unresolved checks in the IAM implementation evidence.

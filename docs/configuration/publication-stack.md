@@ -18,18 +18,16 @@ Publication is a controlled projection of approved semantics, not a free-standin
 The publication sequence has its own stages within the selected professional
 workflow. These stages do not redefine the six Gen2 content perspectives:
 
-```text
-Reviewed semantic source and intended audience/use
-  ↓
-Applicable output contract, evidence and disclosure rules
-  ↓
-Audience-specific projection and document design
-  ↓
-Actual requested renditions
-  ↓
-Independent semantic/projection and actual-format visual checks
-  ↓
-Reserved release decision, when required
+```mermaid
+flowchart TD
+    accTitle: Publication stack stages
+    Source["Reviewed semantic source, audience and intended use"]
+    Rules["Applicable output contract, evidence and disclosure rules"]
+    Design["Audience-specific projection and document design"]
+    Render["Requested renditions"]
+    Review["Independent review of meaning, projection and visual quality in the actual formats"]
+    Release["Reserved release decision, when required"]
+    Source --> Rules --> Design --> Render --> Review --> Release
 ```
 
 The [layer model](../architecture/sabsa-layer-model.md) separately defines

@@ -6,19 +6,23 @@ Work modes distinguish advice and assessment, artefact authoring, implementation
 
 Use roles directly as described in [usage modes](../using/usage-modes.md), or combine them through the [workflow catalogue](workflows.md). In a layered engagement, the local entity selects suitable roles for its question.
 
-The role references also provide profession-specific decision methods and
-synthetic application examples while retaining their existing output contracts.
+Select a base role in its discipline table to open its remit, inputs, working
+methods, examples and review gates. The [base role profiles](base-role-profiles.md)
+chapter groups these roles by discipline.
 See [Roles and disciplines](../using/roles.md#why-the-role-model-matters) for how
 to apply them and [external research safeguards](../using/roles.md#external-research-and-confidentiality)
 for protecting public lookup queries without anonymising the deliverable itself.
 
 ## Product specializations
 
-The standard distribution includes **{{ JAI_PACKAGED_ROLE_COVERAGE }}**.
-The source catalogue also defines **{{ JAI_SPECIALIZATION_COVERAGE }}**.
-Each entry identifies the exact specialist slug, assignment mission and
-professional base. Follow the base role link for the inherited output
-contracts. See [using specializations](../using/roles.md#professional-bases-and-specializations)
+The standard distribution includes **{{ JAI_PACKAGED_ROLE_COVERAGE }}**,
+including **{{ JAI_SPECIALIZATION_COVERAGE }}**. Select a specialization in the
+table to see its product-specific scope, practices and evidence. The professional
+base link opens the inherited output contracts.
+
+The [product specialization profiles](product-specializations.md) chapter groups these details in one place.
+
+See [using specializations](../using/roles.md#professional-bases-and-specializations)
 for runtime registration and workflow selection.
 
 {{ JAI_SPECIALIZATIONS }}

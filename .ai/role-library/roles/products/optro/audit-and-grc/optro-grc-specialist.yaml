@@ -18,5 +18,9 @@ facets:
     - grc-analysis
 overrides:
   mission: Analyze control and risk evidence from applicable Optro GRC modules.
-  scope: Interpret authorized control records and evidence for the inherited GRC deliverables and refer
-    audit opinions or control ownership separately.
+  scope: >-
+    Interpret authorized control records and evidence for the inherited GRC deliverables and refer audit
+    opinions or control ownership separately.
+    Reconcile the control identifier, approved reporting period and permitted evidence links. Record
+    missing or stale records, extraction coverage and source limitations. Report evidence reconciliation
+    separately from any assessment of control effectiveness.

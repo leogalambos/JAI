@@ -5,6 +5,16 @@ workflows and a layered method for developing justifiable solutions. It operates
 through the active Claude Code or Codex session and retains accountable human
 decisions outside the AI's professional work.
 
+## Find your route through the guide
+
+| If you want to… | Start with… |
+| --- | --- |
+| Install JAI and try a first task | [Installation](../getting-started/install.md), then the [quick start](../getting-started/quick-start.md) |
+| Understand how the system works | [System architecture](../configuration/system-architecture.md), then [execution and context assembly](execution-context-algorithm.md) |
+| Choose and carry out professional work | [Usage modes](../using/usage-modes.md), then [methodical workflows](../using/methodical-workflows.md) |
+| Run a managed engagement or recover a session | [Operator walkthrough](../operations/operator-walkthrough.md) and [lifecycle recovery](../operations/lifecycle-recovery.md) |
+| Look up a role, command or output | [Role catalogue](../reference/roles.md), [command reference](../reference/commands.md) or [output contracts](../reference/output-contracts/index.md) |
+
 ## Start with a task and its sources
 
 For example, provide a requirements document and ask JAI to identify ambiguity,

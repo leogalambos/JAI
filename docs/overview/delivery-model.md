@@ -82,16 +82,28 @@ links to the complete role and workflow catalogues.
 
 ### Standard specialist path
 
-```text
-request → role selection → specialist execution → artefact/review/publication gates
+```mermaid
+flowchart TD
+    accTitle: Direct specialist delivery
+    Request["Request"]
+    Role["Role selection"]
+    Work["Specialist execution"]
+    Gates["Artefact, review and publication gates"]
+    Request --> Role --> Work --> Gates
 ```
 
 Use this for normal enterprise work where the full Fabric episode is not required.
 
 ### Enterprise workflow path
 
-```text
-business outcome → workflow selection → specialist handoffs and gates → reviewed outcome
+```mermaid
+flowchart TD
+    accTitle: Selected workflow delivery
+    Intent["Business outcome"]
+    Workflow["Workflow selection"]
+    Handoffs["Specialist handoffs and gates"]
+    Outcome["Reviewed outcome"]
+    Intent --> Workflow --> Handoffs --> Outcome
 ```
 
 Use a [maintained workflow](../reference/workflows.md) when the process spans
@@ -100,13 +112,16 @@ layered engagement.
 
 ### Layered consequential path
 
-```text
-operator intent
-→ L1–L6 typed contracts
-→ evidence, same-layer independent review and exact neighbouring handoffs
-→ bounded rework/reformulation/escalation
-→ L0 authority when required
-→ strict release
+```mermaid
+flowchart TD
+    accTitle: Layered consequential delivery
+    Intent["Operator intent"]
+    Layers["L1–L6 typed contracts"]
+    Review["Evidence, same-layer independent review and exact neighbouring handoffs"]
+    Rework["Bounded rework, reformulation or escalation"]
+    Authority["L0 authority when required"]
+    Release["Strict release"]
+    Intent --> Layers --> Review --> Rework --> Authority --> Release
 ```
 
 Use this when the organisation must later defend why a result was allowed for a particular consequential use.

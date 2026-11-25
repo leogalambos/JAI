@@ -8,8 +8,10 @@ select overlapping professional specialties.
 
 The setter derives an immutable question assignment from the incoming obligations
 and states its criteria, evidence requirements and escalation conditions.
-Each entity selects suitable specialties and available model resources from the
-complete catalogue. The neighbour does not impose its internal staff or method.
+Each entity selects suitable specialties and available model resources for
+its assignment. Ordinary selection can browse the complete catalogue. Scoped
+workflow selection presents eligible roles. See [role discovery and resolution](hierarchical-role-discovery.md#discover-and-resolve-a-role).
+The neighbour does not impose its internal staff or method.
 
 A staffing plan can remain useful for unchanged work. Continuing a mechanical
 runtime step does not require repeating an already completed professional choice.

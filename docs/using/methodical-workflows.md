@@ -70,22 +70,26 @@ The architectural pattern is:
 
 === "Claude Code"
 
-    ```text
-    Direct creation: /commercial → reviewed proposal snapshot
-    New decision:   /layered → readiness to issue that snapshot → human decision
-
-    Alternative chosen before creation:
-    /layered with commercial-delivery → controlled proposal creation → decision dossier
+    ```mermaid
+    flowchart TD
+        accTitle: Proposal creation and decision paths in Claude Code
+        Direct["Direct creation: /commercial"] --> Snapshot["Reviewed proposal snapshot"]
+        Snapshot --> Decision["New decision: /layered"] --> Readiness["Readiness to issue that snapshot"]
+        Readiness --> Human["Human decision"]
+        Layered["Choose layered creation from the start: /layered with commercial-delivery"]
+        Layered --> Controlled["Controlled proposal creation"] --> Dossier["Decision dossier"]
     ```
 
 === "Codex CLI"
 
-    ```text
-    Direct creation: $workflow-commercial → reviewed proposal snapshot
-    New decision:   $workflow-layered → readiness to issue that snapshot → human decision
-
-    Alternative chosen before creation:
-    $workflow-layered with commercial-delivery → controlled proposal creation → decision dossier
+    ```mermaid
+    flowchart TD
+        accTitle: Proposal creation and decision paths in Codex CLI
+        Direct["Direct creation: $workflow-commercial"] --> Snapshot["Reviewed proposal snapshot"]
+        Snapshot --> Decision["New decision: $workflow-layered"] --> Readiness["Readiness to issue that snapshot"]
+        Readiness --> Human["Human decision"]
+        Layered["Choose layered creation from the start: $workflow-layered with commercial-delivery"]
+        Layered --> Controlled["Controlled proposal creation"] --> Dossier["Decision dossier"]
     ```
 
 Governed commercial work uses actual native provenance, exact material and current Gen2 justification. Unmeasured deployment controls remain unverified; a specifically required policy or contract control still needs its own evidence. A teaching sequence, prompt or unit test cannot manufacture such evidence or grant acceptance and release.

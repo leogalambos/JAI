@@ -15,7 +15,9 @@ points, not three engines that every task must traverse.
 
 The role router matches the requested deliverable to the full catalogue and
 checks the candidate's scope. Professional role selection is distinct from
-provider/model selection. A free-form request is not automatically intercepted
+provider/model selection. See [hierarchical role discovery and context scalability](../architecture/hierarchical-role-discovery.md)
+for how native skills, the catalogue and selected instructions fit together.
+A free-form request is not automatically intercepted
 and transformed into a complete matrix run; use the appropriate workflow entry.
 
 ## Current layered model

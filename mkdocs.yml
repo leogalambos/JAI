@@ -32,6 +32,7 @@ theme:
     - navigation.tracking
     - navigation.sections
     - navigation.indexes
+    - navigation.path
     - navigation.top
     - navigation.footer
     - content.code.copy
@@ -47,6 +48,7 @@ plugins:
 # source-authored release CTA URLs. Material uses the same tree for page footers.
 hooks:
   - hooks/jai_repository_links.py
+  - hooks/jai_base_role_profiles.py
 
 markdown_extensions:
   - abbr
@@ -79,6 +81,7 @@ extra_javascript:
   - https://unpkg.com/mermaid@11/dist/mermaid.min.js
   - assets/javascripts/mermaid.js
   - assets/javascripts/home-footer.js
+  - assets/javascripts/current-navigation.js
 
 extra:
   generator: false
@@ -99,24 +102,50 @@ validation:
 nav:
   - Home: index.md
   - Start here:
-      - Product orientation:
-          - Product overview: overview/product-overview.md
-          - Execution and context assembly: overview/execution-context-algorithm.md
-          - Coverage matrix: overview/coverage-matrix.md
-          - Delivery model: overview/delivery-model.md
+      - Product overview: overview/product-overview.md
+      - Coverage matrix: overview/coverage-matrix.md
       - Installation: getting-started/install.md
       - Sandbox prerequisites: getting-started/sandbox-prerequisites.md
       - 20-minute quick start: getting-started/quick-start.md
-      - Update & uninstall: getting-started/update-uninstall.md
+  - Architecture:
+      - System architecture: configuration/system-architecture.md
+      - Roles, context and providers:
+          - Execution and context assembly: overview/execution-context-algorithm.md
+          - Hierarchical role discovery and context scalability: architecture/hierarchical-role-discovery.md
+          - Native provider execution: architecture/gen2-native-execution-bridge.md
+      - Layered delivery and assurance:
+          - Delivery model: overview/delivery-model.md
+          - Governed SABSA-layer delivery model: architecture/sabsa-layer-model.md
+          - Governed layer-local workflow: architecture/governed-layer-workflow.md
+          - Governed SABSA content: architecture/governed-sabsa-content.md
+          - Layered runtime and assurance: capabilities/layered-runtime.md
+          - Justifiable Fabric: capabilities/justifiable-fabric.md
+      - Runtime and authority boundaries:
+          - Versioned inputs and applicability: architecture/governed-runtime-cutover.md
+          - Runtime recording and L0 decisions: architecture/governed-runtime-recording.md
+          - Governed dispatch boundary: architecture/governed-dispatch-boundary.md
+          - Governed escalation and scheduling: architecture/governed-escalation-scheduling.md
   - How to use JAI:
-      - Three ways to use JAI: using/usage-modes.md
-      - How to use this guide: examples/how-to-use-JAI/index.md
-      - Choose your workflow: using/methodical-workflows.md
-      - Experimental hint: using/experimental-hint.md
-      - Remember useful knowledge: using/remembering-knowledge.md
-      - Reuse local know-how: using/reusing-knowledge.md
-      - Interaction patterns: using/interaction-model.md
-      - Layered justifiable engagement: using/layered-engagement.md
+      - Choose how to work:
+          - Three ways to use JAI: using/usage-modes.md
+          - Choose your workflow: using/methodical-workflows.md
+          - Roles and disciplines: using/roles.md
+          - Enterprise workflows: using/workflows.md
+          - Layered justifiable engagement: using/layered-engagement.md
+          - Interaction patterns: using/interaction-model.md
+          - Commands and direct tools: using/commands.md
+      - Materials and deliverables:
+          - Working with deliverables: using/deliverables.md
+          - Expert reference documents: using/expert-reference-documents.md
+          - Engineering and security references: using/engineering-security-references.md
+          - Proposal production: using/proposal-production.md
+          - Reuse local know-how: using/reusing-knowledge.md
+          - Remember useful knowledge: using/remembering-knowledge.md
+          - Experimental hint: using/experimental-hint.md
+      - Guided learning:
+          - How to use this guide: examples/how-to-use-JAI/index.md
+          - Learning with the demo estate: using/demo-estate.md
+          - Concepts and demonstration tour: using/concepts-and-tour.md
       - Commented task walkthroughs:
           - Start here: examples/index.md
           - Commercial and investment:
@@ -155,40 +184,6 @@ nav:
               - Inherited codebase: examples/inherited-codebase.md
               - Data product delivery: examples/data-product-delivery.md
               - AI-system approval: examples/ai-system-approval.md
-      - Commands and direct tools: using/commands.md
-      - Working with deliverables: using/deliverables.md
-      - Expert reference documents: using/expert-reference-documents.md
-      - Engineering and security references: using/engineering-security-references.md
-      - Proposal production: using/proposal-production.md
-      - Roles and disciplines: using/roles.md
-      - Enterprise workflows: using/workflows.md
-      - Learning with the demo estate: using/demo-estate.md
-      - Concepts and demonstration tour: using/concepts-and-tour.md
-  - Fabric Explorer:
-      - Overview: fabric-explorer/index.md
-      - Using the viewer:
-          - Install and update: fabric-explorer/installation.md
-          - Explore data: fabric-explorer/exploring.md
-          - Import and refresh: fabric-explorer/importing.md
-          - Semantic tables: fabric-explorer/semantic-tables.md
-          - Graph canvas: fabric-explorer/canvas.md
-          - Graph layouts: fabric-explorer/layouts.md
-          - Exploration reference: fabric-explorer/exploration-reference.md
-      - Architecture and interfaces:
-          - Architecture: fabric-explorer/architecture.md
-          - Architecture decisions: fabric-explorer/decisions.md
-          - Source contracts: fabric-explorer/source-contract.md
-          - Consumer contracts: fabric-explorer/contracts.md
-          - Indexed graph queries: fabric-explorer/graph-queries.md
-          - Query transport: fabric-explorer/query-transport.md
-          - Presentation contracts: fabric-explorer/presentation-contracts.md
-          - Desktop shell: fabric-explorer/desktop-shell.md
-      - Build and support:
-          - Build packages: fabric-explorer/building-packages.md
-          - Package integrity and recovery: fabric-explorer/package-installation.md
-          - Support and compatibility: fabric-explorer/support.md
-          - Qualification envelope: fabric-explorer/qualification.md
-          - Security boundaries: fabric-explorer/security-qualification.md
   - Workflow library:
       - Plan, fund and source:
           - Demand to portfolio to funding: workflow-library/demand-to-portfolio-to-funding.md
@@ -224,14 +219,38 @@ nav:
       - SABSA and enterprise architecture: capabilities/sabsa-ea.md
       - Publication and visual QA: capabilities/artifacts-publication.md
       - Document Content Specifications: capabilities/document-content-specifications.md
-      - Justifiable Fabric: capabilities/justifiable-fabric.md
-      - Layered runtime and assurance: capabilities/layered-runtime.md
       - Research and defect analysis: capabilities/research-defect.md
       - Commercial proposals and delivery: capabilities/commercial-delivery.md
       - Commercial implementation status: capabilities/commercial-delivery-implementation.md
+  - Fabric Explorer:
+      - Overview: fabric-explorer/index.md
+      - Using the viewer:
+          - Install and update: fabric-explorer/installation.md
+          - Explore data: fabric-explorer/exploring.md
+          - Import and refresh: fabric-explorer/importing.md
+          - Semantic tables: fabric-explorer/semantic-tables.md
+          - Graph canvas: fabric-explorer/canvas.md
+          - Graph layouts: fabric-explorer/layouts.md
+          - Exploration reference: fabric-explorer/exploration-reference.md
+      - Architecture and interfaces:
+          - Architecture: fabric-explorer/architecture.md
+          - Architecture decisions: fabric-explorer/decisions.md
+          - Source contracts: fabric-explorer/source-contract.md
+          - Consumer contracts: fabric-explorer/contracts.md
+          - Indexed graph queries: fabric-explorer/graph-queries.md
+          - Query transport: fabric-explorer/query-transport.md
+          - Presentation contracts: fabric-explorer/presentation-contracts.md
+          - Desktop shell: fabric-explorer/desktop-shell.md
+      - Build and support:
+          - Build packages: fabric-explorer/building-packages.md
+          - Package integrity and recovery: fabric-explorer/package-installation.md
+          - Support and compatibility: fabric-explorer/support.md
+          - Qualification envelope: fabric-explorer/qualification.md
+          - Security boundaries: fabric-explorer/security-qualification.md
   - Deployment and operations:
-      - Configure and deploy:
-          - System architecture: configuration/system-architecture.md
+      - Install, configure and update:
+          - Deployment notes: getting-started/deployment-notes.md
+          - Update & uninstall: getting-started/update-uninstall.md
           - Providers, models & reasoning effort: configuration/models.md
           - Execution profiles and efficiency: configuration/execution-profiles.md
           - Runtime paths & environment variables: configuration/runtime.md
@@ -239,7 +258,13 @@ nav:
           - Expert document overrides: configuration/expert-document-overrides.md
           - Governance, policy & approvals: configuration/policy.md
           - Publication stack: configuration/publication-stack.md
-          - Deployment notes: getting-started/deployment-notes.md
+      - Run and recover:
+          - Exact operator walkthrough: operations/operator-walkthrough.md
+          - Complete ordinary layered workflow: operations/normal-layered-workflow.md
+          - Governed SABSA content and views: operations/sabsa-content.md
+          - Deployment and recovery: operations/gen2-deployment-recovery.md
+          - Lifecycle deployment and recovery: operations/lifecycle-recovery.md
+          - Troubleshooting: operations/troubleshooting.md
       - Operate and govern:
           - Validation and release controls: operations/validation.md
           - Test categories and execution: operations/testing.md
@@ -247,12 +272,13 @@ nav:
           - Governed process dispatch: operations/governed-dispatch.md
           - Human authority and escalation: operations/human-authority.md
           - Operating controls: operations/operating-controls.md
-          - Troubleshooting: operations/troubleshooting.md
           - Maintaining local policy: operations/local-policy.md
   - Reference:
-      - Release inventory: reference/inventory.md
-      - Workflow catalogue: reference/workflows.md
-      - Full role catalogue: reference/roles.md
+      - Roles and workflows:
+          - Full role catalogue: reference/roles.md
+          - Base role profiles: reference/base-role-profiles.md
+          - Product specialization profiles: reference/product-specializations.md
+          - Workflow catalogue: reference/workflows.md
       - Output contract catalogue:
           # JAI:OUTPUT-CONTRACTS:NAV:START
           - Overview: reference/output-contracts/index.md
@@ -724,33 +750,24 @@ nav:
               - "Supplier onboarding to exit: source-owned handoff contracts": reference/output-contracts/workflow-supplier-onboarding.md
               - "Vulnerability to remediation: source-owned handoff contracts": reference/output-contracts/workflow-vulnerability-to-remediation.md
 # JAI:OUTPUT-CONTRACTS:NAV:END
-      - Command reference: reference/commands.md
-      - Complete installed CLI guide: reference/installed-cli-guide.md
-      - Exact operator walkthrough: operations/operator-walkthrough.md
-      - Deployment and recovery: operations/gen2-deployment-recovery.md
-      - Lifecycle deployment and recovery: operations/lifecycle-recovery.md
-      - Complete ordinary layered workflow: operations/normal-layered-workflow.md
-      - Governed SABSA content and views: operations/sabsa-content.md
-      - Governed SABSA-layer delivery model: architecture/sabsa-layer-model.md
-      - Versioned inputs and applicability: architecture/governed-runtime-cutover.md
-      - Runtime recording and L0 decisions: architecture/governed-runtime-recording.md
-      - Governed dispatch boundary: architecture/governed-dispatch-boundary.md
-      - Governed layer-local workflow: architecture/governed-layer-workflow.md
-      - Native provider execution: architecture/gen2-native-execution-bridge.md
-      - Governed escalation and scheduling: architecture/governed-escalation-scheduling.md
-      - Governed SABSA content: architecture/governed-sabsa-content.md
-      - SABSA delivery profile: reference/sabsa-delivery-profile.md
-      - Governed delivery protocol: reference/governed-delivery-protocol.md
-      - Documentation authority and installed CLI help: runtime-reference/current-help.md
-      - Product version and release tags: reference/versioning.md
-      - Extended command walkthroughs: reference/command-walkthroughs.md
-      - Detailed tool CLI reference: reference/runtime-tools-detailed.md
-      - Paths and environment variables: reference/paths-env.md
-      - Expert reference format: reference/expert-reference-format.md
-      - Reference selection and context delivery: reference/reference-selection-context.md
-      - Compatibility matrix: reference/compatibility.md
-      - Boundaries and limitations: reference/limitations.md
-      - Glossary: reference/glossary.md
+      - Commands, tools and configuration:
+          - Command reference: reference/commands.md
+          - Complete installed CLI guide: reference/installed-cli-guide.md
+          - Documentation authority and installed CLI help: runtime-reference/current-help.md
+          - Extended command walkthroughs: reference/command-walkthroughs.md
+          - Detailed tool CLI reference: reference/runtime-tools-detailed.md
+          - Paths and environment variables: reference/paths-env.md
+      - Protocols and formats:
+          - Governed delivery protocol: reference/governed-delivery-protocol.md
+          - SABSA delivery profile: reference/sabsa-delivery-profile.md
+          - Expert reference format: reference/expert-reference-format.md
+          - Reference selection and context delivery: reference/reference-selection-context.md
+      - Product and compatibility:
+          - Release inventory: reference/inventory.md
+          - Product version and release tags: reference/versioning.md
+          - Compatibility matrix: reference/compatibility.md
+          - Boundaries and limitations: reference/limitations.md
+          - Glossary: reference/glossary.md
   - About:
       - Justifiable AI: about/justifiable-ai.md
       - Licensing and attribution: about/license-attribution.md

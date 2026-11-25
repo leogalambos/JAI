@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 # https://www.egothor.org
-"""Generate installable instruction supplements from composed infrastructure modules."""
+"""Generate role installation projections from the canonical role library."""
 
 import argparse
 import json
@@ -12,6 +12,7 @@ from compose_role_library import compose
 
 _ROOT = Path(__file__).resolve().parents[1]
 _OUTPUT = _ROOT / '.ai/runtime/knowledge/infrastructure-role-guidance.json'
+_INSTALL_OUTPUT = _ROOT / '.ai/setup/role-projection.json'
 _MODULES = {
     'methods/zero-trust/resource-access',
     'products/hashicorp/terraform/governed-plans',
@@ -20,8 +21,7 @@ _MODULES = {
 }
 
 
-def _render():
-    compilation = compose(_ROOT)
+def _render(compilation):
     overlays, references = {}, {}
     for slug, row in compilation.manifest['roles'].items():
         if row['legacy_anchor'] != slug:
@@ -53,15 +53,71 @@ def _render():
     return json.dumps({'schema_version': 1, 'roles': overlays, 'references': references}, ensure_ascii=False, indent=2) + '\n'
 
 
+def _provider_instruction(path, raw, sections, provider_files):
+    """Defer assignment-scoped passages to individually linked provider references."""
+    role = Path(path)
+    index = f'knowledge/direct/{role.stem}.md'
+    links = []
+    for section in sections:
+        reference = section['reference']
+        if reference is None:
+            reference = f'knowledge/direct/{role.stem}/{section["id"]}.md'
+            start, end = section['start'], section['end']
+            provider_files[(role.parent / reference).as_posix()] = raw[start:end].decode('utf-8')
+        scope = ', '.join(f'{key} {" or ".join(values)}' for key, values in section['scope'].items())
+        links.append(f'- [{section["id"]}](../{reference.removeprefix("knowledge/")}) ({scope})')
+    for section in sorted(sections, key=lambda entry: entry['start'], reverse=True):
+        raw = raw[:section['start']] + raw[section['end']:]
+    raw = raw.replace(b'## Professional knowledge\n\n', b'', 1)
+    provider_files[(role.parent / index).as_posix()] = (
+        '# Task-specific professional knowledge\n\n'
+        'Read a reference only if the assigned work matches the scope listed for it.\n\n'
+        + '\n'.join(links)
+        + '\n'
+    )
+    return raw + f'\n\nFor task-specific guidance, consult [the reference index]({index}).\n'.encode()
+
+
+def _render_install_projection(compilation):
+    """Produce the stdlib installer input from the exact composed catalogue."""
+    runtime, skills, provider, discovery = {}, {}, {}, {}
+    for source, raw in compilation.files.items():
+        if source.startswith('.ai/runtime/'):
+            runtime[source.removeprefix('.ai/runtime/')] = json.loads(raw)
+        elif not (_ROOT / source).is_file() or (_ROOT / source).read_bytes() != raw:
+            skills[source.removeprefix('.ai/')] = raw.decode('utf-8')
+    for row in compilation.registry['roles']:
+        path, slug = row['path'], row['slug']
+        role = compilation.manifest['roles'][slug]
+        if path in skills and role.get('context_sections'):
+            direct = _provider_instruction(
+                path, compilation.instructions[slug], role['context_sections'], provider)
+            provider[path] = direct.decode('utf-8')
+        if role['professional_parent']:
+            category = f'skills/{row["skill"]}/SKILL.md'
+            discovery.setdefault(category, []).append(
+                f'- [{row["name"]}](references/{slug}.md) · `{row["tool_tier"]}` · `{row["operator_agent"]}`')
+    return json.dumps({'schema_version': 1, 'runtime': runtime, 'skills': skills,
+                       'provider': provider, 'discovery': discovery}, ensure_ascii=False,
+                      indent=2) + '\n'
+
+
 def main():
-    """Write the canonical supplement or return one if check mode detects drift."""
+    """Write role installation projections or report drift in check mode."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
-    generated = _render()
+    compilation = compose(_ROOT)
+    generated = {_OUTPUT: _render(compilation),
+                 _INSTALL_OUTPUT: _render_install_projection(compilation)}
     if args.check:
-        return int(not _OUTPUT.is_file() or _OUTPUT.read_text(encoding='utf-8') != generated)
-    _OUTPUT.write_text(generated, encoding='utf-8')
+        stale = [str(path.relative_to(_ROOT)) for path, raw in generated.items()
+                 if not path.is_file() or path.read_text(encoding='utf-8') != raw]
+        if stale:
+            parser.exit(1, 'Generated role projection drift: ' + ', '.join(stale) + '\n')
+        return 0
+    for path, raw in generated.items():
+        path.write_text(raw, encoding='utf-8')
     return 0
 
 

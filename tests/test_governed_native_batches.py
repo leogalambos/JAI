@@ -1619,7 +1619,11 @@ def test_legacy_installed_zero_trust_guidance_is_prepared_and_replayed_offline(t
     root = tmp_path / 'install'
     house, claude, codex = (root / name for name in ('house', 'claude', 'codex'))
     registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
-    outputs, _ = installer.desired_outputs(ROOT, [carrier], house, claude, codex, registry)
+    # Reconstruct the historical installed layout before stripping classification metadata.
+    with monkeypatch.context() as legacy_install:
+        legacy_install.setattr(installer, '_project_role_library', installer._project_infrastructure_guidance)
+        outputs, _ = installer.desired_outputs(ROOT, [carrier], house, claude, codex, registry)
+    assert str(house / 'role-composition.json') not in outputs
     for name, raw in outputs.items():
         path = Path(name)
         if path.is_relative_to(house):

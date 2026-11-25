@@ -27,17 +27,18 @@ importer or executable project configuration is permitted.
 
 ## Deployment and process responsibilities
 
-```text
-Native package
-  Electron main / read-only file broker
-       |                     |
-       | narrow preload      | admitted source and archive FileHandles
-  sandboxed renderer         +-- TypeScript import/query/layout worker
-       |                              |
-       +-- bounded graph and tables --+-- compact graph and indexes
-
-Application-owned state: platform app-data and private captured-source archive
-Source-owned state: explicitly selected ledgers and associated material files
+```mermaid
+flowchart TD
+    accTitle: Fabric Explorer deployment and process responsibilities
+    Source["Source-owned state: selected ledgers and material files"] -->|"Read-only admission"| Main
+    subgraph Package["Native package"]
+        Main["Electron main and read-only file broker"] -->|"Narrow preload"| Renderer["Sandboxed renderer"]
+        Main -->|"Admitted source and archive FileHandles"| Worker["TypeScript import, query and layout worker"]
+        Worker --> Compact["Compact graph and indexes"]
+        Compact --> Bounded["Bounded graph and tables"]
+        Bounded --> Renderer
+    end
+    Main --> State["Application-owned state: platform app-data and private captured-source archive"]
 ```
 
 | Component | Responsibility | Forbidden capability |

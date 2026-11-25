@@ -61,6 +61,10 @@
       "category": "integration",
       "rationale": "Exercise versioned metamodel, notation and offline exchange-schema boundaries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
     },
+    "tests/test_base_role_profiles.py": {
+      "category": "integration",
+      "rationale": "The canonical role registry and role references generate linked public MkDocs profiles."
+    },
     "tests/test_check_agent_policy.py": {
       "category": "integration",
       "rationale": "Policy-validator text parsing must preserve safely quoted role metadata. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
@@ -998,6 +1002,60 @@
     }
   },
   "impact_rules": [
+    {
+      "paths": [
+        ".ai/role-library/roles/products/**",
+        ".ai/role-library/knowledge/products/**",
+        "docs/reference/product-specializations.md"
+      ],
+      "tests": [
+        "tests/test_compose_role_library.py",
+        "tests/test_documentation_navigation.py",
+        "tests/test_governed_routing.py",
+        "tests/test_installer.py",
+        "tests/test_workflow_role_selection.py"
+      ],
+      "reason": "Specialist definitions and knowledge supply public profile guidance, installer instructions, and exact governed role routing."
+    },
+    {
+      "paths": [
+        "hooks/jai_base_role_profiles.py",
+        "docs/reference/base-role-profiles.md",
+        ".ai/runtime/roles.json",
+        ".ai/skills/it-roles-*/references/*.md"
+      ],
+      "tests": [
+        "tests/test_base_role_profiles.py",
+        "tests/test_documentation_navigation.py"
+      ],
+      "reason": "Canonical role identity, scope and evidence are consumed by the generated profile chapter and catalogue links."
+    },
+    {
+      "paths": [
+        ".ai/setup/installer.py",
+        ".ai/setup/role-projection.json",
+        "hooks/jai_repository_links.py",
+        "tools/generate_infrastructure_guidance.py",
+        "docs/using/roles.md"
+      ],
+      "tests": [
+        "tests/test_agent_runtime.py",
+        "tests/test_commercial_policy.py",
+        "tests/test_commercial_router.py",
+        "tests/test_compose_role_library.py",
+        "tests/test_documentation_navigation.py",
+        "tests/test_execution_profile_runtime.py",
+        "tests/test_governed_native_provider.py",
+        "tests/test_governed_routing.py",
+        "tests/test_guide_alias.py",
+        "tests/test_hint_integration.py",
+        "tests/test_installer.py",
+        "tests/test_provider_projection.py",
+        "tests/test_release_bundle.py",
+        "tests/test_release_workflow.py"
+      ],
+      "reason": "The installer and generated role payload feed provider discovery, installed routing, release archives, and public catalogue coverage."
+    },
     {
       "paths": [
         ".ai/skills/layered-justifiable-delivery/references/native-parent.md"

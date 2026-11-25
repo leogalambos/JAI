@@ -223,11 +223,20 @@ body:has(.ai-home-shell-v31) .md-content__inner::before,body:has(.ai-home-shell-
   outline-offset:3px;
 }
 
-/* The desktop chapter tree belongs to document flow, so every expanded chapter
-   remains reachable by page scrolling. The right-hand table of contents stays sticky. */
+/* Keep the chapter tree in its own viewport even before Material measures it. */
 @media screen and (min-width:76.25em){
-  .md-sidebar--primary{position:static!important;top:auto!important;height:auto!important;max-height:none!important;overflow:visible!important;align-self:flex-start!important}
-  .md-sidebar--primary .md-sidebar__scrollwrap{height:auto!important;max-height:none!important;overflow:visible!important;padding-bottom:1rem!important;margin:0!important}
+  .md-sidebar--primary{
+    position:sticky!important;
+    top:calc(var(--ai-header-height) + .65rem)!important;
+    height:calc(100dvh - var(--ai-header-height) - 1.3rem)!important;
+    align-self:flex-start!important;
+    overflow:hidden;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap{
+    height:100%!important;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+  }
   .md-sidebar--secondary{position:sticky!important;top:calc(var(--ai-header-height) + .65rem)!important;height:auto!important;max-height:calc(100vh - var(--ai-header-height) - 1.3rem)!important;overflow:hidden!important}
   .md-sidebar--secondary .md-sidebar__scrollwrap{max-height:calc(100vh - var(--ai-header-height) - 1.3rem)!important;overflow-y:auto!important}
 }
@@ -243,6 +252,32 @@ body:has(.ai-home-shell-v31) .md-content__inner::before,body:has(.ai-home-shell-
 .md-nav--primary .md-nav .md-nav__item--active>a.md-nav__link::before,
 .md-nav--primary .md-nav .md-nav__container>a.md-nav__link--active::before{color:var(--md-accent-fg-color)}
 .md-nav--primary .md-nav__title{margin-bottom:.2rem!important}
+/* Reveal the generated profile's ancestor branches before measuring the entry. */
+.md-nav--primary .ai-nav-current-ancestor:checked~.md-nav{transition:none}
+.md-nav--primary a.md-nav__link--active{
+  background:color-mix(in srgb,var(--md-accent-fg-color) 12%,transparent);
+  box-shadow:inset 3px 0 var(--md-accent-fg-color);
+  color:var(--md-default-fg-color)!important;
+  border-radius:.15rem;
+  font-weight:750!important;
+  padding-block:.25rem!important;
+}
+
+
+/* Decorative portraits leave the professional text in normal reading order. */
+.md-typeset .ai-role-portrait{
+  float:right;
+  width:clamp(7rem,23%,10rem);
+  height:auto;
+  margin:.2rem 0 .8rem 1rem;
+  border-radius:.35rem;
+}
+.md-typeset p:has(> .ai-role-portrait:only-child){margin:0}
+.md-typeset h2:has(+ p > .ai-role-portrait){clear:both}
+@media screen and (max-width:48rem){
+  .md-typeset .ai-role-portrait,
+  .md-typeset p:has(> .ai-role-portrait:only-child){display:none}
+}
 
 /* Previous / next navigation at the end of every documentation page. */
 .ai-page-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:2.5rem;padding-top:1.05rem;border-top:1px solid #d9e6ee}

@@ -107,10 +107,14 @@ An executing setter may return sequential typed local assignments/decisions
 before its permitted terminal intent; each is checked in order and the whole
 return is rejected atomically if any part is invalid.
 
-Every entity can read `/catalogue/catalogue.json` and all
-`/catalogue/instructions/<slug>.md` without a neighbor request. Selected prompt
-instructions reduce context size; they are not a catalogue access restriction.
-Task inputs and another entity's private work are still governed separately.
+Ordinary selection can explore the complete enrolled catalogue without a
+neighbor request. In the hardened worker this includes
+`/catalogue/catalogue.json` and `/catalogue/instructions/<slug>.md` when the
+phase permits them. Native provider presentation uses broker resources.
+Scoped selection presents eligible rows while selection retains intrinsic
+catalogue reads. Current managed work receives selected, scope-projected
+instructions. Task inputs and another entity’s
+private work remain governed separately. See [hierarchical role discovery](../architecture/hierarchical-role-discovery.md).
 
 ## Local quality and the next layer
 

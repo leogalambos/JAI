@@ -1,5 +1,15 @@
 # Changelog
 
+## 26.11.3
+
+- Install all 314 registered roles for Claude Code and Codex, including 28
+  product specializations such as the IBM QRadar SIEM Integration Specialist.
+- Make specialist roles discoverable by name and slug, and link their
+  assignment-scoped guidance from the provider role references.
+- Publish distinct base and product specialization profiles with concrete
+  methods, applicability and evidence. Clarify assignment-specific evidence
+  for Microsoft Entra ID, Diligent HighBond and Optro specializations.
+
 ## 26.11.2
 
 - Add governed Zero Trust migration, greenfield design and independent

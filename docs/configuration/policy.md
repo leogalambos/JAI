@@ -10,13 +10,16 @@ AI IT House {{ JAI_VERSION }} uses layered enforcement. Prompt text may reinforc
 
 The intended precedence is:
 
-```text
-Enterprise policy
-→ sandbox / host controls
-→ agent permission set
-→ MCP / tool allowlist
-→ managed hooks
-→ prompt instructions
+```mermaid
+flowchart TD
+    accTitle: Policy precedence
+    Policy["Enterprise policy"]
+    Sandbox["Sandbox and host controls"]
+    Agent["Agent permission set"]
+    Allowlist["MCP and tool allowlist"]
+    Hooks["Managed hooks"]
+    Prompt["Prompt instructions"]
+    Policy --> Sandbox --> Agent --> Allowlist --> Hooks --> Prompt
 ```
 
 A prompt is the weakest enforcement tier in that chain.

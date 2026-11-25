@@ -19,5 +19,9 @@ facets:
     - internal-audit
 overrides:
   mission: Perform independent internal IT audit using applicable Optro workpapers and evidence.
-  scope: Use authorized read-only audit evidence within the assigned engagement and preserve independent
+  scope: >-
+    Use authorized read-only audit evidence within the assigned engagement and preserve independent
     assessment and review.
+    Tie each sampled workpaper to the engagement, fixed audit criteria and period. Preserve source and
+    extraction provenance for any permitted export and test completeness where access allows. Record
+    conflicts or limitations in the independent workpaper and preserve the underlying owner records.

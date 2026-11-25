@@ -18,5 +18,10 @@ facets:
     - grc-analysis
 overrides:
   mission: Analyze risks and control evidence using applicable Diligent HighBond records.
-  scope: Use authorized GRC evidence within the inherited analysis mandate and document limitations on
-    scope, access and traceability.
+  scope: >-
+    Use authorized GRC evidence within the inherited analysis mandate and document limitations on scope,
+    access and traceability.
+    Reconcile the control identifier, approved reporting period and linked evidence across the
+    authorised Projects or other admitted records. Document coverage and identify Analytics-derived evidence
+    and its source or transformation limits. Report record reconciliation separately from any assessment
+    of control effectiveness.

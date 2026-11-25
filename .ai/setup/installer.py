@@ -270,6 +270,50 @@ def _project_infrastructure_guidance(pkg, providers, ai_house, claude_home, code
             ).encode('utf-8')
 
 
+def _project_role_library(pkg, providers, ai_house, claude_home, codex_home, outputs, modes):
+    """Install build-time composition into the runtime and enabled provider skills."""
+    source = pkg / '.ai/setup/role-projection.json'
+    if not source.is_file():
+        if (pkg / '.ai/role-library').is_dir():
+            raise ValueError('Missing packaged role projection. Rebuild the installation package.')
+        _project_infrastructure_guidance(pkg, providers, ai_house, claude_home, codex_home, outputs, modes)
+        return
+    projection = json.loads(source.read_text(encoding='utf-8'))
+    runtime_paths = {'roles.json', 'role-composition.json',
+                     'role-indexes/by-role-slug.json', 'role-indexes/facets.json'}
+    sections = ('runtime', 'skills', 'provider', 'discovery')
+    if (not isinstance(projection, dict) or projection.get('schema_version') != 1
+            or any(not isinstance(projection.get(section), dict) for section in sections)
+            or set(projection['runtime']) != runtime_paths):
+        raise ValueError('Invalid packaged role projection')
+    for relative, value in projection['runtime'].items():
+        destination = str(ai_house / relative)
+        outputs[destination] = (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+        modes[destination] = 0o644
+
+    provider_homes = {'claude': claude_home, 'codex': codex_home}
+    homes = [ai_house, *(provider_homes[provider] for provider in providers)]
+    for home in homes:
+        references = projection['skills']
+        if home != ai_house:
+            references = {**references, **projection['provider']}
+        for relative, value in references.items():
+            if (not isinstance(value, str)
+                    or not re.fullmatch(r'skills/it-roles-[a-z0-9-]+/references/(?:[a-z0-9-]+/)*[a-z0-9-]+\.md', relative)):
+                raise ValueError(f'Invalid packaged role reference path: {relative}')
+            destination = str(home / relative)
+            outputs[destination] = value.encode('utf-8')
+            modes[destination] = 0o644
+        for relative, links in projection['discovery'].items():
+            if (not isinstance(links, list) or any(not isinstance(link, str) for link in links)
+                    or not re.fullmatch(r'skills/it-roles-[a-z0-9-]+/SKILL\.md', relative)
+                    or str(home / relative) not in outputs):
+                raise ValueError(f'Invalid packaged role category path: {relative}')
+            destination = str(home / relative)
+            discovery = '\n\n## Specialist roles\n\n' + '\n'.join(links) + '\n'
+            outputs[destination] += discovery.encode('utf-8')
+
+
 def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry):
     """Prepare owned regular installation outputs from a valid source package.
 
@@ -340,7 +384,7 @@ def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry
         for p in sorted((pkg/'.ai/commands').glob('*.md')):
             name=p.stem; dest=codex_home/'skills'/('workflow-'+name)/'SKILL.md'
             out[str(dest)]=render_codex_skill(p,'command',name,model_registry); modes[str(dest)]=0o644
-    _project_infrastructure_guidance(pkg, providers, ai_house, claude_home, codex_home, out, modes)
+    _project_role_library(pkg, providers, ai_house, claude_home, codex_home, out, modes)
     # Generated common manifest used by the live-tree guard.
     rels=[]
     for path in out:

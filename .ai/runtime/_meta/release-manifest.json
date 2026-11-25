@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0.0",
-  "release": "26.11.2",
+  "release": "26.11.3",
   "release_scope": {
     "schema_version": 1,
     "scope": "GA_COMPATIBLE/2",

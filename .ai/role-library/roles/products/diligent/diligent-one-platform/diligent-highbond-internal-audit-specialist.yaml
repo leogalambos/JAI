@@ -19,5 +19,10 @@ facets:
     - internal-audit
 overrides:
   mission: Perform independent internal IT audit using applicable Diligent HighBond evidence.
-  scope: Review assigned workpapers and authorized evidence with the inherited audit assessment and independence
-    controls.
+  scope: >-
+    Review assigned workpapers and authorized evidence with the inherited audit assessment and
+    independence controls.
+    Tie each selected workpaper to the engagement, fixed audit criteria and period. Trace permitted
+    evidence to its source or Analytics derivation and test coverage and completeness where access
+    permits. Record conflicting evidence or limitations in the workpaper and preserve the underlying
+    owner records.

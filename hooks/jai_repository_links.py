@@ -200,7 +200,10 @@ def render_release_inventory(root: Path) -> str:
 
 def _role_inventory(root, *, packaged=False):
     manifest = {}
-    if not packaged and (root / '.ai/role-library').is_dir():
+    projection = root / '.ai/setup/role-projection.json'
+    if packaged and projection.is_file():
+        registry = json.loads(projection.read_text(encoding='utf-8'))['runtime']['roles.json']
+    elif not packaged and (root / '.ai/role-library').is_dir():
         sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
         try:
             from tools.compose_role_library import compose
@@ -253,30 +256,89 @@ def render_specialization_coverage(root: Path) -> str:
     return f"{count} source {'specialization' if count == 1 else 'specializations'}"
 
 
+def _specialization_rows(root):
+    registry, manifest = _role_inventory(root)
+    roles = {row['slug']: row for row in registry['roles']}
+    return [(roles[slug], entry, roles[entry['professional_parent']])
+            for slug, entry in sorted(manifest.items(), key=lambda item: roles[item[0]]['name'].casefold())
+            if entry.get('professional_parent')]
+
+
 def render_specializations(root: Path) -> str:
-    """List composed specializations and their professional ancestry.
+    """Render the catalogue index and links to the separate specialization chapter.
 
     Args:
         root: Checkout containing the role library and canonical registry.
     Returns:
-        Markdown inventory of specialist slugs, base roles, product facets and assignment missions.
+        Markdown table with a profile and inherited output contract link for each specialist.
     """
-    registry, manifest = _role_inventory(root)
-    roles = {row['slug']: row for row in registry['roles']}
     rows = ['| Specialization | Exact slug | Professional base | Product facet | Assignment mission |',
             '| --- | --- | --- | --- | --- |']
-    for slug, entry in sorted(manifest.items(), key=lambda item: roles[item[0]]['name'].casefold()):
-        parent = entry.get('professional_parent')
-        if not parent:
-            continue
-        base = roles[parent]
+    for role, entry, base in _specialization_rows(root):
+        slug = role['slug']
         facets = ', '.join(entry.get('facets', {}).get('product', []))
-        label = escape(roles[slug]['name']).replace('|', '&#124;')
+        label = escape(role['name']).replace('|', '&#124;')
         base_label = escape(base['name']).replace('|', '&#124;')
-        mission = escape(roles[slug]['mission']).replace('|', '&#124;')
+        mission = escape(role['mission']).replace('|', '&#124;')
         anchor = entry['legacy_anchor']
-        rows.append(f"| {label} | `{slug}` | [{base_label}](output-contracts/role-{anchor}.md) | {facets} | {mission} |")
+        rows.append(f"| [{label}](product-specializations.md#{slug}) | `{slug}` | "
+                    f"[{base_label}](output-contracts/role-{anchor}.md) | {facets} | {mission} |")
     return '\n'.join(rows)
+
+
+def render_specialization_profiles(root: Path) -> str:
+    """Render publicly maintained specialist scope, practices and evidence.
+
+    Args:
+        root: Checkout containing the validated composition sources.
+    Returns:
+        Markdown profiles covering every composed specialist.
+    Raises:
+        OSError or ValueError: A canonical source could not be read or composed.
+    """
+    from yaml import safe_load
+
+    profiles, modules = [], {}
+    for role, entry, base in _specialization_rows(root):
+        label, slug = escape(role['name']), role['slug']
+        anchor = entry['legacy_anchor']
+        base_link = f'[{escape(base["name"])}](base-role-profiles/{base["slug"]}.md)'
+        output_link = f'[Inherited output contracts](output-contracts/role-{anchor}.md)'
+        portrait = role['skill'].removeprefix('it-roles-')
+        profiles.extend([f'## {label} {{ #{slug} }}', '',
+                         f'![](../assets/images/role-portraits/{portrait}.webp)'
+                         '{ .ai-role-portrait loading=lazy width=288 height=288 }', '',
+                         escape(role['mission']), '',
+                         f'**Professional base** · {base_link} · {output_link}', ''])
+        for scope in entry['scope']:
+            profiles.extend([escape(scope), ''])
+        for module in entry['modules']:
+            source_path = module['source_path']
+            if source_path not in modules:
+                path = root / '.ai/role-library' / source_path
+                modules[source_path] = safe_load(path.read_text(encoding='utf-8'))
+            knowledge = modules[source_path]
+            profiles.extend([f'### {escape(knowledge["title"])}', '', escape(knowledge['applicability']), ''])
+            for section in knowledge['sections']:
+                subject = section['id'].replace('-', ' ').capitalize()
+                source = knowledge['sources'][section['source']]
+                link = source.get('url')
+                authority = f' [{escape(source["title"])}]({link})' if link else ''
+                if section['delivery'] == 'required':
+                    profiles.extend([f'**{subject}.** {escape(section["text"])}{authority}', ''])
+                else:
+                    profiles.extend([f'**{subject}.** {escape(section["read_when"])}', ''])
+                    reference = (root / '.ai/role-library' / source_path).parent / section['reference']
+                    notes = re.sub(r'(?m)^#+ (.+)$', r'**\1**', reference.read_text(encoding='utf-8'))
+                    profiles.extend([notes.strip(), ''])
+                if section['applicability'] != knowledge['applicability']:
+                    profiles.extend([f'Applies to {escape(section["applicability"])}', ''])
+                profiles.extend([f'Excluded scope · {escape(section["exclusions"])}', ''])
+        for group, items in entry.get('obligations', {}).items():
+            if items:
+                profiles.extend([f'### Additional {group}', '',
+                                 *(f'- {escape(value)}' for value in items.values()), ''])
+    return '\n'.join(profiles)
 
 
 def render_workflow_coverage(root: Path, *, handoffs=False, paths=False) -> str:
@@ -399,6 +461,8 @@ def on_page_markdown(markdown, *, page, config, files):
         markdown = markdown.replace("{{ JAI_DISCIPLINE_COVERAGE }}", render_discipline_coverage(root))
     if "{{ JAI_SPECIALIZATIONS }}" in markdown:
         markdown = markdown.replace("{{ JAI_SPECIALIZATIONS }}", render_specializations(root))
+    if "{{ JAI_SPECIALIZATION_PROFILES }}" in markdown:
+        markdown = markdown.replace("{{ JAI_SPECIALIZATION_PROFILES }}", render_specialization_profiles(root))
     if "{{ JAI_SCHEMA_COUNT }}" in markdown:
         markdown = markdown.replace("{{ JAI_SCHEMA_COUNT }}", render_schema_count(root))
     if '{{ JAI_SCOPE }}' in markdown:

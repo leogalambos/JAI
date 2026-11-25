@@ -64,14 +64,17 @@ Artifact Contract v2 remains compatibility input only; current production writes
 
 A production audience artefact is generated through:
 
-```text
-semantic source
-→ publication profile
-→ DCS-bound ProjectionManifest v4
-→ publication model with JAI lineage
-→ renderer
-→ render evidence / visual QA
-→ approval / publish
+```mermaid
+flowchart TD
+    accTitle: Artifact publication sequence
+    Source["Semantic source"]
+    Profile["Publication profile"]
+    Manifest["DCS-bound ProjectionManifest v4"]
+    Model["Publication model with JAI lineage"]
+    Render["Renderer"]
+    Check["Render evidence and visual QA"]
+    Release["Approval and publication"]
+    Source --> Profile --> Manifest --> Model --> Render --> Check --> Release
 ```
 
 Three SHA-256 identities remain distinct:

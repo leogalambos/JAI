@@ -23,8 +23,9 @@ Author and reviewer use isolated contexts. The full engagement history and every
 catalogue definition are not embedded into every prompt. Missing information is
 requested explicitly instead of guessed from an unrelated conversation.
 
-The complete catalogue remains available for local staffing; compact context
-assembly must not become a restrictive role whitelist.
+Ordinary selection can navigate the complete catalogue. Scoped workflow
+selection presents eligible candidates, and the work context receives the
+selected instructions. See [hierarchical role discovery and context scalability](hierarchical-role-discovery.md).
 
 ## Durable continuation
 

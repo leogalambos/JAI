@@ -194,14 +194,12 @@ does not certify the model or authorize a restricted standard publication.
 
 The intended direction is:
 
-```text
-JAI canonical semantic identity
-        │
-        ├── SABSA specialisation / coordinates
-        │
-        └── EA-domain projection
-               │
-               └── ArchiMate/Open Exchange interchange
+```mermaid
+flowchart TD
+    accTitle: SABSA and EA projection
+    JAI["JAI canonical semantic identity"] --> SABSA["SABSA specialisation and coordinates"]
+    JAI --> EA["EA-domain projection"]
+    EA --> Exchange["ArchiMate and Open Exchange interchange"]
 ```
 
 The bridge preserves source specialisation and canonical references so that EA views remain traceable to the semantic origin rather than becoming an independent copy of the truth.

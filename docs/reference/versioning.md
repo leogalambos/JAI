@@ -3,7 +3,7 @@
 ## One product version authority
 
 The root `VERSION` file is the only authority for the product version. Its format
-is `YY.MM.VV`; the prepared version is **26.11.1**. Preparing source or building
+is `YY.MM.VV`; the prepared version is **{{ JAI_VERSION }}**. Preparing source or building
 documentation does not publish a release. Documentation follows the source
 `VERSION` and may be newer than an installed published package.
 
@@ -67,7 +67,7 @@ python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
 ```
 
 The packaging command validates current source contracts and produces
-`ai-it-house-universal-26.11.1.zip` and its `.sha256` checksum in a fresh output
+`ai-it-house-universal-{{ JAI_VERSION }}.zip` and its `.sha256` checksum in a fresh output
 directory. Existing outputs are not overwritten. Private inputs, local journals,
 private keys, build trees, obsolete code and archived development reports are
 excluded. A local build performs no Git operation or remote publication and does
@@ -77,11 +77,12 @@ not replace the comprehensive local regression prerequisite.
 
 Publication is a separate operator action. First commit and push the reviewed,
 synchronized source to `main`. Only when publication is intended, create and push
-the matching tag. For the prepared version, those future commands are:
+the matching tag. Read its version from the commit you intend to release.
 
 ```sh
-git tag -a 'release@26.11.1' -m 'JAI 26.11.1'
-git push origin 'release@26.11.1'
+version=$(git show HEAD:VERSION)
+git tag -a "release@$version" -m "JAI $version"
+git push origin "refs/tags/release@$version"
 ```
 
 The `release@YY.MM.VV` tag is the publication trigger. GitHub Actions requires
@@ -100,14 +101,13 @@ are attached where supported by the repository. A checksum alone identifies
 bytes; it is not a signature. These build controls do not grant business
 acceptance or release permission for an output produced by a JAI engagement.
 
-Do not move a published tag. Corrections require a new product version. Preparing
-26.11.1 in the repository has not itself performed the publication steps above.
+Corrections to a published release require a new product version and tag.
 
 ## Diagnostics
 
 ```sh
 python3 scripts/versioning.py check --root .
-python3 scripts/versioning.py check --root . --tag 'release@26.11.1'
+python3 scripts/versioning.py check --root . --tag "release@$(git show HEAD:VERSION)"
 python3 .ai/runtime/tools/generate_docs.py --check --root .
 ```
 

@@ -461,3 +461,42 @@ def test_infrastructure_guidance_matches_composed_native_role_references(tmp_pat
         for home in homes:
             assert outputs[str(home / 'skills/it-role-workflows' / path)] == (
                 ROOT / '.ai/skills/it-role-workflows' / path).read_bytes()
+
+
+def test_all_composed_roles_are_installed_and_discoverable(tmp_path):
+    """Exercise exact runtime capture and both provider projections for every specialist."""
+    from tools.compose_role_library import compose
+    from governed_native_provider import _packaged_role_context
+
+    compilation = compose(ROOT)
+    registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+    house, claude, codex = (tmp_path / name for name in ('house', 'claude', 'codex'))
+    outputs, _ = installer.desired_outputs(ROOT, {'claude', 'codex'}, house, claude, codex, registry)
+    role_rows = json.loads(outputs[str(house / 'roles.json')])['roles']
+    assert role_rows == compilation.registry['roles']
+    for destination, raw in outputs.items():
+        path = Path(destination)
+        if path.is_relative_to(house) and (path.suffix == '.md' or path.name == 'role-composition.json'):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(raw)
+    instructions = {row['slug']: outputs[str(house / row['path'])] for row in role_rows}
+    assert instructions == compilation.instructions
+    references, _ = _packaged_role_context(house, house / 'skills', role_rows, instructions)
+    assert any(path.endswith('/qradar-source-evidence.md') for path in references['qradar-siem-specialist'])
+    for row in role_rows:
+        if 'inherited_outputs' in row:
+            for provider_home in (claude, codex):
+                assert outputs[str(provider_home / row['path'])]
+                skill = provider_home / 'skills' / row['skill'] / 'SKILL.md'
+                assert row['name'].encode() in outputs[str(skill)]
+                assert ('references/' + row['slug'] + '.md').encode() in outputs[str(skill)]
+
+                for section in compilation.manifest['roles'][row['slug']]['context_sections']:
+                    if section['reference'] is not None:
+                        continue
+                    reference = f'direct/{row["slug"]}/{section["id"]}.md'
+                    knowledge = provider_home / Path(row['path']).parent / 'knowledge'
+                    index = outputs[str(knowledge / 'direct' / f'{row["slug"]}.md')]
+                    assert ('../' + reference).encode() in index
+                    raw = instructions[row['slug']]
+                    assert outputs[str(knowledge / reference)] == raw[section['start']:section['end']]

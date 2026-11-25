@@ -20,11 +20,14 @@ example, existing SABSA roles can share method guidance while keeping their own
 responsibilities and outputs.
 
 Use the [specialization index](../reference/roles.md#product-specializations)
-to find a specialist by name, exact slug or professional base. The standard
-installation provides Zero Trust, Terraform, cloud infrastructure and cloud
-delivery guidance through named references on applicable base roles. Selecting a composed specialist by its exact slug requires that
-role to be registered in the active runtime. Load named references when the
-assignment needs their detailed checks and verify changing product facts
+to find a specialist by name, exact slug or professional base. Select the
+specialist name to see what the role adds to the professional base. The standard
+installation registers specialists and lists them in their Claude and Codex
+category skills. To request a specialist, name the role or give its exact slug,
+for example `qradar-siem-specialist`. Open the role's reference index for
+guidance that matches the assignment. Zero Trust, Terraform, cloud
+infrastructure and cloud delivery guidance is also available through named
+references on the applicable base roles. Verify changing product facts
 against the manufacturer when a decision depends on them.
 
 For Android work, use the implementation scope for the app and the test

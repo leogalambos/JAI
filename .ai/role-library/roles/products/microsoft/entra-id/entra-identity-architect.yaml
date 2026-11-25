@@ -14,4 +14,10 @@ facets:
   profession: [identity-architecture]
 overrides:
   mission: Design workforce authentication, federation and Conditional Access architecture for Microsoft Entra ID.
-  scope: Map identity populations, hybrid sign-in dependencies, authentication assurance, policy boundaries and recovery to the existing authentication and federation architecture deliverable. Evaluate options from admitted configuration evidence and declared tenant capabilities.
+  scope: >-
+    Map identity populations, hybrid sign-in dependencies, authentication assurance, policy boundaries
+    and recovery to the existing authentication and federation architecture deliverable. Evaluate
+    options from admitted configuration evidence and declared tenant capabilities.
+    For each identity population, sign-in path and protected resource, map the trust dependencies,
+    expected policy decision and outage recovery. Record the applicable tenant capabilities and
+    architecture trade-offs in the authentication and federation design.
