@@ -63,14 +63,15 @@ relation glyphs use CSS screen sizes as magnification increases, so zoom can
 separate nearby centres without enlarging the glyphs at the same rate. Focus
 chooses a local scale from nearby visible vertices; fit returns to the overview.
 
-Primary display names can differ from stored source labels. A present authored
-title or name takes precedence; otherwise a meaningful source label is retained.
-A material can display its recorded neighbour and attachment field, explicitly
-as an association, with a short digest. Without such context it displays a type
-and short digest. These aliases are shared by the canvas and semantic view;
-search still uses the existing source query rules. Exact identities and original
-source labels remain available in the inspector. Aliases do not identify a new
-record, rename source data or establish a causal relationship.
+The canvas and semantic table share readable labels. A recorded display label
+is bound to an exact version and can use recorded fields or an admitted text
+excerpt. If neither provides text, the label includes a typed
+`summary unavailable` fallback. A material can display its recorded neighbour
+and attachment field as an association, with a short digest. Without that
+context it displays a type and short digest. Search uses the admitted record
+label and version identifiers. The inspector preserves exact identity and
+shows the provenance of recorded display labels. See [Search and filters](exploration-reference.md#search-and-filters)
+and [Inspect identity and evidence](exploring.md#inspect-identity-and-evidence).
 Loop label anchors also follow the renderer's minimum loop radius, so their
 positions continue to match the configured curve geometry at deep magnification.
 Actual high-magnification appearance remains part of native visual qualification.

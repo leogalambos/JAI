@@ -77,7 +77,21 @@ Source-reference edges retain their recorded historical dependency classificatio
 
 ## Refresh and retained snapshots
 
-Refresh compares the selected files with the accepted capture. Unchanged file identities and metadata reuse the accepted worker and generation without parsing or rebuilding. Explicit Import deliberately creates a cold candidate even for unchanged inputs. A changed-source candidate streams and projects its selection again; it does not verify canonical history or retain a cross-worker parsed-prefix cache. Malformed or incomplete tails and unknown formats fail the candidate.
+**Refresh snapshot** compares the selected files and observed companion material
+with the accepted capture. When file identities, metadata and companion access
+states are unchanged, refresh reuses the accepted worker and generation,
+preserving navigation history and captured source pages. Changes to observed
+companions, including newly available material, can trigger a fresh import
+even when the journals are unchanged. A successful fresh import publishes a
+new generation and invalidates previous navigation history and source pages.
+A failed refresh keeps the accepted snapshot and marks it stale.
+
+To load the same selection from scratch, use **File → Close sources**, then
+**File → Open sources…** and select the sources again. Closing releases the
+previous snapshot. **Retry import** is available after admission when no usable
+snapshot exists. A fresh candidate streams and projects its selection without
+a cross-worker parsed-prefix cache. Malformed or incomplete tails and unknown
+formats fail the candidate.
 
 The selected file's native identity is pinned. The canonical writer may atomically replace a journal during a valid update; this counts as a replacement of the admitted file. The application retains the previous snapshot and reports: “Selected file was replaced; reopen sources to admit the new file.” Reopen and deliberately reselect the source to admit its new identity. Refresh does not silently widen or renew a read grant.
 
@@ -93,7 +107,7 @@ The worker consumes typed facts synchronously without serializing an intermediat
 
 A nonempty or in-use temporary capture cache fails closed. Recovery is manual: close all Fabric Explorer instances, clear only the viewer's `JAI Fabric Explorer/temp/captures` directory under the platform application-data directory, then reopen the viewer. Keep original journals, preferences and the namespace registry in place. The viewer does not automatically remove unknown stale files or another instance's cache.
 
-The import report records supported and observed versions, selected/accepted/rejected sources, skipped items, graph counts and unresolved counts. At most 1,000 diagnostics are displayed, with the full diagnostic total retained. Failed sources retain their known selected source ID, record pointer and local sequence separately; an unverified revision is never invented merely to populate a source locator. A failed report can describe individual source outcomes, but it never installs a partial snapshot. Logs and reports use bounded diagnostics rather than native exception paths.
+The import report records supported and observed versions, selected/accepted/rejected sources, skipped items, graph counts and unresolved counts. The report retains up to 1,000 diagnostic entries and the full diagnostic total. The desktop shows the first 20 available entries and reports the total. Failed sources retain their known selected source ID, record pointer and local sequence separately. Revision identifiers are present when verified. A failed report can describe individual source outcomes while the previous accepted snapshot stays in place. Logs and reports use bounded diagnostics.
 
 During loading, the status line updates at most once per second with bytes read out of the captured total, physical records read, facts projected and sources processed. Record and fact totals are not known in advance. Building graph indexes is named separately; graph layout/display preparation follows publication. Progress does not reread sources or count them in a preliminary pass. The finite performance observer prints the same loading counts in its terminal.
 

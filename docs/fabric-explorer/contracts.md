@@ -13,6 +13,9 @@ verify signatures, assess a product or grant authority. Maintained
 
 ## Identity and provenance
 
+The [recorded display label contract](https://github.com/leogalambos/JAI/blob/main/apps/fabric-explorer/packages/contracts/recorded-labels.md)
+defines version binding, provenance, text resolution and normalization.
+
 Project and root IDs are opaque stable namespaces assigned by the local broker.
 They are not a path, display name, session ID or root capability. Re-admission
 of the same project/root must preserve these namespaces; moving a selected path
@@ -216,12 +219,15 @@ semantic representation, so findings float64 and large integers remain intact.
 
 ## Limits, compatibility and tests
 
-The package fixes 8 MiB UTF-8 frames, 256 KiB raw pages, 1,000 visible diagnostics,
+The package fixes 8 MiB UTF-8 frames, 256 KiB raw pages, 1,000 diagnostic entries per report,
 5,000/20,000 maximum visible vertices/edges and 10,000 visited vertices / 50,000
 scanned edges / 32 hops. Default visible limits remain 2,000/8,000. A limit-bound
 answer identifies omitted counts/reasons. It cannot silently become complete or
 claim no path. Helper concurrency two and worker concurrency eight are declared
 contract limits; queue and process ownership belongs to the runtime implementation.
+
+The desktop previews the first 20 available diagnostic entries and reports the
+full diagnostic count.
 
 Protocol/model version changes require explicit compatibility review. Unknown
 wrapper fields fail closed; unknown legitimate source attributes remain inside

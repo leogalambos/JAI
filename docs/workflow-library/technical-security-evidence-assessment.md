@@ -78,6 +78,19 @@ For applicable independence requirements, use the engagement's adopted
 requirements and CA-02(01). Treatment guidance draws on
 [NIST SP 800-115, Chapter 8](https://doi.org/10.6028/NIST.SP.800-115).
 
+## Running this workflow: operator and implementer boundary
+
+Ask JAI to use `technical-security-evidence-assessment` for the identified
+assets and criteria. Supply the approved scope, available evidence references
+and evidence handling conditions. When JAI provides an operator package,
+run it on the approved host and tell JAI when the result is available at
+the agreed handoff path.
+
+JAI selects the supported evidence method, prepares the package and
+interprets the returned result. The assessor reviews the evidence and its
+limitations. The accountable receiving duty decides disposition and any
+authorized referral.
+
 ## Apply methods by subject and claim
 
 Use the reviewed assessment scope and applicable method records. Initial

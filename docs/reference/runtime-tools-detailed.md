@@ -334,13 +334,13 @@ options:
 
 ```
 usage: findings.py [-h]
-                   {add,list,resolve,verify,withdraw,accept-risk,status,report,selftest}
+                   {add,list,resolve,verify,withdraw,accept-risk,archive-private,status,report,selftest}
                    ...
 
 Findings ledger for review -> rework -> verification.
 
 positional arguments:
-  {add,list,resolve,verify,withdraw,accept-risk,status,report,selftest}
+  {add,list,resolve,verify,withdraw,accept-risk,archive-private,status,report,selftest}
 
 options:
   -h, --help            show this help message and exit
@@ -438,6 +438,21 @@ options:
   --expires EXPIRES
 ```
 
+##### `findings.py archive-private`
+
+```text
+findings.py archive-private LEDGER --exclusive-maintenance
+```
+
+From the workspace root, first confirm `findings.py status LEDGER` reports
+`COMPLETE` and stop all other workspace ledger writers. The flag confirms
+exclusive maintenance. The command moves the validated ledger intact into
+the workspace's private audit archive using a same-filesystem atomic rename
+without overwriting an existing archive. It requires a nonempty, regular,
+singly linked ledger inside the workspace and host support for no-follow file
+operations and atomic rename without replacement. The original bytes and
+recorded authority state are preserved.
+
 ##### `findings.py status`
 
 ```
@@ -487,17 +502,43 @@ options:
 
 ```
 usage: sabsa.py [-h]
-                {init,new,check,suggest,report,trace,migrate,matrix,sources,questions,approval,approve,document,template,selftest}
+                {init,new,check,suggest,report,trace,view,metamodel,lifecycle,lifecycle-set,overlay-init,overlays,reuse-add,reuse,migrate,matrix,sources,questions,approval,approve,document,narrative-init,catalogues,documents,template,selftest}
                 ...
 
 SABSA library tool.
 
 positional arguments:
-  {init,new,check,suggest,report,trace,migrate,matrix,sources,questions,approval,approve,document,template,selftest}
+  {init,new,check,suggest,report,trace,view,metamodel,lifecycle,lifecycle-set,overlay-init,overlays,reuse-add,reuse,migrate,matrix,sources,questions,approval,approve,document,narrative-init,catalogues,documents,template,selftest}
 
 options:
   -h, --help            show this help message and exit
 ```
+
+##### Views and lifecycle operations
+
+| Invocation | Purpose |
+| --- | --- |
+| `sabsa.py metamodel` | List element types, business-parent relations and lifecycle fields. |
+| `sabsa.py view LIB VIEW` | Print a named trace view after validating the library. Run `sabsa.py view --help` to list the view names. |
+| `sabsa.py lifecycle LIB [ID]` | Inspect lifecycle and horizon information for the whole library or one element. |
+| `sabsa.py lifecycle-set LIB ID [--state STATE] [--horizon HORIZON] [--predecessor ID] [--roadmap ID] [--valid-from DATE] [--valid-until DATE]` | Change one or more lifecycle fields on a local element and return it to draft. Repeat `--predecessor` and `--roadmap` to set lists of same-type predecessors and roadmap items. The parser lists allowed states and horizons. An existing library approval becomes stale. |
+
+##### Framework mappings and cross-library reuse
+
+| Invocation | Purpose |
+| --- | --- |
+| `sabsa.py overlay-init LIB --id ID --title TITLE --version VERSION --source SOURCE [--evidence-required]` | Create a framework mapping skeleton. Record requirement identifiers and your mapping rationale. |
+| `sabsa.py overlays LIB` | Report mapping status, evidence and validation issues for configured overlays. |
+| `sabsa.py reuse-add LIB ALIAS PATH [--types TYPES] [--ids IDS] [--allow-unapproved]` | Register a source library under a namespace. Optional comma-separated types or IDs select elements with their dependencies. By default the source must have owner approval for reuse. |
+| `sabsa.py reuse LIB` | Show registered libraries, import counts and source approval status. |
+
+##### Catalogue and narrative operations
+
+| Invocation | Purpose |
+| --- | --- |
+| `sabsa.py catalogues LIB ACTION --directory DIRECTORY` | Use `export` to write CSV catalogues, `validate` to check proposed edits to existing local entries, and `import` to apply validated edits. |
+| `sabsa.py documents LIB` | List document views with their purpose, audience and template availability. |
+| `sabsa.py narrative-init LIB --layer LAYER` | Create missing editable chapter skeletons for one SABSA layer. Use any of the layer names listed under `document`. |
 
 ##### `sabsa.py init`
 
@@ -664,6 +705,8 @@ options:
 ```
 usage: sabsa.py document [-h] [--out OUT] [--template-name TEMPLATE_NAME]
                          [--template TEMPLATE] [--reference REFERENCE]
+                         [--layer {contextual,conceptual,logical,physical,component,service-management,operational}]
+                         [--latex]
                          lib
 
 positional arguments:
@@ -679,7 +722,13 @@ options:
   --reference REFERENCE
                         a .docx whose styles a Word output should use (the
                         client's template)
+  --layer LAYER         publish one SABSA matrix layer; operational aliases
+                        service-management
+  --latex               use controlled LaTeX template for .tex/.pdf
 ```
+
+Select `--layer` to use the dedicated layer template. Omit `--template`
+and any nondefault `--template-name` when selecting a layer.
 
 ##### `sabsa.py template`
 
@@ -783,6 +832,22 @@ usage: demo.py check [-h]
 options:
   -h, --help  show this help message and exit
 ```
+
+##### Fictional scenario commands
+
+The dispatcher also accepts these operations. Each operation supports
+`--help` after its name.
+
+| Invocation | Purpose |
+| --- | --- |
+| `demo.py scenarios [--json]` | List scenario IDs and guides, with optional JSON output. |
+| `demo.py describe SCENARIO [--step N]` | Print the walkthrough or one numbered step without creating a workspace. |
+| `demo.py scenario SCENARIO --to DIRECTORY` | Create the fictional inputs and `START.md` in a new directory with an existing parent. |
+| `demo.py reset-scenario SCENARIO --to DIRECTORY` | Require an existing workspace marked for that scenario, preserve its contents in a sibling backup, and recreate the original inputs. |
+| `demo.py check-scenarios` | Validate the bundled fictional catalogue, report the count, and mark provider execution as `NOT_EXECUTED`. |
+
+See the [installed guide's demo walkthrough](installed-cli-guide.md#demo)
+for the corresponding Claude Code and Codex commands.
 
 #### `repo_survey.py`
 

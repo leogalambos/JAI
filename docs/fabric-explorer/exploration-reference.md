@@ -1,17 +1,9 @@
 # Read-only exploration
 
-Open the **Sources** tab, choose the source families, and use **Open
-sources…** to select a project folder. Direct regular `.jsonl` files in its
-`.fabric/` and `.findings/` directories are selected automatically for the chosen
-families. Missing or unavailable project sources open a manual file dialog in
-the selected project or its conventional family directory. Audit stays manual.
-A successful selection immediately loads an observed revision set; no second
-import action is needed. Progress and cancellation remain available while
-loading. After a failed or cancelled load, **Retry import** is offered for an
-admitted selection without a snapshot; **Close sources** lets you choose again.
-Use **Refresh snapshot** for later source changes. The source files and
-their companion material are read-only. This viewer never runs project code or
-turns recorded decisions into current permission.
+## Source status
+
+See [Importing local source journals](importing.md) for source selection, retry
+and refresh. The viewer reads captured revisions and companion material.
 
 The overview shows filtered snapshot counts and a small initial neighbourhood,
 not the entire imported graph. **Snapshot provenance** exposes each captured
@@ -19,6 +11,8 @@ revision, digest/head, observation time, adapter and recorded verification
 outcomes. **Source compatibility** identifies supported/unknown versions.
 Import diagnostics retain available record pointers and sequences; the display
 shows at most the first 20 diagnostics and states the total.
+
+## Menus and panes
 
 The application menu groups commands under **File**, **View**, **Navigate** and
 **Help**. Toolbar icons expose their complete command names in tooltips and have
@@ -35,11 +29,10 @@ the navigation and inspector use individually opened drawers; their toolbar
 icons and View commands remain available. Content scrolls inside its active
 section rather than hiding whole sections below unrelated controls.
 
-**File → Preferences…** opens a dedicated dialog without scrolling the workspace.
-Theme and Reduce motion remain the only stored settings. **Cancel** or Escape
-discards an unsubmitted draft; **Save preferences** applies it. A save failure
-keeps the dialog and draft open. Dismissal is temporarily disabled while an
-already submitted save completes. **Help** opens keyboard and usage guidance.
+See [Arrange the workspace](exploring.md#arrange-the-workspace) for the
+Preferences procedure.
+
+## Graph scope and traversal
 
 The graph header distinguishes **Snapshot totals** (all imported records),
 **Filter matches** (indexed matches across the snapshot) and **Visible graph**
@@ -51,8 +44,20 @@ hops, causal selection and path actions. **Query details** explains hidden
 counts and omissions; query completeness never means the entire snapshot is
 visible.
 
-Search literal labels or a complete stable identity. Select the exact result to
-inspect its original identity and attributes; labels never replace identity.
+**Explore selected neighbourhood** uses the chosen forward/reverse/both
+direction, relation filter, causal selector and finite hop/work/visible budgets.
+Reverse exploration retains original arrows. Choose **Use selected as path
+start**, select a destination, then **Find path to selected**. Query details
+report whether the path search completed or stopped at its budget.
+
+## Search and filters
+
+Search matches admitted display labels, stable identities and recorded logical
+or version identifiers. Label matching ignores case and can match text with collapsed
+whitespace. Paste the complete version identifier to look up an exact recorded
+version and its associated uses. Identical labels can match multiple versions.
+Select the result to inspect its stable identity, attributes and provenance.
+See [Inspect identity and evidence](exploring.md#inspect-identity-and-evidence).
 **Next search page** advances the displayed query, even if the input contains an
 unsubmitted draft. Findings have a separate bounded searchable list. Each page
 shows the number remaining; earlier page records are not accumulated indefinitely.
@@ -64,15 +69,15 @@ rules. Nonapplicable family/state dimensions preserve surrounding context.
 Overview groups are derived counts; they do not merge canonical identities or
 infer ownership.
 
+## Tables and inspector
+
 Select a vertex or relation on the graph, or use **Elements → Table**. The list
 has separate vertex/relation modes and 25 records per page. Every parallel
 relation remains individually addressable. Its inspector shows both endpoints,
 recorded arrow direction, relation type, evidence basis and causal membership.
 Full labels remain available there when a canvas label cannot fit.
-Canvas, table and inspector share display-only readable names where supported
-by the recorded attributes or material association. Exact IDs and original
-source labels remain available in identity details; the display name does not
-change query meaning or selection identity.
+Canvas, table and inspector share readable names. See
+[Graph canvas](canvas.md) for labels and material associations.
 
 Semantic selection from a result, table row, endpoint or subject moves focus to
 the inspector heading after the exact selection loads. The inspector exposes **Overview**, **Relations**, **Evidence** and **Raw** tabs.
@@ -85,13 +90,7 @@ and accept keyboard focus for scrolling. Skip links lead directly to the
 workspace and inspector. See [Semantic graph tables](semantic-tables.md) for
 the bounded table window and row metadata.
 
-**Explore selected neighbourhood** uses the chosen forward/reverse/both
-direction, relation filter, causal selector and finite hop/work/visible budgets.
-Reverse exploration retains original arrows. Choose **Use selected as path
-start**, select a destination, then **Find path to selected**. A bounded unknown
-result is distinct from proved absence. Visible/global-hidden counts and
-omissions explain what the current view contains; they do not invent the number
-of unexplored reachable records.
+## Findings and captured evidence
 
 A finding's display name starts with its complete ledger-local ID, followed by
 its literal title. The inspector exposes **Finding ID** and **Ledger** directly;
@@ -104,12 +103,7 @@ captured revision. Previous/next offsets count bytes; UTF-8 display may show
 replacement characters at page boundaries. Tagged attribute integers and
 floating-point values remain lossless in the inspector.
 
-**Back** and **Forward** restore up to 50 navigation intents without retaining
-worker capabilities or copies of historical graphs. A successful refresh
-publishes a new generation and invalidates the prior navigation/source pages.
-A failed refresh keeps the accepted graph and captured evidence with an explicit
-stale warning. Close/reselect sources if the admitted file identity has been
-replaced; native source admission remains separate from refresh.
+## Keyboard and pointer
 
 | Binding | Action |
 | --- | --- |
@@ -130,19 +124,12 @@ changes while retaining the stored system choice; controls and canvas use the
 same resolved colors. Selection and partial/error states include text rather
 than relying on color. Both shipped themes still require the recorded native
 keyboard and 100/150/200% visual qualification; source tests alone do not
-establish that conformance.
+establish that conformance. See [Qualification envelope](qualification.md).
+
+## Canvas recovery
 
 Zoom, fit and focus also have named buttons. An inspector selection outside the
 current projection remains inspectable; focus is available only when that
 element is visible. If WebGL is unavailable or its context is lost, search,
 findings, source evidence and semantic lists remain usable. Close/reopen the
 source view to create a fresh canvas; automatic GPU recovery is not claimed.
-
-Development verification uses the finite Linux runner
-`bash apps/fabric-explorer/desktop/tools/run-viewer-check.sh` with the pinned
-installed toolchain and official Electron binary. It builds fixed assets, runs
-bounded automatic production-DOM and canvas checks, and saves
-synthetic screenshots/observations beneath ignored `build/`. Close its window
-or press terminal Ctrl+C to stop. Test definitions alone are not evidence of
-executed native or platform qualification. Detailed accessibility, performance,
-packaging and cross-platform acceptance remain separate qualification stages.

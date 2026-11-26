@@ -23,6 +23,8 @@ The **Claude** column is typed in the Claude Code conversation. The **Codex** co
 | `/commercial` | `$workflow-commercial` | Opt-in supplier opportunity-to-exit coordination with commercial-delivery/1; strict provider controls require current runtime evidence. |
 | `/layered` | `$workflow-layered` | Consequential Gen2 SABSA delivery: Contextual, Conceptual, Logical, Physical, Component and Management, with local setter/author/independent reviewer responsibilities, bounded rework and L0 escalation. |
 | `/fabric-report` | `$workflow-fabric-report` | Independent audit/report view over a Fabric record. |
+| `/jai-profile` | `$workflow-profile` | Inspect and select execution profiles and their scope. |
+| `/jai-stats` | `$workflow-stats` | Inspect recorded project execution statistics. |
 
 ## Direct tools
 

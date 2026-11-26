@@ -36,9 +36,11 @@ version cannot be read.
 
 ## Find an entity or a finding
 
-Use **Search** for a label or complete stable identity. Submit the search, then
-select the matching result. Use **Findings** for its separate searchable list;
-finding IDs are local to their ledger, so the same ID in another ledger is a
+Use **Search** for a label, complete stable identity or exact recorded version
+identifier. Submit the search, then select the matching result. See
+[Search and filters](exploration-reference.md#search-and-filters) for matching rules.
+Use **Findings** for its separate searchable list.
+Finding IDs are local to their ledger, so the same ID in another ledger is a
 different record. Page controls replace the bounded result page rather than
 accumulating the entire dataset.
 
@@ -82,8 +84,14 @@ The inspector has four discoverable tabs:
 | --- | --- |
 | Overview | The selected record's identifying fields, kind and finding state where applicable. |
 | Relations | Recorded direction, endpoints, relationship basis and finding subjects. For an assessment, open the exact governing criteria and reviewed subject. For a finding product, follow recorded related links to its escalation when present. |
-| Evidence | Source provenance and bounded captured-source pages. |
-| Raw | Complete stable identity, original fields and tagged attributes. |
+| Evidence | Source provenance, label provenance where recorded, and bounded captured-source pages. |
+| Raw | Complete stable identity, admitted display label or original source label as applicable, original identity fields and tagged attributes. |
+
+In **Evidence → Label provenance**, inspect the exact source version and
+record field for a recorded display label. A companion excerpt also shows its
+digest. For a typed fallback, the inspector reports why displayable text was
+unavailable. For the full text resolution rules, see the
+[recorded display label contract](contracts.md#identity-and-provenance).
 
 Follow an endpoint or finding subject to inspect that exact record. Unresolved
 or textual locations remain explicit; the viewer does not invent a semantic
@@ -134,24 +142,11 @@ image to view the controls at full size.*
 
 ## Refresh and return
 
-Use **Refresh snapshot** for later source changes. An unsuccessful refresh
-retains the accepted snapshot with an explicit stale warning. Close and reopen
-sources when their admitted file identities have been replaced.
+Use **Refresh snapshot** to check for source changes. Back and Forward restore
+up to 50 navigation intents within the current generation. See
+[Refresh and retained snapshots](importing.md#refresh-and-retained-snapshots)
+for when the generation changes and how to reload or reselect sources.
+After restarting following a crash, open the project again.
 
-Back and Forward restore bounded navigation intents within the current
-generation. A successful changed-source refresh publishes a new generation and
-invalidates its previous source pages and history. Closing sources releases the
-current source view; restarting after a crash does not reopen a project
-automatically.
-
-| Shortcut | Action |
-| --- | --- |
-| `Ctrl/Cmd+K` outside editable controls | Focus Search. |
-| `Ctrl/Cmd+Shift+F` outside editable controls | Fit graph. |
-| `Ctrl/Cmd+,` outside editable controls | Open Preferences. |
-| `Alt+Left` / `Alt+Right` outside editable controls | Back / Forward. |
-| Arrow keys and Home/End on tabs | Select and focus a section. |
-| Escape | Dismiss the active tooltip, menu or dialog first; otherwise cancel active work outside editable controls. |
-
-Use **Help → Help and keyboard bindings** for the available controls. Viewing
-recorded data grants no approval, authority or release permission.
+Open **Help → Help and keyboard bindings** or consult the
+[keyboard and pointer reference](exploration-reference.md#keyboard-and-pointer).

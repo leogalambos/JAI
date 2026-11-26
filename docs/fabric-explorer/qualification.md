@@ -185,7 +185,8 @@ prior generation or a bounded error screen without source modification.
 Bound acquisition before allocating or decoding: selected input aggregate at
 most 1 GiB, structured non-journal file/decoded record at most 100 MiB,
 material objects at most the canonical 32 MiB, JSON nesting depth 64, raw display
-page 256 KiB and at most 1,000 visible diagnostics with complete counts.
+page 256 KiB and up to 1,000 report entries for diagnostics with complete counts.
+The desktop previews the first 20 available entries and reports the full total.
 Each IPC frame is at most 8 MiB; larger permitted records are transferred as
 bounded pages/chunks. Source FileHandles transfer only through main-owned
 worker messages, never the renderer bridge. At most eight exploration tasks may
@@ -243,6 +244,18 @@ valid evidence for unchanged inputs; do not repeatedly replay unrelated
 historical prefixes. Reviewers report findings and verify repairs independently
 of authors. Human release decisions, signing and actual publication remain
 separate from design and test acceptance.
+
+## Local Linux development checks
+
+Run `bash apps/fabric-explorer/desktop/tools/run-viewer-check.sh` from the
+repository root with the pinned toolchain and official Electron binary. The
+runner builds fixed assets, runs bounded production DOM and canvas checks,
+and saves synthetic screenshots and observations under ignored `build/`.
+Close its window or press Ctrl+C in the terminal to stop.
+
+Use the recorded run results when assessing development evidence. Native
+accessibility, performance, packaging and cross-platform acceptance have
+their own qualification stages.
 
 ## Primary dependency and platform sources
 

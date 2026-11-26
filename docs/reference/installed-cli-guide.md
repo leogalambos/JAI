@@ -54,7 +54,7 @@ record envelopes and exact references. Compatible work in the same layer and
 responsibility can share one physical invocation, including singleton batches;
 author and reviewer conversations remain separate. Persisted preparation supports
 restart and reconciliation without repeating uncertain calls. See
-[native execution](../architecture/gen2-native-execution-bridge.md) for the
+[native execution](https://leogalambos.github.io/JAI/architecture/gen2-native-execution-bridge/) for the
 relationship between issued identities, actual captures and durable continuation.
 
 The following is a maintainer reference for the retained local-process route,
@@ -154,7 +154,8 @@ or demo topics).
 [/diagnose](#diagnose) · [/develop](#develop) · [/govern](#govern) ·
 [/research](#research) · [/sabsa](#sabsa) · [/publish](#publish) ·
 [/repository](#repository) · [/layered](#layered) ·
-[/fabric-report](#fabric-report) · [/commercial](#commercial)
+[/fabric-report](#fabric-report) · [/commercial](#commercial) ·
+[/jai-profile](#jai-profile) · [/jai-stats](#jai-stats)
 4. [Concepts](#4-concepts)
 5. [Direct tools for maintainers](#5-direct-tools-for-maintainers)
 6. [Troubleshooting](#6-troubleshooting)
@@ -169,7 +170,7 @@ completed domain artefact as evidence for a **new** `/layered` decision.
 These are different assurance scopes. A later decision review does not
 retrospectively establish that creation followed layered contracts. The
 source-controlled and published [methodical workflow
-guide](../using/methodical-workflows.md) explains all three with
+guide](https://leogalambos.github.io/JAI/using/methodical-workflows/) explains all three with
 proposal and security-architecture examples. That page is not included
 in the compact installed offline runtime.
 
@@ -212,7 +213,7 @@ installed offline runtime.
 
 1. **Install** the package (`install.cmd` on Windows, `bash install.sh`
 elsewhere) and **start a new Claude Code or Codex CLI session**. Check the
-[task-specific prerequisites](../getting-started/sandbox-prerequisites.md) before
+[task-specific prerequisites](https://leogalambos.github.io/JAI/getting-started/sandbox-prerequisites/) before
 using optional renderers, integrations or project build tools.
 2. **Create the demo projects:** in Claude Code use `/demo setup`; in
 Codex invoke `$workflow-demo` with `setup`. They are copied to
@@ -337,13 +338,35 @@ are fictional inputs, including labelled text derivatives of document
 types discussed in the guide. They are not real project evidence.
 Source-dependent scenarios still require an actual permitted checkout.
 
+Use `check-scenarios` to validate the installed fictional scenario catalogue.
+It needs the installed demo tooling and catalogue, and reports
+`PASS <count> local fictional scenarios; provider execution NOT_EXECUTED`.
+Use `reset-scenario` with the same scenario ID and directory used to
+create the practice workspace. On success the command reports a sibling
+backup containing the previous work and recreates the original practice
+files at the requested destination.
+
+=== "Claude Code"
+
+    ```text
+    /demo check-scenarios
+    /demo reset-scenario proposal --to /tmp/acme-proposal
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-demo check-scenarios
+    $workflow-demo reset-scenario proposal --to /tmp/acme-proposal
+    ```
+
 `describe` is read-only and does not execute or complete a workflow.
 `scenario --to` creates a practice workspace; it does not run the steps.
 Use a new destination. Do not reset or overwrite existing work without
 an explicit request and the tool's backup safeguards. The legacy
 `setup` tour still creates its original three projects.
 
-See the [commented task walkthroughs](../examples/index.md) for the full
+See the [commented task walkthroughs](https://leogalambos.github.io/JAI/examples/) for the full
 explanations and the evidence or human decisions needed at a pause.
 
 ### /guide
@@ -463,9 +486,9 @@ and its destination; saving retains
 `authority_verification: NOT_VERIFIED` and confers no approval or
 normative status. Explicitly selected knowledge libraries can inform
 hint recommendations under the stated read and disclosure permissions.
-See [Build and reuse local know-how](../using/reusing-knowledge.md)
+See [Build and reuse local know-how](https://leogalambos.github.io/JAI/using/reusing-knowledge/)
 for selection, revisions, export and recoverable deletion. See
-[Remember useful knowledge](../using/remembering-knowledge.md)
+[Remember useful knowledge](https://leogalambos.github.io/JAI/using/remembering-knowledge/)
 for worked conversations and experimental provider limits.
 
 ### /analyse
@@ -907,7 +930,7 @@ documents it. The architecture is a library of small files — elements
 and the 36 cells of the SABSA matrix — from which the document is
 generated.
 
-For governed SABSA, see [row algorithm selection and blocked-row recovery](../operations/gen2-deployment-recovery.md#select-a-sabsa-row-algorithm)
+For governed SABSA, see [row algorithm selection and blocked-row recovery](https://leogalambos.github.io/JAI/operations/gen2-deployment-recovery/#select-a-sabsa-row-algorithm)
 for the three modes, per-layer overrides and additional prerequisites.
 
 **Syntax.**
@@ -1229,7 +1252,7 @@ uncertainty or required human decision. It must not silently start a replacement
 engagement or import historical acceptance.
 
 The source command uses the Gen2 native bridge. See the
-[layered delivery](../using/layered-engagement.md) for actual
+[layered delivery](https://leogalambos.github.io/JAI/using/layered-engagement/) for actual
 verification and activation scope. Use the independent audit entry below to
 inspect recorded current justification; a command name or an old release label
 does not establish installed availability.
@@ -1256,7 +1279,7 @@ Missing required current evidence remains blocking. Unrelated obsolete evidence
 does not become a global veto. The independent auditor does not repair records,
 select replacements, grant acceptance or release, or import archived Gen1 PASS.
 
-See the [review and release readiness](../operations/validation.md) for the
+See the [review and release readiness](https://leogalambos.github.io/JAI/operations/validation/) for the
 implemented source interface and verification scope. Installed activation and
 live-provider qualification are separate deployment evidence.
 
@@ -1278,8 +1301,32 @@ For layered creation, explicitly
 request the commercial profile within `/layered` rather than assuming
 the domain command automatically starts a six-layer engagement. A later
 layered bid decision has its own scope. See the [commercial capability
-guide](../capabilities/commercial-delivery.md) and the [methodical
-workflow guide](../using/methodical-workflows.md).
+guide](https://leogalambos.github.io/JAI/capabilities/commercial-delivery/) and the [methodical
+workflow guide](https://leogalambos.github.io/JAI/using/methodical-workflows/).
+
+### /jai-profile
+
+Claude `/jai-profile` and Codex `$workflow-profile` operate inside the conversation.
+With no arguments, list profiles and active configuration. A profile name selects
+it for future project runs; `show NAME`, `effective` and `NAME --session` inspect
+or scope the choice. Existing engagements retain their captured configuration.
+The native parent invokes the execution_profiles.py helper internally. No external
+terminal is required and operational configuration grants no authority.
+
+Select `workload` to use the selected workload class's registry mappings.
+This mode preserves context, analytics and custom definitions. Select
+`standard` to use fixed responsibility preferences. Receipts record the
+effective routing mode separately from `configured` and show which settings
+take precedence. Use `--local` or `--session` to change the corresponding
+scope. The native parent retains session context.
+
+### /jai-stats
+
+Claude `/jai-stats` and Codex `$workflow-stats` display recorded project efficiency.
+Use no arguments for history, `last` for the latest record, `profile NAME` to filter
+or `compare A B` for compatible cohorts. Task results precede their one-row table.
+Unknown cost/tokens are omitted; uninstrumented work has unavailable metrics.
+Advice includes evidence limitations and never switches profiles automatically.
 
 ## 4. Concepts
 
@@ -1319,7 +1366,7 @@ uses an exact request signed externally with an Ed25519 operator key.
 The runtime verifies the protected public pin, receipt and matching
 state before application. Native permission prompts are separate tool
 permissions, not L0 credentials; chat is not a recorded authority act.
-Use the [operator walkthrough](../operations/operator-walkthrough.md).
+Use the [operator walkthrough](https://leogalambos.github.io/JAI/operations/operator-walkthrough/).
 
 
 ### SABSA library layout
@@ -1561,7 +1608,7 @@ records explicit field mappings and never transfers old approvals.
 ## Supported operator workflow
 
 See [the complete operator
-walkthrough](../operations/operator-walkthrough.md)
+walkthrough](https://leogalambos.github.io/JAI/operations/operator-walkthrough/)
 for external L0, real Office rendering, HTML/PDF, Git and dependency
 handoffs.
 The installed copy of this guide is generated verbatim from this page;
@@ -1606,7 +1653,7 @@ detail
 link cannot replace it. If a command is not ready, identify missing
 values;
 never invent it or accept chat as signed approval. See the
-[complete operator guide](../operations/operator-walkthrough.md).
+[complete operator guide](https://leogalambos.github.io/JAI/operations/operator-walkthrough/).
 
 
 ### Installer and workflow Python dependencies
@@ -1683,31 +1730,5 @@ reports the selected execution mode and executable/version; CLI-managed
 Python/Pyphen versions are unknown rather than inferred from the caller.
 Resource denials and conversion failures never trigger fallback. It does
 not suppress warnings, install packages, or certify host confinement.
-See the [dependency matrix](../configuration/publication-stack.md) and
+See the [dependency matrix](https://leogalambos.github.io/JAI/configuration/publication-stack/) and
 installed package installation guide for the exact setup steps.
-
-
-### /jai-profile
-
-Claude `/jai-profile` and Codex `$workflow-profile` operate inside the conversation.
-With no arguments, list profiles and active configuration. A profile name selects
-it for future project runs; `show NAME`, `effective` and `NAME --session` inspect
-or scope the choice. Existing engagements retain their captured configuration.
-The native parent invokes the execution_profiles.py helper internally. No external
-terminal is required and operational configuration grants no authority.
-
-### /jai-stats
-
-Claude `/jai-stats` and Codex `$workflow-stats` display recorded project efficiency.
-Use no arguments for history, `last` for the latest record, `profile NAME` to filter
-or `compare A B` for compatible cohorts. Task results precede their one-row table.
-Unknown cost/tokens are omitted; uninstrumented work has unavailable metrics.
-Advice includes evidence limitations and never switches profiles automatically.
-
-
-For `/jai-profile` / `$workflow-profile`, `workload` is a selectable mode that
-returns to actual selected-class registry mappings. It preserves context, analytics
-and custom definitions; `standard` selects fixed responsibility preferences.
-`configured: true` does not imply fixed routing when routing_mode is workload.
-Receipts expose effective mode and shadowing. Use `--local` or `--session` to change
-the corresponding scope; the native parent retains and transports session context.

@@ -47,7 +47,11 @@ for the seventeen-command wiring scope and qualification limits.
 === "Claude Code"
 
     ```text
-    /demo setup|list|reset|check
+    /demo setup|list|reset PROJECT|check
+    /demo scenarios|check-scenarios
+    /demo describe SCENARIO [--step N]
+    /demo scenario SCENARIO --to DIRECTORY
+    /demo reset-scenario SCENARIO --to DIRECTORY
     /guide [command|topic]
     /hint <natural-language project question>
     /analyse <path or description>
@@ -64,12 +68,18 @@ for the seventeen-command wiring scope and qualification limits.
     /commercial <opportunity, bid or delivery scope>
     /layered <consequential intent>
     /fabric-report [engagement]
+    /jai-profile [effective|show NAME|NAME]
+    /jai-stats [last|profile NAME|compare A B]
     ```
 
 === "Codex CLI"
 
     ```text
-    $workflow-demo setup|list|reset|check
+    $workflow-demo setup|list|reset PROJECT|check
+    $workflow-demo scenarios|check-scenarios
+    $workflow-demo describe SCENARIO [--step N]
+    $workflow-demo scenario SCENARIO --to DIRECTORY
+    $workflow-demo reset-scenario SCENARIO --to DIRECTORY
     $workflow-guide [command|topic]
     $workflow-hint <natural-language project question>
     $workflow-analyse <path or description>
@@ -86,9 +96,14 @@ for the seventeen-command wiring scope and qualification limits.
     $workflow-commercial <opportunity, bid or delivery scope>
     $workflow-layered <consequential intent>
     $workflow-fabric-report [engagement]
+    $workflow-profile [effective|show NAME|NAME]
+    $workflow-stats [last|profile NAME|compare A B]
     ```
 
 Codex provides the corresponding `$workflow-<command>` surfaces. For command-by-command prerequisites, demos and expected verification, consult the [full installed CLI guide](installed-cli-guide.md) or the [extended example walkthroughs](command-walkthroughs.md). The installed `GUIDE.md` is generated from that single Markdown source.
+
+For the five scenario operations, see the [demo walkthrough](installed-cli-guide.md#demo).
+Profile selection and statistics are described in [execution preferences and efficiency](#execution-preferences-and-efficiency).
 
 ## Experimental advisory hint
 
