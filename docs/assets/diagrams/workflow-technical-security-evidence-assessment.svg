@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="ai-inline-diagram-svg" viewBox="0 0 996 650" role="img" aria-labelledby="workflow-technical-security-evidence-assessment-title workflow-technical-security-evidence-assessment-description">
+<!-- SPDX-License-Identifier: BSD-4-Clause; Copyright (c) 2026 Leo Galambos and the Egothor team; https://www.egothor.org -->
+<title id="workflow-technical-security-evidence-assessment-title">Technical security evidence assessment</title>
+<desc id="workflow-technical-security-evidence-assessment-description">An evidence-bound assessment report, a disposition and accountable referrals where applicable. Arrows follow the numbered stages. The table below supplies handoffs and acceptance gates.</desc>
+<defs><marker id="workflow-technical-security-evidence-assessment-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#147eaa"/></marker></defs>
+<rect width="100%" height="100%" rx="16" fill="#f6fafc" stroke="#cbdde8"/>
+<text x="30" y="38" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#102d43" font-weight="700" text-anchor="start">Technical security evidence assessment</text>
+<path d="M318,218 L346,218" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-technical-security-evidence-assessment-arrow)"/>
+<path d="M642,218 L670,218" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-technical-security-evidence-assessment-arrow)"/>
+<path d="M822,336 L822,384" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-technical-security-evidence-assessment-arrow)"/>
+<g data-step="1"><rect x="30" y="100" width="288" height="236" rx="12" fill="#145776"/>
+<text x="46" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">1. Solution Architect</text>
+<text x="46" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Prepare for assessment.</text>
+<text x="46" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Establish intended use,</text>
+<text x="46" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">subject, accountable duties</text>
+<text x="46" y="238" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and available supplied</text>
+<text x="46" y="262" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">evidence.</text>
+</g>
+<g data-step="2"><rect x="354" y="100" width="288" height="236" rx="12" fill="#145776"/>
+<text x="370" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">2. Security Architect</text>
+<text x="370" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Develop the assessment plan.</text>
+<text x="370" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Select assessment objectives,</text>
+<text x="370" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">examination objects, criteria,</text>
+<text x="370" y="238" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">approved methods and</text>
+<text x="370" y="262" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">applicable independence</text>
+<text x="370" y="286" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">requirements.</text>
+</g>
+<g data-step="3"><rect x="678" y="100" width="288" height="236" rx="12" fill="#145776"/>
+<text x="694" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">3. Application Security</text>
+<text x="694" y="153" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Engineer</text>
+<text x="694" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Conduct the assessment.</text>
+<text x="694" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Examine supplied records</text>
+<text x="694" y="238" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">against the plan with</text>
+<text x="694" y="262" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">applicable platform expertise,</text>
+<text x="694" y="286" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and record outcome and</text>
+<text x="694" y="310" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">limitations per criterion.</text>
+</g>
+<g data-step="4"><rect x="678" y="394" width="288" height="188" rx="12" fill="#145776"/>
+<text x="694" y="423" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">4. Control Owner</text>
+<text x="694" y="460" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">Analyze report results. Record</text>
+<text x="694" y="484" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">disposition and route</text>
+<text x="694" y="508" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">applicable findings and</text>
+<text x="694" y="532" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">ownership issues to existing</text>
+<text x="694" y="556" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">receiving duties.</text>
+</g>
+</svg>

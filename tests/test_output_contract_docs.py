@@ -140,6 +140,8 @@ def test_source_owned_handoffs_have_real_content_contracts(projection):
     source_owned = [row for row in projection.handoffs.values() if not row['contract_ids']]
     assert {row['handoff_id'] for row in source_owned} == {
         'ai-system-approval:6',
+        *(f'dast-control-assurance:{n}' for n in (5, 7, 9, 19)),
+        *(f'technical-security-evidence-assessment:{n}' for n in range(1, 5)),
         *(f'semantic-to-enterprise-publication:{n}' for n in range(1,6)),
     }
     for handoff in source_owned:

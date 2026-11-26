@@ -718,6 +718,14 @@
       "category": "integration",
       "rationale": "Selection framework real filesystem/CLI checks; pure helper cases override explicitly."
     },
+    "tests/test_technical_security_collection.py": {
+      "category": "integration",
+      "rationale": "Scope, local evidence minimization and operator CLI integration without a live target."
+    },
+    "tests/test_technical_security_evidence.py": {
+      "category": "integration",
+      "rationale": "Offline exact method selection, manifest validation, evidence disposition and controlled-clock referral checks."
+    },
     "tests/test_test_workflow_selection.py": {
       "category": "contract",
       "rationale": "Selection framework real filesystem/CLI checks; pure helper cases override explicitly."
@@ -1002,6 +1010,45 @@
     }
   },
   "impact_rules": [
+    {
+      "paths": [
+        "docs/architecture/specialist-workflows.md",
+        ".ai/skills/it-role-workflows/references/specialist-workflows.md"
+      ],
+      "tests": [
+        "tests/test_docs_contract.py",
+        "tests/test_documentation_navigation.py",
+        "tests/test_generate_content_workflows.py",
+        "tests/test_installer.py"
+      ],
+      "reason": "The specialist design guide feeds the public navigation and generated companion used by both provider installations."
+    },
+    {
+      "paths": [
+        ".ai/runtime/tools/technical_security_collection.py",
+        ".ai/skills/it-role-workflows/references/technical-security-evidence-assessment.md",
+        "docs/workflow-library/technical-security-evidence-assessment.md"
+      ],
+      "tests": [
+        "tests/test_technical_security_collection.py",
+        "tests/test_technical_security_evidence.py",
+        "tests/test_installer.py",
+        "tests/test_generate_content_workflows.py"
+      ],
+      "reason": "The local collector and procedure affect the method, provider packaging and workflow reference projections only."
+    },
+    {
+      "paths": [
+        ".ai/skills/it-role-workflows/references/technical-security-evidence-methods.v1.json"
+      ],
+      "tests": [
+        "tests/test_technical_security_evidence.py",
+        "tests/test_technical_security_collection.py",
+        "tests/test_generate_content_workflows.py",
+        "tests/test_installer.py"
+      ],
+      "reason": "The authored offline evidence manifest is consumed by method selection, validated catalogue generation and provider skill packaging."
+    },
     {
       "paths": [
         ".ai/role-library/roles/products/**",

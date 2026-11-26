@@ -1,6 +1,6 @@
 ---
 name: it-role-workflows
-description: "Route enterprise IS/IT work across 25 end-to-end workflow chains, including idea-to-production, onboarding, change, incident, security, data/AI, benefits, operational readiness, migration/cutover, adoption, publication, EA repository governance, decommission, cyber recovery, resilience, demand/funding, sourcing, SIAM, enterprise release and regulatory assurance. Use when work spans roles or when the user needs sequencing, hand-offs, accountable roles, mandatory artefacts and blocking gates. Read the matching reference before answering."
+description: "Route enterprise IS/IT work across 26 end-to-end workflow chains, including idea-to-production, onboarding, change, incident, security, data/AI, benefits, operational readiness, migration/cutover, adoption, publication, EA repository governance, decommission, cyber recovery, resilience, demand/funding, sourcing, SIAM, enterprise release and regulatory assurance. Use when work spans roles or when the user needs sequencing, hand-offs, accountable roles, mandatory artefacts and blocking gates. Read the matching reference before answering."
 allowed-tools: Read, Grep, Glob
 ---
 
@@ -8,7 +8,7 @@ allowed-tools: Read, Grep, Glob
 
 > **Agents named here** are subagents: delegate them through the active provider's operator/delegation mechanism — `role-router`.
 
-`workflows: 25`  ·  `tool-tier: route` (`Read, Grep, Glob`)  ·  `version: 1.0.0`
+`workflows: 26`  ·  `tool-tier: route` (`Read, Grep, Glob`)  ·  `version: 1.0.0`
 
 The role skills define single roles. This one defines the chains between them: the value streams, the hand-offs and the gate that must hold at each boundary. Routing and explanation only — it writes nothing and runs nothing.
 
@@ -49,6 +49,9 @@ evidence. Installed activation and live-provider qualification are separate fact
 
 ## Chains
 
+<!-- JAI:WORKFLOW-GROUPS:START -->
+### Base workflows
+
 | Workflow | Steps | Trigger |
 | --- | --- | --- |
 | [Idea to production](references/idea-to-production.md) | 14 | A business need, opportunity or customer problem arrives with no agreed solution. |
@@ -61,7 +64,6 @@ evidence. Installed activation and live-provider qualification are separate fact
 | [Data product delivery](references/data-product-delivery.md) | 8 | A business area needs a trusted dataset, metric or report. |
 | [AI system from idea to approved production use](references/ai-system-approval.md) | 9 | A business area wants to deploy a model or an AI-assisted workflow. |
 | [Supplier onboarding to exit](references/supplier-onboarding.md) | 7 | A technology supplier or SaaS product is being considered. |
-
 | [Business case to realised benefits](references/business-case-to-benefits.md) | 7 | An investment has a proposed business case and needs measurable benefits governed through and beyond delivery. |
 | [Design to operational readiness](references/design-to-operational-readiness.md) | 7 | A solution design is becoming build/release ready and must prove it can be operated safely before go-live. |
 | [Migration and cutover](references/migration-and-cutover.md) | 11 | A project must move data/services from a current state to a target state through a controlled production cutover. |
@@ -76,9 +78,20 @@ evidence. Installed activation and live-provider qualification are separate fact
 | [SIAM / multi-supplier service integration](references/siam-multi-supplier.md) | 8 | A service depends on multiple suppliers/teams and end-to-end accountability, OLAs, incidents, problems, changes or acceptance are fragmented across boundaries. |
 | [Enterprise release orchestration](references/enterprise-release-orchestration.md) | 12 | Multiple products/platforms/suppliers must release into a shared business/technology environment and need one dependency, readiness and go/no-go process. |
 | [Regulatory change to assurance](references/regulatory-change-to-assurance.md) | 10 | A new or changed law, regulation, supervisory expectation or contractual compliance obligation may affect IS/IT services, controls or architecture. |
+
+### Specialist workflows
+
+| Workflow | Steps | Trigger |
+| --- | --- | --- |
+| [Technical security evidence assessment](references/technical-security-evidence-assessment.md) | 4 | A bounded request calls for examining supplied technical evidence against identified security criteria. |
 | [DAST integration and control assurance for containerised delivery](references/dast-control-assurance.md) | 19 | An existing containerised CI/CD pipeline needs a DAST control introduced, qualified, reassessed or evaluated for release. |
+<!-- JAI:WORKFLOW-GROUPS:END -->
 
 ## How to use this
+
+When designing a method, path or specialist workflow, read the decision rule and worked cases in [Designing specialist workflows](references/specialist-workflows.md).
+
+When running an existing chain, follow these steps.
 
 1. Identify which chain the request sits in. If it sits in none, use `role-router` for a single role instead.
 2. Identify the step. Requests usually arrive mid-chain, and the real problem is often the unfinished step before it.

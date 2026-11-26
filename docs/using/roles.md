@@ -52,6 +52,8 @@ variant, side of the handoff and versioned output requirements. The specialist
 receives the same assignment and controls, and the independent receiver keeps
 its responsibility. Exact-slug steps retain their original role.
 
+For catalogue design and worked cases, see [Designing specialist roles](../architecture/specialist-roles.md).
+
 ## Using roles in a provider session
 
 You can ask in plain language: "Have the Solution Architect and Security Architect evaluate this SaaS integration; show their respective deliverables, evidence and the independent reviewer." You do not instantiate all registered roles as separate processes or run a Python role catalogue command. Claude/Codex uses the installed `role-router`, knowledge skills and provider delegation (where supported) to select a relevant specialist with the appropriate author/reviewer boundary. Ask for the selected role and its limits to be shown; role choice is not itself approval or enforcement of host tool permissions.

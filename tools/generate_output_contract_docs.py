@@ -19,8 +19,10 @@ import re
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.ai/runtime/tools'))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from content_spec import ContentSpec
 from artifacts import output_owners
+from workflow_professional_definitions import workflow_discovery_groups
 
 START = '<!-- JAI:OUTPUT-CONTRACTS:START -->'
 END = '<!-- JAI:OUTPUT-CONTRACTS:END -->'
@@ -313,9 +315,13 @@ class Projection:
             index.append(f'- [`{ref}`]({path})')
         result[f'{DIRECTORY}/index.md'] = '\n'.join(index)
         result['docs/reference/roles.md'] = '\n'.join(role_rows)
-        workflow_rows = ['| Workflow | Start when | Expected result |', '| --- | --- | --- |']
-        for workflow in self.workflows:
-            workflow_rows.append(f"| [{_cell(workflow['title'])}](../workflow-library/{workflow['key']}.md) | {_cell(workflow['trigger'])} | {_cell(workflow['outcome'])} |")
+        workflow_rows = []
+        for label, members in workflow_discovery_groups(self.workflows).items():
+            workflow_rows.extend((f'## {label}', '', '| Workflow | Start when | Expected result |',
+                                  '| --- | --- | --- |'))
+            for workflow in members:
+                workflow_rows.append(f"| [{_cell(workflow['title'])}](../workflow-library/{workflow['key']}.md) | {_cell(workflow['trigger'])} | {_cell(workflow['outcome'])} |")
+            workflow_rows.append('')
         workflow_specific = {}
         for workflow in self.workflows:
             workflow_rows += ['', '## ' + workflow['title'], '', f"**Workflow key:** `{workflow['key']}`.", '', '**Start when:** ' + workflow['trigger'], '', '**Expected result:** ' + workflow['outcome'], '', '**Concrete stage outputs and receiving conditions:**', '']

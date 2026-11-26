@@ -470,5 +470,6 @@ The links below specify shared requirements. Role pages select the effective fou
 - [SIAM / multi-supplier service integration: source-owned handoff contracts](workflow-siam-multi-supplier.md)
 - [Source to contract to service: source-owned handoff contracts](workflow-source-to-contract-to-service.md)
 - [Supplier onboarding to exit: source-owned handoff contracts](workflow-supplier-onboarding.md)
+- [Technical security evidence assessment: source-owned handoff contracts](workflow-technical-security-evidence-assessment.md)
 - [Vulnerability to remediation: source-owned handoff contracts](workflow-vulnerability-to-remediation.md)
 <!-- JAI:OUTPUT-CONTRACTS:END -->

@@ -11,6 +11,8 @@ JAI separates **the discipline used to do the work** from **the process used to 
 
 This is the methodological chapter of [How to use JAI](../examples/how-to-use-JAI/index.md). Read the explanation here, then follow the adjacent worked cases. The cases are instructional sequences, not reports of completed provider executions.
 
+For catalogue design, see [Designing specialist workflows](../architecture/specialist-workflows.md).
+
 ## 1. Choose what the engagement must establish
 
 | Mode | Choose it when | What the record establishes |

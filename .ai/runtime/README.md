@@ -33,7 +33,7 @@ Enabled features: `role-workflows`, `workspace-authoring`,
 - Roles: **286**
 - Agents: **27**
 - Skills: **24**
-- Workflows: **25**
+- Workflows: **26**
 - Artifact Types: **28**
 - Schemas: **33**
 - Renderers: **4**

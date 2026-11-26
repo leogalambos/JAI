@@ -1,0 +1,106 @@
+{
+  "schema": "jai.technical-security-evidence-methods/v1",
+  "revision": "1.6.0",
+  "evidence_formats": [
+    {"id": "configuration-observation", "revision": "1", "description": "Normalized, source-attributed observations about supplied configuration records."},
+    {"id": "joint-interface-observation", "revision": "1", "description": "Normalized observations bound to both endpoints of an identified interface and the supplied source revisions."}
+  ],
+  "criteria": [
+    {
+      "id": "application-server-management-account-scope",
+      "evidence_request": "Obtain a reviewed mapping of the scoped management accounts to administrative roles and the expected policy.",
+      "revision": "1",
+      "question": "Does the supplied configuration establish the expected management-account identity and assigned administrative scope?",
+      "mandatory": true,
+      "formats": ["configuration-observation"],
+      "attack_context": "T1078",
+      "guidance": "https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/7.4/html/configuration_guide/jboss_eap_management"
+    },
+    {
+      "id": "jboss-management-audit-explicitly-enabled",
+      "evidence_request": "Collect the approved standalone configuration with the JBoss collector and reconcile the explicit audit logger setting.",
+      "revision": "1",
+      "question": "Does the approved standalone configuration explicitly enable the management audit logger?",
+      "mandatory": false,
+      "formats": ["configuration-observation"],
+      "guidance": "https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/7.4/html/configuration_guide/jboss_eap_management"
+    },
+    {
+      "id": "jboss-management-direct-role-inclusion",
+      "revision": "1",
+      "scope_field": "role_mapping",
+      "question": "Does the recorded RBAC configuration explicitly include the approved management account in the specified role?",
+      "mandatory": false,
+      "formats": ["configuration-observation"],
+      "evidence_request": "Use the JBoss local configuration collector for the exact approved direct user-to-role mapping.",
+      "guidance": "https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/7.4/html/how_to_configure_server_security/securing_users_of_the_server_and_its_management_interfaces"
+    },
+    {
+      "id": "jboss-management-effective-role-policy",
+      "revision": "2",
+      "baseline_roles": ["policy"],
+      "runtime_policy_binding": true,
+      "scope_field": "identity_scope",
+      "question": "Does reviewed evidence support the scoped account's management role disposition under the specified policy revision?",
+      "evidence_request": "Pin the scoped identity and approved policy, then select a route supported by the deployment.",
+      "mandatory": false,
+      "formats": ["configuration-observation"],
+      "attack_context": "T1078",
+      "evidence_routes": [
+        {"id": "runtime-and-policy", "inputs": {
+          "policy": "Supply the approved subject-to-role policy for the exact identity and revision.",
+          "runtime": "Supply reviewed role evidence from an approved administration session representing the scoped identity."
+        }},
+        {"id": "configuration-identity-and-policy", "inputs": {
+          "policy": "Supply the approved subject-to-role policy for the exact identity and revision.",
+          "mapping": "Supply reviewed configured role mappings, exclusions and permission-combination rules.",
+          "identity": "Supply reviewed identity attributes and group membership used by the scoped management configuration."
+        }}
+      ],
+      "guidance": "https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/7.4/html/how_to_configure_server_security/securing_users_of_the_server_and_its_management_interfaces"
+    },
+    {
+      "id": "messaging-channel-authorization",
+      "evidence_request": "Obtain reviewed channel authorization and applicable account or service identity evidence from the platform owner.",
+      "revision": "1",
+      "question": "Do the supplied records establish the expected identity and authorization scope for the messaging channel?",
+      "mandatory": true,
+      "formats": ["configuration-observation"],
+      "guidance": "https://www.ibm.com/docs/en/ibm-mq/9.4.x?topic=overview-security-in-mq"
+    },
+    {
+      "id": "ibm-mq-channel-client-certificate-required",
+      "evidence_request": "Run the approved local IBM MQ collection package for the exact channel and reconcile the cipher and client certificate settings.",
+      "scope_field": "channel",
+      "revision": "1",
+      "question": "Does the scoped IBM MQ server-connection channel configure TLS and require a client certificate?",
+      "mandatory": false,
+      "formats": ["configuration-observation"],
+      "guidance": "https://www.ibm.com/docs/en/ibm-mq/9.4.x?topic=security-configuring-tls-channels-mqsc"
+    },
+    {
+      "id": "shared-interface-identity",
+      "evidence_request": "Obtain attributable interface and protocol records from both endpoints for this exact dependency.",
+      "revision": "1",
+      "question": "Do the supplied records from both endpoints support the same interface and expected identity boundary?",
+      "mandatory": false,
+      "joint": true,
+      "formats": ["joint-interface-observation"],
+      "protocols": [{"protocol": "mq", "profile": "fixture-client-channel"}, {"protocol": "mq", "profile": "client-channel"}]
+    }
+  ],
+  "methods": [
+    {"id": "application-server", "family": "application-server", "revision": "1", "qualification": "normalized-evidence-conformance", "criteria": ["application-server-management-account-scope", "jboss-management-audit-explicitly-enabled", "jboss-management-direct-role-inclusion", "jboss-management-effective-role-policy", "shared-interface-identity"]},
+    {"id": "messaging", "family": "messaging", "revision": "1", "qualification": "normalized-evidence-conformance", "criteria": ["messaging-channel-authorization", "ibm-mq-channel-client-certificate-required", "shared-interface-identity"]}
+  ],
+  "products": [
+    {"product": "jboss-eap", "edition": "eap", "version": "7.4.0", "deployment": "standalone", "method": "application-server", "qualification": "normalized-evidence-conformance"},
+    {"product": "ibm-mq", "edition": "lts", "version": "9.4.0.0", "deployment": "distributed-queue-manager", "method": "messaging", "qualification": "normalized-evidence-conformance"},
+    {"product": "jboss-eap", "edition": "fixture", "version": "fixture-1", "deployment": "standalone-fixture", "method": "application-server", "qualification": "normalized-evidence-conformance"},
+    {"product": "ibm-mq", "edition": "fixture", "version": "fixture-1", "deployment": "queue-manager-fixture", "method": "messaging", "qualification": "normalized-evidence-conformance"}
+  ],
+  "aliases": [
+    {"label": "JBoss EAP", "product": "jboss-eap"},
+    {"label": "IBM MQ", "product": "ibm-mq"}
+  ]
+}

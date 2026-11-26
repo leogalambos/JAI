@@ -457,10 +457,57 @@ def test_infrastructure_guidance_matches_composed_native_role_references(tmp_pat
         for home in homes:
             assert outputs[str(home / path)] == text.encode()
     for path in ('references/design-to-operational-readiness.md', 'references/production-change.md',
-                 'references/dast-control-assurance.md', 'references/dast-methodology.md'):
+                 'references/dast-control-assurance.md', 'references/dast-methodology.md',
+                 'references/specialist-workflows.md'):
         for home in homes:
             assert outputs[str(home / 'skills/it-role-workflows' / path)] == (
                 ROOT / '.ai/skills/it-role-workflows' / path).read_bytes()
+
+
+def test_specialist_workflow_guidance_is_discoverable_in_both_provider_projections(tmp_path):
+    registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+    house, claude, codex = (tmp_path / name for name in ('house', 'claude', 'codex'))
+    outputs, _ = installer.desired_outputs(ROOT, ['claude', 'codex'], house, claude, codex, registry)
+    reference = 'references/specialist-workflows.md'
+    guidance = (ROOT / 'docs/architecture/specialist-workflows.md').read_bytes()
+    for provider in (claude, codex):
+        skill = provider / 'skills/it-role-workflows'
+        for relative_path in ('SKILL.md', reference):
+            installed = skill / relative_path
+            installed.parent.mkdir(parents=True, exist_ok=True)
+            installed.write_bytes(outputs[str(installed)])
+        assert f'({reference})'.encode() in (skill / 'SKILL.md').read_bytes()
+        assert (skill / reference).read_bytes() == guidance
+
+
+def test_specialist_role_guide_is_shared_by_installed_routers(tmp_path):
+    registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+    house, claude, codex = (tmp_path / name for name in ('house', 'claude', 'codex'))
+    outputs, _ = installer.desired_outputs(ROOT, ['claude', 'codex'], house, claude, codex, registry)
+    guide = (ROOT / 'docs/architecture/specialist-roles.md').read_bytes()
+    catalogue = house / 'roles.json'
+    assert str(catalogue) in outputs
+    assert outputs[str(catalogue.with_name('specialist-roles.md'))] == guide
+    for router in (claude / 'agents/role-router.md',
+                   codex / 'skills/agent-role-router/SKILL.md'):
+        assert b'`specialist-roles.md` beside the installed `roles.json`' in outputs[str(router)]
+        assert b'AI_IT_HOUSE' in outputs[str(router)]
+
+
+def test_assessment_workflow_and_method_manifest_are_installed_for_both_providers(tmp_path):
+    registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+    house, claude, codex = (tmp_path / name for name in ('house', 'claude', 'codex'))
+    outputs, _ = installer.desired_outputs(ROOT, ['claude', 'codex'], house, claude, codex, registry)
+    key = 'technical-security-evidence-assessment'
+    workflows = json.loads(outputs[str(house / 'workflows.json')])['workflows']
+    contract = next(row for row in workflows if row['key'] == key)
+    assert [step['step'] for step in contract['steps']] == [1, 2, 3, 4]
+    assert str(house / 'tools/technical_security_evidence.py') in outputs
+    for provider in (claude, codex):
+        skill = provider / 'skills/it-role-workflows'
+        assert f'(references/{key}.md)'.encode() in outputs[str(skill / 'SKILL.md')]
+        assert str(skill / f'references/{key}.md') in outputs
+        assert str(skill / 'references/technical-security-evidence-methods.v1.json') in outputs
 
 
 def test_all_composed_roles_are_installed_and_discoverable(tmp_path):

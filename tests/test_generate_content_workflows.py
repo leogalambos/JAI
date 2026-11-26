@@ -16,9 +16,9 @@ SPEC.loader.exec_module(generator)
 
 def test_current_complete_catalogue_covers_all_explicit_stages():
     catalog = generator.build(ROOT)
-    assert catalog['workflow_count'] == 25
-    assert catalog['handoff_count'] == 236
-    assert len({row['handoff_id'] for row in catalog['bindings']}) == 236
+    assert catalog['workflow_count'] == 26
+    assert catalog['handoff_count'] == 240
+    assert len({row['handoff_id'] for row in catalog['bindings']}) == 240
 
 
 def test_mobile_delivery_inserts_automation_before_independent_verdict():
@@ -71,8 +71,8 @@ def test_every_boundary_has_source_specific_content_and_current_route_obligation
 
 def test_professional_workflows_selects_exact_intake_and_handoff_definitions():
     document = generator.professional_workflows(ROOT)
-    assert len(document['workflows']) == 25
-    assert sum(len(workflow['steps']) for workflow in document['workflows']) == 236
+    assert len(document['workflows']) == 26
+    assert sum(len(workflow['steps']) for workflow in document['workflows']) == 240
     assert set(generator.professional_projection(ROOT)) == {'.ai/runtime/workflows.json'}
     assert json.loads(generator.professional_projection(ROOT)['.ai/runtime/workflows.json']) == document
 
@@ -110,6 +110,31 @@ def test_professional_workflows_refuses_unregistered_source_or_step(tmp_path):
     (runtime / 'workflows.json').write_text(json.dumps(source))
     with pytest.raises(ValueError, match='STEP_COVERAGE'):
         generator.professional_workflows(tmp_path)
+
+
+def test_technical_security_assessment_has_exact_consecutive_handoffs():
+    catalogue = generator.build(ROOT)
+    key = 'technical-security-evidence-assessment'
+    rows = [row for row in catalogue['bindings'] if row['workflow_id'] == key]
+    assert [row['step'] for row in rows] == [1, 2, 3, 4]
+    path = catalogue['profiles'][key]['paths']
+    assert [(row['id'], row['steps']) for row in path] == [('supplied-evidence', [1, 2, 3, 4])]
+    assert [row['receiving_role'] for row in rows] == [
+        'security-architect', 'application-security-engineer', 'control-owner',
+        'engagement:named-authority',
+    ]
+    assert all(row['source_content_contract'] for row in rows)
+
+
+def test_specialist_discovery_groups_are_disjoint_and_leave_staged_siem_out():
+    registered = generator.professional_workflows(ROOT)['workflows']
+    groups = generator.workflow_discovery_groups(registered)
+    assert {row['key'] for row in groups['Specialist workflows']} == {
+        'dast-control-assurance', 'technical-security-evidence-assessment',
+    }
+    flattened = [row['key'] for members in groups.values() for row in members]
+    assert len(flattened) == len(set(flattened)) == len(registered)
+    assert 'siem-log-source-integration' not in flattened
 
 
 def test_workflow_and_domain_summaries_match_canonical_counts():

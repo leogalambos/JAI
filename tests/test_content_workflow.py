@@ -143,8 +143,8 @@ def case():
 def test_all_canonical_handoffs_have_explicit_sources_receivers_and_contracts():
     catalog=load_bindings(ROOT)
     assert catalog==build(ROOT)
-    assert catalog['handoff_count']==236
-    assert catalog['workflow_count']==25
+    assert catalog['handoff_count']==240
+    assert catalog['workflow_count']==26
     workflows={w['key']:w for w in json.loads((ROOT/'.ai/runtime/workflows.json').read_text())['workflows']}
     for row in catalog['bindings']:
         source=workflows[row['workflow_id']]
@@ -167,7 +167,7 @@ def test_draft_receiving_cli_cannot_claim_acceptance(tmp_path,capsys):
     a.write_text(json.dumps(model));b.write_text(json.dumps(report))
     assert main(['--root',str(ROOT),'check','semantic-to-enterprise-publication:1',str(a),str(b)])==2
     assert main(['--root',str(ROOT),'list'])==0
-    assert '236' in capsys.readouterr().out
+    assert '240' in capsys.readouterr().out
 
 
 def test_wrong_contract_and_forged_rehashed_qa_are_not_accepted():

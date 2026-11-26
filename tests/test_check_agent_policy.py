@@ -86,7 +86,7 @@ def test_current_resource_policy_preserves_read_only_audit_and_human_publication
     assert 'agents cannot approve or issue waivers' in approval['gate']
     assert {'tools/lifecycle.py', 'tools/governed_delivery.py'} <= set(policy.ENFORCEMENT_ASSETS)
     assert not any(name.startswith('jai/migrations/') for name in policy.ENFORCEMENT_ASSETS)
-    assert len(workflows) == 25
+    assert len(workflows) == 26
 
 
 

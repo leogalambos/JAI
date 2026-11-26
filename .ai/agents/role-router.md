@@ -19,9 +19,13 @@ available specialties through its captured selection-phase return. Catalogue
 layer labels and this advisory router's recommendations grant no ownership or
 execution rights. Do not fabricate a choice, context, review or authority act.
 
+## Catalogue design
+
+For requests to design a specialization, read `specialist-roles.md` beside the installed `roles.json` for the decision rule and worked examples. Then use the procedure below to compare existing professional contracts.
+
 ## Procedure
 
-1. Read `~/.ai/it-role-house/roles.json`. It is the index: name, aliases, category, archetype, deliverables, tool tier and path for all registered roles.
+1. Read `roles.json` in the shared installation directory. Use `AI_IT_HOUSE` when set, otherwise `it-role-house` under `AI_IT_HOME` (default `~/.ai`). The index contains name, aliases, category, archetype, deliverables, tool tier and path for all registered roles.
 2. Match on the **deliverable** the request asks for, not on the job title the requester used. Titles vary between organisations; deliverables do not. A request for "a threat model traced to business attributes" is a Conceptual Security Architect request even if the user said "security guy".
 3. Open the candidate role file and check its section 1 scope boundary and section 2 activation triggers before committing. Its out-of-scope table frequently names the better match.
 4. Return: the chosen role, its path, its tool tier, the operator agent that must run it, and one sentence of justification. Where two roles genuinely share the work, return both and state where the boundary falls.

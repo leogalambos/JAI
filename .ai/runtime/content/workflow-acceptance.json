@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "status": "proposed",
-  "workflow_count": 25,
-  "handoff_count": 236,
+  "workflow_count": 26,
+  "handoff_count": 240,
   "profiles": {
     "idea-to-production": {
       "id": "workflow-profile/idea-to-production",
@@ -2671,6 +2671,61 @@
             2
           ],
           "terminal_step": 2
+        }
+      ]
+    },
+    "technical-security-evidence-assessment": {
+      "id": "workflow-profile/technical-security-evidence-assessment",
+      "version": "1.0.0",
+      "basis": "JAI-authored professional intake and route practice; independent professional qualification remains separate.",
+      "entry_inputs": [
+        "Identified subjects, intended use and accountable duties",
+        "Versioned supplied evidence and its handling conditions",
+        "Applicable criteria and asset or interface applicability information"
+      ],
+      "variants": [
+        {
+          "id": "supplied-evidence",
+          "mechanisms": "Examine supplied technical records against scoped security criteria offline",
+          "evidence": "Accepted scope, applicable assessment plan, exact report and attributable response or held disposition"
+        }
+      ],
+      "routes": [
+        {
+          "id": "continue",
+          "trigger": "The current handoff criteria and applicable prerequisites are satisfied.",
+          "action": "Continue to the registered receiving duty with exact output and evidence references."
+        },
+        {
+          "id": "rework",
+          "trigger": "A current criterion fails or required information changes.",
+          "action": "Return scope, method or evidence gaps to their owners and reassess affected conclusions against the changed inputs."
+        },
+        {
+          "id": "stop",
+          "trigger": "An applicable authority, legal, safety or mandatory-control boundary forbids the effect.",
+          "action": "Block use on required indeterminate criteria and withhold access or transfer outside applicable permission. Decline live collection."
+        },
+        {
+          "id": "exit",
+          "trigger": "The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope.",
+          "action": "Record usable, limited, deferred or cancelled disposition. Refer supported findings under the applicable policy without closing remediation."
+        }
+      ],
+      "context_policy": "Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.",
+      "scope_assessment": "Select supplied-evidence for offline examination of an identified security claim. Select approved technology methods per asset and claim. Overlapping technology hints do not replace criteria or evidence. Route DAST control qualification and treatment of known findings to their existing workflows.",
+      "paths": [
+        {
+          "id": "supplied-evidence",
+          "variant": "supplied-evidence",
+          "mechanism": "supplied-evidence",
+          "steps": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "terminal_step": 4
         }
       ]
     },
@@ -45539,6 +45594,464 @@
       }
     },
     {
+      "handoff_id": "technical-security-evidence-assessment:1",
+      "workflow_id": "technical-security-evidence-assessment",
+      "step": 1,
+      "producer_role": "solution-architect",
+      "receiving_role": "security-architect",
+      "handover": "assessment scope record",
+      "acceptance_criterion": "Scope identifies the exact subjects, intended use, applicable policy, evidence custody limits and available input revisions. Intake is limited to supplied evidence",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "ce73f9b8aa81f9ad693f17abb19ba5ca01dc2cfbc156a5dffd2bf813dccc7c77",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/technical-security-evidence-assessment:1",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/technical-security-evidence-assessment:1.technical_assessment_scope",
+            "semantic_field": "handoff_technical_assessment_scope",
+            "required_fields": [
+              "scope_ref",
+              "intended_use",
+              "subjects",
+              "accountable_duties",
+              "policy_ref",
+              "custody_scope",
+              "evidence_availability"
+            ],
+            "acceptance_criterion": "For assessment scope record, supply the actual versioned technical assessment scope record, including scope_ref, intended_use, subjects, accountable_duties, policy_ref, custody_scope, evidence_availability. Independently assess the evidence against this exact criterion: Scope identifies the exact subjects, intended use, applicable policy, evidence custody limits and available input revisions. Intake is limited to supplied evidence. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+          },
+          {
+            "id": "handoff/technical-security-evidence-assessment:1.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "assessment scope record",
+        "workflow_profile_hash": "9babb3a96c10f9ab0cd527114ec3fa89c2268f1dfc43fa0e49b7bdd75a5fc1da"
+      },
+      "variant_bindings": {
+        "supplied-evidence": {
+          "contract_ids": [],
+          "producer_role": "solution-architect",
+          "receiving_role": "security-architect",
+          "acceptance_criterion": "Scope identifies the exact subjects, intended use, applicable policy, evidence custody limits and available input revisions. Intake is limited to supplied evidence",
+          "handoff_content_contract": {
+            "id": "handoff/technical-security-evidence-assessment:1",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/technical-security-evidence-assessment:1.technical_assessment_scope",
+                "semantic_field": "handoff_technical_assessment_scope",
+                "required_fields": [
+                  "scope_ref",
+                  "intended_use",
+                  "subjects",
+                  "accountable_duties",
+                  "policy_ref",
+                  "custody_scope",
+                  "evidence_availability"
+                ],
+                "acceptance_criterion": "For assessment scope record, supply the actual versioned technical assessment scope record, including scope_ref, intended_use, subjects, accountable_duties, policy_ref, custody_scope, evidence_availability. Independently assess the evidence against this exact criterion: Scope identifies the exact subjects, intended use, applicable policy, evidence custody limits and available input revisions. Intake is limited to supplied evidence. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+              },
+              {
+                "id": "handoff/technical-security-evidence-assessment:1.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "assessment scope record",
+            "workflow_profile_hash": "9babb3a96c10f9ab0cd527114ec3fa89c2268f1dfc43fa0e49b7bdd75a5fc1da"
+          },
+          "next_step": 2
+        }
+      },
+      "source_content_contract": {
+        "id": "technical-security-evidence-assessment:1",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Identify the exact subjects, system boundary, intended use and accountable platform or application duties.",
+          "Record available evidence revisions, custody and gaps relevant to assessment planning."
+        ],
+        "conditional": [],
+        "optional": []
+      }
+    },
+    {
+      "handoff_id": "technical-security-evidence-assessment:2",
+      "workflow_id": "technical-security-evidence-assessment",
+      "step": 2,
+      "producer_role": "security-architect",
+      "receiving_role": "application-security-engineer",
+      "handover": "assessment plan",
+      "acceptance_criterion": "The plan binds each objective to an applicable criterion revision, scope and evidence requirement. Missing method or protocol applicability is recorded as pending for the affected criterion",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "ce73f9b8aa81f9ad693f17abb19ba5ca01dc2cfbc156a5dffd2bf813dccc7c77",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/technical-security-evidence-assessment:2",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/technical-security-evidence-assessment:2.technical_assessment_plan",
+            "semantic_field": "handoff_technical_assessment_plan",
+            "required_fields": [
+              "plan_ref",
+              "scope_ref",
+              "assessment_objectives",
+              "examination_objects",
+              "criteria_refs",
+              "method_refs",
+              "evidence_requirements",
+              "independence_requirements"
+            ],
+            "acceptance_criterion": "For assessment plan, supply the actual versioned technical assessment plan record, including plan_ref, scope_ref, assessment_objectives, examination_objects, criteria_refs, method_refs, evidence_requirements, independence_requirements. Independently assess the evidence against this exact criterion: The plan binds each objective to an applicable criterion revision, scope and evidence requirement. Missing method or protocol applicability is recorded as pending for the affected criterion. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+          },
+          {
+            "id": "handoff/technical-security-evidence-assessment:2.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "assessment plan",
+        "workflow_profile_hash": "9babb3a96c10f9ab0cd527114ec3fa89c2268f1dfc43fa0e49b7bdd75a5fc1da"
+      },
+      "variant_bindings": {
+        "supplied-evidence": {
+          "contract_ids": [],
+          "producer_role": "security-architect",
+          "receiving_role": "application-security-engineer",
+          "acceptance_criterion": "The plan binds each objective to an applicable criterion revision, scope and evidence requirement. Missing method or protocol applicability is recorded as pending for the affected criterion",
+          "handoff_content_contract": {
+            "id": "handoff/technical-security-evidence-assessment:2",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/technical-security-evidence-assessment:2.technical_assessment_plan",
+                "semantic_field": "handoff_technical_assessment_plan",
+                "required_fields": [
+                  "plan_ref",
+                  "scope_ref",
+                  "assessment_objectives",
+                  "examination_objects",
+                  "criteria_refs",
+                  "method_refs",
+                  "evidence_requirements",
+                  "independence_requirements"
+                ],
+                "acceptance_criterion": "For assessment plan, supply the actual versioned technical assessment plan record, including plan_ref, scope_ref, assessment_objectives, examination_objects, criteria_refs, method_refs, evidence_requirements, independence_requirements. Independently assess the evidence against this exact criterion: The plan binds each objective to an applicable criterion revision, scope and evidence requirement. Missing method or protocol applicability is recorded as pending for the affected criterion. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+              },
+              {
+                "id": "handoff/technical-security-evidence-assessment:2.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "assessment plan",
+            "workflow_profile_hash": "9babb3a96c10f9ab0cd527114ec3fa89c2268f1dfc43fa0e49b7bdd75a5fc1da"
+          },
+          "next_step": 3
+        }
+      },
+      "source_content_contract": {
+        "id": "technical-security-evidence-assessment:2",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Identify scoped assessment objectives, approved method and criterion revisions, and required evidence objects.",
+          "Include mandatory controls even without an ATT&CK mapping. Record intended coverage and limits."
+        ],
+        "conditional": [
+          {
+            "when": "The assessment requires an independent assessor.",
+            "requirement": "Specify the applicable independence requirement and how it will be validated."
+          }
+        ],
+        "optional": []
+      }
+    },
+    {
+      "handoff_id": "technical-security-evidence-assessment:3",
+      "workflow_id": "technical-security-evidence-assessment",
+      "step": 3,
+      "producer_role": "application-security-engineer",
+      "receiving_role": "control-owner",
+      "handover": "assessment report",
+      "acceptance_criterion": "The report identifies the exact plan, method and evidence revisions. Unsupported or missing evidence leaves the affected conclusion indeterminate. Impact is stated only where supported. Assessors meet independence requirements where applicable",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "ce73f9b8aa81f9ad693f17abb19ba5ca01dc2cfbc156a5dffd2bf813dccc7c77",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/technical-security-evidence-assessment:3",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/technical-security-evidence-assessment:3.technical_assessment_report",
+            "semantic_field": "handoff_technical_assessment_report",
+            "required_fields": [
+              "report_ref",
+              "plan_ref",
+              "scope_ref",
+              "evidence_refs",
+              "attribution",
+              "criterion_outcomes",
+              "coverage",
+              "limitations",
+              "assessed_impact"
+            ],
+            "acceptance_criterion": "For assessment report, supply the actual versioned technical assessment report record, including report_ref, plan_ref, scope_ref, evidence_refs, attribution, criterion_outcomes, coverage, limitations, assessed_impact. Independently assess the evidence against this exact criterion: The report identifies the exact plan, method and evidence revisions. Unsupported or missing evidence leaves the affected conclusion indeterminate. Impact is stated only where supported. Assessors meet independence requirements where applicable. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+          },
+          {
+            "id": "handoff/technical-security-evidence-assessment:3.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "assessment report",
+        "workflow_profile_hash": "9babb3a96c10f9ab0cd527114ec3fa89c2268f1dfc43fa0e49b7bdd75a5fc1da"
+      },
+      "variant_bindings": {
+        "supplied-evidence": {
+          "contract_ids": [],
+          "producer_role": "application-security-engineer",
+          "receiving_role": "control-owner",
+          "acceptance_criterion": "The report identifies the exact plan, method and evidence revisions. Unsupported or missing evidence leaves the affected conclusion indeterminate. Impact is stated only where supported. Assessors meet independence requirements where applicable",
+          "handoff_content_contract": {
+            "id": "handoff/technical-security-evidence-assessment:3",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/technical-security-evidence-assessment:3.technical_assessment_report",
+                "semantic_field": "handoff_technical_assessment_report",
+                "required_fields": [
+                  "report_ref",
+                  "plan_ref",
+                  "scope_ref",
+                  "evidence_refs",
+                  "attribution",
+                  "criterion_outcomes",
+                  "coverage",
+                  "limitations",
+                  "assessed_impact"
+                ],
+                "acceptance_criterion": "For assessment report, supply the actual versioned technical assessment report record, including report_ref, plan_ref, scope_ref, evidence_refs, attribution, criterion_outcomes, coverage, limitations, assessed_impact. Independently assess the evidence against this exact criterion: The report identifies the exact plan, method and evidence revisions. Unsupported or missing evidence leaves the affected conclusion indeterminate. Impact is stated only where supported. Assessors meet independence requirements where applicable. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+              },
+              {
+                "id": "handoff/technical-security-evidence-assessment:3.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "assessment report",
+            "workflow_profile_hash": "9babb3a96c10f9ab0cd527114ec3fa89c2268f1dfc43fa0e49b7bdd75a5fc1da"
+          },
+          "next_step": 4
+        }
+      },
+      "source_content_contract": {
+        "id": "technical-security-evidence-assessment:3",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Bind each reported observation and outcome to the exact assessment plan, criterion, method and evidence revisions.",
+          "Report scope, demonstrated coverage, indeterminate criteria and evidentiary limitations. Claim impact only where supported by observation."
+        ],
+        "conditional": [],
+        "optional": []
+      }
+    },
+    {
+      "handoff_id": "technical-security-evidence-assessment:4",
+      "workflow_id": "technical-security-evidence-assessment",
+      "step": 4,
+      "producer_role": "control-owner",
+      "receiving_role": "engagement:named-authority",
+      "handover": "assessment response record",
+      "acceptance_criterion": "The response identifies the exact report revision, permitted intended use, decisions and accountable recipients. When required, record human disposition and confirm current scoped permission before transfer. Record acknowledgment or a held transfer. Remediation remains with the receiving workflow",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "ce73f9b8aa81f9ad693f17abb19ba5ca01dc2cfbc156a5dffd2bf813dccc7c77",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "handoff_content_contract": {
+        "id": "handoff/technical-security-evidence-assessment:4",
+        "version": "1.0.0",
+        "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+        "units": [
+          {
+            "id": "handoff/technical-security-evidence-assessment:4.technical_assessment_response",
+            "semantic_field": "handoff_technical_assessment_response",
+            "required_fields": [
+              "report_ref",
+              "intended_use",
+              "finding_dispositions",
+              "accountable_receivers",
+              "authority_applicability",
+              "referral_outcomes"
+            ],
+            "acceptance_criterion": "For assessment response record, supply the actual versioned technical assessment response record, including report_ref, intended_use, finding_dispositions, accountable_receivers, authority_applicability, referral_outcomes. Independently assess the evidence against this exact criterion: The response identifies the exact report revision, permitted intended use, decisions and accountable recipients. When required, record human disposition and confirm current scoped permission before transfer. Record acknowledgment or a held transfer. Remediation remains with the receiving workflow. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+          },
+          {
+            "id": "handoff/technical-security-evidence-assessment:4.workflow_context",
+            "semantic_field": "workflow_context",
+            "required_fields": [
+              "context_ref",
+              "route",
+              "input_refs",
+              "route_evidence"
+            ],
+            "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+          }
+        ],
+        "subject": "assessment response record",
+        "workflow_profile_hash": "9babb3a96c10f9ab0cd527114ec3fa89c2268f1dfc43fa0e49b7bdd75a5fc1da"
+      },
+      "variant_bindings": {
+        "supplied-evidence": {
+          "contract_ids": [],
+          "producer_role": "control-owner",
+          "receiving_role": "engagement:named-authority",
+          "acceptance_criterion": "The response identifies the exact report revision, permitted intended use, decisions and accountable recipients. When required, record human disposition and confirm current scoped permission before transfer. Record acknowledgment or a held transfer. Remediation remains with the receiving workflow",
+          "handoff_content_contract": {
+            "id": "handoff/technical-security-evidence-assessment:4",
+            "version": "1.0.0",
+            "basis": "JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.",
+            "units": [
+              {
+                "id": "handoff/technical-security-evidence-assessment:4.technical_assessment_response",
+                "semantic_field": "handoff_technical_assessment_response",
+                "required_fields": [
+                  "report_ref",
+                  "intended_use",
+                  "finding_dispositions",
+                  "accountable_receivers",
+                  "authority_applicability",
+                  "referral_outcomes"
+                ],
+                "acceptance_criterion": "For assessment response record, supply the actual versioned technical assessment response record, including report_ref, intended_use, finding_dispositions, accountable_receivers, authority_applicability, referral_outcomes. Independently assess the evidence against this exact criterion: The response identifies the exact report revision, permitted intended use, decisions and accountable recipients. When required, record human disposition and confirm current scoped permission before transfer. Record acknowledgment or a held transfer. Remediation remains with the receiving workflow. Do not substitute a related policy, plan or claimed execution for the required work product and observations."
+              },
+              {
+                "id": "handoff/technical-security-evidence-assessment:4.workflow_context",
+                "semantic_field": "workflow_context",
+                "required_fields": [
+                  "context_ref",
+                  "route",
+                  "input_refs",
+                  "route_evidence"
+                ],
+                "acceptance_criterion": "Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval."
+              }
+            ],
+            "subject": "assessment response record",
+            "workflow_profile_hash": "9babb3a96c10f9ab0cd527114ec3fa89c2268f1dfc43fa0e49b7bdd75a5fc1da"
+          },
+          "next_step": null
+        }
+      },
+      "source_content_contract": {
+        "id": "technical-security-evidence-assessment:4",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Record response dispositions against the exact assessment report and intended use. Name the receiving duty for each action.",
+          "Retain the attributed acknowledgement or held transfer for each referral."
+        ],
+        "conditional": [
+          {
+            "when": "A referral transfers supplied evidence.",
+            "requirement": "Check current permission for the exact named recipient and scope before transfer. Record a blocked disposition if permission is absent, ambiguous or denied."
+          },
+          {
+            "when": "Engagement policy reserves the disposition to a human.",
+            "requirement": "Reference the human decision for the exact report and intended use."
+          }
+        ],
+        "optional": []
+      }
+    },
+    {
       "handoff_id": "vulnerability-to-remediation:1",
       "workflow_id": "vulnerability-to-remediation",
       "step": 1,
@@ -48197,5 +48710,5 @@
       }
     }
   ],
-  "catalog_hash": "83a0275db7dda3a5ec38c3c86333bd1beada17622b570344e34841488930d13f"
+  "catalog_hash": "35ee5094674c8b6d39998af04006390e8ed89dde9bfe6ab836d6ac657aa4cace"
 }

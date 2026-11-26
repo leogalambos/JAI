@@ -13,6 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from content_spec import canonical_hash
+from technical_security_evidence import load_method_manifest
+from generate_output_contract_docs import replace_block
+from workflow_professional_definitions import workflow_discovery_groups
 
 from content_workflow import HANDOFF_CONTENT_CONTRACTS, SELECTIONS
 import infrastructure_workflow_definitions as infrastructure
@@ -26,6 +29,33 @@ from workflow_professional_definitions import (DAST_METHOD_SECTIONS, HANDOFF_REQ
 # Explicit source-owned handoff contracts; these stages intentionally have no
 # professional role-deliverable ID. Their requirements remain canonical here.
 SOURCE_HANDOFF_CONTENT = {
+    'technical-security-evidence-assessment:1': {
+        'required': [
+            'Identify the exact subjects, system boundary, intended use and accountable platform or application duties.',
+            'Record available evidence revisions, custody and gaps relevant to assessment planning.'],
+        'conditional': [], 'optional': []},
+    'technical-security-evidence-assessment:2': {
+        'required': [
+            'Identify scoped assessment objectives, approved method and criterion revisions, and required evidence objects.',
+            'Include mandatory controls even without an ATT&CK mapping. Record intended coverage and limits.'],
+        'conditional': [{'when': 'The assessment requires an independent assessor.',
+                         'requirement': 'Specify the applicable independence requirement and how it will be validated.'}],
+        'optional': []},
+    'technical-security-evidence-assessment:3': {
+        'required': [
+            'Bind each reported observation and outcome to the exact assessment plan, criterion, method and evidence revisions.',
+            'Report scope, demonstrated coverage, indeterminate criteria and evidentiary limitations. Claim impact only where supported by observation.'],
+        'conditional': [], 'optional': []},
+    'technical-security-evidence-assessment:4': {
+        'required': [
+            'Record response dispositions against the exact assessment report and intended use. Name the receiving duty for each action.',
+            'Retain the attributed acknowledgement or held transfer for each referral.'],
+        'conditional': [
+            {'when': 'A referral transfers supplied evidence.',
+             'requirement': 'Check current permission for the exact named recipient and scope before transfer. Record a blocked disposition if permission is absent, ambiguous or denied.'},
+            {'when': 'Engagement policy reserves the disposition to a human.',
+             'requirement': 'Reference the human decision for the exact report and intended use.'}],
+        'optional': []},
     'dast-control-assurance:9': {
         'required': [
             'Record exact application and existing pipeline scope, the named application owner mandate, delivery ownership, funding and capacity.',
@@ -350,7 +380,7 @@ def summary_projections(root=ROOT):
         root: Repository containing workflow/role registries and existing skills.
     Returns:
         Relative skill paths mapped to complete updated text. Manual prose,
-        role rows and workflow triggers are retained; only owned counts change.
+        role rows and surrounding prose are retained. Discovery tables use canonical rows.
     Raises:
         ValueError: If a required projection or expected count location is absent.
         OSError: If a canonical registry cannot be read.
@@ -381,10 +411,16 @@ def summary_projections(root=ROOT):
     text = replace(r'`workflows: \d+`', f'`workflows: {len(workflows)}`', text, relative)
     text = replace(r'across \d+ end-to-end workflow chains',
                    f'across {len(workflows)} end-to-end workflow chains', text, relative)
-    for workflow in workflows:
-        pattern = rf'^(\| \[[^\n]+\]\(references/{re.escape(workflow["key"])}\.md\) \| )\d+( \|[^\n]+)$'
-        text = replace(pattern, lambda match: match[1] + str(len(workflow['steps'])) + match[2],
-                       text, workflow['key'])
+    groups = []
+    for label, members in workflow_discovery_groups(workflows).items():
+        groups.extend((f'### {label}', '', '| Workflow | Steps | Trigger |', '| --- | --- | --- |'))
+        for workflow in members:
+            trigger = workflow['trigger'].replace('|', '&#124;')
+            groups.append(f"| [{workflow['title']}](references/{workflow['key']}.md) | "
+                          f"{len(workflow['steps'])} | {trigger} |")
+        groups.append('')
+    text = replace_block(text, '\n'.join(groups), '<!-- JAI:WORKFLOW-GROUPS:START -->',
+                         '<!-- JAI:WORKFLOW-GROUPS:END -->')
     result[relative] = text
     for skill in sorted({role['skill'] for role in roles}):
         selected = [role for role in roles if role['skill'] == skill]
@@ -397,6 +433,27 @@ def summary_projections(root=ROOT):
             text = replace(r'\d+ of the \d+ roles here', f'{advises} of the {len(selected)} roles here', text, relative)
         result[relative] = text
     return result
+
+
+def _workflow_navigation(root):
+    path = root / 'mkdocs.yml'
+    text = path.read_text()
+    workflows = json.loads((root / '.ai/runtime/workflows.json').read_text())['workflows']
+    groups = workflow_discovery_groups(workflows)
+    start = '# JAI:SPECIALIST-WORKFLOWS:START'
+    end = '# JAI:SPECIALIST-WORKFLOWS:END'
+    rows = []
+    for workflow in groups['Specialist workflows']:
+        title = json.dumps(workflow['title'], ensure_ascii=False)
+        rows.append(f"          - {title}: workflow-library/{workflow['key']}.md")
+    rendered = replace_block(text, '\n'.join(rows), start, end)
+    rendered = rendered.replace(f'\n{end}', f'\n          {end}')
+    library = rendered.split('  - Workflow library:\n', 1)[1].split('  - Capabilities:', 1)[0]
+    base_navigation = library.split('      - Specialist workflows:', 1)[0]
+    base_keys = re.findall(r'workflow-library/([\w-]+)\.md', base_navigation)
+    if sorted(base_keys) != sorted(workflow['key'] for workflow in groups['Base workflows']):
+        raise ValueError('Base workflow navigation must cover its registered workflows exactly once')
+    return rendered
 
 
 def applicability_projections(root=ROOT):
@@ -566,8 +623,14 @@ def main(argv=None):
         parser.error('--product-scopes requires --stage-siem-pilot')
     payloads = {**professional_projection(), '.ai/runtime/content/workflow-acceptance.json': json.dumps(build(),indent=2,ensure_ascii=False)+'\n',
                 **summary_projections(), **applicability_projections()}
+    payloads['mkdocs.yml'] = _workflow_navigation(ROOT)
+    load_method_manifest(ROOT / '.ai/skills/it-role-workflows/references/technical-security-evidence-methods.v1.json')
     methodology = ROOT / '.ai/skills/it-role-workflows/references/dast-methodology.md'
     payloads['docs/reference/dast-methodology.md'] = methodology.read_text()
+    guidance = ROOT / 'docs/architecture/specialist-workflows.md'
+    payloads['.ai/skills/it-role-workflows/references/specialist-workflows.md'] = guidance.read_text()
+    role_guidance = ROOT / 'docs/architecture/specialist-roles.md'
+    payloads['.ai/runtime/specialist-roles.md'] = role_guidance.read_text()
     if args.check:
         return 0 if all((ROOT/path).is_file() and (ROOT/path).read_text()==payload
                         for path,payload in payloads.items()) else 1

@@ -8,6 +8,32 @@ and role names never classify runtime work. Requirements supplement existing
 source gates and do not establish external-standard conformance or approval.
 """
 
+SPECIALIST_WORKFLOW_KEYS = frozenset({
+    'dast-control-assurance',
+    'technical-security-evidence-assessment',
+})
+
+
+def workflow_discovery_groups(workflows):
+    """Group registered workflow rows for presentation without changing their contracts.
+
+    Args:
+        workflows: Iterable of registered rows with unique workflow keys.
+    Returns:
+        Base and specialist rows, each in registry order.
+    Raises:
+        ValueError: Duplicate registry keys or an unregistered specialist key.
+    """
+    rows = list(workflows)
+    keys = {row['key'] for row in rows}
+    if len(keys) != len(rows) or not SPECIALIST_WORKFLOW_KEYS <= keys:
+        raise ValueError('Invalid workflow discovery catalogue keys')
+    return {
+        'Base workflows': [row for row in rows if row['key'] not in SPECIALIST_WORKFLOW_KEYS],
+        'Specialist workflows': [row for row in rows if row['key'] in SPECIALIST_WORKFLOW_KEYS],
+    }
+
+
 # Required reading for each activity, carried in the versioned handoff criteria.
 DAST_METHOD_SECTIONS = {
     1: 'Implementation lifecycle and Deployment patterns and fidelity',
@@ -33,6 +59,11 @@ DAST_METHOD_SECTIONS = {
 
 
 HANDOFF_REQUIREMENTS = {
+    'technical-security-evidence-assessment': [
+        ('technical_assessment_scope', 'scope_ref intended_use subjects accountable_duties policy_ref custody_scope evidence_availability'),
+        ('technical_assessment_plan', 'plan_ref scope_ref assessment_objectives examination_objects criteria_refs method_refs evidence_requirements independence_requirements'),
+        ('technical_assessment_report', 'report_ref plan_ref scope_ref evidence_refs attribution criterion_outcomes coverage limitations assessed_impact'),
+        ('technical_assessment_response', 'report_ref intended_use finding_dispositions accountable_receivers authority_applicability referral_outcomes')],
     'dast-control-assurance': [
         ('dast_readiness', 'mandate_ref application_scope owners policy_ref interface_inventory topology_decision feasibility_evidence'),
         ('dast_security_baseline', 'risk_refs security_requirements architecture_ref coverage_matrix acceptance_criteria authority_matrix'),
@@ -301,6 +332,15 @@ HANDOFF_REQUIREMENTS = {
 # distinct entry questions, normal variants and failure/exit semantics.
 # Tuple: required inputs; variant -> mechanism/evidence; rework; stop; exit.
 WORKFLOW_PROFILES = {
+    'technical-security-evidence-assessment': (
+        ['Identified subjects, intended use and accountable duties',
+         'Versioned supplied evidence and its handling conditions',
+         'Applicable criteria and asset or interface applicability information'],
+        [('supplied-evidence', 'Examine supplied technical records against scoped security criteria offline',
+          'Accepted scope, applicable assessment plan, exact report and attributable response or held disposition')],
+        'Return scope, method or evidence gaps to their owners and reassess affected conclusions against the changed inputs.',
+        'Block use on required indeterminate criteria and withhold access or transfer outside applicable permission. Decline live collection.',
+        'Record usable, limited, deferred or cancelled disposition. Refer supported findings under the applicable policy without closing remediation.'),
     'dast-control-assurance': (
         ['Exact application and control scope, decision owner and applicable policy',
          'Versioned input bundle for the selected path'],
@@ -620,6 +660,7 @@ VARIANT_HANDOFF_REQUIREMENTS = {
 # needed at a boundary. Unlisted combinations share actual outcome information;
 # a scope-limited variant terminates before work it does not authorise or require.
 VARIANT_SCOPE_ASSESSMENTS = {
+    'technical-security-evidence-assessment': 'Select supplied-evidence for offline examination of an identified security claim. Select approved technology methods per asset and claim. Overlapping technology hints do not replace criteria or evidence. Route DAST control qualification and treatment of known findings to their existing workflows.',
     'dast-control-assurance': 'Choose integration to introduce DAST into an existing pipeline, qualification for an already implemented control, release-evidence for an exact candidate within accepted scope, and continuous-assurance for operating review. Reconcile scope and exact versions before carrying evidence across paths.',
     'idea-to-production': 'New and changed products share requirement/design/execution/outcome evidence; current baseline and changed scope differ in values, not schema.',
     'new-service-onboarding': 'SaaS and inherited-platform mechanisms replace owned IaC/image/pipeline records with configuration, dependency assurance and governed change evidence; overlays select a base mechanism explicitly.',

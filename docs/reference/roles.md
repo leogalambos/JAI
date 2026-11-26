@@ -13,6 +13,8 @@ See [Roles and disciplines](../using/roles.md#why-the-role-model-matters) for ho
 to apply them and [external research safeguards](../using/roles.md#external-research-and-confidentiality)
 for protecting public lookup queries without anonymising the deliverable itself.
 
+For choosing between role knowledge and a registered specialist, see [Designing specialist roles](../architecture/specialist-roles.md).
+
 ## Product specializations
 
 The standard distribution includes **{{ JAI_PACKAGED_ROLE_COVERAGE }}**,

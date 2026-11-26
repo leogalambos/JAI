@@ -9,7 +9,11 @@ and **{{ JAI_WORKFLOW_HANDOFF_COVERAGE }}**. Stage inventories below list
 registered stage IDs. The linked workflow's applicability table gives the
 execution order for each path, including variant-specific stages.
 
+For catalogue design and worked cases, see [Designing specialist workflows](../architecture/specialist-workflows.md).
+
 <!-- JAI:OUTPUT-CONTRACTS:START -->
+## Base workflows
+
 | Workflow | Start when | Expected result |
 | --- | --- | --- |
 | [Idea to production](../workflow-library/idea-to-production.md) | A business need, opportunity or customer problem arrives with no agreed solution. | A change running in production with a measured benefit and a named owner. |
@@ -36,7 +40,14 @@ execution order for each path, including variant-specific stages.
 | [SIAM / multi-supplier service integration](../workflow-library/siam-multi-supplier.md) | A service depends on multiple suppliers/teams and end-to-end accountability, OLAs, incidents, problems, changes or acceptance are fragmented across boundaries. | One governed service-integration model joins supplier responsibilities into end-to-end service outcomes with measurable SLAs/OLAs, clear process ownership and cross-supplier escalation. |
 | [Enterprise release orchestration](../workflow-library/enterprise-release-orchestration.md) | Multiple products/platforms/suppliers must release into a shared business/technology environment and need one dependency, readiness and go/no-go process. | The integrated release is sequenced, independently readiness-checked, authorised, executed by technical owners, validated and closed with measurable release performance. |
 | [Regulatory change to assurance](../workflow-library/regulatory-change-to-assurance.md) | A new or changed law, regulation, supervisory expectation or contractual compliance obligation may affect IS/IT services, controls or architecture. | Applicability and obligations are translated into traceable requirements/controls, architecture and remediation changes are implemented, evidence is independently assured, and closure is authorised. |
+
+## Specialist workflows
+
+| Workflow | Start when | Expected result |
+| --- | --- | --- |
+| [Technical security evidence assessment](../workflow-library/technical-security-evidence-assessment.md) | A bounded request calls for examining supplied technical evidence against identified security criteria. | An evidence-bound assessment report, a disposition and accountable referrals where applicable. |
 | [DAST integration and control assurance for containerised delivery](../workflow-library/dast-control-assurance.md) | An existing containerised CI/CD pipeline needs a DAST control introduced, qualified, reassessed or evaluated for release. | An implemented and qualified DAST integration with operational takeover, or a bounded qualification, release evidence or continuous assurance decision. |
+
 
 ## Idea to production
 
@@ -1000,6 +1011,31 @@ execution order for each path, including variant-specific stages.
    **Output specifications:** [`compliance-officer-technology:2`](output-contracts/role-compliance-officer-technology.md#output-compliance-officer-technology-2); [handoff/regulatory-change-to-assurance:10](output-contracts/workflow-regulatory-change-to-assurance.md#output-handoff-regulatory-change-to-assurance-10)
 
 [Roles, activities and acceptance gates for this chain](../workflow-library/regulatory-change-to-assurance.md#workflow-steps-and-gates).
+
+## Technical security evidence assessment
+
+**Workflow key:** `technical-security-evidence-assessment`.
+
+**Start when:** A bounded request calls for examining supplied technical evidence against identified security criteria.
+
+**Expected result:** An evidence-bound assessment report, a disposition and accountable referrals where applicable.
+
+**Concrete stage outputs and receiving conditions:**
+
+1. **Solution Architect:** assessment scope record.
+   **Receiving condition:** Scope identifies the exact subjects, intended use, applicable policy, evidence custody limits and available input revisions. Intake is limited to supplied evidence
+   **Output specifications:** [handoff/technical-security-evidence-assessment:1](output-contracts/workflow-technical-security-evidence-assessment.md#output-handoff-technical-security-evidence-assessment-1); [technical-security-evidence-assessment:1](output-contracts/workflow-technical-security-evidence-assessment.md#output-technical-security-evidence-assessment-1)
+2. **Security Architect:** assessment plan.
+   **Receiving condition:** The plan binds each objective to an applicable criterion revision, scope and evidence requirement. Missing method or protocol applicability is recorded as pending for the affected criterion
+   **Output specifications:** [handoff/technical-security-evidence-assessment:2](output-contracts/workflow-technical-security-evidence-assessment.md#output-handoff-technical-security-evidence-assessment-2); [technical-security-evidence-assessment:2](output-contracts/workflow-technical-security-evidence-assessment.md#output-technical-security-evidence-assessment-2)
+3. **Application Security Engineer:** assessment report.
+   **Receiving condition:** The report identifies the exact plan, method and evidence revisions. Unsupported or missing evidence leaves the affected conclusion indeterminate. Impact is stated only where supported. Assessors meet independence requirements where applicable
+   **Output specifications:** [handoff/technical-security-evidence-assessment:3](output-contracts/workflow-technical-security-evidence-assessment.md#output-handoff-technical-security-evidence-assessment-3); [technical-security-evidence-assessment:3](output-contracts/workflow-technical-security-evidence-assessment.md#output-technical-security-evidence-assessment-3)
+4. **Control Owner:** assessment response record.
+   **Receiving condition:** The response identifies the exact report revision, permitted intended use, decisions and accountable recipients. When required, record human disposition and confirm current scoped permission before transfer. Record acknowledgment or a held transfer. Remediation remains with the receiving workflow
+   **Output specifications:** [handoff/technical-security-evidence-assessment:4](output-contracts/workflow-technical-security-evidence-assessment.md#output-handoff-technical-security-evidence-assessment-4); [technical-security-evidence-assessment:4](output-contracts/workflow-technical-security-evidence-assessment.md#output-technical-security-evidence-assessment-4)
+
+[Roles, activities and acceptance gates for this chain](../workflow-library/technical-security-evidence-assessment.md#workflow-steps-and-gates).
 
 ## DAST integration and control assurance for containerised delivery
 

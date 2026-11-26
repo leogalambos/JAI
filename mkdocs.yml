@@ -113,6 +113,9 @@ nav:
           - Execution and context assembly: overview/execution-context-algorithm.md
           - Hierarchical role discovery and context scalability: architecture/hierarchical-role-discovery.md
           - Native provider execution: architecture/gen2-native-execution-bridge.md
+      - Catalogue design:
+          - Designing specialist roles: architecture/specialist-roles.md
+          - Designing specialist workflows: architecture/specialist-workflows.md
       - Layered delivery and assurance:
           - Delivery model: overview/delivery-model.md
           - Governed SABSA-layer delivery model: architecture/sabsa-layer-model.md
@@ -185,35 +188,40 @@ nav:
               - Data product delivery: examples/data-product-delivery.md
               - AI-system approval: examples/ai-system-approval.md
   - Workflow library:
-      - Plan, fund and source:
-          - Demand to portfolio to funding: workflow-library/demand-to-portfolio-to-funding.md
-          - Business case to realised benefits: workflow-library/business-case-to-benefits.md
-          - Source to contract to service: workflow-library/source-to-contract-to-service.md
-          - Supplier onboarding to exit: workflow-library/supplier-onboarding.md
-          - SIAM / multi-supplier service integration: workflow-library/siam-multi-supplier.md
-      - Build, change and deliver:
-          - Idea to production: workflow-library/idea-to-production.md
-          - New service onboarding: workflow-library/new-service-onboarding.md
-          - Production change: workflow-library/production-change.md
-          - Inherited codebase takeover: workflow-library/codebase-takeover.md
-          - Data product delivery: workflow-library/data-product-delivery.md
-          - AI system from idea to approved production use: workflow-library/ai-system-approval.md
-          - Design to operational readiness: workflow-library/design-to-operational-readiness.md
-          - Migration and cutover: workflow-library/migration-and-cutover.md
-          - Organisational change and adoption: workflow-library/organisational-change-and-adoption.md
-          - Semantic artefact to enterprise publication: workflow-library/semantic-to-enterprise-publication.md
-          - Enterprise release orchestration: workflow-library/enterprise-release-orchestration.md
-      - Operate and recover:
-          - Incident to permanent fix: workflow-library/incident-to-problem.md
-          - Vulnerability to remediation: workflow-library/vulnerability-to-remediation.md
-          - Cyber incident / breach to recovery: workflow-library/cyber-incident-breach-to-recovery.md
-          - Resilience validation: workflow-library/resilience-validation.md
-      - Assure, govern and retire:
-          - Access request to periodic review: workflow-library/access-request-to-review.md
-          - Architecture model to repository governance: workflow-library/architecture-model-to-repository-governance.md
-          - Service retirement and decommission: workflow-library/service-retirement-and-decommission.md
-          - Regulatory change to assurance: workflow-library/regulatory-change-to-assurance.md
-          - DAST integration and control assurance: workflow-library/dast-control-assurance.md
+      - Base workflows:
+          - Plan, fund and source:
+              - Demand to portfolio to funding: workflow-library/demand-to-portfolio-to-funding.md
+              - Business case to realised benefits: workflow-library/business-case-to-benefits.md
+              - Source to contract to service: workflow-library/source-to-contract-to-service.md
+              - Supplier onboarding to exit: workflow-library/supplier-onboarding.md
+              - SIAM / multi-supplier service integration: workflow-library/siam-multi-supplier.md
+          - Build, change and deliver:
+              - Idea to production: workflow-library/idea-to-production.md
+              - New service onboarding: workflow-library/new-service-onboarding.md
+              - Production change: workflow-library/production-change.md
+              - Inherited codebase takeover: workflow-library/codebase-takeover.md
+              - Data product delivery: workflow-library/data-product-delivery.md
+              - AI system from idea to approved production use: workflow-library/ai-system-approval.md
+              - Design to operational readiness: workflow-library/design-to-operational-readiness.md
+              - Migration and cutover: workflow-library/migration-and-cutover.md
+              - Organisational change and adoption: workflow-library/organisational-change-and-adoption.md
+              - Semantic artefact to enterprise publication: workflow-library/semantic-to-enterprise-publication.md
+              - Enterprise release orchestration: workflow-library/enterprise-release-orchestration.md
+          - Operate and recover:
+              - Incident to permanent fix: workflow-library/incident-to-problem.md
+              - Vulnerability to remediation: workflow-library/vulnerability-to-remediation.md
+              - Cyber incident / breach to recovery: workflow-library/cyber-incident-breach-to-recovery.md
+              - Resilience validation: workflow-library/resilience-validation.md
+          - Assure, govern and retire:
+              - Access request to periodic review: workflow-library/access-request-to-review.md
+              - Architecture model to repository governance: workflow-library/architecture-model-to-repository-governance.md
+              - Service retirement and decommission: workflow-library/service-retirement-and-decommission.md
+              - Regulatory change to assurance: workflow-library/regulatory-change-to-assurance.md
+      - Specialist workflows:
+          # JAI:SPECIALIST-WORKFLOWS:START
+          - "Technical security evidence assessment": workflow-library/technical-security-evidence-assessment.md
+          - "DAST integration and control assurance for containerised delivery": workflow-library/dast-control-assurance.md
+          # JAI:SPECIALIST-WORKFLOWS:END
           - DAST integration methodology: reference/dast-methodology.md
   - Capabilities:
       - SABSA and enterprise architecture: capabilities/sabsa-ea.md
@@ -748,6 +756,7 @@ nav:
               - "SIAM / multi-supplier service integration: source-owned handoff contracts": reference/output-contracts/workflow-siam-multi-supplier.md
               - "Source to contract to service: source-owned handoff contracts": reference/output-contracts/workflow-source-to-contract-to-service.md
               - "Supplier onboarding to exit: source-owned handoff contracts": reference/output-contracts/workflow-supplier-onboarding.md
+              - "Technical security evidence assessment: source-owned handoff contracts": reference/output-contracts/workflow-technical-security-evidence-assessment.md
               - "Vulnerability to remediation: source-owned handoff contracts": reference/output-contracts/workflow-vulnerability-to-remediation.md
 # JAI:OUTPUT-CONTRACTS:NAV:END
       - Commands, tools and configuration:

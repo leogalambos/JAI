@@ -22,6 +22,7 @@ from infrastructure_workflow_definitions import DELIVERY, EVIDENCE
 
 # Numbers are editorial selections of canonical role deliverables, not title matching.
 SELECTIONS = {
+'technical-security-evidence-assessment': ['source','source','source','source'],
 'dast-control-assurance': ['4','1','2','3','source','2','source','2',
                            'source','4','1','2','1','1','1','1','3','2','source'],
 'access-request-to-review': ['1','2','2,3','1,2','1','3'],
